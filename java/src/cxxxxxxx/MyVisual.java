@@ -14,8 +14,14 @@ public class MyVisual extends Visual
 
     public void setup()
     {
+
         startMinim();
-        startListening();        
+        
+        startListening(); // microphone input
+        
+        // Call loadAudio to load an audio file to process 
+        // instead of startListening 
+        
         wf = new WaveForm(this);
         abv = new AudioBandsVisual(this);
     }
@@ -25,13 +31,17 @@ public class MyVisual extends Visual
         background(0);
         try
         {
-            calculateFFT();
+            // Call this if you want to use FFT data
+            calculateFFT(); 
         }
         catch(VisualException e)
         {
             e.printStackTrace();
         }
-        calculateFrequencyBands();
+        // Call this is you want to use frequency bands
+        calculateFrequencyBands(); 
+
+        // Call this is you want to get the average amplitude
         calculateAverageAmplitude();        
         wf.render();
         abv.render();

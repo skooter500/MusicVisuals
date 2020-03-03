@@ -1,7 +1,6 @@
-# SciFi UI Project
+# Music Visualiser Project
 
 Name:
-
 Student Number: 
 
 Fork this repository and use it a starter project for your assignment

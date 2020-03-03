@@ -88,5 +88,4 @@ public abstract class Visual extends PApplet
 		as = minim.loadSample(filename, frameSize);
 		ab = as.left;
 	}
-
 }
