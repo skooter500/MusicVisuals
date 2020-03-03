@@ -1,6 +1,7 @@
 # Music Visualiser Project
 
 Name:
+
 Student Number: 
 
 ## Instructions
