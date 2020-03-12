@@ -23,10 +23,11 @@ public class MyVisual extends Visual
         startMinim();
                 
         // Call loadAudio to load an audio file to process 
-        loadAudio("heroplanet.mp3");        
+        //loadAudio("heroplanet.mp3");   
+
         
         // Call this instead to read audio from the microphone
-        //startListening(); 
+        startListening(); 
         
         wf = new WaveForm(this);
         abv = new AudioBandsVisual(this);
@@ -36,8 +37,8 @@ public class MyVisual extends Visual
     {
         if (key == ' ')
         {
-            as.stop();
-            as.trigger();
+            getAudioSample().stop();
+            getAudioSample().trigger();
         }
     }
 
