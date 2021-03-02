@@ -1,27 +1,25 @@
 package C19307776.Scenes;
+import C19307776.Animatable;
 import C19307776.Scene;
 import C19307776.Visuals;
-import processing.core.*;
+import C19307776.Properties;
 
 public class EarthSystem extends Scene{
-    PImage earth;
-    float earthSize;
-    float earthX;
-    float earthY;
+	float earthSize;
+	Animatable earth;
 
-    public EarthSystem(Visuals v) {
-        super();
-        this.v = v;
+	public EarthSystem(Visuals v) {
+		super();
+		this.v = v;
+		this.sceneLength = 700;
+		earthSize = v.height*0.80f;
 
-        v.background(0);
-        earthSize = v.height*0.80f;
-        earthX = (v.width/2)-(earthSize/2);
-        earthY = (v.height/2)-(earthSize/2);
-        earth = v.loadImage("assets/earth.png");
-    }
+		earth = new Animatable(v, "assets/earth.png", -earthSize, 400, earthSize, earthSize);
 
-    public void animateScene() {
-        v.background(0);
-        v.image(this.earth, earthX+(v.mouseX/100), earthY+(v.mouseY/100), earthSize, earthSize);
-    }
+		v.background(0);
+		earth.setDuration(700);
+		earth.animateProperty(Properties.XPOS.getValue(), 1500, 0, 600);
+		earth.animateProperty(Properties.YPOS.getValue(), 0, 0, 600);
+		this.addToScene(earth);
+	}
 }
