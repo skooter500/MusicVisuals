@@ -1,27 +1,25 @@
 package C19307776.Scenes;
 import C19307776.Scene;
 import C19307776.Visuals;
-import processing.core.*;
+import C19307776.Animatable;
+import C19307776.Properties;
 
 public class MarsSystem extends Scene{
-    PImage mars;
-    float marsSize;
-    float marsX;
-    float marsY;
+	Animatable mars;
+	float marsSize;
 
-    public MarsSystem(Visuals v) {
-        super();
-        this.v = v;
+	public MarsSystem(Visuals v) {
+		super();
+		this.v = v;
+		this.sceneLength = 700;
 
-        v.background(0);
-        marsSize = v.height*0.424f;
-        marsX = (v.width/2)-(marsSize/2);
-        marsY = (v.height/2)-(marsSize/2);
-        mars = v.loadImage("assets/mars.png");
-    }
+		marsSize = v.height*0.424f;
+		mars = new Animatable(v, "assets/mars.png", -marsSize, 400, marsSize, marsSize);
 
-    public void animateScene() {
-        v.background(0);
-        v.image(this.mars, marsX+(v.mouseX/100), marsY+(v.mouseY/100), marsSize, marsSize);
-    }
+		v.background(0);
+		mars.setDuration(700);
+		mars.animateProperty(Properties.XPOS.getValue(), 1500, 0, 600);
+		mars.animateProperty(Properties.YPOS.getValue(), 0, 0, 600);
+		this.addToScene(mars);
+	}
 }
