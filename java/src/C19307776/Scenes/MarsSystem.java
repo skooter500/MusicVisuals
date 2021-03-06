@@ -14,7 +14,7 @@ public class MarsSystem extends Scene{
 		this.sceneLength = 700;
 
 		marsSize = v.height*0.424f;
-		mars = new Animatable(v, "assets/mars.png", -marsSize, 400, marsSize, marsSize);
+		mars = new Animatable(v, "assets/mars.png", -marsSize, 400, marsSize, marsSize, 0);
 
 		v.background(0);
 		mars.setDuration(700);

@@ -1,6 +1,10 @@
 package C19307776;
 import java.util.ArrayList;
-
+/*
+	This class is the parent class for each scene.
+	It handles stuff such as scene duration and the
+	objects in the scene.
+*/
 public class Scene extends Visuals {
 	protected Visuals v;
 	protected int sceneLength = 0;
