@@ -2,6 +2,7 @@ package C19307776;
 import processing.core.*;
 import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.Map;
 
 public class Animatable {
 	Visuals v; //Processing
@@ -12,6 +13,8 @@ public class Animatable {
 	float y; //y position
 	float rotation = 0; //sprite's rotation
 	String src; // sprite image src
+
+	boolean scale = false;
 
 	//current frame of sprite animation
 	int currentFrame = 0;
@@ -24,26 +27,40 @@ public class Animatable {
 	float lastWidth;
 	float lastHeight;
 	float lastX;
+	float speedX = 1f;
 	float lastY;
+	float speedY = 1f;
 	float lastRotation;
+
+	float parallax = 0;
 
 	//List of animation frames
 	HashMap<Integer, ArrayList<ArrayList<Float>>> animations = new HashMap<Integer, ArrayList<ArrayList<Float>>>();
 
-	public Animatable(Visuals v, String src, float x, float y, float w, float h, float r) {
+	public Animatable(Visuals v, String src, float x, float y, Map<String, Float> props) {
 		this.v = v;
 		this.src = src;
 		img = v.loadImage(src);
-		if(w == 0 && h == 0) {
-			this.lastWidth = this.w = img.width/2;
-			this.lastHeight = this.h = img.height/2;
-		}else {
-			this.lastWidth = this.w = w;
-			this.lastHeight = this.h = h;
+
+		//Checks if the width and height property are present
+		if(props.containsKey("w") && props.containsKey("h")) {
+			//Sets the width and height variables
+			this.lastWidth = this.w = props.get("w");
+			this.lastHeight = this.h = props.get("h");
+		}else if(props.containsKey("prop")) {
+			//If width / height not present, scale the image proportionally
+			scale = true;
+			img.resize(0, ((int) (float) props.get("prop")));
 		}
+		
 		this.lastX = this.x = x;
 		this.lastY = this.y = y;
-		this.lastRotation = this.rotation = r;
+		if(props.containsKey("r")) {
+			this.lastRotation = this.rotation = props.get("r");
+		}
+		if(props.containsKey("parallax")) {
+			this.parallax = props.get("parallax");
+		}
 		v.imageMode(v.CENTER);
 	}
 
@@ -58,33 +75,43 @@ public class Animatable {
 	}
 
 	//add an animation to be run on the sprite
-	public void animateProperty(int property, float to, int startTime, int duration) {
+	public void animateProperty(Map<String, Integer> props, float acceleration) {
+		//int property, float to, int startTime, int duration
 		float val = 0;
 		//determine which property is being run
-		if(property == Properties.WIDTH.getValue()) {
+		if(props.get("property") == Properties.WIDTH.getValue()) {
 			val = lastWidth;
-		}else if(property == Properties.HEIGHT.getValue()) {
+		}else if(props.get("property") == Properties.HEIGHT.getValue()) {
 			val = lastHeight;
-		}else if(property == Properties.XPOS.getValue()) {
+		}else if(props.get("property") == Properties.XPOS.getValue()) {
 			val = lastX;
-		}else if(property == Properties.YPOS.getValue()) {
+			if(acceleration > 0 || acceleration < 0) {
+				speedX = acceleration;
+			}
+		}else if(props.get("property") == Properties.YPOS.getValue()) {
 			val = lastY;
-		}else if(property == Properties.ROTATION.getValue()) {
+			if(acceleration > 0 || acceleration < 0) {
+				speedY = acceleration;
+			}
+		}else if(props.get("property") == Properties.ROTATION.getValue()) {
 			val = lastRotation;
-			System.out.println(to-val);
 		}
 		//The list of animatation properties
 		ArrayList<Float> arr = new ArrayList<Float>();
-		arr.add((float) duration);
-		arr.add((float) property);
-		arr.add((to-val)/duration);
+		arr.add((float) props.get("duration"));
+		arr.add((float) props.get("property"));
+		arr.add((props.get("to")-val)/props.get("duration"));
+		if(acceleration > 0 || acceleration < 0) {
+			System.out.println(acceleration);
+			arr.add((float) acceleration);
+		}
 		//Check there is already animation starting at start time
 		//Creates arraylist of animations if not
-		if(!animations.containsKey(startTime)) {
-			animations.put(startTime, new ArrayList());
+		if(!animations.containsKey(props.get("startTime"))) {
+			animations.put(props.get("startTime"), new ArrayList());
 		}
 		//Adds animation to the list of animations
-		animations.get(startTime).add(arr);
+		animations.get(props.get("startTime")).add(arr);
 	}
 
 	public int getStartPoint() {
@@ -112,9 +139,20 @@ public class Animatable {
 							}else if(props.get(1) == Properties.HEIGHT.getValue()) {
 								this.h+=props.get(2);
 							}else if(props.get(1) == Properties.XPOS.getValue()) {
-								this.x+=props.get(2);
+								//this.x+=props.get(2);
+								if(props.size() == 4) {
+									speedX+=props.get(3);
+									this.x+=speedX;
+								}else {
+									this.x+=props.get(2);
+								}
 							}else if(props.get(1) == Properties.YPOS.getValue()) {
-								this.y+=props.get(2);
+								if(props.size() == 4) {
+									speedY+=props.get(3);
+									this.y+=speedY;
+								}else {
+									this.y+=props.get(2);
+								}
 							}else if(props.get(1) == Properties.ROTATION.getValue()) {
 								this.rotation+=props.get(2);
 								//System.out.println(this.rotation);
@@ -127,7 +165,7 @@ public class Animatable {
 				}
 			}
 			v.pushMatrix();
-			v.translate(this.x+(v.mouseX/100), this.y+(v.mouseY/100));
+			v.translate(this.x+(v.mouseX*parallax), this.y+(v.mouseY*parallax));
 			//v.translate(0, 0);
 			//Checks if rotation = 0
 			if(this.rotation != 0) {
@@ -135,7 +173,11 @@ public class Animatable {
 				v.rotate(v.radians(this.rotation));
 			}
 			//Draws the shape at new dimensions / coordinates
-			v.image(this.img, 0, 0, this.w, this.h);
+			if(!scale) {
+				v.image(this.img, 0, 0, this.w, this.h);
+			}else {
+				v.image(this.img, 0, 0);
+			}
 			v.popMatrix();
 			//Increments frame counter
 			currentFrame++;
