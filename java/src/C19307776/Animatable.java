@@ -12,6 +12,7 @@ public class Animatable {
 	float x; //x position
 	float y; //y position
 	float rotation = 0; //sprite's rotation
+	int scle = 0; //sprites scale
 	String src; // sprite image src
 
 	boolean scale = false;
@@ -31,6 +32,8 @@ public class Animatable {
 	float lastY;
 	float speedY = 1f;
 	float lastRotation;
+	int lastScale;
+	float imageRatio = 1;
 
 	float parallax = 0;
 
@@ -49,8 +52,12 @@ public class Animatable {
 			this.lastHeight = this.h = props.get("h");
 		}else if(props.containsKey("prop")) {
 			//If width / height not present, scale the image proportionally
-			scale = true;
-			img.resize(0, ((int) (float) props.get("prop")));
+			//scale = true;
+			//this.lastScale = scle = (int) (float) props.get("prop");
+			//imageRatio = img.height/img.width;
+			//img.resize(0, scle);
+			this.imageRatio = (float) img.width/img.height;
+			this.w = this.h = props.get("prop");
 		}
 		
 		this.lastX = this.x = x;
@@ -95,6 +102,8 @@ public class Animatable {
 			}
 		}else if(props.get("property") == Properties.ROTATION.getValue()) {
 			val = lastRotation;
+		}else if(props.get("property") == Properties.SCALE.getValue()) {
+			val = lastScale;
 		}
 		//The list of animatation properties
 		ArrayList<Float> arr = new ArrayList<Float>();
@@ -108,7 +117,7 @@ public class Animatable {
 		//Check there is already animation starting at start time
 		//Creates arraylist of animations if not
 		if(!animations.containsKey(props.get("startTime"))) {
-			animations.put(props.get("startTime"), new ArrayList());
+			animations.put(props.get("startTime"), new ArrayList<ArrayList<Float>>());
 		}
 		//Adds animation to the list of animations
 		animations.get(props.get("startTime")).add(arr);
@@ -156,6 +165,9 @@ public class Animatable {
 							}else if(props.get(1) == Properties.ROTATION.getValue()) {
 								this.rotation+=props.get(2);
 								//System.out.println(this.rotation);
+							}else if(props.get(1) == Properties.SCALE.getValue()) {
+								this.w = this.h+=props.get(2);
+								//System.out.println(this.rotation);
 							}
 						}else {
 							//Removes animation if completed
@@ -173,11 +185,12 @@ public class Animatable {
 				v.rotate(v.radians(this.rotation));
 			}
 			//Draws the shape at new dimensions / coordinates
-			if(!scale) {
+			/*if(!scale) {
 				v.image(this.img, 0, 0, this.w, this.h);
 			}else {
 				v.image(this.img, 0, 0);
-			}
+			}*/
+			v.image(this.img, 0, 0, this.w*imageRatio, this.h);
 			v.popMatrix();
 			//Increments frame counter
 			currentFrame++;

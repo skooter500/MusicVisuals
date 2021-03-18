@@ -10,8 +10,6 @@ public class MarsSystem extends Scene{
 	float marsSize;
 
 	public MarsSystem(Visuals v) {
-		super();
-		this.v = v;
 		this.sceneLength = 700;
 
 		marsSize = v.height*0.424f;
@@ -21,6 +19,8 @@ public class MarsSystem extends Scene{
 		mars.setDuration(700);
 		mars.animateProperty(Map.of("property", Properties.XPOS.getValue(), "to", 1500, "startTime", 0, "duration", 600), 0);
 		mars.animateProperty(Map.of("property", Properties.YPOS.getValue(), "to", 0, "startTime", 0, "duration", 600), 0);
+
+		
 		this.addToScene(mars);
 	}
 }

@@ -26,11 +26,24 @@ public class SceneManager {
 		currentScene = scenes.get(i);
 		sceneNumber = i;
 	}
+	public int getCurrentScene() {
+		return sceneNumber;
+	}
 	public void nextScene() {
 		//Checks if playing last scene and changes scene to next
-		sceneNumber = sceneNumber < scenes.size()-1 ? sceneNumber+1 : 0;
-		currentScene = scenes.get(sceneNumber);
-		frames = 0;
+		if(sceneNumber < scenes.size()-1) {
+			sceneNumber++;
+			currentScene = scenes.get(sceneNumber);
+			frames = 0;
+		}
+	}
+	public void previousScene() {
+		//Checks if playing last scene and changes scene to next
+		if(sceneNumber > 0) {
+			sceneNumber--;
+			currentScene = scenes.get(sceneNumber);
+			frames = 0;
+		}
 	}
 
 	public void animateScene() {
@@ -52,8 +65,42 @@ public class SceneManager {
 			frames++;
 		}
 	}
-	//Returns the currently animating scene
+
+	public int animationLength() {
+		int animLength = 0;
+		for(Scene scene: scenes) {
+			animLength+=scene.getSceneLength();
+		}
+		return animLength;
+	}
+
+	public int sceneStartPosition() {
+		int scenesLength = 0;
+		for(int i = 0; i < scenes.size(); i++) {
+			if(scenes.get(i) != scenes.get(sceneNumber-1)) {
+				scenesLength+=scenes.get(i).sceneLength;
+			}else {
+				break;
+			}
+		}
+		return scenesLength/60;
+	}
+
+	public int sceneEndPosition() {
+		int scenesLength = 0;
+		for(Scene scene: scenes) {
+			if(scene != currentScene) {
+				scenesLength+=scene.sceneLength;
+			}else {
+				scenesLength+=scene.sceneLength;
+				break;
+			}
+		}
+		return scenesLength/60;
+	}
+	
+	/*//Returns the currently animating scene
 	public Scene getCurrentScene() {
 		return currentScene;
-	}
+	}*/
 }

@@ -4,6 +4,7 @@ import C19307776.audioSystem.*;
 
 public class Animation extends Visuals {
 	SceneManager scenes;
+	Song donau;
 
 	Animation() {
 		
@@ -21,17 +22,28 @@ public class Animation extends Visuals {
 		//Inits the scene manager
 		scenes = new SceneManager();
 		//Adds scenes to the animation
+		scenes.addScene(new Intro(this));
 		scenes.addScene(new Takeoff(this));
+		scenes.addScene(new TakeOff2(this));
+		scenes.addScene(new Curvature(this));
 		scenes.addScene(new EarthSystem(this));
 		scenes.addScene(new MarsSystem(this));
 		scenes.setCurrentScene(0);
 
 		//Loads and plays the music
 		try {
-			Song donau = new Song("assets/donau.wav");
+			donau = new Song("assets/donau.wav", scenes.animationLength());
 			donau.play();
 		}catch(Exception e) {
 			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void keyPressed() {
+		if(keyCode == RIGHT) {
+			donau.skipTo(scenes.sceneEndPosition());
+			scenes.nextScene();
 		}
 	}
 

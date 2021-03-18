@@ -11,8 +11,6 @@ public class EarthSystem extends Scene{
 	Animatable starship;
 
 	public EarthSystem(Visuals v) {
-		super();
-		this.v = v;
 		this.sceneLength = 2800;
 		earthSize = v.height*0.80f;
 		earth = new Animatable(v, "assets/earth.png", v.width/2, v.height/2, Map.of("prop",v.height*0.75f, "parallax", 0.003f));
