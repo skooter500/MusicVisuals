@@ -6,8 +6,8 @@ import java.util.ArrayList;
 	objects in the scene.
 */
 public class Scene extends Visuals {
-	protected Visuals v;
 	protected int sceneLength = 0;
+
 
 	protected ArrayList<Animatable> objects = new ArrayList<Animatable>();
 

@@ -88,27 +88,37 @@ public class Animatable {
 		//determine which property is being run
 		if(props.get("property") == Properties.WIDTH.getValue()) {
 			val = lastWidth;
+			lastWidth = props.get("to");
 		}else if(props.get("property") == Properties.HEIGHT.getValue()) {
 			val = lastHeight;
+			lastHeight = props.get("to");
 		}else if(props.get("property") == Properties.XPOS.getValue()) {
 			val = lastX;
 			if(acceleration > 0 || acceleration < 0) {
 				speedX = acceleration;
 			}
+			lastX = props.get("to");
 		}else if(props.get("property") == Properties.YPOS.getValue()) {
 			val = lastY;
+			System.out.println(val);
 			if(acceleration > 0 || acceleration < 0) {
 				speedY = acceleration;
 			}
+			lastY = props.get("to");
 		}else if(props.get("property") == Properties.ROTATION.getValue()) {
 			val = lastRotation;
+			lastRotation = props.get("to");
 		}else if(props.get("property") == Properties.SCALE.getValue()) {
 			val = lastScale;
+			lastScale = props.get("to");
 		}
 		//The list of animatation properties
 		ArrayList<Float> arr = new ArrayList<Float>();
 		arr.add((float) props.get("duration"));
 		arr.add((float) props.get("property"));
+		if(props.get("property") == 3) {
+			System.out.println(Properties.YPOS.getValue()+" "+props.get("property")+" "+props.get("to")+" "+val);
+		}
 		arr.add((props.get("to")-val)/props.get("duration"));
 		if(acceleration > 0 || acceleration < 0) {
 			System.out.println(acceleration);

@@ -5,6 +5,9 @@ import C19307776.audioSystem.*;
 public class Animation extends Visuals {
 	SceneManager scenes;
 	Song donau;
+	int time = 0;
+
+	int testFrames = 0;
 
 	Animation() {
 		
@@ -26,8 +29,13 @@ public class Animation extends Visuals {
 		scenes.addScene(new Takeoff(this));
 		scenes.addScene(new TakeOff2(this));
 		scenes.addScene(new Curvature(this));
+		scenes.addScene(new BoosterSep(this));
+		scenes.addScene(new BoosterReturn(this));
+		scenes.addScene(new BoosterLanding(this));
 		scenes.addScene(new EarthSystem(this));
-		scenes.addScene(new MarsSystem(this));
+		scenes.addScene(new Takeoff(this));
+		scenes.addScene(new StarshipRefuel(this));
+		//scenes.addScene(new MarsSystem(this));
 		scenes.setCurrentScene(0);
 
 		//Loads and plays the music
@@ -51,5 +59,11 @@ public class Animation extends Visuals {
 		background(0);
 		//Draws the current sceme
 		scenes.animateScene();
+		if(testFrames != scenes.animationLength()) {
+			if(frameCount%60 == 0) {
+				println(++time);
+			}
+			testFrames++;
+		}
 	}
 }
