@@ -35,6 +35,10 @@ public class Animation extends Visuals {
 		scenes.addScene(new EarthSystem(this));
 		scenes.addScene(new Takeoff(this));
 		scenes.addScene(new StarshipRefuel(this));
+		scenes.addScene(new BellyFlop1(this));
+		scenes.addScene(new BellyFlop2(this));
+		scenes.addScene(new BellyFlop3(this));
+		scenes.addScene(new StarshipLanding(this));
 		//scenes.addScene(new MarsSystem(this));
 		scenes.setCurrentScene(0);
 
@@ -50,20 +54,29 @@ public class Animation extends Visuals {
 	@Override
 	public void keyPressed() {
 		if(keyCode == RIGHT) {
-			donau.skipTo(scenes.sceneEndPosition());
-			scenes.nextScene();
+			if(!scenes.isPaused()) {
+				donau.skipTo(scenes.sceneEndPosition());
+				scenes.nextScene();
+			}
+		}
+		if(keyCode == ' ') {
+			scenes.setPaused(!scenes.isPaused());
+			donau.toggle();
 		}
 	}
 
 	public void draw() {
-		background(0);
-		//Draws the current sceme
-		scenes.animateScene();
-		if(testFrames != scenes.animationLength()) {
-			if(frameCount%60 == 0) {
-				println(++time);
+		//Draws the current scene
+		//if the animation isn't paused
+		if(!scenes.isPaused()) {
+			background(0);
+			scenes.animateScene();
+			if(testFrames != scenes.animationLength()) {
+				if(frameCount%60 == 0) {
+					println(++time);
+				}
+				testFrames++;
 			}
-			testFrames++;
 		}
 	}
 }

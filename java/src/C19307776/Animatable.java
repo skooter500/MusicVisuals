@@ -1,84 +1,43 @@
 package C19307776;
-import processing.core.*;
 import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Map;
 
 public class Animatable {
-	Visuals v; //Processing
-	PImage img; //Sprite
-	float w; //width
-	float h; //height
-	float x; //x position
-	float y; //y position
-	float rotation = 0; //sprite's rotation
-	int scle = 0; //sprites scale
-	String src; // sprite image src
+	protected Visuals v; //Processing
+	protected float w; //width
+	protected float h; //height
+	protected float x; //x position
+	protected float y; //y position
+	protected float rotation = 0; //sprite's rotation
 
-	boolean scale = false;
+	protected boolean scale = false;
 
 	//current frame of sprite animation
-	int currentFrame = 0;
+	protected int currentFrame = 0;
 	//maximum amount of frames sprite will be on screen
-	int maxFrames;
+	protected int maxFrames;
 	//The point that the sprite displays on the screen
-	int startPoint = 0;
+	protected int startPoint = 0;
 
 	//The dimensions of the sprite at beginning of animations
-	float lastWidth;
-	float lastHeight;
-	float lastX;
-	float speedX = 1f;
-	float lastY;
-	float speedY = 1f;
-	float lastRotation;
-	int lastScale;
-	float imageRatio = 1;
+	protected float lastWidth;
+	protected float lastHeight;
+	protected float lastX;
+	protected float speedX = 1f;
+	protected float lastY;
+	protected float speedY = 1f;
+	protected float lastRotation;
+	protected int lastScale;
+	protected float imageRatio = 1;
 
 	float parallax = 0;
 
 	//List of animation frames
 	HashMap<Integer, ArrayList<ArrayList<Float>>> animations = new HashMap<Integer, ArrayList<ArrayList<Float>>>();
 
-	public Animatable(Visuals v, String src, float x, float y, Map<String, Float> props) {
-		this.v = v;
-		this.src = src;
-		img = v.loadImage(src);
+	public Animatable() {
 
-		//Checks if the width and height property are present
-		if(props.containsKey("w") && props.containsKey("h")) {
-			//Sets the width and height variables
-			this.lastWidth = this.w = props.get("w");
-			this.lastHeight = this.h = props.get("h");
-		}else if(props.containsKey("prop")) {
-			//If width / height not present, scale the image proportionally
-			//scale = true;
-			//this.lastScale = scle = (int) (float) props.get("prop");
-			//imageRatio = img.height/img.width;
-			//img.resize(0, scle);
-			this.imageRatio = (float) img.width/img.height;
-			this.w = this.h = props.get("prop");
-		}
-		
-		this.lastX = this.x = x;
-		this.lastY = this.y = y;
-		if(props.containsKey("r")) {
-			this.lastRotation = this.rotation = props.get("r");
-		}
-		if(props.containsKey("parallax")) {
-			this.parallax = props.get("parallax");
-		}
-		v.imageMode(v.CENTER);
-	}
-
-	//Set amount of frames that sprite will be visible for
-	public void setDuration(int duration) {
-		this.maxFrames = duration;
-	}
-	public void setDuration(int start, int duration) {
-		//Set start point of the graph
-		this.startPoint = start;
-		this.maxFrames = duration;
 	}
 
 	//add an animation to be run on the sprite
@@ -133,13 +92,9 @@ public class Animatable {
 		animations.get(props.get("startTime")).add(arr);
 	}
 
-	public int getStartPoint() {
-		return this.startPoint;
-	}
-
-	public void animate() {
+	public boolean animateFrame() {
 		//Checks if current frame < frames in full animation
-		if(currentFrame < maxFrames) {
+		if(this.currentFrame < this.maxFrames) {
 			//Loops through animations and sees if there is an animation starting at this frame
 			for(HashMap.Entry<Integer, ArrayList<ArrayList<Float>>> animation: animations.entrySet()) {
 				//animation.getKey() == starting time for animation
@@ -186,24 +141,26 @@ public class Animatable {
 					}
 				}
 			}
-			v.pushMatrix();
-			v.translate(this.x+(v.mouseX*parallax), this.y+(v.mouseY*parallax));
-			//v.translate(0, 0);
-			//Checks if rotation = 0
-			if(this.rotation != 0) {
-				//Rotates the sprite
-				v.rotate(v.radians(this.rotation));
-			}
-			//Draws the shape at new dimensions / coordinates
-			/*if(!scale) {
-				v.image(this.img, 0, 0, this.w, this.h);
-			}else {
-				v.image(this.img, 0, 0);
-			}*/
-			v.image(this.img, 0, 0, this.w*imageRatio, this.h);
-			v.popMatrix();
-			//Increments frame counter
 			currentFrame++;
+			return true;
+		}else {
+			return false;
 		}
+	}
+
+	public void animate() {}
+
+	//Set amount of frames that sprite will be visible for
+	public void setDuration(int duration) {
+		this.maxFrames = duration;
+	}
+	public void setDuration(int start, int duration) {
+		//Set start point of the graph
+		this.startPoint = start;
+		this.maxFrames = duration;
+	}
+
+	public int getStartPoint() {
+		return this.startPoint;
 	}
 }

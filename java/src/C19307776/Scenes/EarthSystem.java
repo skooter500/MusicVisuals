@@ -1,5 +1,5 @@
 package C19307776.Scenes;
-import C19307776.Animatable;
+import C19307776.ImageAnimatable;
 import C19307776.Scene;
 import C19307776.Visuals;
 import C19307776.Properties;
@@ -7,18 +7,18 @@ import java.util.Map;
 import C19307776.utils.*;
 
 public class EarthSystem extends Scene{
-	Animatable stars;
-	Animatable earth;
-	Animatable starship;
+	ImageAnimatable stars;
+	ImageAnimatable earth;
+	ImageAnimatable starship;
 
 	public EarthSystem(Visuals v) {
 		this.sceneLength = 420;
 
 		VHVW d = new VHVW(v.width, v.height);
 
-		stars = new Animatable(v, "assets/stars.png", d.vw(50f), d.vh(50f), Map.of("prop", (float) d.vw(90f)));
-		earth = new Animatable(v, "assets/earth.png", d.vw(50f), d.vh(50f), Map.of("prop",d.vh(75f), "parallax", 0.003f));
-		starship = new Animatable(v, "assets/starship_upperstage.png", d.vw(50f), d.vh(50f), Map.of("prop", d.vh(25f), "r", 90f, "parallax", 0.01f));
+		stars = new ImageAnimatable(v, "assets/stars.png", d.vw(50f), d.vh(50f), Map.of("prop", (float) d.vw(90f)));
+		earth = new ImageAnimatable(v, "assets/earth.png", d.vw(50f), d.vh(50f), Map.of("prop",d.vh(75f), "parallax", 0.003f));
+		starship = new ImageAnimatable(v, "assets/starship_upperstage.png", d.vw(50f), d.vh(50f), Map.of("prop", d.vh(25f), "r", 90f, "parallax", 0.01f));
 
 		v.background(0);
 		stars.setDuration(420);

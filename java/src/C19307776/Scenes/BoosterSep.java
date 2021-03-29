@@ -1,15 +1,15 @@
 package C19307776.Scenes;
 import C19307776.Scene;
 import C19307776.Visuals;
-import C19307776.Animatable;
+import C19307776.ImageAnimatable;
 import java.util.Map;
 import C19307776.Properties;
 import C19307776.utils.*;
 
 public class BoosterSep extends Scene {
-	Animatable stars;
-	Animatable superheavy;
-	Animatable starship;
+	ImageAnimatable stars;
+	ImageAnimatable superheavy;
+	ImageAnimatable starship;
 
 	public BoosterSep(Visuals v) {
 
@@ -17,9 +17,9 @@ public class BoosterSep extends Scene {
 
 		VHVW d = new VHVW(v.width, v.height);
 
-		stars = new Animatable(v, "assets/stars.png", d.vw(50f), d.vh(50f), Map.of("prop", (float) d.vw(90f)));
-		superheavy = new Animatable(v, "assets/superheavy_booster.png", d.vw(35f), d.vh(50f), Map.of("prop", (float) d.vw(32f), "r", 90f, "parallax", 0.003f));
-		starship = new Animatable(v, "assets/starship_upperstage.png", d.vw(62f), d.vh(50f), Map.of("prop", (float) d.vw(26f), "r", 90f, "parallax", 0.003f));
+		stars = new ImageAnimatable(v, "assets/stars.png", d.vw(50f), d.vh(50f), Map.of("prop", (float) d.vw(90f)));
+		superheavy = new ImageAnimatable(v, "assets/superheavy_booster.png", d.vw(35f), d.vh(50f), Map.of("prop", (float) d.vw(32f), "r", 90f, "parallax", 0.003f));
+		starship = new ImageAnimatable(v, "assets/starship_upperstage.png", d.vw(62f), d.vh(50f), Map.of("prop", (float) d.vw(26f), "r", 90f, "parallax", 0.003f));
 
 		stars.setDuration(1000);
 		superheavy.setDuration(1000);

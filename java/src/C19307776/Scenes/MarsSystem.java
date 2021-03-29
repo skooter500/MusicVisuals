@@ -1,19 +1,19 @@
 package C19307776.Scenes;
 import C19307776.Scene;
 import C19307776.Visuals;
-import C19307776.Animatable;
+import C19307776.ImageAnimatable;
 import C19307776.Properties;
 import java.util.Map;
 
 public class MarsSystem extends Scene{
-	Animatable mars;
+	ImageAnimatable mars;
 	float marsSize;
 
 	public MarsSystem(Visuals v) {
 		this.sceneLength = 700;
 
 		marsSize = v.height*0.424f;
-		mars = new Animatable(v, "assets/mars.png", -marsSize, 400, Map.of("prop", marsSize));
+		mars = new ImageAnimatable(v, "assets/mars.png", -marsSize, 400, Map.of("prop", marsSize));
 
 		v.background(0);
 		mars.setDuration(700);

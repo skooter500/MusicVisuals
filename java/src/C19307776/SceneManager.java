@@ -17,6 +17,8 @@ public class SceneManager {
 	//The current frame of the scene
 	private static int frames = 0;
 
+	protected boolean paused = false;
+
 	public void addScene(Scene scene) {
 		scenes.add(scene);
 	}
@@ -97,6 +99,14 @@ public class SceneManager {
 			}
 		}
 		return scenesLength/60;
+	}
+
+	public boolean isPaused() {
+		return paused;
+	}
+
+	public void setPaused(boolean paused) {
+		this.paused = paused;
 	}
 	
 	/*//Returns the currently animating scene

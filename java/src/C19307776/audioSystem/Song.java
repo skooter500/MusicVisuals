@@ -42,4 +42,12 @@ public class Song {
 	public void play() {
 		clip.start();
 	}
+
+	public void toggle() {
+		if(clip.isActive()) {
+			clip.stop();
+		}else {
+			clip.start();
+		}
+	}
 }
