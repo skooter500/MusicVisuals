@@ -1,8 +1,8 @@
 # Music Visualiser Project
 
-Name:
+Name: Ahmed Alazawy
 
-Student Number: 
+Student Number: C19316336
 
 ## Instructions
 - Fork this repository and use it a starter project for your assignment
