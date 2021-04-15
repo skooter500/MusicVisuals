@@ -7,7 +7,7 @@ import ddf.minim.Minim;
 import processing.core.PApplet;
 
 
-public class Rendering extends PApplet{
+public class SpiralRotation extends PApplet{
     Minim minim; // Connect to minim
     AudioInput ai; // How to connect to mic
     AudioPlayer ap;

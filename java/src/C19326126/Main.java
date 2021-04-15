@@ -8,15 +8,21 @@ import example.RotatingAudioBands;
 public class Main
 {	
 
-	public void startUI()
+	public void StarSystem()
 	{
 		String[] a = {"MAIN"};
-        processing.core.PApplet.runSketch( a, new CubeVisual());		
+        processing.core.PApplet.runSketch( a, new StarSystem());		
+	}
+
+    public void Example()
+	{
+		String[] a = {"MAIN"};
+        processing.core.PApplet.runSketch( a, new Example());		
 	}
 
 	public static void main(String[] args)
 	{
 		Main main = new Main();
-		main.startUI();			
+		main.StarSystem();			
 	}
 }
