@@ -19,6 +19,11 @@ public class Main
 		String[] a = {"MAIN"};
         processing.core.PApplet.runSketch( a, new Example());		
 	}
+	public void Work()
+	{
+		String[] a = {"MAIN"};
+        processing.core.PApplet.runSketch( a, new Work());		
+	}
 
 	public static void main(String[] args)
 	{

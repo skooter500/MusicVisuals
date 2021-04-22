@@ -1,40 +1,46 @@
 package C19326126;
 
 import processing.core.PApplet;
+import ddf.minim.analysis.*;
+import ddf.minim.*;
+
 
 public class Work extends PApplet{
-    float r;
-    float ex, ey;
+    AudioPlayer player;
+    Minim minim;
 
     public void settings(){
-        size(800,800);
+        size(1920, 1080, P3D);
     }
 
     public void setup(){
-        ex = 140;
-        ey = 0;
+        smooth(8);
+        minim = new Minim(this);
+        player = minim.loadFile("heroplanet.mp3");
+        player.play();
     }
 
     public void draw(){
-        background(0);
-        pushMatrix();
         translate(width/2, height/2);
-        rotate(radians(r));
-        //sun
-        fill(255,255,0);
-        ellipse(0,0,100,100);
-        //earth
-        fill(0,255,100);
-        ellipse(ex,ey,20,20);
+        background(0);
+        rotateY( (float) 1.6);
+        for( int i = 0; i< player.bufferSize() -1; i++){
+            rotateX(50+player.right.get(i)/100);
+
             pushMatrix();
-            //moon
-            translate(ex,ey); //sets center to center of the earth
-            rotate(radians(-r*3));
-            fill(255);
-            ellipse(25,ey,5,5);
+            fill(255,0,0);
             popMatrix();
-        popMatrix();
-    r += 1;
+            strokeWeight(1+player.right.get(i));
+
+            stroke(0);
+            box(10,10,55+player.right.get(i)*200);
+            box(55 + player.right.get(i)*50,10,10);
+            box(10,55 + player.right.get(i)*50, 10);
+
+
+
+
+        }
     }
     
 }
