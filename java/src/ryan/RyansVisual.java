@@ -3,17 +3,18 @@ package ryan;
 
 import ie.tudublin.*;
 
+
 import ddf.minim.AudioBuffer;
 import ddf.minim.AudioInput;
 import ddf.minim.AudioPlayer;
 import ddf.minim.Minim;
 
-import example.CubeVisual1;
 
 
 
 
 public class RyansVisual extends Visual{
+    
 
   Minim minim; //connecting to the minim libraries
   AudioInput ai; //connectig to AI libraries
@@ -24,14 +25,14 @@ public class RyansVisual extends Visual{
   int which = 0;
 
   float angle = 0; //angle of spin
-  float c; //for changing stroke colour
+  //for changing stroke colour
 
   int angleChange = 5;//amount spin is incremented by
   final int ANGLE_LIMIT = 360; //max rotation
 
   int gap = 50; //gap between arcs
   int thickness = 10; //thickness of each arc
-  CubeVisual1 c;
+ 
 
     public void settings()
     {
@@ -139,12 +140,14 @@ public void keyPressed() {
        }   
        case 1:
        {
-         CubeVisual1();
+         
           
           break;
        }
     }
 }
+}
+
 
 
 

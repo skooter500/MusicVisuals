@@ -1,9 +1,5 @@
 package ie.tudublin;
 
-
-
-    
-
 import ddf.minim.AudioBuffer;
 import ddf.minim.AudioInput;
 import ddf.minim.AudioPlayer;
