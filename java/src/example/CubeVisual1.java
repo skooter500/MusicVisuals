@@ -2,8 +2,13 @@ package example;
 
 import ie.tudublin.Visual;
 
+
+
 public class CubeVisual1 extends Visual
 {
+
+    
+
     public void settings()
     {
         size(800, 600, P3D);
@@ -48,6 +53,6 @@ public class CubeVisual1 extends Visual
         popMatrix();
         angle += 0.01f;
     }
-
-
 }
+
+
