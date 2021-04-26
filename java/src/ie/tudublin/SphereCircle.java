@@ -1,7 +1,7 @@
 package ie.tudublin;
 
 
-import ryan.RyansVisual;
+import ryan.*;
 import ddf.minim.AudioBuffer;
 import ddf.minim.AudioInput;
 import ddf.minim.AudioPlayer;
@@ -20,10 +20,13 @@ AudioBuffer ab; //the samples
 float lerpedAverage = 0;
 int border = 20;
 
+
+
 public SphereCircle(RyansVisual ryansVisual) {
- 
     
 }
+
+
 
 public void render()
 {

@@ -1,24 +1,14 @@
 package ryan;
 
-
-import ie.tudublin.*;
 import ddf.minim.AudioBuffer;
 import ddf.minim.AudioInput;
 import ddf.minim.AudioPlayer;
 import ddf.minim.Minim;
-
-
-
-
+import ie.tudublin.*;
 
 public class RyansVisual extends Visual{
 
-    Circles c;
-    SphereCircle sc;
-
-    public void render()
-    {}
-    
+  SphereCircle sc;
 
   Minim minim; //connecting to the minim libraries
   AudioInput ai; //connectig to AI libraries
