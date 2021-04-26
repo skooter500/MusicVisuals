@@ -14,17 +14,17 @@ Minim minim; //connecting to the minim libraries
 AudioInput ai; //connectig to AI libraries
 AudioPlayer ap; //connecting to the ap libraries
 AudioBuffer ab; //the samples
- float lerpedBuffer[];
+float lerpedBuffer[];
 
 
 float lerpedAverage = 0;
 int border = 20;
-private RyansVisual RyansVisual;
 
+RyansVisual ryansVisual;
 
 
 public SphereCircle(RyansVisual ryansVisual) {
-    this.RyansVisual = ryansVisual;
+    this.ryansVisual = ryansVisual;
 }
 
 

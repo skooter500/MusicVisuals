@@ -37,6 +37,7 @@ public class RyansVisual extends Visual{
 
     public void setup()
     {
+        sc = new SphereCircle(this);
         startMinim();
         minim = new Minim(this);
         ap = minim.loadFile("heroplanet.mp3", width);
@@ -44,7 +45,7 @@ public class RyansVisual extends Visual{
         ab = ap.mix;
         colorMode(HSB);
         lerpedBuffer = new float[width];
-        sc = new SphereCircle(this);
+       
        
         //strokeWeight(15);
         
@@ -148,16 +149,12 @@ public void keyPressed() {
        }   
        case 1:
        {
+           
            strokeWeight(25);
         for (int i = 0; i < ab.size(); i++) {
 
             float c = map(i, 0, ab.size(), 0, 255);
-            if( !  colour)
-            {
             stroke(c, 0, 120);
-            }
-            else
-            {stroke(c,255,255);}
             lerpedBuffer[i] = lerp(lerpedBuffer[i], ab.get(i), 0.1f);        
             line(i, halfHeight - lerpedBuffer[i] * halfHeight * 4, i, halfHeight + lerpedBuffer[i] * halfHeight * 4);
         }        
