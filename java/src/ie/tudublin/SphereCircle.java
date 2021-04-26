@@ -19,11 +19,12 @@ AudioBuffer ab; //the samples
 
 float lerpedAverage = 0;
 int border = 20;
+private RyansVisual RyansVisual;
 
 
 
 public SphereCircle(RyansVisual ryansVisual) {
-    
+    this.RyansVisual = ryansVisual;
 }
 
 
