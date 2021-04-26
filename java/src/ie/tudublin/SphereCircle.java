@@ -1,14 +1,13 @@
 package ie.tudublin;
 
 
-import processing.core.PApplet;
-
+import ryan.RyansVisual;
 import ddf.minim.AudioBuffer;
 import ddf.minim.AudioInput;
 import ddf.minim.AudioPlayer;
 import ddf.minim.Minim;
 
-public class SphereCircle extends PApplet{
+public class SphereCircle extends Visual{
 
         
 Minim minim; //connecting to the minim libraries
@@ -17,28 +16,16 @@ AudioPlayer ap; //connecting to the ap libraries
 AudioBuffer ab; //the samples
  float lerpedBuffer[];
 
-public void settings()//runs once
-{
-    size(400,400, P3D);
-    
-} 
-public void setup()//runs once
-{
-   // background(0);
-    stroke(255);
-    minim = new Minim(this);
-    ap = minim.loadFile("heroplanet.mp3", width);
-    ap.play();
-    ab = ap.mix;
-    colorMode(HSB);
-    lerpedBuffer = new float[width];
 
-    
-}
 float lerpedAverage = 0;
 int border = 20;
 
-public void draw()
+public SphereCircle(RyansVisual ryansVisual) {
+ 
+    
+}
+
+public void render()
 {
     float average = 0;
     float sum = 0;

@@ -2,8 +2,6 @@ package ryan;
 
 
 import ie.tudublin.*;
-
-
 import ddf.minim.AudioBuffer;
 import ddf.minim.AudioInput;
 import ddf.minim.AudioPlayer;
@@ -14,6 +12,12 @@ import ddf.minim.Minim;
 
 
 public class RyansVisual extends Visual{
+
+    Circles c;
+    SphereCircle sc;
+
+    public void render()
+    {}
     
 
   Minim minim; //connecting to the minim libraries
@@ -39,35 +43,30 @@ public class RyansVisual extends Visual{
         size(600, 600, P3D);
     }
 
+    
+
     public void setup()
     {
-        //startMinim();
+        startMinim();
         minim = new Minim(this);
         ap = minim.loadFile("heroplanet.mp3", width);
         ap.play();
         ab = ap.mix;
         colorMode(HSB);
         lerpedBuffer = new float[width];
-        strokeWeight(15);
+        sc = new SphereCircle(this);
+       
+        //strokeWeight(15);
+        
     
         
 
 
-      // startListening();
+       startListening();
        
    }
   
-   
 
-  /* public void keyPressed()
-   {
-       if (key == ' ')
-       {
-            getAudioPlayer().cue(0);
-            getAudioPlayer().play();
-       }
-   }
-*/
 public void keyPressed() {
     if (keyCode >= '0' && keyCode <= '6') {
         which = keyCode - '0';
@@ -79,12 +78,32 @@ public void keyPressed() {
             ap.rewind();
             ap.play();
         }
+        if (keyCode == UP)
+        {
+            colour = ! colour;
+        }
     }
 }
+
+    float lerpedAverage =0;
+    private  boolean colour = false;
+
 
    public void draw()
    {
     background(0);
+  
+    float sum =0;
+    float average =0;
+
+            // Calculate the average of the buffer
+            for (int i = 0; i < ab.size(); i ++)
+            {
+                sum += abs(ab.get(i));
+            }
+            average = sum / ab.size();
+            // Move lerpedAverage 10% closer to average every frame
+            lerpedAverage = lerp(lerpedAverage, average, 0.1f);
        /* try
         {
             // Call this if you want to use FFT data
@@ -98,11 +117,10 @@ public void keyPressed() {
         calculateFrequencyBands(); 
 
         // Call this is you want to get the average amplitude
-        calculateAverageAmplitude();  
-    */
+        calculateAverageAmplitude();  */
+    
    // stroke(255);
    float halfHeight = height/2;
-
 
    switch (which)
    {
@@ -122,10 +140,10 @@ public void keyPressed() {
     
                 //angle of the arcs and the lerped buffer given it's value which will constantly change depending on music frequency buffer size
                 float angle = radians(i);
-                lerpedBuffer[j] = lerp(lerpedBuffer[j], ab.get(j), 0.1f); 
+                lerpedBuffer[j]  = lerp(lerpedBuffer[j], ab.get(j), 0.1f); 
     
                 //arc starting at 0,0 so middle of the screen after the translate and the final value is using lerped buffer to let the arc length change
-                arc(0, 0, i, i, angle, angle + (lerpedBuffer[j] * 5));
+                arc(0, 0, i, i, angle, angle + (lerpedBuffer[j]  * 5));
                 }
             }
             //incrementing angle of rotation 
@@ -140,13 +158,32 @@ public void keyPressed() {
        }   
        case 1:
        {
-         
+           strokeWeight(25);
+        for (int i = 0; i < ab.size(); i++) {
+
+            float c = map(i, 0, ab.size(), 0, 255);
+            if( !  colour)
+            {
+            stroke(c, 0, 120);
+            }
+            else
+            {stroke(c,255,255);}
+            lerpedBuffer[i] = lerp(lerpedBuffer[i], ab.get(i), 0.1f);        
+            line(i, halfHeight - lerpedBuffer[i] * halfHeight * 4, i, halfHeight + lerpedBuffer[i] * halfHeight * 4);
+        }        
+        break;
+        }
+        case 2:
+        {
+            sc.render();
+            break;
+        }
           
-          break;
+        
        }
     }
 }
-}
+
 
 
 

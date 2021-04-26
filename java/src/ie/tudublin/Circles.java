@@ -7,9 +7,10 @@ import ddf.minim.Minim;
 
 
 import processing.core.PApplet;
+import ryan.RyansVisual;
 
 
-public class Circles extends PApplet{
+public class Circles extends Visual{
 
     
 Minim minim; //connecting to the minim libraries
@@ -18,6 +19,9 @@ AudioPlayer ap; //connecting to the ap libraries
 AudioBuffer ab; //the samples
 
 float[] lerpedBuffer;
+
+    public Circles(RyansVisual ryansVisual) {}
+
 
     public void settings()//runs once
     {
@@ -105,6 +109,12 @@ float[] lerpedBuffer;
     {
         background(192,64,0);
     }
-}
 
+
+    public void render() {
+    }
+
+
+    
+}
 
