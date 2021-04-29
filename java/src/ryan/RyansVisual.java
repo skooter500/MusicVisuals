@@ -59,6 +59,10 @@ public void keyPressed() {
         {
             vision = new Wave(this);
         }
+        if (key == '6')
+        {
+            vision = new Line(this);
+        }
               
        
 

@@ -32,11 +32,11 @@ public void render()
     
     
     
-            rv.ellipse(rv.width/2,rv.height/2 + lerpedBuffer[i] * 100,100 + (rv.getSmoothedAmplitude() * 500), 100 + (rv.getSmoothedAmplitude() * 500));
-           rv. ellipse(rv.width/2 - 50,rv.height/2  + lerpedBuffer[i] * 100,100 + (rv.getSmoothedAmplitude() * 500), 100 + (rv.getSmoothedAmplitude() * 500));
-           rv. ellipse(rv.width/2 + 50,rv.height/2  + lerpedBuffer[i] * 100,100 + (rv.getSmoothedAmplitude() * 500), 100 + (rv.getSmoothedAmplitude() * 500));
-           rv. ellipse(rv.width/2,rv.height/2 + 50  + lerpedBuffer[i] * 100,100 + (rv.getSmoothedAmplitude() * 500), 100 + (rv.getSmoothedAmplitude() * 500));
-           rv. ellipse(rv.width/2,rv.height/2 - 50  + lerpedBuffer[i] * 100,100 + (rv.getSmoothedAmplitude() * 500), 100 + (rv.getSmoothedAmplitude() * 500));
+            rv.ellipse(rv.width/2,rv.height/2 + lerpedBuffer[i] * rv.height/2 * 2,100 + (rv.getSmoothedAmplitude() * 500), 100 + (rv.getSmoothedAmplitude() * 500));
+           rv. ellipse(rv.width/2 - 50,rv.height/2  + lerpedBuffer[i] * rv.height/2 * 2,100 + (rv.getSmoothedAmplitude() * 500), 100 + (rv.getSmoothedAmplitude() * 500));
+           rv. ellipse(rv.width/2 + 50,rv.height/2  + lerpedBuffer[i] * rv.height/2 * 2,100 + (rv.getSmoothedAmplitude() * 500), 100 + (rv.getSmoothedAmplitude() * 500));
+           rv. ellipse(rv.width/2,rv.height/2 + 50  + lerpedBuffer[i] * rv.height/2 * 2,100 + (rv.getSmoothedAmplitude() * 500), 100 + (rv.getSmoothedAmplitude() * 500));
+           rv. ellipse(rv.width/2,rv.height/2 - 50  + lerpedBuffer[i] * rv.height/2 ,100 + (rv.getSmoothedAmplitude() * 500), 100 + (rv.getSmoothedAmplitude() * 500));
     
     
             rv.ellipse(rv.width/4,rv.height/4,50 + (rv.getSmoothedAmplitude() * 500), 50 + (rv.getSmoothedAmplitude() * 500));
