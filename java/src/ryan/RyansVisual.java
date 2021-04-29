@@ -32,7 +32,7 @@ Vision vision;
     public void setup()
     {
         startMinim();
-        loadAudio("heroplanet.mp3");
+        loadAudio("liveforever.mp3");
         colorMode(HSB);
         vision = new Test1(this);
         //vision = new SphereCircle(this);
@@ -60,6 +60,10 @@ public void keyPressed() {
         if ( key == '2')
         {
             vision = new Sphere(this);
+        }
+        if (key =='3')
+        {
+            vision = new Circles(this);
         }
         
        
