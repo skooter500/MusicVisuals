@@ -7,24 +7,10 @@ public class RyansVisual extends Visual{
 
 Vision vision;
   
-
-
- 
-  int which = 0;
-
-  //float angle = 0; //angle of spin
-  //for changing stroke colour
-
-  //int angleChange = 5;//amount spin is incremented by
-  //final int ANGLE_LIMIT = 360; //max rotation
-
-  //int gap = 50; //gap between arcs
-  //int thickness = 10; //thickness of each arc
- 
-
     public void settings()
     {
-        size(600, 600, P3D);
+        //size(600, 600, P3D);
+        fullScreen(P3D);
     }
 
     
@@ -65,13 +51,21 @@ public void keyPressed() {
         {
             vision = new Circles(this);
         }
-        
+        if (key == '4')
+        {
+            vision = new Spiral(this);
+        }
+        if (key == '5')
+        {
+            vision = new Wave(this);
+        }
+              
        
 
 }
 
 
-   
+   float[] lerpedBuffer;
 
 
    public void draw()
@@ -92,11 +86,17 @@ public void keyPressed() {
 
     // Call this is you want to get the average amplitude
     calculateAverageAmplitude();        
-        vision.render(); 
+    vision.render(); 
         // will draw either a circle or rect depending on what the instance of vision is 
-         
+
+                    
+           
+
     }
+         
+    
 }
+
 
 
 

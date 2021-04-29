@@ -39,7 +39,7 @@ public void render()
            rv. ellipse(rv.width/2,rv.height/2 - 50  + lerpedBuffer[i] * 100,100 + (rv.getSmoothedAmplitude() * 500), 100 + (rv.getSmoothedAmplitude() * 500));
     
     
-            rv.ellipse(rv.width/4,rv.height/4,50 + (rv.getSmoothedAmplitude() * 1000), 50 + (rv.getSmoothedAmplitude() * 500));
+            rv.ellipse(rv.width/4,rv.height/4,50 + (rv.getSmoothedAmplitude() * 500), 50 + (rv.getSmoothedAmplitude() * 500));
             rv.ellipse(rv.width/4 -25,rv.height/4,50 + (rv.getSmoothedAmplitude() * 500), 50 + (rv.getSmoothedAmplitude() * 500));
             rv. ellipse(rv.width/4 + 25,rv.height/4,50 + (rv.getSmoothedAmplitude() * 500), 50 + (rv.getSmoothedAmplitude() * 500));
             rv. ellipse(rv.width/4,rv.height/4 + 25,50 + (rv.getSmoothedAmplitude() * 500), 50 + (rv.getSmoothedAmplitude() * 500));
