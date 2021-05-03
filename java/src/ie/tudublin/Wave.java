@@ -16,7 +16,7 @@ boolean color = false;
     {
         
         rv.strokeWeight(1);
-        rv.background(150,50,100);
+        rv.background(0);
 
         rv.rectMode(PApplet.CENTER);
         rv.fill(255);

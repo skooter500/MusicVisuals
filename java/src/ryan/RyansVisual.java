@@ -63,6 +63,10 @@ public void keyPressed() {
         {
             vision = new Line(this);
         }
+        if (key == '7')
+        {
+            vision = new Spirals(this);
+        }
               
        
 
