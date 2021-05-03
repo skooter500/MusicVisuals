@@ -1,9 +1,9 @@
 package ie.tudublin;
 
-import ryan.RyansVisual;
+import c19444404.RyansVisual;
 import processing.core.*;
-
-public abstract class Vision {
+// vision method to use polymorhpism to access all visuals in my RyansVisual
+public abstract class Vision { 
     RyansVisual rv;
 
 

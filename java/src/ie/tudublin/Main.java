@@ -1,10 +1,10 @@
 package ie.tudublin;
 
+import c19444404.RyansVisual;
 import example.CubeVisual;
 import example.CubeVisual1;
 import example.MyVisual;
 import example.RotatingAudioBands;
-import ryan.RyansVisual;
 
 public class Main
 {	

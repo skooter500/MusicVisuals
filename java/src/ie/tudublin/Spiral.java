@@ -1,7 +1,7 @@
 package ie.tudublin;
 
+import c19444404.RyansVisual;
 import processing.core.*;
-import ryan.RyansVisual;
 
 public class Spiral extends Vision {
 
@@ -14,7 +14,7 @@ public class Spiral extends Vision {
     //for changing stroke colour
   
     int angleChange = 5;//amount spin is incremented by
-    final int ANGLE_LIMIT = 360; //max rotation
+    final int LIM = 360; //max rotation
   
     int gap = 50; //gap between arcs
     int thickness = 10; //thickness of each arc
@@ -28,7 +28,7 @@ public class Spiral extends Vision {
         rv.noFill();
         rv.pushMatrix(); //prevents entire canvas from being transformed
        rv. translate(rv.width/2, rv.height/2); //move the 0,0 position to the center of the screen so w/2, h/2
-        rv.rotate(PApplet.radians(-angle)); //rotate negative so it rotates the direction I want
+        rv.rotate(PApplet.radians(-angle)); //rotate negative anti clockwise
     
         for(int j = 0; j< rv.getAudioBuffer().size(); j++){ //for loop through the total size of the audio buffer, used for expanding arc lines
             for(int i = gap; i< rv.width-gap; i+= gap){ //used to create the maximum size the spiral can become
@@ -45,10 +45,10 @@ public class Spiral extends Vision {
                 rv.arc(0, 0, i, i, angle, angle + (lerpedBuffer[j]  * 10));
                 }
             }
-            //incrementing angle of rotation 
+            // angle of rotation 
             angle += angleChange;
             //if it hits 360 then it will reset to 0
-            if (angle >= ANGLE_LIMIT || angle < 0)
+            if (angle >= LIM || angle < 0)
             {
                 angle = 0;
             }
