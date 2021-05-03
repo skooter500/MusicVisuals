@@ -20,7 +20,7 @@ Vision vision;
         startMinim();
         loadAudio("liveforever.mp3");
         colorMode(HSB);
-        vision = new Test1(this);
+        vision = new Wave(this);
         //vision = new SphereCircle(this);
     
        
@@ -35,15 +35,12 @@ public void keyPressed() {
         getAudioPlayer().play();
     }
     
-        if (key == '0')
-        {
-            vision = new Test1(this);
-        }
-        if (key == '1')
+       
+        if (key == '2')
         {
             vision = new SphereCircle(this);
         }
-        if ( key == '2')
+        if ( key == '8')
         {
             vision = new Sphere(this);
         }
@@ -55,7 +52,7 @@ public void keyPressed() {
         {
             vision = new Spiral(this);
         }
-        if (key == '5')
+        if (key == '1')
         {
             vision = new Wave(this);
         }
@@ -63,11 +60,11 @@ public void keyPressed() {
         {
             vision = new Line(this);
         }
-        if (key == '7')
+        if (key == '5')
         {
             vision = new Spirals(this);
         }
-        if (key == '8')
+        if (key == '7')
         {
             vision = new Abduction(this);
         }
@@ -77,7 +74,7 @@ public void keyPressed() {
 }
 
 
-   float[] lerpedBuffer;
+  // float[] lerpedBuffer;
 
 
    public void draw()
