@@ -1,10 +1,11 @@
 package ie.tudublin;
 
+
 import processing.core.PApplet;
 import ddf.minim.*;
 import ddf.minim.analysis.FFT;
 
-public abstract class Visual extends PApplet
+public abstract class Visual extends PApplet 
 {
 	private int frameSize = 512;
 	private int sampleRate = 44100;
@@ -50,7 +51,7 @@ public abstract class Visual extends PApplet
 			throw new VisualException("You must call startListening or loadAudio before calling fft");
 		}
 	}
-
+	
 	
 	public void calculateAverageAmplitude()
 	{
