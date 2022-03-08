@@ -1,8 +1,20 @@
 # Music Visualiser Project
 
-Name:
+Name: Piotr Jachont
 
-Student Number: 
+Student Number: C20758051
+
+Name: David Prior
+
+Student Number: C20391861
+
+Name: Conan O'hara
+
+Student Number: C20730175
+
+Name: Artyom McNiff
+
+Student Number: C20394301
 
 ## Instructions
 - Fork this repository and use it a starter project for your assignment
