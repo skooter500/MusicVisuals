@@ -1,8 +1,8 @@
 # Music Visualiser Project
 
-Name:
+Name: Habeeb Alao
 
-Student Number: 
+Student Number: CXXXXXXXX
 
 ## Instructions
 - Fork this repository and use it a starter project for your assignment
