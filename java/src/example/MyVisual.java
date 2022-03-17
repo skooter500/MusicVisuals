@@ -23,7 +23,7 @@ public class MyVisual extends Visual
         startMinim();
                 
         // Call loadAudio to load an audio file to process 
-        //loadAudio("heroplanet.mp3");   
+        //loadAudio("/Users/habeebalao/Documents/CompSci/Object Oriented Programming/OOP_GIt/MusicVisuals/java/data/TheDifference.mp3");   
 
         
         // Call this instead to read audio from the microphone
@@ -35,7 +35,7 @@ public class MyVisual extends Visual
 
     public void keyPressed()
     {
-        if (key == ' ')
+        if (key == '1')
         {
             getAudioPlayer().cue(0);
             getAudioPlayer().play();

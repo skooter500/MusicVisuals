@@ -36,9 +36,9 @@ public class CubeVisual extends Visual
         setFrameSize(256);
 
         startMinim();
-        loadAudio("MusicVisuals/java/data/TheDifference.mp3");
+        //loadAudio("MusicVisuals/java/data/TheDifference.mp3");
         //getAp().play();
-        //startListening(); 
+        startListening(); 
         
     }
 
