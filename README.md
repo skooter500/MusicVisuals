@@ -1,8 +1,8 @@
 # Music Visualiser Project
 
-Name:
+Name: Alexander Dergach, Jaycel Estrellado, Mendbayar Bat-Orshikh
 
-Student Number: 
+Student Number: C20401562, C20372876, C20458384
 
 ## Instructions
 - Fork this repository and use it a starter project for your assignment
