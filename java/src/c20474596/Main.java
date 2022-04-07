@@ -7,11 +7,6 @@ public class Main{
         processing.core.PApplet.runSketch( a, new Warpdrive());
     }
 
-    public static void test(){
-		String[] a = {"MAIN"};
-        processing.core.PApplet.runSketch( a, new Warpdrive());
-    }
-
     public static void main(String[] args){
         warpdrive();
     }
