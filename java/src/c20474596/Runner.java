@@ -45,10 +45,9 @@ public class Runner extends Visual{
 
     public void draw(){
         background(0);
-        //translate(width/2, height/2);
 
         switch(mode){
-            case 1: //OWN CODE NOT FROM EXAMPLE
+            case 1: //OWN CODE NOT FROM EXAMPLE PACKAGE
             {
                 background(0);
                 translate(width/2, height/2);
