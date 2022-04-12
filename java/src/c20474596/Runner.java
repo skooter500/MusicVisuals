@@ -48,7 +48,7 @@ public class Runner extends Visual{
         //translate(width/2, height/2);
 
         switch(mode){
-            case 1:
+            case 1: //OWN CODE NOT FROM EXAMPLE
             {
                 background(0);
                 translate(width/2, height/2);
@@ -79,11 +79,11 @@ public class Runner extends Visual{
                 }
             }
 
-            case 2:
+            case 2: //MUST ALTER - COPIED FROM EXAMPLE.
             {
                 calculateAverageAmplitude();
                 stroke(map(getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
-                strokeWeight(7);
+                strokeWeight(7); //make the cube thicker that the stars to add contrast
                 noFill();
                 lights();
                 pushMatrix();
