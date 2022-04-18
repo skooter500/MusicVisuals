@@ -14,7 +14,8 @@ public abstract class Visual extends PApplet
 
 	private Minim minim;
 	private AudioInput ai;
-	private AudioPlayer ap;
+	public AudioSample as;
+	public AudioPlayer ap;
 	private AudioBuffer ab;
 	private FFT fft;
 
@@ -87,8 +88,8 @@ public abstract class Visual extends PApplet
 
 	public void loadAudio(String filename)
 	{
-		ap = minim.loadFile(filename, frameSize);
-		ab = ap.mix;
+		as = minim.loadSample(filename, frameSize);
+		ab = as.mix;
 	}
 
 	public int getFrameSize() {
