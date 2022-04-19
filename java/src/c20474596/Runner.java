@@ -1,42 +1,40 @@
 package c20474596;
 
-import processing.core.PApplet;
 import ddf.minim.AudioBuffer;
 import ddf.minim.AudioInput;
 import ddf.minim.AudioPlayer;
 import ddf.minim.Minim;
 
-public class Warpdrive extends PApplet{
-
+public class Runner extends Visual{
 
     Minim minim;
     AudioPlayer ap;
     AudioInput ai;
     AudioBuffer ab;
-    Star[] stars = new Star[1000];
+    Star[] stars = new Star[1250];
     float px;
     float py;
     int mode = 0;
     float smoothedBoxSize = 0;
+    float angle = 0;
 
+    public void setup(){
+        for(int i = 0; i < stars.length; i++){
+            stars[i] = new Star();
+        }
+        startMinim();
+        loadAudio("tevvez.mp3");
+        colorMode(HSB);
+    }
 
     public void keyPressed(){
         if (key >= '0' && key <= '9') {
 			mode = key - '0';
 		}
-        if (keyCode == ' ') {
-            if (ap.isPlaying()) {
-                ap.pause();
-            } else {
-                ap.rewind();
-                ap.play();
-            }
-        }
-    }
-
-    public void setup(){
-        for(int i = 0; i < stars.length; i++){
-            stars[i] = new Star();
+        if (key == ' ')
+        {
+            getAudioPlayer().cue(0);
+            getAudioPlayer().play();
         }
     }
 
@@ -44,18 +42,19 @@ public class Warpdrive extends PApplet{
         size(800,800,P3D);
         fullScreen(P3D, SPAN);
     }
- 
+
     public void draw(){
         background(0);
-        translate(width/2, height/2);
 
         switch(mode){
-        
-            case 1:
+            case 1: //OWN CODE NOT FROM EXAMPLE PACKAGE
             {
+                background(0);
+                translate(width/2, height/2);
                 for(int i = 0; i<stars.length;i++){ //Displays star(s) on screen
                     fill(255);
-                    noStroke();
+                    strokeWeight(1);
+                    
                     float sx = map(stars[i].x/stars[i].z,0,1,0,width);
                     float sy = map(stars[i].y/stars[i].z,0,1,0,height);
                     float r = map(stars[i].z,0,width,16,0);
@@ -79,9 +78,22 @@ public class Warpdrive extends PApplet{
                 }
             }
 
-            case 2:
+            case 2: //MUST ALTER - COPIED FROM EXAMPLE.
             {
-                
+                calculateAverageAmplitude();
+                stroke(map(getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
+                strokeWeight(7); //make the cube thicker that the stars to add contrast
+                noFill();
+                lights();
+                pushMatrix();
+                camera(0, 0, 0, 0, 0, -1, 0, 1, 0);
+                translate(0, 0, -200);
+                rotateX(angle);
+                rotateZ(angle);       
+                float boxSize = 50 + (200 * getSmoothedAmplitude()); 
+                box(boxSize);   
+                popMatrix();
+                angle += 0.01f;  
             }
         }
         
