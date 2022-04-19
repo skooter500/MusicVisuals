@@ -3,6 +3,7 @@ package ie.tudublin;
 import example.CubeVisual;
 import example.CubeVisual1;
 import c20362766.HabeebsVisuals;
+import c20362766.WaveForm4;
 import example.MyVisual;
 import example.RotatingAudioBands;
 
