@@ -17,6 +17,12 @@ public class Runner extends Visual{
     int mode = 0;
     float smoothedBoxSize = 0;
     float angle = 0;
+    //sean edits
+    int c = 16;
+    float t = 1;
+    int nprime = 1;
+    float hue;
+    
 
     public void setup(){
         for(int i = 0; i < stars.length; i++){
@@ -24,7 +30,12 @@ public class Runner extends Visual{
         }
         startMinim();
         loadAudio("tevvez.mp3");
-        colorMode(HSB);
+        colorMode(HSB,255);
+        
+        hue = random(255);
+        //sean edits
+        noStroke();
+
     }
 
     public void keyPressed(){
@@ -95,8 +106,35 @@ public class Runner extends Visual{
                 popMatrix();
                 angle += 0.01f;  
             }
+
+           case 3://CODE MUST BE ALTERED
+           {
+            t = (float) (pow(t,(float) 1.00001) + .1);
+            nprime++;
+            translate(width/2,height/2);
+            rotate(PI*sin(t/50));
+            fill(255,100,100,30);
+            rect(-width/2,-height/2,width,height);
+            circles();
+          
         }
         
+    }
+}
+
+    private void circles() {//CODE MUST BE ALTERED-SEAN
+        for (int n = 1; n < nprime*3; n++) {;
+            float r = c*sqrt(n);
+            float radius = 3;
+            float theta = n*PI*(3-sqrt(10));
+            fill(140,map(r/2,1,width,0,500),28,40);
+            float pulse = pow(sin(t*PI/3-n*PI/(t%100)),(float) 1.5);
+            pushMatrix();
+            ellipse(r*cos(theta)/4,r*sin(theta)/4,pulse*radius+6,pulse*radius+6);
+            popMatrix();
+    }
+
+    
     }
 }
  
