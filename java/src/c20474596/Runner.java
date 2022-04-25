@@ -127,6 +127,7 @@ public class Runner extends Visual{
             float r = c*sqrt(n);
             float radius = 3;
             float theta = n*PI*(3-sqrt(10));
+            stroke(map(getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
             fill(140,map(r/2,1,width,0,500),28,40);
             float pulse = pow(sin(t*PI/3-n*PI/(t%100)),(float) 1.5);
             pushMatrix();
