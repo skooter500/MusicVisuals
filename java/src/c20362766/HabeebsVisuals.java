@@ -15,7 +15,7 @@ public class HabeebsVisuals extends Visual {
     int mode = 0;
 
     public void settings() {
-        size(1000, 700);
+        size(1000, 800);
 
     }
 
