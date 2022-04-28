@@ -10,7 +10,7 @@ public class HabeebsVisuals extends Visual {
     WaveForm4 wf4;
     WaveForm5 wf5;
     WaveForm6 wf6;
-    WaveForm7 wf7;
+
 
     int mode = 0;
 
@@ -32,7 +32,7 @@ public class HabeebsVisuals extends Visual {
         wf4 = new WaveForm4(this);
         wf5 = new WaveForm5(this);
         wf6 = new WaveForm6(this);
-        wf7 = new WaveForm7(this);
+
 
     }
 
@@ -68,11 +68,8 @@ public class HabeebsVisuals extends Visual {
             case '6':
                 wf6.render();
                 break;
-            case '7':
-                wf7.render();
-                break;
             default:
-                wf6.render();
+                wf.render();
                 break;
         }
     }
