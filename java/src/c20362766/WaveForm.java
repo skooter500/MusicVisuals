@@ -1,9 +1,11 @@
 package c20362766;
 
-import processing.core.*;
+import ie.tudublin.Visual;
+
+
 
 // This is an example of a visual that renders the waveform
-public class WaveForm {
+public class WaveForm extends Visual {
     HabeebsVisuals mv;
     float cy = 0;
     float cx = 0;
@@ -13,7 +15,10 @@ public class WaveForm {
     }
 
     public void cubeEyes() {
+        
         mv.background(0);
+
+
 
         cy = this.mv.height / 2;
         cx = this.mv.width / 2;
@@ -22,8 +27,8 @@ public class WaveForm {
         // border squares
         for (int i = 0; i < this.mv.width; i++) {
 
-            mv.stroke(118, 218, 193);
-            mv.fill(118, 100);
+            mv.stroke(118+118 * (mv.getSmoothedAmplitude() * 700), 218 * (mv.getSmoothedAmplitude() * 700), 193 * (mv.getSmoothedAmplitude() * 700));
+            mv.fill(118+118 * (mv.getSmoothedAmplitude() * 700), 218 * (mv.getSmoothedAmplitude() * 700), 193 * (mv.getSmoothedAmplitude() * 700), 100);
 
             if (i % 60 == 0) {
                 mv.rect(i, 0, 35 + 35 * (mv.getSmoothedAmplitude() * 700),
@@ -46,7 +51,8 @@ public class WaveForm {
 
             mv.stroke(118, 218, 193);
 
-            mv.fill(100, 100);
+            mv.fill(118+58 * (mv.getSmoothedAmplitude() * 700), 218 -12 * (mv.getSmoothedAmplitude() * 700), 193 -44 * (mv.getSmoothedAmplitude() * 700), 100);
+
 
             if (i % 60 == 0 || i == 0) {
 
