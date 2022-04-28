@@ -1,12 +1,10 @@
 package c20362766;
 
-
-
 import ie.tudublin.Visual;
-import ie.tudublin.VisualException;
 import processing.core.PApplet;
 
-public class WaveForm4 {
+
+public class WaveForm4 extends PApplet {
 
     HabeebsVisuals mv;
 
@@ -14,17 +12,17 @@ public class WaveForm4 {
         this.mv = mv;
     }
 
+    public void settings()
+	{
+		size(800, 600, P3D);
+		
+	}
+
     float angle = 0;
     float angle2 = 0;
     float angle3 = 0;
 
- 
-
-    public void render() {
-        mv.background(0);
-        
-        
-        
+    public void circleBall(){
         int numCircles = 22;
         int Mwidth = 140;
 
@@ -67,7 +65,7 @@ public class WaveForm4 {
         mv.lights();
         mv.pushMatrix();
 
-        //
+        
         mv.camera(0, 0, 0, 0, 0, -1* mv.getSmoothedAmplitude(), 0, 1, 0);
         mv.translate(0, 0, -200);
         angle = angle - (angle * mv.getSmoothedAmplitude());
@@ -75,7 +73,10 @@ public class WaveForm4 {
         mv.rotateZ(angle = angle +  (angle * mv.getSmoothedAmplitude()));   
         angle = angle - (angle * mv.getSmoothedAmplitude());
 
+
+
         float boxSize = 25 + (200 * mv.getSmoothedAmplitude()); 
+        mv.sphere(boxSize);
         for(int i = 0 ; i < mv.getAudioBuffer().size() ; i ++)
         {
             // changes color to rainbow range
@@ -84,7 +85,13 @@ public class WaveForm4 {
         mv.sphere(boxSize);   
         mv.popMatrix();
         angle3 += 0.01f;
-
+    }
+    
+    public void render() {
+        mv.background(0,0,0);
+        
+        circleBall();
+        
 
     }
 }

@@ -7,12 +7,18 @@ public class WaveForm
 {
     HabeebsVisuals mv;
     float cy = 0;
+    
 
     public WaveForm(HabeebsVisuals mv)
     {
         this.mv = mv;
         cy = this.mv.height / 2;
+
     }
+
+    
+
+
 
     public void render()
     {

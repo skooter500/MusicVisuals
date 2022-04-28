@@ -1,8 +1,6 @@
 package c20362766;
 
-import ie.tudublin.Visual;
-import ie.tudublin.VisualException;
-import processing.core.PApplet;
+import ie.tudublin.*;
 
 public class HabeebsVisuals extends Visual {
 
@@ -17,15 +15,14 @@ public class HabeebsVisuals extends Visual {
     int mode = 0;
 
     public void settings() {
-
-        size(950, 2000, P3D);
+        size(1000, 700);
 
     }
 
     public void setup() {
+
         startMinim();
 
-        // Call this instead to read audio from the microphone
         startListening();
 
         // new waveform instance
@@ -39,59 +36,51 @@ public class HabeebsVisuals extends Visual {
 
     }
 
-    public void keyPressed() {
-        if (key >= '0' && key <= '9') {
-            mode = key - '0';
-        }
-        println(mode);
-    }
-
-    public void draw() {
-        background(0);
+    public void MusicArt() {
         try {
             // Call this if you want to use FFT data
             calculateFFT();
         } catch (VisualException e) {
             e.printStackTrace();
         }
+
         // Call this is you want to use frequency bands
         calculateFrequencyBands();
-
         // Call this is you want to get the average amplitude
         calculateAverageAmplitude();
 
-        // wf.render();
-        // wf2.render();
-        // wf3.render();
-        // wf4.render();
-        // wf5.render();
-        // wf6.render();
-        // wf7.render();
-
-        switch (mode) {
-            case 0:
+        switch (key) {
+            case '1':
                 wf.render();
                 break;
-            case 1:
+            case '2':
                 wf2.render();
                 break;
-            case 2:
+            case '3':
                 wf3.render();
                 break;
-            case 3:
+            case '4':
                 wf4.render();
                 break;
-            case 4:
+            case '5':
                 wf5.render();
                 break;
-            case 5:
+            case '6':
                 wf6.render();
                 break;
-            case 6:
+            case '7':
                 wf7.render();
                 break;
-
+            default:
+                wf6.render();
+                break;
         }
+    }
+
+    public void draw() {
+
+        background(0);
+        MusicArt();
 
     }
 

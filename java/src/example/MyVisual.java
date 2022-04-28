@@ -33,25 +33,15 @@ public class MyVisual extends Visual
         abv = new AudioBandsVisual(this);
     }
 
-    public void keyPressed()
-    {
-        if (key == '1')
-        {
-            getAudioPlayer().cue(0);
-            getAudioPlayer().play();
-        }
-    }
+    
 
     public void draw()
     {
         background(0);
-        try
-        {
-            // Call this if you want to use FFT data
+        try {   // Call this if you want to use FFT data
             calculateFFT(); 
         }
-        catch(VisualException e)
-        {
+        catch(VisualException e) {
             e.printStackTrace();
         }
         // Call this is you want to use frequency bands

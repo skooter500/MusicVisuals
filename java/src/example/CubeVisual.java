@@ -17,7 +17,7 @@ public class CubeVisual extends Visual
     {
         if (key == ' ')
         {
-            getAudioPlayer().cue(0);
+            //getAudioPlayer().cue(0);
             getAudioPlayer().play();
             
         }
