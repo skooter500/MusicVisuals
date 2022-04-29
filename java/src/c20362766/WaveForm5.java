@@ -1,6 +1,7 @@
 package c20362766;
 
 import processing.core.PApplet;
+
 // This is an example of a visual that renders the waveform
 public class WaveForm5 {
     HabeebsVisuals mv;
@@ -14,38 +15,36 @@ public class WaveForm5 {
     }
 
     public void TheFlash() {
+        mv.background(0);
+        mv.loadPixels();
+        float n = (float) ((mv.getAmplitude() * 10000.0) / mv.width);
 
-        int radius = 300;
+        float w = (float) 16.0;
+        float h = (float) 16.0;
+        float dx = w / mv.width;
+        float dy = h / mv.height;
+        float x = -w / 2;
 
-        mv.stroke(0, 255, 255);
+        for (int i = 0; i < mv.width; i++) {
+            float y = -h / 2;
 
-        // Bright red
-        mv.fill(0, 255, 0);
-        mv.circle(cx, cy, radius);
+            for (int j = 0; j < mv.height; j++) {
 
-        // changes color to rainbow range
-        mv.line(cx - 30, cy, cx + 30, cy);
-        mv.line(cx - 30, cy, cx + 40, cy - 65);
-        mv.line(cx + 30, cy, cx - 40, cy + 65);
+                float r = mv.sqrt((x * x) + (y * y));
+                float theta = mv.atan2(y, x);
+                float val = mv.sin(n * mv.cos(r) + 5 * theta);
 
-        
-        // generate (i) random points on circle
-        var angle = Math.random() * Math.PI *2  ;
-        float x =  (float) (Math.cos(angle) * radius);
-        float y =  (float) (Math.sin(angle) * radius);
-
-        mv.line(cx+radius, cy+radius, cx + x, cy + y);
-
+                mv.pixels[i + j * mv.width] = mv.color((int) ((val + mv.getAmplitude()-200) * 255.0));
+                y += dy;
+            }
+            x += dx;
+        }
+        mv.updatePixels();
     }
 
     public void render() {
-        mv.colorMode(PApplet.HSB);
 
         TheFlash();
     }
 
-    
-    
-        
-    
 }

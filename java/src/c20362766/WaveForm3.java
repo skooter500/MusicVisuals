@@ -36,11 +36,6 @@ public class WaveForm3
 
             //mv.circle(cx, cy, 2000 * mv.getAudioBuffer().get(i));
 
-            
-            
-
-
-        
         }
     }
 }

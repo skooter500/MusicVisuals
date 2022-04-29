@@ -16,8 +16,7 @@ public class HabeebsVisuals extends Visual {
     public Object prevMouseVal;
 
     public void settings() {
-        size(1000, 800);
-
+        size(800, 600); 
     }
 
     public void setup() {
@@ -70,7 +69,7 @@ public class HabeebsVisuals extends Visual {
                 wf6.render();
                 break;
             default:
-                wf2.render();
+                wf4.render();
                 break;
         }
     }

@@ -1,22 +1,26 @@
 package c20362766;
 
+
 import ie.tudublin.Visual;
 import processing.core.PApplet;
 
 
-public class WaveForm4 extends PApplet {
+public class WaveForm4 extends Visual {
 
     HabeebsVisuals mv;
+
+    
+    public void settings()
+    {
+        println("CWD: " + System.getProperty("user.dir"));
+        fullScreen(P3D, SPAN);
+    }
+
 
     public WaveForm4(HabeebsVisuals mv) {
         this.mv = mv;
     }
 
-    public void settings()
-	{
-		size(800, 600, P3D);
-		
-	}
 
     float angle = 0;
     float angle2 = 0;
