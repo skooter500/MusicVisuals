@@ -78,7 +78,8 @@ public class RotatingAudioBands extends Visual {
             float h = bands[i];
             pushMatrix();
             translate(x, - h / 2 , z);
-            rotateY(theta);
+            // rotateY(theta);
+            line(x, h + 100, x + 100, h);
             box(50, h, 50);
             popMatrix();
         }
