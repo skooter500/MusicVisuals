@@ -1,4 +1,9 @@
 package c20474596;
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 41e22be75091da7101499bb0868a1733e5acda54
 import processing.core.PApplet;
 import ddf.minim.*;
 import ddf.minim.analysis.FFT;
@@ -37,6 +42,7 @@ public abstract class Visual extends PApplet
 		return log(f) / log(2.0f);
 	}
 
+<<<<<<< HEAD
 	protected void calculateFFT()
 	{
 		fft.window(FFT.HAMMING);
@@ -47,6 +53,8 @@ public abstract class Visual extends PApplet
 
 	}
 
+=======
+>>>>>>> 41e22be75091da7101499bb0868a1733e5acda54
 	
 	public void calculateAverageAmplitude()
 	{
