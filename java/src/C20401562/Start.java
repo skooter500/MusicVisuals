@@ -10,7 +10,7 @@ public class Start extends Visual{
 
     public void settings()
     {
-        size(1400, 800);
+        size(1400, 800, P3D);
 
         //fullScreen;
 
@@ -51,6 +51,7 @@ public class Start extends Visual{
         as.trigger();
 
         colorMode(HSB);
+       
     }
 
     public void draw()

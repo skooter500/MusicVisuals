@@ -134,7 +134,7 @@ public abstract class Visual extends PApplet
 	}
 
 	public float getSmoothedAmplitude() {
-		return smothedAmplitude;
+		return smoothedAmplitude;
 	}
 
 	public AudioPlayer getAudioPlayer() {
