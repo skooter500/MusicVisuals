@@ -65,7 +65,7 @@ public abstract class Visual extends PApplet
 	}
 
 
-	protected void calculateFrequencyBands() {
+	public void calculateFrequencyBands() {
 		for (int i = 0; i < bands.length; i++) {
 			int start = (int) pow(2, i) - 1;
 			int w = (int) pow(2, i);
@@ -88,8 +88,8 @@ public abstract class Visual extends PApplet
 
 	public void loadAudio(String filename)
 	{
-		as = minim.loadSample(filename, frameSize);
-		ab = as.mix;
+		ap = minim.loadFile(filename, frameSize);
+		ab = ap.mix;
 	}
 
 	public int getFrameSize() {
@@ -110,6 +110,10 @@ public abstract class Visual extends PApplet
 
 	public float[] getBands() {
 		return bands;
+	}
+
+	public void setBands(float[] bands) {
+		this.bands = bands;
 	}
 
 	public float[] getSmoothedBands() {
