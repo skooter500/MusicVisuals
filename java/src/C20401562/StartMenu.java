@@ -53,6 +53,7 @@ public class StartMenu {
 
             s.noStroke();
         }
+
         s.circle(0,0, 100);
         s.fill(0);
         s.noStroke();
@@ -124,6 +125,8 @@ public class StartMenu {
     public void lowerMenu(){
 
         s.fill(20);
+        s.noStroke();
+
         s.rect(0, s.height - 60, s.width, 60);
 
         s.fill(255);

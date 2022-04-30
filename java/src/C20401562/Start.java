@@ -57,7 +57,7 @@ public class Start extends Visual{
     public void setup()
     {
         startMinim();
-        loadAudio("Song.mp3");
+        loadAudio("Song.wav");
 
         // startListening();
     
