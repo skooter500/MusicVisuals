@@ -33,8 +33,7 @@ public class RotatingAudioBands extends Visual {
 
         startMinim();
         loadAudio("Song.mp3");
-        as.trigger();
-        //startListening(); 
+        
         
     }
 

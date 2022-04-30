@@ -14,10 +14,10 @@ public class AlexsVisual extends Visual{
 
     public void render()
     {
-        start.background(0);
-        start.fill(130);
-        start.stroke(255);
-        start.ellipse(300, 300, 300,300);
+        // start.background(0);
+        // start.fill(130);
+        // start.stroke(255);
+        // start.ellipse(300, 300, 300,300);
     }
 
     public void setup()
