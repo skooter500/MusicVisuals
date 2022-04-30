@@ -29,7 +29,7 @@ public class Start extends Visual{
     
     public void settings()
     {
-        size(1400, 800, P3D);
+        size(1400, 800);
 
         //fullScreen;
 
@@ -60,9 +60,7 @@ public class Start extends Visual{
         loadAudio("Song.mp3");
 
         // startListening();
-
-        smooth();
-
+    
         lerpedBuffer = new float[width];
         lerpedBuffer2 = new float[width];
 
@@ -84,7 +82,7 @@ public class Start extends Visual{
             e.printStackTrace();
         }
         // Call this is you want to use frequency bands
-        calculateFrequencyBands(); 
+        //calculateFrequencyBands(); 
         // Call this is you want to get the average amplitude
         calculateAverageAmplitude();   
 
