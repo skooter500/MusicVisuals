@@ -16,22 +16,15 @@ public class MendesVisual extends Visual{
 
     public void render()
     {
-        cy = this.s.height/2;
-        for(int i = 0 ; i < s.width; i ++)
-        {
-            s.stroke(
-                PApplet.map(i, 0, s.getAudioBuffer().size()*2, 0, 255), 255, 255);
+        for(int i = 0; i < s.width ;i++){
+            float index = PApplet.map(i, 0 , s.width, 0, s.getAudioBuffer().size());
+            float y = s.getAudioBuffer().get((int)index) * 50 + s.height / 2;
 
-            s.line(i, cy, i, cy + cy * s.getAudioBuffer().get(i));
+            s.stroke(PApplet.map(index, 0, s.getAudioBuffer().size()* 2, 0, 255), 255, 255);
+
+            s.line(i, y, i, y + y* s.getAudioBuffer().get((int)index));
+
         }
-
-        s.pushMatrix();
-        s.translate(s.height/2, s.width/2);
-        
-
-        s.popMatrix();
-
-
     }
     
 }
