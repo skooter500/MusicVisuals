@@ -1,6 +1,8 @@
 package C20401562;
 
 import ie.tudublin.*;
+import processing.core.PApplet;
+
 import java.util.Random; 
 
 public class JaycelsVisual extends Visual{
@@ -15,9 +17,7 @@ public class JaycelsVisual extends Visual{
     float colour;
     int rainlength = 80;
 
-    
     float lerpedAverage = 0;
-
     
     float average;
     float sum;
@@ -51,6 +51,8 @@ public class JaycelsVisual extends Visual{
 
     public void render()
     {
+        
+        start.background(0);
 
         average = 0;
         sum = 0;
@@ -64,11 +66,10 @@ public class JaycelsVisual extends Visual{
         // Move lerpedAverage 10% closer to average every frame
         lerpedAverage = lerp(lerpedAverage, average, 0.1f);
 
-        start.background(0);
 
-        start.translate(start.width/2, start.height/2); //translate to the center of the screen
-        start.getFFT().forward(start.as.mix); //load the audio to the fft
+        //start.getFFT().forward(start.ap.mix); //load the audio to the fft
         start.pushMatrix();
+        start.translate(start.width/2, start.height/2); //translate to the center of the screen
         start.setBands(start.getFFT().getSpectrumReal()); //load the fft to bands
 
         //Circle
@@ -78,10 +79,10 @@ public class JaycelsVisual extends Visual{
         for (int i = 0; i < 360; i++) {
             float color = start.getBands()[i] / 2; //get the current fft used for color
             start.noStroke();
-            start.fill(start.random(color, 200), start.random(color, 255), 200);
-            start.lerpedBuffer[i] = start.lerp(start.lerpedBuffer[i], start.getBands()[i], 0.08f); //smooth the circle
-            start.ellipse(start.sin(angle) * ( start.lerpedBuffer[i]), -start.cos(angle) * (cir + start.lerpedBuffer[i]), start.abs(start.lerpedBuffer[i] * 4), start.abs(start.lerpedBuffer[i] * 4));
-            angle += start.PI / 20; //draw 20 circles on the screen to form a big circle
+            start.fill(start.random(color, 400), start.random(color, 300), 280);
+            start.lerpedBuffer[i] = PApplet.lerp(start.lerpedBuffer[i], start.getBands()[i], 0.08f); //smooth the circle
+            start.ellipse(sin(angle) * ( start.lerpedBuffer[i]), -cos(angle) * (cir + start.lerpedBuffer[i]), PApplet.abs(start.lerpedBuffer[i] * 4), PApplet.abs(start.lerpedBuffer[i] * 4));
+            angle += PI / 20; //draw 20 circles on the screen to form a big circle
         }
 
         //Ring
@@ -90,43 +91,45 @@ public class JaycelsVisual extends Visual{
 
         for (int j = 0; j < 360; j++) {
             float color = start.getBands()[j]; //get the current fft used for color
-            start.stroke(start.random(color, 200), start.random(color, 150), 200, 180);
+            start.stroke(start.random(color, 400), start.random(color, 300), 300, 200);
             start.strokeWeight(3);
-            start.lerpedBuffer2[j] = start.lerp(start.lerpedBuffer2[j], start.getBands()[j], 0.5f); //smooth the circle
-            start.line(-start.cos(ang) * (start.lerpedBuffer2[j] + stick), start.sin(ang) * (cir + start.lerpedBuffer2[j] + stick), -start.cos(ang) * (cir - start.lerpedBuffer2[j] - stick), start.sin(ang) * (cir - start.lerpedBuffer2[j] - stick));
-            ang += start.PI / 40; //draw 40 lines on the screen to form a big circle
+            start.lerpedBuffer2[j] = PApplet.lerp(start.lerpedBuffer2[j], start.getBands()[j], 0.5f); //smooth the circle
+            start.line(-cos(ang) * (start.lerpedBuffer2[j] + stick), sin(ang) * (cir + start.lerpedBuffer2[j] + stick), -cos(ang) * (cir - start.lerpedBuffer2[j] - stick), sin(ang) * (cir - start.lerpedBuffer2[j] - stick));
+            ang += PI / 40; //draw 40 lines on the screen to form a big circle
         }
 
         //top line
-        for (int x = 0; x < 60; x += 2) {
+        for (int x = 0; x < 60; x += 5) {
             float color = start.getBands()[x]; //get the current fft us for color
             float position = start.random(color, start.width); //find a random position to draw the line
-            start.stroke(start.random(color, 250), start.random(color, 50), 250);
+            start.stroke(start.random(color, 400), start.random(color, 300), 300);
             start.strokeWeight(5);
             start.line(position - start.width / 2, -(start.height / 2), position - start.width / 2, color * 2 + 40 - start.height / 2);
         }
 
         //bottom line
-        for (int x = 0; x < 60; x += 2) {
+        for (int x = 0; x < 60; x += 5) {
             float color = start.getBands()[x]; //get the current fft us for color
             float position = start.random(color, start.width); //find a random position to draw the line
-            start.stroke(start.random(color, 250), start.random(color, 50), 250);
+            start.stroke(start.getSmoothedAmplitude(), start.random(color, 300), 300);
             start.strokeWeight(5);
             start.line(position - start.width / 2, start.height / 2, position - start.width / 2, -(color * 2) - 40 + start.height / 2);
         }
-        start.popMatrix();
+        
        
         // flower dots
-        start.rotate(radians(rot));
+
+       // start.rotate(radians(rot));
+
         for(int i = 0; i < 360; i++) {
             float color = start.getBands()[i] / 2; //get the current fft used for color
-            start.stroke(start.random(color, 200), start.random(color, 150), 200, 180);
+            start.stroke(start.random(color, 400), start.random(color, 300), 300, 200);
             
             float r = 50 * cos(4 * i);
             float x = r * cos(i);
             float y = r * sin(i);
 
-            start.point(10 *(x - 40 * lerpedAverage * 0.1f), 10 * (y - 40 * lerpedAverage * 0.1f)); // get lerp avg
+            start.point(10 *(x - 40 * lerpedAverage * 0.5f), 10 * (y - 40 * lerpedAverage * 0.15f)); // get lerp avg
 
             rot += 1;
         }
@@ -138,5 +141,8 @@ public class JaycelsVisual extends Visual{
         start.stroke(colour, 150, 255);
         start.strokeWeight(2);
         start.triangle(x, y, x, z, -10, -10);
+        
+        start.popMatrix();
+
     }
 }
