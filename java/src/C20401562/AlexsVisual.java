@@ -31,20 +31,19 @@ public class AlexsVisual extends Visual{
         s.strokeWeight(5);
         s.stroke(0, 0, 100);
 
+        for(int i = 0; i < s.width ;i++){
+            float index = PApplet.map(i, 0 , s.width, 0, s.getAudioBuffer().size());
+            float y = s.getAudioBuffer().get((int)index) * 50 + s.height / 2;
 
-        // for(int i = 0; i < s.width ;i++){
-        //     float index = PApplet.map(i, 0 , s.width, 0, s.getAudioBuffer().size());
-        //     float y = s.getAudioBuffer().get((int)index) * 50 + s.height / 2;
+            s.stroke(PApplet.map(index, 0, s.getAudioBuffer().size()*2, 0, 255), 255, 255);
 
-        //     s.stroke(PApplet.map(index, 0, s.getAudioBuffer().size()*2, 0, 255), 255, 255);
+            float cy = 0;
+            cy = this.s.height / 2;
 
-        //     float cy = 0;
-        //     cy = this.s.height / 2;
+            s.line(i, y, i, y + y* s.getAudioBuffer().get((int)index));
 
-        //     s.line(i, y, i, y + y* s.getAudioBuffer().get((int)index));
+        }
 
-
-        // }
         s.pushMatrix();
         s.translate(s.width/2, s.height/2);
 
@@ -66,6 +65,8 @@ public class AlexsVisual extends Visual{
 
             s.line(x, y,x,y);
             s.line(y, x,y,x);
+
+            // s.line(x, y,y,x);
 
         }
 
