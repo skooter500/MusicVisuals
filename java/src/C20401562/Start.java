@@ -22,6 +22,9 @@ public class Start extends Visual{
     float[] lerpedBuffer;
     float[] lerpedBuffer2;
 
+    String[] name = {"","Jay", "Alex", "Mende"};
+
+
     AlexsVisual alex;
     JaycelsVisual jay;
     MendesVisual mende;
@@ -169,7 +172,17 @@ public class Start extends Visual{
                 ap.loop();
                 buttonMode = 1;
             }
+
+            if(mouseX <= startm.rightbuttonX + startm.nextButtonWidth && mouseX >= startm.rightbuttonX && mouseY >= startm.nextButtonY && mouseY <= startm.nextButtonY + startm.nextButtonHeight){
+                mode = startm.rightIndex;
+            }
+            
+            if(mouseX <= startm.leftbuttonX + startm.nextButtonWidth && mouseX >= startm.leftbuttonX && mouseY >= startm.nextButtonY && mouseY <= startm.nextButtonY + startm.nextButtonHeight){
+                mode = startm.leftIndex;
+            }
         }
+
+
 
         // System.out.println("Allowed play = " + allowToPlay);
 

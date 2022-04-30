@@ -29,6 +29,15 @@ public class StartMenu {
     float ButtonY;
     float ButtoRadius;
 
+    float rightbuttonX;
+    float leftbuttonX;
+    float nextButtonY;
+    float nextButtonWidth;
+    float nextButtonHeight;
+
+    int rightIndex;
+    int leftIndex;
+
 
     //Constructor 
     public StartMenu(Start start) 
@@ -126,6 +135,7 @@ public class StartMenu {
 
         s.fill(20);
         s.noStroke();
+        s.strokeWeight(2);
 
         s.rect(0, s.height - 60, s.width, 60);
 
@@ -162,13 +172,39 @@ public class StartMenu {
             s.triangle(s.width/2 - 48,  s.height - 42.5f, s.width/2 - 48,  s.height - 16.5f, s.width/2 - 25.25f,  s.height - 29.5f);
         }
 
-        s.rect(s.width/2 + 100, s.height - 50, 60, 40);
+        s.stroke(255);
+        s.rect(s.width/2 + 100, s.height - 50, 100, 40);
+        s.rect(s.width/2 - 200, s.height - 50, 100, 40);
+
+        s.fill(255);
+        s.textSize(25);
+        int leftbox = 0;
+        int rightbox = 0;
+        for(int i = 1; i < s.name.length; i++){
+            if(s.mode != i && leftbox == 0){
+                s.text(s.name[i],s.width/2 - 180, s.height - 22);
+                leftIndex = i;
+                leftbox = 1;
+            }else if(s.mode != i && rightbox == 0){
+                s.text(s.name[i],s.width/2 + 110, s.height - 22);
+                rightIndex = i;
+                rightbox = 1;
+            }
+        }
 
         loopButtonX = s.width/2 + 40;
 
         pressButtonX = s.width/2 - 40;
         ButtonY = s.height - 30;
         ButtoRadius = 40;
+
+
+        rightbuttonX = s.width/2 + 100;
+        leftbuttonX = s.width/2 - 200;
+
+        nextButtonHeight = 40;
+        nextButtonWidth = 100;
+        nextButtonY = s.height - 50;
 
 
     }

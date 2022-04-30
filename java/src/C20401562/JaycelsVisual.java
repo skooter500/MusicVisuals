@@ -98,23 +98,26 @@ public class JaycelsVisual extends Visual{
             ang += PI / 40; //draw 40 lines on the screen to form a big circle
         }
 
-        //top line
-        for (int x = 0; x < 60; x += 5) {
-            float color = start.getBands()[x]; //get the current fft us for color
-            float position = start.random(color, start.width); //find a random position to draw the line
-            start.stroke(start.random(color, 400), start.random(color, 300), 300);
-            start.strokeWeight(5);
-            start.line(position - start.width / 2, -(start.height / 2), position - start.width / 2, color * 2 + 40 - start.height / 2);
-        }
+        if(start.ap.isPlaying()){
+            //top line
+            for (int x = 0; x < 60; x += 5) {
+                float color = start.getBands()[x]; //get the current fft us for color
+                float position = start.random(color, start.width); //find a random position to draw the line
+                start.stroke(start.random(color, 400), start.random(color, 300), 300);
+                start.strokeWeight(5);
+                start.line(position - start.width / 2, -(start.height / 2), position - start.width / 2, color * 2 + 40 - start.height / 2);
+            }
 
-        //bottom line
-        for (int x = 0; x < 60; x += 5) {
-            float color = start.getBands()[x]; //get the current fft us for color
-            float position = start.random(color, start.width); //find a random position to draw the line
-            start.stroke(start.getSmoothedAmplitude(), start.random(color, 300), 300);
-            start.strokeWeight(5);
-            start.line(position - start.width / 2, start.height / 2, position - start.width / 2, -(color * 2) - 40 + start.height / 2);
+            //bottom line
+            for (int x = 0; x < 60; x += 5) {
+                float color = start.getBands()[x]; //get the current fft us for color
+                float position = start.random(color, start.width); //find a random position to draw the line
+                start.stroke(start.getSmoothedAmplitude(), start.random(color, 300), 300);
+                start.strokeWeight(5);
+                start.line(position - start.width / 2, start.height / 2 -60, position - start.width / 2, -(color * 2) - 40 + start.height / 2 - 120);
+            }
         }
+        
         
        
         // flower dots
@@ -125,11 +128,11 @@ public class JaycelsVisual extends Visual{
             float color = start.getBands()[i] / 2; //get the current fft used for color
             start.stroke(start.random(color, 400), start.random(color, 300), 300, 200);
             
-            float r = 50 * cos(4 * i);
+            float r =  start.getAudioBuffer().get(i) * 100 * cos(8 * i);
             float x = r * cos(i);
             float y = r * sin(i);
 
-            start.point(10 *(x - 40 * lerpedAverage * 0.5f), 10 * (y - 40 * lerpedAverage * 0.15f)); // get lerp avg
+            start.point(10 *(x - 10 * lerpedAverage * 0.5f), 10 * (y - 10 * lerpedAverage * 0.15f)); // get lerp avg
 
             rot += 1;
         }
@@ -140,7 +143,7 @@ public class JaycelsVisual extends Visual{
 
         start.stroke(colour, 150, 255);
         start.strokeWeight(2);
-        start.triangle(x, y, x, z, -10, -10);
+        // start.triangle(x, y, x, z, -10, -10);
         
         start.popMatrix();
 
