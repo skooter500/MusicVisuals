@@ -5,25 +5,26 @@ import processing.core.*;
 
 public class MendesVisual extends Visual{
 
-    Start start;
+    Start s;
+    float cy = 0;
 
     public MendesVisual(Start start) 
     {
-        this.start = start;
+        this.s = start;
     }
 
 
     public void render()
     {
-        // float gap = start.width / (float) start.getBands().length;
-        // start.noStroke();
-        // for(int i = 0 ; i < start.getBands().length ; i ++)
-        // {
-        //     start.fill(PApplet.map(i, 0, start.getBands().length, 255, 0), 255, 255);
-        //     start.rect(i * gap, start.height, gap,-start.getSmoothedBands()[i] * 100f); 
-        // }
+        for(int i = 0; i < s.width ;i++){
+            float index = PApplet.map(i, 0 , s.width, 0, s.getAudioBuffer().size());
+            float y = s.getAudioBuffer().get((int)index) * 50 + s.height / 2;
 
+            s.stroke(PApplet.map(index, 0, s.getAudioBuffer().size()* 2, 0, 255), 255, 255);
 
+            s.line(i, y, i, y + y* s.getAudioBuffer().get((int)index));
+
+        }
     }
     
 }
