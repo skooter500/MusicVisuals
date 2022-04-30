@@ -29,7 +29,7 @@ public class Start extends Visual{
     
     public void settings()
     {
-        size(1400, 800, P3D);
+        size(1400, 800);
 
         //fullScreen;
 
