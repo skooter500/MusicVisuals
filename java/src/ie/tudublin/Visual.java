@@ -88,8 +88,8 @@ public abstract class Visual extends PApplet
 
 	public void loadAudio(String filename)
 	{
-		as = minim.loadSample(filename, frameSize);
-		ab = as.mix;
+		ap = minim.loadFile(filename, frameSize);
+		ab = ap.mix;
 	}
 
 	public int getFrameSize() {
