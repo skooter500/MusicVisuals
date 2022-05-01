@@ -22,7 +22,7 @@ public class GridFlashVisual extends Visual {
     for (int x = gridSize; x <= this.mv.width - gridSize; x += gridSize) {
       for (int y = gridSize; y <= this.mv.height - gridSize; y += gridSize) {
         mv.noStroke();
-        mv.stroke(PApplet.map(x, 0, mv.getBands().length, 255, 0), 255 * this.mv.getAmplitude(),
+        mv.stroke(PApplet.map(x, 0, mv.getBands().length, 255, 0)*300, 755 * this.mv.getAmplitude(),
             255 * this.mv.getAmplitude() / 4);
         mv.rect(x - 1, y - 1, 3, 3);
         mv.line(x, y, mv.mouseX, mv.mouseY);

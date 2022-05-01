@@ -74,10 +74,10 @@ public class EyesVisual extends Visual {
         }
 
         // eye
-        mv.ellipse(cx, cy, 400 + 400 * (mv.getSmoothedAmplitude() * 300),
-                175 + 175 * (mv.getSmoothedAmplitude() * 300));
-        mv.circle(cx, cy, 175 + 175 * (mv.getSmoothedAmplitude() * 300));
-        mv.circle(cx, cy, 12 + 12 * (mv.getSmoothedAmplitude() * 300));
+        mv.ellipse(cx, cy, 400 + 400 * (mv.getSmoothedAmplitude() * 100),
+                175 + 175 * (mv.getSmoothedAmplitude() * 100));
+        mv.circle(cx, cy, 175 + 175 * (mv.getSmoothedAmplitude() * 100));
+        mv.circle(cx, cy, 12 + 12 * (mv.getSmoothedAmplitude() * 100));
 
         // upper eyelid
         mv.line(cx + 20, cy - 90, cx + 40, cy - 190);
