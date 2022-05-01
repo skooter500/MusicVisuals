@@ -51,7 +51,7 @@ public class HabeebsVisuals extends Visual {
         // Call this is you want to get the average amplitude
         calculateAverageAmplitude();
 
-        switch (key {
+        switch (key) {
             case '1':
                 wf.render();
                 break;
