@@ -4,9 +4,10 @@ import ddf.minim.AudioBuffer;
 import ddf.minim.AudioInput;
 import ddf.minim.AudioPlayer;
 import ddf.minim.Minim;
+import ddf.minim.analysis.FFT;
+
 
 public class Runner extends Visual{
-
     Minim minim;
     AudioPlayer ap;
     AudioInput ai;
@@ -22,14 +23,16 @@ public class Runner extends Visual{
     float t = 1;
     int nprime = 1;
     float hue;
-    
+    FFT fft; // Object that performs Fast Fourier Transform (FFT)
+    int OFF_MAX= 300;
 
     public void setup(){
         for(int i = 0; i < stars.length; i++){
             stars[i] = new Star();
         }
+        minim=new Minim(this);
         startMinim();
-        loadAudio("tevvez.mp3");
+        loadAudio("rain.mp3");
         colorMode(HSB,255);
         
         hue = random(255);
@@ -56,10 +59,15 @@ public class Runner extends Visual{
 
     public void draw(){
         background(0);
+        
 
         switch(mode){
             case 1: //OWN CODE NOT FROM EXAMPLE PACKAGE
             {
+                getMinim();
+                calculateFrequencyBands();
+                calculateAverageAmplitude();
+                stroke(map(getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
                 background(0);
                 translate(width/2, height/2);
                 for(int i = 0; i<stars.length;i++){ //Displays star(s) on screen
@@ -79,7 +87,7 @@ public class Runner extends Visual{
                 }
 
                 for(int i = 0;i<stars.length;i++){ //updates star(s) position on screen once it disappears
-                    stars[i].z = stars[i].z-12;
+                    stars[i].z = stars[i].z-25;
                     if(stars[i].z < 1){
                         stars[i].z = width;
                         stars[i].x = random(-width,width);
@@ -93,7 +101,7 @@ public class Runner extends Visual{
             {
                 calculateAverageAmplitude();
                 stroke(map(getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
-                strokeWeight(7); //make the cube thicker that the stars to add contrast
+                strokeWeight(4); //make the cube thicker that the stars to add contrast
                 noFill();
                 lights();
                 pushMatrix();
@@ -109,33 +117,73 @@ public class Runner extends Visual{
 
            case 3://CODE MUST BE ALTERED
            {
+            if (key == '3')
+            {
+               
             t = (float) (pow(t,(float) 1.00001) + .1);
+            calculateAverageAmplitude();
+            stroke(map(getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
             nprime++;
             translate(width/2,height/2);
             rotate(PI*sin(t/50));
-            fill(255,100,100,30);
+            fill(255,30,50,30);
             rect(-width/2,-height/2,width,height);
+           
+              
             circles();
-          
+            }
+        }
+            case 4:
+        {
+            getMinim();
+            calculateFrequencyBands();
+            calculateAverageAmplitude();
+            stroke(map(getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
+            translate(width / 2, height / 2, -OFF_MAX);
+            rotateX((float) (frameCount * .01));
+            rotateY((float) (frameCount * .01));
+            rotateZ((float) (frameCount * .01));
+            
+            for (int xo = -OFF_MAX; xo <= OFF_MAX; xo += 50) {
+                for (int yo = -OFF_MAX; yo <= OFF_MAX; yo += 50) {
+                for (int zo = -OFF_MAX; zo <= OFF_MAX; zo += 50) {
+                    pushMatrix();
+                    translate(xo, yo, zo);
+                    rotateX((float) (frameCount * .02));
+                    rotateY((float) (frameCount * .02));
+                    rotateZ((float) (frameCount * .02));
+                    fill(colorFromOffset(xo), colorFromOffset(yo), 
+                    colorFromOffset(zo));
+                    box((float) (20 + (Math.sin(frameCount / 20.0)) * 15));
+                    popMatrix();
+
         }
         
-    }
+                }}}}
 }
+
+
 
     private void circles() {//CODE MUST BE ALTERED-SEAN
         for (int n = 1; n < nprime*3; n++) {;
             float r = c*sqrt(n);
-            float radius = 3;
+            float radius = 50;
             float theta = n*PI*(3-sqrt(10));
             stroke(map(getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
-            fill(140,map(r/2,1,width,0,500),28,40);
+            fill(255,map(r/2,1,width,0,500),28,40);
             float pulse = pow(sin(t*PI/3-n*PI/(t%100)),(float) 1.5);
             pushMatrix();
-            ellipse(r*cos(theta)/4,r*sin(theta)/4,pulse*radius+6,pulse*radius+6);
+            ellipse(r*cos(theta)/2,r*sin(theta)/2,pulse*radius+10,pulse*radius+6);
             popMatrix();
+            calculateAverageAmplitude();
+            pulse= 50 + (200 * getSmoothedAmplitude()); 
+            
     }
 
     
     }
+
+    int colorFromOffset(int offset) {
+        return (int) ((offset + OFF_MAX) / (2.0 * OFF_MAX) * 255);}
 }
  
