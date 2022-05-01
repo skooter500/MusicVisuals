@@ -1,14 +1,12 @@
 package c20362766;
 
-import processing.core.PApplet;
 
-// This is an example of a visual that renders the waveform
-public class WaveForm5 {
+public class WaveyVisual {
     HabeebsVisuals mv;
     float cy = 0;
     float cx = 0;
 
-    public WaveForm5(HabeebsVisuals mv) {
+    public WaveyVisual(HabeebsVisuals mv) {
         this.mv = mv;
         cy = this.mv.height / 2;
         cx = this.mv.width / 2;
@@ -29,11 +27,9 @@ public class WaveForm5 {
             float y = -h / 2;
 
             for (int j = 0; j < mv.height; j++) {
-
                 float r = mv.sqrt((x * x) + (y * y));
                 float theta = mv.atan2(y, x);
                 float val = mv.sin(n * mv.cos(r) + 5 * theta);
-
                 mv.pixels[i + j * mv.width] = mv.color((int) ((val + mv.getAmplitude()-200) * 255.0));
                 y += dy;
             }

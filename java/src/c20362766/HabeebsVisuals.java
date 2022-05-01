@@ -1,22 +1,24 @@
 package c20362766;
 
+
+
 import ie.tudublin.*;
 
 public class HabeebsVisuals extends Visual {
 
-    WaveForm wf;
-    WaveForm2 wf2;
-    WaveForm3 wf3;
-    WaveForm4 wf4;
-    WaveForm5 wf5;
-    WaveForm6 wf6;
+    EyesVisual wf;
+    AmplitudeVisual wf2;
+    CircleVisual wf3;
+    ColourCircleVisual wf4;
+    WaveyVisual wf5;
+    GridFlashVisual wf6;
 
 
     int mode = 0;
     public Object prevMouseVal;
 
     public void settings() {
-        size(800, 600); 
+        size(800, 600);
     }
 
     public void setup() {
@@ -26,12 +28,12 @@ public class HabeebsVisuals extends Visual {
         startListening();
 
         // new waveform instance
-        wf = new WaveForm(this);
-        wf2 = new WaveForm2(this);
-        wf3 = new WaveForm3(this);
-        wf4 = new WaveForm4(this);
-        wf5 = new WaveForm5(this);
-        wf6 = new WaveForm6(this);
+        wf = new EyesVisual(this);
+        wf2 = new AmplitudeVisual(this);
+        wf3 = new CircleVisual(this);
+        wf4 = new ColourCircleVisual(this);
+        wf5 = new WaveyVisual(this);
+        wf6 = new GridFlashVisual(this);
 
 
     }
@@ -49,7 +51,7 @@ public class HabeebsVisuals extends Visual {
         // Call this is you want to get the average amplitude
         calculateAverageAmplitude();
 
-        switch (key) {
+        switch (mode) {
             case '1':
                 wf.render();
                 break;
@@ -69,7 +71,7 @@ public class HabeebsVisuals extends Visual {
                 wf6.render();
                 break;
             default:
-                wf4.render();
+                wf.render();
                 break;
         }
     }
