@@ -15,7 +15,7 @@ public class JaycelsVisual extends Visual{
     float y;
     float z;
     float colour;
-    int rainlength = 80;
+    int beamLength = 80;
 
     float lerpedAverage = 0;
     
@@ -28,7 +28,7 @@ public class JaycelsVisual extends Visual{
 
         x = RandomNumber();
         y = RandomNumber();
-        z = y + rainlength;
+        z = y + beamLength;
        
     }
     public void update()
@@ -39,7 +39,7 @@ public class JaycelsVisual extends Visual{
         if(y > start.height / 2)
         {
             y = 0;
-            z = y + rainlength;
+            z = y + beamLength;
         }
     }
 
@@ -145,6 +145,19 @@ public class JaycelsVisual extends Visual{
         
         start.popMatrix();
 
+<<<<<<< HEAD
+=======
+        // // Building
+        // for (int i = 0; i < 360; i++) {
+        //     float color = start.getBands()[i] / 2; //get the current fft used for color
+        //     start.noStroke();
+        //     start.fill(start.random(color, 400), start.random(color, 300), 280);
+        //     start.rect(560, 80, -220, 220);
+            
+        // }
+
+        
+>>>>>>> jay
 
     }
 }
