@@ -145,5 +145,16 @@ public class JaycelsVisual extends Visual{
         
         start.popMatrix();
 
+        // // Building
+        // for (int i = 0; i < 360; i++) {
+        //     float color = start.getBands()[i] / 2; //get the current fft used for color
+        //     start.noStroke();
+        //     start.fill(start.random(color, 400), start.random(color, 300), 280);
+        //     start.rect(560, 80, -220, 220);
+            
+        // }
+
+        
+
     }
 }
