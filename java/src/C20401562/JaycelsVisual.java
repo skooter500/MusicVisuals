@@ -145,8 +145,6 @@ public class JaycelsVisual extends Visual{
         
         start.popMatrix();
 
-<<<<<<< HEAD
-=======
         // // Building
         // for (int i = 0; i < 360; i++) {
         //     float color = start.getBands()[i] / 2; //get the current fft used for color
@@ -157,7 +155,6 @@ public class JaycelsVisual extends Visual{
         // }
 
         
->>>>>>> jay
 
     }
 }

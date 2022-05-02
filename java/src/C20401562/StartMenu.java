@@ -58,6 +58,7 @@ public class StartMenu {
             s.text(string, -380, -180);
 
             //Play Button
+            s.fill(90, 300, 360);
             s.circle(0,0, 100);
             s.fill(0);
             s.noStroke();

@@ -7,7 +7,6 @@ public class AlexsVisual extends Visual{
 
     Start s;
     float start = 0;
-    float amp = s.getSmoothedAmplitude();
 
     //_____________Constructor 
 
@@ -19,6 +18,7 @@ public class AlexsVisual extends Visual{
     public void render()
     {
 
+        float amp = s.getSmoothedAmplitude();
 
         s.fill(map(amp, 0, 1, 0, 255), 255, 255);
         s.noStroke();
@@ -26,7 +26,7 @@ public class AlexsVisual extends Visual{
         //Creating Random dots on the scren as soon as beat is detected
         if(s.beat.isOnset()){
             for(int i = 0; i < 50; i++){
-                s.ellipse(random(s.height), random(s.width), 6, 6);
+                s.ellipse(random(s.width), random(s.height), 6, 6);
             }
         }
 
