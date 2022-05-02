@@ -131,7 +131,7 @@ This is an image using a relative URL:
 ![waveyVisual](images/picture1.png)
 ![waveyVisual](images/picture2.png)
 ![waveyVisual](images/picture5.png)
-![waveyVisual](images/picture6.png)
+
 
 
 
