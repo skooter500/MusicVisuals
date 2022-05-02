@@ -25,6 +25,8 @@ public class MendesVisual extends Visual{
             s.line(i, y, i, y + y* s.getAudioBuffer().get((int)index));
 
         }
+
+
     }
     
 }

@@ -70,6 +70,8 @@ public class RotatingAudioBands extends Visual {
         for(int i = 0 ; i < bands.length ; i ++)
         {
             float theta = map(i, 0, bands.length, 0, TWO_PI);
+            // rotateY(theta);
+
 
             stroke(map(i, 0, bands.length, 0, 255), 255, 255);
             float x = sin(theta) * radius;

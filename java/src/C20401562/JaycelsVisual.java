@@ -115,7 +115,7 @@ public class JaycelsVisual extends Visual{
                 float position = start.random(color, start.width); //find a random position to draw the line
                 start.stroke(start.random(color, 400), start.random(color, 300), 300);
                 start.strokeWeight(5);
-                start.line(position - start.width / 2, start.height / 2 , position - start.width / 2 , -(color * 2) - 40 + start.height /2 - 60);
+                start.line(position - start.width / 2, start.height / 2 - 60 , position - start.width / 2 , -(color * 2) - 40 + start.height /2 - 60);
             }
 
               // random triangle
@@ -144,6 +144,7 @@ public class JaycelsVisual extends Visual{
         }
         
         start.popMatrix();
+
 
     }
 }
