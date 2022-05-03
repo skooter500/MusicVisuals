@@ -28,12 +28,14 @@ public class Start extends Visual{
     float[] lerpedBuffer;
     float[] lerpedBuffer2;
 
-    String[] name = {"","Jay", "Alex", "Mende"};
+    String[] name = {"","Jay", "Jay 2", "Alex", "Alex 2","Mende"};
 
 
     //____Initializing Visuals
     AlexsVisual alex;
+    AlexsVisual2 alex2;
     JaycelsVisual jay;
+    JaycelsVisual2 jay2;
     MendesVisual mende;
     StartMenu startm;
     
@@ -93,7 +95,9 @@ public class Start extends Visual{
         calculateAverageAmplitude();   
 
         alex = new AlexsVisual(this);
+        alex2 = new AlexsVisual2(this);
         jay = new JaycelsVisual(this);
+        jay2 = new JaycelsVisual2(this);
         mende = new MendesVisual(this);
         startm = new StartMenu(this);
 
@@ -111,15 +115,25 @@ public class Start extends Visual{
                 break;
             case 2:
                 //Second Visual
-                alex.render();
+                jay2.render();
                 startm.lowerMenu();
                 break;
             case 3:
                 //Third Visual
-                mende.render();
+                alex.render();
                 startm.lowerMenu();
                 break;
             case 4:
+                //Fourth Visual
+                alex2.render();
+                startm.lowerMenu();
+                break;
+            case 5:
+                //Fifth Visual
+                mende.render();
+                startm.lowerMenu();
+                break;
+            case 6:
                 break;
 
             }
@@ -142,18 +156,32 @@ public class Start extends Visual{
             choice = 1;
             colour = 200;
 
-        }else if(isPlaying == false && mouseX >= startm.alexBoxX && mouseX <= startm.alexBoxX + startm.BoxWidth && mouseY >= startm.BoxY && mouseY <= startm.BoxY + startm.BoxHeight){
+        }else if(isPlaying == false && mouseX >= startm.jayBox2X && mouseX <= startm.jayBox2X + startm.BoxWidth && mouseY >= startm.BoxY && mouseY <= startm.BoxY + startm.BoxHeight){
             
             firstClick = 1;
             mode = 2;
             choice = 2;
             colour = 200;
 
-        }else if(isPlaying == false && mouseX >= startm.mendeBoxX && mouseX <= startm.mendeBoxX + startm.BoxWidth && mouseY >= startm.BoxY && mouseY <= startm.BoxY + startm.BoxHeight){
+        }else if(isPlaying == false && mouseX >= startm.alexBoxX && mouseX <= startm.alexBoxX + startm.BoxWidth && mouseY >= startm.BoxY && mouseY <= startm.BoxY + startm.BoxHeight){
             
             firstClick = 1;
             mode = 3;
             choice = 3;
+            colour = 200;
+
+        }else if(isPlaying == false && mouseX >= startm.alexBox2X && mouseX <= startm.alexBox2X + startm.BoxWidth && mouseY >= startm.BoxY && mouseY <= startm.BoxY + startm.BoxHeight){
+            
+            firstClick = 1;
+            mode = 4;
+            choice = 4;
+            colour = 200;
+
+        }else if(isPlaying == false && mouseX >= startm.mendeBoxX && mouseX <= startm.mendeBoxX + startm.BoxWidth && mouseY >= startm.BoxY && mouseY <= startm.BoxY + startm.BoxHeight){
+            
+            firstClick = 1;
+            mode = 5;
+            choice = 5;
             colour = 200;
 
         }
@@ -165,12 +193,8 @@ public class Start extends Visual{
             ap.play();
             isPlaying = true;
 
-        }else if(isPlaying == false){
-
-            allowToPlay = false;
-
         }
-
+        
         //If the Song is Playing
         if(allowToPlay){
 
@@ -200,12 +224,21 @@ public class Start extends Visual{
             //Scrolling through the renders in the lower menu
 
             if(mouseX <= startm.rightbuttonX + startm.nextButtonWidth && mouseX >= startm.rightbuttonX && mouseY >= startm.nextButtonY && mouseY <= startm.nextButtonY + startm.nextButtonHeight){
-                mode = startm.rightIndex;
+                mode = startm.index1;
+            }
+
+            if(mouseX <= startm.rightbutton2X + startm.nextButtonWidth && mouseX >= startm.rightbutton2X && mouseY >= startm.nextButtonY && mouseY <= startm.nextButtonY + startm.nextButtonHeight){
+                mode = startm.index2;
             }
             
             if(mouseX <= startm.leftbuttonX + startm.nextButtonWidth && mouseX >= startm.leftbuttonX && mouseY >= startm.nextButtonY && mouseY <= startm.nextButtonY + startm.nextButtonHeight){
-                mode = startm.leftIndex;
+                mode = startm.index3;
             }
+
+            if(mouseX <= startm.leftbutton2X + startm.nextButtonWidth && mouseX >= startm.leftbutton2X && mouseY >= startm.nextButtonY && mouseY <= startm.nextButtonY + startm.nextButtonHeight){
+                mode = startm.index4;
+            }
+
         }
 
     }
