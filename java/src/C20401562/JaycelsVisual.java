@@ -80,7 +80,7 @@ public class JaycelsVisual extends Visual{
             float color = start.getBands()[i] / 2; //get the current fft used for color
             start.noStroke();
             start.fill(start.random(color, 400), start.random(color, 300), 280);
-            start.lerpedBuffer[i] = PApplet.lerp(start.lerpedBuffer[i], start.getBands()[i], 0.08f); //smooth the circle
+            start.lerpedBuffer[i] = PApplet.lerp(start.getAmplitude()*20, start.getBands()[i], 0.08f); //smooth the circle
             start.ellipse(sin(angle) * ( start.lerpedBuffer[i]), -cos(angle) * (cir + start.lerpedBuffer[i]), PApplet.abs(start.lerpedBuffer[i] * 4), PApplet.abs(start.lerpedBuffer[i] * 4));
             angle += PI / 20; //draw 20 circles on the screen to form a big circle
         }
@@ -93,7 +93,7 @@ public class JaycelsVisual extends Visual{
             float color = start.getBands()[j]; //get the current fft used for color
             start.stroke(start.random(color, 400), start.random(color, 300), 300, 200);
             start.strokeWeight(3);
-            start.lerpedBuffer2[j] = PApplet.lerp(start.lerpedBuffer2[j], start.getBands()[j], 0.5f); //smooth the circle
+            start.lerpedBuffer2[j] = PApplet.lerp(start.getAmplitude()*40, start.getBands()[j], 0.5f); //smooth the circle
             start.line(-cos(ang) * (start.lerpedBuffer2[j] + stick), sin(ang) * (cir + start.lerpedBuffer2[j] + stick), -cos(ang) * (cir - start.lerpedBuffer2[j] - stick), sin(ang) * (cir - start.lerpedBuffer2[j] - stick));
             ang += PI / 40; //draw 40 lines on the screen to form a big circle
         }

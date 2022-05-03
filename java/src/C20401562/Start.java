@@ -8,11 +8,14 @@ public class Start extends Visual{
 
     //For Beat Detection
     BeatDetect beat;
+    Particals[] partical = new Particals[300];
+
 
     int mode = 0;
     int colour = 0;
     int choice = 0;
     int firstClick = 0;
+    int particals = 300;
 
     int buttonMode = 1;
 
@@ -27,6 +30,7 @@ public class Start extends Visual{
     //Smooth the shapes In Visuals
     float[] lerpedBuffer;
     float[] lerpedBuffer2;
+
 
     String[] name = {"","Jay", "Jay 2", "Alex", "Alex 2","Mende"};
 
@@ -75,13 +79,21 @@ public class Start extends Visual{
         loadAudio("Song.wav");
 
         // startListening();
-    
-        lerpedBuffer = new float[width];
-        lerpedBuffer2 = new float[width];
 
         beat = new BeatDetect();
 
         colorMode(HSB);
+
+        for(int i = 0; i < particals; i++)
+        {
+            partical[i] = new Particals(this); 
+         
+        }
+
+            
+        lerpedBuffer = new float[width];
+        lerpedBuffer2 = new float[width];
+
        
     }
 
@@ -120,6 +132,12 @@ public class Start extends Visual{
                 break;
             case 3:
                 //Third Visual
+                for(int i = 0; i < particals; i++)
+                {
+                    partical[i].display(); 
+                    partical[i].update();
+                
+                }
                 alex.render();
                 startm.lowerMenu();
                 break;

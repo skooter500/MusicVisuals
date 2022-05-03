@@ -160,9 +160,9 @@ public class StartMenu {
     {
 
         //Bar
-        s.fill(20);
-        s.noStroke();
-        s.rect(0, s.height - 60, s.width, 60);
+        // s.fill(20);
+        // s.noStroke();
+        // s.rect(0, s.height - 60, s.width, 60);
 
         //Play/Pause Button
         s.fill(255);
@@ -170,7 +170,7 @@ public class StartMenu {
 
         //Loop Button
         s.stroke(255);
-        s.fill(20);
+        s.noFill();
         s.circle(s.width/2 + 40, s.height - 30, 40);
         
         s.stroke(255);

@@ -1,6 +1,6 @@
 package C20401562;
 
-import ie.tudublin.Visual;
+import ie.tudublin.*;
 import processing.core.*;
 
 public class AlexsVisual extends Visual{
@@ -18,6 +18,7 @@ public class AlexsVisual extends Visual{
     public void render()
     {
         float amp = s.getSmoothedAmplitude();
+        
 
         s.fill(map(amp, 0, 1, 0, 255), 255, 255);
         s.noStroke();
