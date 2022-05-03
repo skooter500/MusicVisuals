@@ -19,8 +19,6 @@ public class AlexsVisual extends Visual{
     {
         float amp = s.getSmoothedAmplitude();
 
-        float amp = s.getSmoothedAmplitude();
-
         s.fill(map(amp, 0, 1, 0, 255), 255, 255);
         s.noStroke();
 
