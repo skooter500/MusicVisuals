@@ -7,6 +7,7 @@ import ddf.minim.Minim;
 import ddf.minim.analysis.FFT;
 
 
+
 public class Runner extends Visual{
     Minim minim;
     AudioPlayer ap;
@@ -25,6 +26,12 @@ public class Runner extends Visual{
     float hue;
     FFT fft; // Object that performs Fast Fourier Transform (FFT)
     int OFF_MAX= 300;
+    drop d;
+    drop[] drops= new drop[500];
+    float radius = 200;
+    float rot = 0;
+    
+       
 
     public void setup(){
         for(int i = 0; i < stars.length; i++){
@@ -32,12 +39,16 @@ public class Runner extends Visual{
         }
         minim=new Minim(this);
         startMinim();
+        getFFT();
         loadAudio("rain.mp3");
-        colorMode(HSB,255);
-        
+        colorMode(HSB,255);   
         hue = random(255);
         //sean edits
         noStroke();
+        for(int i =0;i<drops.length; i++){
+            drops[i]= new drop();
+        }
+       
 
     }
 
@@ -59,49 +70,58 @@ public class Runner extends Visual{
 
     public void draw(){
         background(0);
-        
+           
 
         switch(mode){
+
+
+
+
             case 1: //OWN CODE NOT FROM EXAMPLE PACKAGE
             {
-                getMinim();
+                getFFT();
                 calculateFrequencyBands();
                 calculateAverageAmplitude();
-                stroke(map(getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
-                background(0);
-                translate(width/2, height/2);
-                for(int i = 0; i<stars.length;i++){ //Displays star(s) on screen
-                    fill(255);
-                    strokeWeight(1);
+                calculateAverageAmplitude();
+                getAmplitude();
+                    background(0);
+                    translate(width/2, height/2);
+                    for(int i = 0; i<stars.length;i++){ //Displays star(s) on screen
+                        fill(255);
+                        strokeWeight(1);
+                        
+                        float sx = map(stars[i].x/stars[i].z,0,1,0,width);
+                        float sy = map(stars[i].y/stars[i].z,0,1,0,height);
+                        float r = map(stars[i].z,0,width,16,0);
+                        ellipse(sx,sy,r,r);
                     
-                    float sx = map(stars[i].x/stars[i].z,0,1,0,width);
-                    float sy = map(stars[i].y/stars[i].z,0,1,0,height);
-                    float r = map(stars[i].z,0,width,16,0);
-                    ellipse(sx,sy,r,r);
-                
-                    float px = map(stars[i].x/stars[i].pz,0,1,0,width);
-                    float py = map(stars[i].y/stars[i].pz,0,1,0,height);
-                
-                    stroke(255);
-                    line(px,py,sx,sy);
-                }
-
-                for(int i = 0;i<stars.length;i++){ //updates star(s) position on screen once it disappears
-                    stars[i].z = stars[i].z-25;
-                    if(stars[i].z < 1){
-                        stars[i].z = width;
-                        stars[i].x = random(-width,width);
-                        stars[i].y = random(-height,height);
-                        stars[i].pz = stars[i].z;
+                        float px = map(stars[i].x/stars[i].pz,0,1,0,width);
+                        float py = map(stars[i].y/stars[i].pz,0,1,0,height);
+                    
+                        stroke(255);
+                        line(px,py,sx,sy);
                     }
-                }
+    
+                    for(int i = 0;i<stars.length;i++){ //updates star(s) position on screen once it disappears
+                        stars[i].z = stars[i].z-25;
+                        if(stars[i].z < 1){
+                            stars[i].z = width;
+                            stars[i].x = random(-width,width);
+                            stars[i].y = random(-height,height);
+                            stars[i].pz = stars[i].z;
+                        }
+                    }
+               
+               
             }
 
             case 2: //MUST ALTER - COPIED FROM EXAMPLE.
             {
+                getFFT();
+                calculateFrequencyBands();
                 calculateAverageAmplitude();
                 stroke(map(getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
-                strokeWeight(4); //make the cube thicker that the stars to add contrast
+                strokeWeight(2); //make the cube thicker that the stars to add contrast
                 noFill();
                 lights();
                 pushMatrix();
@@ -135,11 +155,17 @@ public class Runner extends Visual{
         }
             case 4:
         {
+            if (key == '4')
+            {
+                
+            getFFT();
             getMinim();
             calculateFrequencyBands();
             calculateAverageAmplitude();
             stroke(map(getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
-            translate(width / 2, height / 2, -OFF_MAX);
+            rot += getAmplitude() / 8.0f;
+            
+            translate(width / 2, height / 2, OFF_MAX);
             rotateX((float) (frameCount * .01));
             rotateY((float) (frameCount * .01));
             rotateZ((float) (frameCount * .01));
@@ -152,6 +178,7 @@ public class Runner extends Visual{
                     rotateX((float) (frameCount * .02));
                     rotateY((float) (frameCount * .02));
                     rotateZ((float) (frameCount * .02));
+                    rotate(rot);
                     fill(colorFromOffset(xo), colorFromOffset(yo), 
                     colorFromOffset(zo));
                     box((float) (20 + (Math.sin(frameCount / 20.0)) * 15));
@@ -159,23 +186,78 @@ public class Runner extends Visual{
 
         }
         
-                }}}}
+        }
+    }
+        }
 }
+            
+            case 5:{
 
 
 
-    private void circles() {//CODE MUST BE ALTERED-SEAN
-        for (int n = 1; n < nprime*3; n++) {;
+                  
+            }
+
+
+        /*if (key=='5'){
+        calculateAverageAmplitude();
+        calculateFFT();
+        calculateFrequencyBands();
+        background(0);
+        noFill();
+        stroke(255);
+        lights();
+        stroke(map(getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
+        camera(0, -500, 500, 0, 0, 0, 0, 1, 0);
+        //translate(0, 0, -250);
+
+        rot += getAmplitude() / 8.0f;
+
+        rotateY(rot);
+        float[] bands = getSmoothedBands();
+        for(int i = 0 ; i < bands.length ; i ++)
+        {
+            float theta = map(i, 0, bands.length, 0, TWO_PI);
+
+            stroke(map(i, 0, bands.length, 0, 255), 255, 255);
+            float x = sin(theta) * radius;
+            float z = cos(theta) * radius;
+            float h = bands[i];
+            pushMatrix();
+            translate(x, - h / 2 , z);
+            rotateY(theta);
+            box(50, h, 50);
+            popMatrix();
+        }
+        }
+        */
+
+            
+        }
+
+    }
+            
+
+
+
+
+    private void circles() {
+        calculateAverageAmplitude();
+        getFFT();
+        calculateFrequencyBands();//CODE MUST BE ALTERED-SEAN
+        for (int n = 1; n < nprime*3; n++) {
+            pushMatrix();
+            rot += getAmplitude() / 10.0f;
+            rotate(rot);
             float r = c*sqrt(n);
             float radius = 50;
             float theta = n*PI*(3-sqrt(10));
             stroke(map(getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
             fill(255,map(r/2,1,width,0,500),28,40);
             float pulse = pow(sin(t*PI/3-n*PI/(t%100)),(float) 1.5);
-            pushMatrix();
+           
             ellipse(r*cos(theta)/2,r*sin(theta)/2,pulse*radius+10,pulse*radius+6);
             popMatrix();
-            calculateAverageAmplitude();
             pulse= 50 + (200 * getSmoothedAmplitude()); 
             
     }
