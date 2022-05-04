@@ -1,6 +1,6 @@
 # Music Visualiser Project
 
-Names: Gabriel Plaza, Sean Lawless and Stephen Crabb
+Names: Gabriel Plaza and Sean Lawless
  
 Student Numbers: (Gabriel)C20474596, (Sean)C20447296 
 
