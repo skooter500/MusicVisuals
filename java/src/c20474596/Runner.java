@@ -1,7 +1,6 @@
 package c20474596;
 
 import java.util.ArrayList;
-
 import ddf.minim.AudioBuffer;
 import ddf.minim.AudioInput;
 import ddf.minim.AudioPlayer;
