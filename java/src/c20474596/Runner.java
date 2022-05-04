@@ -120,7 +120,7 @@ boolean state = false;
 
 
 
-            case 1: //OWN CODE NOT FROM EXAMPLE PACKAGE
+            case 1: //stars on screen visual
             {
                 getFFT();
                 calculateFrequencyBands();
