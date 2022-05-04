@@ -1,6 +1,4 @@
 package c20474596;
-
-import java.util.ArrayList;
 import ddf.minim.AudioBuffer;
 import ddf.minim.AudioInput;
 import ddf.minim.AudioPlayer;
@@ -12,7 +10,7 @@ public class Runner extends Visual{
     AudioPlayer ap;
     AudioInput ai;
     AudioBuffer ab;
-    Star[] stars = new Star[1250];
+    Star[] stars = new Star[900];
     float px;
     float py;
     int mode = 0;
@@ -88,7 +86,7 @@ public class Runner extends Visual{
                 }
     
                 for(int i = 0;i<stars.length;i++){ //updates star(s) position on screen once they disappear
-                    stars[i].z = stars[i].z-25;
+                    stars[i].z = stars[i].z-20;
                     if(stars[i].z < 1){
                         stars[i].z = width;
                         stars[i].x = random(-width,width);
@@ -100,12 +98,15 @@ public class Runner extends Visual{
             }
 
             case 2:
+            
             {
                 getFFT();
                 calculateFrequencyBands();
                 calculateAverageAmplitude();
                 getAmplitude();
                 float boxSize = 200 + (700 * getSmoothedAmplitude()); 
+                stroke(map(getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
+                fill(10,10,10);
                 box(boxSize);
             }
 
