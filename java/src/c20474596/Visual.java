@@ -10,14 +10,14 @@ public abstract class Visual extends PApplet
 	private int frameSize = 512;
 	private int sampleRate = 44100;
 
-	private float[] bands;
+	protected float[] bands;
 	private float[] smoothedBands;
 
 	private Minim minim;
 	private AudioInput ai;
 	private AudioPlayer ap;
 	private AudioBuffer ab;
-	private FFT fft;
+	protected FFT fft;
 
 	private float amplitude  = 0;
 	private float smothedAmplitude = 0;
@@ -34,10 +34,10 @@ public abstract class Visual extends PApplet
   		smoothedBands = new float[bands.length];
 
 	}
-
 	float log2(float f) {
 		return log(f) / log(2.0f);
 	}
+
 
 	
 	public void calculateAverageAmplitude()
