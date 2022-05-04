@@ -1,10 +1,13 @@
 package c20474596;
 
+import java.util.ArrayList;
+
 import ddf.minim.AudioBuffer;
 import ddf.minim.AudioInput;
 import ddf.minim.AudioPlayer;
 import ddf.minim.Minim;
 import ddf.minim.analysis.FFT;
+import processing.core.PVector;
 
 
 
@@ -30,6 +33,17 @@ public class Runner extends Visual{
     drop[] drops= new drop[500];
     float radius = 200;
     float rot = 0;
+	ArrayList<PVector> circle = new ArrayList<PVector>();
+ArrayList<PVector> square = new ArrayList<PVector>();
+
+// An ArrayList for a third set of vertices, the ones we will be drawing
+// in the window
+ArrayList<PVector> morph = new ArrayList<PVector>();
+
+// This boolean variable will control if we are morphing to a circle or square
+boolean state = false;
+
+
     
        
 
@@ -48,6 +62,35 @@ public class Runner extends Visual{
         for(int i =0;i<drops.length; i++){
             drops[i]= new drop();
         }
+
+        // Create a circle using vectors pointing from center
+  for (int angle = 0; angle < 360; angle += 9) {
+    // Note we are not starting from 0 in order to match the
+    // path of a circle.  
+    PVector v = PVector.fromAngle(radians(angle-135));
+    v.mult(350);
+    circle.add(v);
+    // Let's fill out morph ArrayList with blank PVectors while we are at it
+    morph.add(new PVector());
+  }
+
+  // A square is a bunch of vertices along straight lines
+  // Top of square
+  for (int x = -50; x < 50; x += 10) {
+    square.add(new PVector(x, -150));
+  }
+  // Right side
+  for (int y = -50; y < 50; y += 10) {
+    square.add(new PVector(150, y));
+  }
+  // Bottom
+  for (int x = 50; x > -50; x -= 10) {
+    square.add(new PVector(x, 150));
+  }
+  // Left side
+  for (int y = 50; y > -50; y -= 10) {
+    square.add(new PVector(-150, y));
+  }
        
 
     }
@@ -81,7 +124,6 @@ public class Runner extends Visual{
             {
                 getFFT();
                 calculateFrequencyBands();
-                calculateAverageAmplitude();
                 calculateAverageAmplitude();
                 getAmplitude();
                     background(0);
@@ -117,7 +159,54 @@ public class Runner extends Visual{
 
             case 2: //MUST ALTER - COPIED FROM EXAMPLE.
             {
-                getFFT();
+
+
+                              // We will keep how far the vertices are from their target
+  float totalDistance = 0;
+  
+  // Look at each vertex
+  for (int i = 0; i < circle.size(); i++) {
+    PVector v1;
+    // Are we lerping to the circle or square?
+    if (state) {
+      v1 = circle.get(i);
+    }
+    else {
+      v1 = square.get(i);
+    }
+    // Get the vertex we will draw
+    PVector v2 = morph.get(i);
+    // Lerp to the target
+    v2.lerp(v1, (float) 0.1);
+    // Check how far we are from target
+    totalDistance += PVector.dist(v1, v2);
+  }
+  
+  // If all the vertices are close, switch shape
+  if (totalDistance < 0.1) {
+    state = !state;
+  }
+  float boxSize = 200 + (700 * getSmoothedAmplitude()); 
+    box(boxSize);
+  
+  // Draw relative to center5
+  translate(width/2, height/2);
+  strokeWeight(4);
+  // Draw a polygon that makes up all the vertices
+  beginShape();
+  getFFT();
+  calculateFrequencyBands();
+  calculateAverageAmplitude();
+  getAmplitude();
+  noFill();
+  stroke(255);
+  for (PVector v : morph) {
+    vertex(v.x, v.y);
+  }
+  endShape(CLOSE);
+
+
+                /*getFFT();
                 calculateFrequencyBands();
                 calculateAverageAmplitude();
                 stroke(map(getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
@@ -132,7 +221,7 @@ public class Runner extends Visual{
                 float boxSize = 50 + (200 * getSmoothedAmplitude()); 
                 box(boxSize);   
                 popMatrix();
-                angle += 0.01f;  
+                angle += 0.01f;  */
             }
 
            case 3://CODE MUST BE ALTERED
@@ -193,44 +282,9 @@ public class Runner extends Visual{
             
             case 5:{
 
-
-
+  
                   
             }
-
-
-        /*if (key=='5'){
-        calculateAverageAmplitude();
-        calculateFFT();
-        calculateFrequencyBands();
-        background(0);
-        noFill();
-        stroke(255);
-        lights();
-        stroke(map(getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
-        camera(0, -500, 500, 0, 0, 0, 0, 1, 0);
-        //translate(0, 0, -250);
-
-        rot += getAmplitude() / 8.0f;
-
-        rotateY(rot);
-        float[] bands = getSmoothedBands();
-        for(int i = 0 ; i < bands.length ; i ++)
-        {
-            float theta = map(i, 0, bands.length, 0, TWO_PI);
-
-            stroke(map(i, 0, bands.length, 0, 255), 255, 255);
-            float x = sin(theta) * radius;
-            float z = cos(theta) * radius;
-            float h = bands[i];
-            pushMatrix();
-            translate(x, - h / 2 , z);
-            rotateY(theta);
-            box(50, h, 50);
-            popMatrix();
-        }
-        }
-        */
 
             
         }
