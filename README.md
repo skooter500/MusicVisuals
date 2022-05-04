@@ -1,8 +1,8 @@
 # Music Visualiser Project
 
-Names: Gabriel Plaza, Sean Lawless and Stephen Crabb
+Names: Gabriel Plaza and Sean Lawless
  
-Student Numbers: (Gabriel)C20474596, (Sean)C20447296, (Stephen)C20425416
+Student Numbers: (Gabriel)C20474596, (Sean)C20447296 
 
 ## Instructions
 - Fork this repository and use it a starter project for your assignment
