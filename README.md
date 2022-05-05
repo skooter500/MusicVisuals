@@ -185,19 +185,55 @@ For effective team work we seperated our roles.
 
 As a group we were proud of the whole project but to identifiy each renders outstanding values would be :
 
-1. Menu
-When it came to the menu, the complex use of the mouse methods from proccessing, allowing to create an almost high end menu. Helping me understand how menus such as Spotify or Youtube are created. With the ability to select specific renders within the respective ranges.
+1. Menu -
+When it came to the menu, the complex use of the mouse methods from proccessing, allowing to create an almost high end menu. Helping me understand how menus such as Spotify or Youtube are created. With the ability to select specific renders within the respective ranges. I have further gained knowledge while coding the menu part in processing - loading in png and jpg images onto the screen. 
 
-1. First
+2. Visual 3 -
+The third visual is one of my favourite in this assignment. Whether idea and implementation, both made me really excited after achieving the final result. Especially the custom devil emoji that was created, which was very fun and interesting to make. The use of mathematical concepts in processing to create a sine wave that curves around a circle creating a smoothened wave thats sound and colour responsive.
 
-1. Second
+3. Default Rotation -
+Another aspect of our project that I am most proud of is the default rotation of shapes when the music stops. The rotation depends on the amplitude of the song playing. In regards to the rotation and turning - I am also very proud of the rubix cube from the Second Visual. It was an idea I did not think I would be able to visualise on the project. As I was doing research on what to do for the project, I came across a forum on rubix cubes and thought how I would be able to implement small cubes that make up a bigger cube that rotates and turns. I thought that it would consist of some heavy coding but to my surprise it was very short to implement. 
 
-1. Third
-The use of mathematical concepts in processing to create a sine wave that curves around a circle creating a smoothened wave thats sound and colour responsive.
+```java
+float size = 100;
 
-1. Fourth
+        s.pushMatrix();
 
-1. Fifth
+            s.translate(s.width/2, s.height/2);
+            
+            //Rotation Of Cubiod
+
+            s.rotateX(s.angle);
+            s.rotateY(s.angle); 
+            s.rotateZ(s.angle);
+            
+            for (int xo = (int)-size; xo <= size; xo += 30) { //Spacing between each box
+                for (int yo = (int)-size; yo <= size; yo += 30) {
+                    for (int zo = (int)-size; zo <= size; zo += 30) {
+                        s.pushMatrix();
+                            s.translate(xo, yo, zo); //Positions of each cube
+
+                            //Rotates boxes
+                            s.rotateX(s.angle);
+                            s.rotateY(s.angle);
+                            s.rotateZ(s.angle);
+                            s.noStroke();
+
+                            s.strokeWeight(4);
+                            s.fill(c); //Filling the inside of the boxes white
+
+                            //Changing cubiod colour on beat detection
+                            if(s.beat.isOnset()){
+                                s.fill(c, 255, 255);
+                            }
+
+                            s.box((float) (15 + (Math.sin(s.angle1)) * 10));
+                        s.popMatrix();
+                    }
+                s.angle += 0.00005f; //Speed of rotation
+                s.angle1 += 0.00005f; 
+```
+
 
 Our YouTube Video:
 
