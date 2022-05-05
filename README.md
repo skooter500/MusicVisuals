@@ -186,7 +186,7 @@ For effective team work we seperated our roles.
 As a group we were proud of the whole project but to identifiy each renders outstanding values would be :
 
 1. Menu -
-When it came to the menu, the complex use of the mouse methods from proccessing, allowing to create an almost high end menu. Helping me understand how menus such as Spotify or Youtube are created. With the ability to select specific renders within the respective ranges. I have further gained knowledge while coding the menu part in processing - loading in png and jpg images onto the screen. 
+When it came to the menu, the complex use of the mouse methods from proccessing, allowing to create an almost high end menu. Helping me understand how menus such as Spotify or Youtube are created. With the ability to select specific renders within the respective ranges. I have further gained knowledge while coding the menu part in processing - loading in png and jpg images onto the screen. I really love the aesthetic that we have gone with our menu with the background contrasting with the buttons and when a render is chosen, it highlights the opposite colour around it. 
 
 2. Visual 3 -
 The third visual is one of my favourite in this assignment. Whether idea and implementation, both made me really excited after achieving the final result. Especially the custom devil emoji that was created, which was very fun and interesting to make. The use of mathematical concepts in processing to create a sine wave that curves around a circle creating a smoothened wave thats sound and colour responsive.
