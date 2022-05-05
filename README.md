@@ -66,11 +66,12 @@ A
 
 # How it works
 
-Being the assignment we created a Main class to operate our renders, extending the visuals class from ie/tudublin and interhiting from the Mimim library. 
+Being the assignment we created a Main class to operate our renders, extending the visuals class from ie/tudublin and inheriting from the Mimim library. 
 - 3D = True
 - Size of window = 1400 x 800
 - Colour Mode = HSB
 
+Also to give a big thank you to past years creative inspirations!
 From here we were able to call all the other classes within a switch statement starting with the menu class by default.
 ```java
 	if(allowToPlay){
@@ -110,18 +111,18 @@ From here we were able to call all the other classes within a switch statement s
 	}
 ```
 
-The menu works off the *public void mouseClicked()* method, creating statments to allow the program to verify which render the user selected on the menu, and if it was selected then the user is allowed to play, the mode for the switch statment set for which render the user picked.
+The menu works off the *public void mouseClicked()* method, creating statements to allow the program to verify which render the user selected on the menu, and if it was selected then the user is allowed to play, the mode for the switch statement set for which render the user picked.
 Once the user selects a render the menu is collapsed down, with an array of renders showing at the button along with a responsive play/pause button which changes depending on the songs state.
 
-The sub classes, inherit from *Start.java* along with *Visuals.java*. With the use of processing we were able to create sound resposnive designs by mapping the values from indexs of a for loop and the audio buffers of the song as such:
+The sub classes, inherit from *Start.java* along with *Visuals.java*. With the use of processing we were able to create sound responsive designs by mapping the values from index's of a for loop and the audio buffers of the song as such:
 
 ```java
 	float index = PApplet.map(i, 0 , 180 , 0, ab.size() - 1);
 	s.stroke(PApplet.map(index, 0, ab.size(), 0, 255), 255,255);
 ```
 
-The same logic being used to make it roate to sound and grow in scale.
-For alot of the gemotrical aspects of the visuals we needed to use mathicamitcal formauls such as sin, cos and radius' and example being the third graphics center circles smoothened border waves
+The same logic being used to make it rotate to sound and grow in scale.
+For a lot of the geometrical aspects of the visuals we needed to use mathematical formals such as sin, cos and radius' and example being the third graphics center circles smoothened border waves.
 
 ```java
 	for(float i = 0f; i < 360; i += space){
@@ -141,7 +142,7 @@ For alot of the gemotrical aspects of the visuals we needed to use mathicamitcal
 
 	}
 ```
-Using the proccessing library along with mapping of the sin poistion of the i index thats to 360, allowing us to create circles. Every visual being easer to map onto the screen using *push/pop Matrix's* along with *translate*, the idea of these proccessess is to change the coridnates of the starting x and y postions from 0,0 to the desired location and still keep it as 0,0 for indexing as such:
+Using the processing library along with mapping of the sin position of the *i* index that's to 360, allowing us to create circles. Every visual being easer to map onto the screen using *push/pop Matrix's* along with *translate*, the idea of these processes is to change the coordinates of the starting x and y positions from 0,0 to the desired location and still keep it as 0,0 for indexing as such:
 
 ```java
 	//______________Center Matrix
@@ -171,7 +172,7 @@ Moving from 2D shapes we were able to use 3D graphics as outlined in our setup m
 
 For effective team work we seperated our roles.
 
-| Team Member | Role |
+| Team Member | Roles |
 |-----------|-----------|
 |Jay | Two Renders, Designer |
 |Alex | Two Renders, Merge Handler, Menu Creation|
@@ -179,11 +180,12 @@ For effective team work we seperated our roles.
 
 # What I am most proud of in the assignment
 
-As a group we were proud of the whole project but to identifiy each renders outstanding values would be
+As a group we were proud of the whole project but to identifiy each renders outstanding values would be :
 
 1. First
 
 1. Second
+
 
 1. Third
 
