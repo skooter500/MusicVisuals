@@ -4,18 +4,59 @@ Name: Alexander Dergach, Jaycel Estrellado, Mendbayar Bat-Orshikh
 
 Student Number: C20401562, C20372876, C20458384
 
-## Instructions
-- Fork this repository and use it a starter project for your assignment
-- Create a new package named your student number and put all your code in this package.
-- You should start by creating a subclass of ie.tudublin.Visual
-- There is an example visualiser called MyVisual in the example package
-- Check out the WaveForm and AudioBandsVisual for examples of how to call the Processing functions from other classes that are not subclasses of PApplet
-
 # Description of the assignment
+Welcome to our Music Visualizer Project. This assignment will consist of 5 distinct visual effects. An interactive menu will be displayed and as the user, you are able to switch through different renders using button clicks.
+
+### First Visual
+
+The first Visual is comprised of 3 components, center, side and top/bottom. 
+In the center there is two distorted semi circles, made of thin lines each respective line being sound responsive with both size and colour, they are separated giving room for a row of ellipses in the middle, which are also synchronizing with the music. From the very center steams a flower pattern made of dots along with a beam of colour going off to the corner of the screen, the flower petal design vibrating as the music plays intensifies with the amplitude, the lazer beam also being sound responsive and only visible when the actual song is playing.
+At the sides you will find two identically placed illustrations, made of ellipses with no fill creating a scribble effect and the width and height of the ellipses changing with the song. 
+Random generated lines are placed at the top and bottom of the screen and it is also synchronizing with the music- adding a more visualizing effect to the program.
+Adding this randomly generated beams, creates a more chaotic approach to the visual contrasting with the other effects.
+
+![An image](java/data/FirstVis.png
+
+### Second Visual
+
+A
+
+![An image](java/data/secondvis.png)
+
+### Third Visual
+
+A
+
+![An image](java/data/thirdvis.png)
+
+### Fourth Visual
+
+A
+
+![An image](java/data/fourthvis.png)
+
+### Fifth Visual
+
+A
 
 # Instructions
 
+### Starting Visuals
+
+- First you clone this repository
+- Open it in an IDE, press *F5* to run the visual
+- Opening the Main Menu
+
+### Main Menu
+
+- You may select a render and press on the middle play button to play that persons render
+- Menu will collapse into a lower menu, you are able to *loop*, *pause/play*, or *change* to another persons render
+
+![An image](java/data/MainMenu.png)
+
 # How it works
+
+
 
 # What I am most proud of in the assignment
 
@@ -65,14 +106,6 @@ public void render()
 	ui.text(text, x + width * 0.5f, y + height * 0.5f);
 }
 ```
-
-This is an image using a relative URL:
-
-![An image](images/p8.png)
-
-This is an image using an absolute URL:
-
-![A different image](https://bryanduggandotorg.files.wordpress.com/2019/02/infinite-forms-00045.png?w=595&h=&zoom=2)
 
 This is a youtube video:
 

@@ -1,6 +1,9 @@
 package C20401562;
 
-public class StartMenu {
+
+import ie.tudublin.Visual;
+
+public class StartMenu extends Visual{
 
     Start s;
     String string = "Select One Of The Renders And Press Play";
@@ -54,17 +57,18 @@ public class StartMenu {
 
     public void render(){
 
+        s.image(s.img, 0, 0, s.width, s.height);
 
         s.pushMatrix();
             s.translate(s.width/2, s.height/2);
 
             //Top Text
-            s.fill(220);
+            s.fill(250);
             s.textSize(40);
             s.text(string, -380, -180);
 
             //Play Button
-            s.fill(90, 300, 360);
+            s.fill(255);
             s.circle(0,0, 100);
             s.fill(0);
             s.noStroke();
@@ -79,30 +83,33 @@ public class StartMenu {
         s.pushMatrix();
             s.translate(s.width/2, s.height/2 + 140 , 0);
 
+            //RGB for colours matching background image
+            s.colorMode(RGB);
+
             //Get choice from Start, when rectangle is clicked then turn that border green
             if(s.choice == 1){//Jay1
                 s.noFill();
-                s.stroke(90, s.colour, 360);
+                s.stroke(255, 0, 255);
                 s.strokeWeight(3);
                 s.rect(-space * 3.5f, 0, space, heightOfBox, 10);
             }else if(s.choice == 2){//Jay2
                 s.noFill();
-                s.stroke(90, s.colour, 360);
+                s.stroke(255, 0, 255);
                 s.strokeWeight(3);
                 s.rect(-space * 2, 0, space, heightOfBox, 10);
             }else if(s.choice == 3){//Alex
                 s.noFill();
-                s.stroke(90, s.colour, 360);
+                s.stroke(64, 0, 255);
                 s.strokeWeight(3);
                 s.rect(-space/2, 0, space, heightOfBox, 10);
             }else if(s.choice == 4){//Alex2
                 s.noFill();
-                s.stroke(90, s.colour, 360);
+                s.stroke(64, 0, 255);
                 s.strokeWeight(3);
                 s.rect(space, 0, space, heightOfBox, 10);
             }else if(s.choice == 5){//Mende
                 s.noFill();
-                s.stroke(90, s.colour, 360);
+                s.stroke(64, 0, 255);
                 s.strokeWeight(3);
                 s.rect(space * 2.5f, 0, space, heightOfBox, 10);
             }else{
@@ -114,17 +121,18 @@ public class StartMenu {
             s.noStroke();
 
             //Each Persons Rectangle and Respectful name
-
             //Jay
+            s.fill(64, 0, 255);
             s.rect(-space * 2, 0, space, heightOfBox, 10);
             s.rect(-space * 3.5f, 0, space, heightOfBox, 10);
+            s.fill(255, 0, 255);
             //Alex
             s.rect(-space/2, 0, space, heightOfBox, 10);
             s.rect(space, 0, space, heightOfBox, 10);
             //Mende
             s.rect(space * 2.5f, 0, space, heightOfBox, 10);
-
-            s.fill(0);
+            s.colorMode(HSB);
+            s.fill(255);
 
             s.textSize(40);
             s.text("Jay", -space - space*2 - 35, heightOfBox/1.3f);

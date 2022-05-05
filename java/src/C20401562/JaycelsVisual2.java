@@ -162,11 +162,4 @@ public class JaycelsVisual2 extends Visual{
 
       }
 
-
-
-      
-
-
-
-
 }

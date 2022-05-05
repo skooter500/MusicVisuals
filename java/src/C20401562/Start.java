@@ -3,8 +3,11 @@ package C20401562;
 import ddf.minim.analysis.*;
 import ie.tudublin.*;
 import processing.core.PApplet;
+import processing.core.PImage;
 
 public class Start extends Visual{
+
+    PImage img;
 
     //For Beat Detection
     BeatDetect beat;
@@ -17,7 +20,7 @@ public class Start extends Visual{
     float angle1 = 0;
     float angle2 = 0;
 
-
+    //Menu Varibles
     int mode = 0;
     int colour = 0;
     int choice = 0;
@@ -87,6 +90,12 @@ public class Start extends Visual{
 
         // startListening();
 
+
+        img = loadImage("BG.jpg");
+
+        img.filter(BLUR, 6);
+
+
         beat = new BeatDetect();
 
         colorMode(HSB);
@@ -134,7 +143,6 @@ public class Start extends Visual{
                 break;
             case 2:
                 //Second Visual
-
                 jay2.render();
                 startm.lowerMenu();
                 break;
@@ -150,7 +158,7 @@ public class Start extends Visual{
                 startm.lowerMenu();
                 break;
             case 4:
-                
+                //Fourth Visual
                 alex2.render();
                 startm.lowerMenu();
                 break;
@@ -159,9 +167,6 @@ public class Start extends Visual{
                 mende.render();
                 startm.lowerMenu();
                 break;
-            case 6:
-                break;
-
             }
         }else{
             //At the start when song isnt playing show menu
