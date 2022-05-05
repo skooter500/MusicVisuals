@@ -15,7 +15,7 @@ At the sides you will find two identically placed illustrations, made of ellipse
 Random generated lines are placed at the top and bottom of the screen and it is also synchronizing with the music- adding a more visualizing effect to the program.
 Adding this randomly generated beams, creates a more chaotic approach to the visual contrasting with the other effects.
 
-![An image](java/data/FirstVis.png
+![An image](java/data/FirstVis.png)
 
 ### Second Visual
 
