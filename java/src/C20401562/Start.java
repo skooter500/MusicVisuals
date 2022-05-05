@@ -150,9 +150,7 @@ public class Start extends Visual{
                 //Third Visual
                 for(int i = 0; i < particals; i++)
                 {
-                    partical[i].display(); 
-                    partical[i].update();
-                
+                    partical[i].render(); 
                 }
                 alex.render();
                 startm.lowerMenu();
