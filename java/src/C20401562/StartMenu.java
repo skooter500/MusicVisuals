@@ -159,10 +159,8 @@ public class StartMenu {
     public void lowerMenu()
     {
 
-        //Bar
-        // s.fill(20);
-        // s.noStroke();
-        // s.rect(0, s.height - 60, s.width, 60);
+        s.strokeWeight(2);
+
 
         //Play/Pause Button
         s.fill(255);
