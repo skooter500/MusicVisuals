@@ -14,7 +14,9 @@ public class JaycelsVisual extends Visual{
     float x;
     float y;
     float z;
+
     float colour;
+
     int beamLength = 80;
 
     float lerpedAverage = 0;
@@ -26,11 +28,14 @@ public class JaycelsVisual extends Visual{
     {
         this.start = start;
 
+        //Creating random x and y cords
         x = RandomNumber();
         y = RandomNumber();
         z = y + beamLength;
        
     }
+
+    //Method for center beam graphic
     public void update()
     {
         y += 9;
@@ -43,11 +48,14 @@ public class JaycelsVisual extends Visual{
         }
     }
 
+    //Generating Random Numbers for colours
     public int RandomNumber()
     {
         Random rand = new Random();
         return rand.nextInt(start.width);
     }
+
+    //_______Render
 
     public void render()
     {
@@ -69,124 +77,121 @@ public class JaycelsVisual extends Visual{
 
         //start.getFFT().forward(start.ap.mix); //load the audio to the fft
         start.pushMatrix();
-        start.translate(start.width/2, start.height/2); //translate to the center of the screen
-        start.setBands(start.getFFT().getSpectrumReal()); //load the fft to bands
 
-        //Circle
-        float angle = 0;
-        float cir = 180; // radius
+            start.translate(start.width/2, start.height/2); //translate to the center of the screen
+            start.setBands(start.getFFT().getSpectrumReal()); //load the fft to bands
 
-        for (int i = 0; i < 360; i++) {
-            float color = start.getBands()[i] / 2; //get the current fft used for color
-            start.noStroke();
-            start.fill(start.random(color, 400), start.random(color, 300), 280);
-            start.lerpedBuffer[i] = PApplet.lerp(start.getAmplitude()*20, start.getBands()[i], 0.08f); //smooth the circle
-            start.ellipse(sin(angle) * ( start.lerpedBuffer[i]), -cos(angle) * (cir + start.lerpedBuffer[i]), PApplet.abs(start.lerpedBuffer[i] * 4), PApplet.abs(start.lerpedBuffer[i] * 4));
-            angle += PI / 20; //draw 20 circles on the screen to form a big circle
-        }
+            //Circle
+            float angle = 0;
+            float cir = 180; // radius
 
-        //Ring
-        float ang = 0;
-        int stick = 15; //the length of the stick
 
-        for (int j = 0; j < 360; j++) {
-            float color = start.getBands()[j]; //get the current fft used for color
-            start.stroke(start.random(color, 400), start.random(color, 300), 300, 200);
-            start.strokeWeight(3);
-            start.lerpedBuffer2[j] = PApplet.lerp(start.getAmplitude()*40, start.getBands()[j], 0.5f); //smooth the circle
-            start.line(-cos(ang) * (start.lerpedBuffer2[j] + stick), sin(ang) * (cir + start.lerpedBuffer2[j] + stick), -cos(ang) * (cir - start.lerpedBuffer2[j] - stick), sin(ang) * (cir - start.lerpedBuffer2[j] - stick));
-            ang += PI / 40; //draw 40 lines on the screen to form a big circle
-        }
+            //Center Ellipses
+            for (int i = 0; i < 360; i++) {
 
-        if(start.ap.isPlaying()) {
-            //top line
-            for (int x = 0; x < 60; x += 2) {
-                float color = start.getBands()[x]; //get the current fft us for color
-                float position = start.random(color, start.width); //find a random position to draw the line
-                start.stroke(start.random(color, 400), start.random(color, 300), 300);
-                start.strokeWeight(5);
-                start.line(position - start.width / 2, -(start.height / 2), position - start.width / 2, color * 2 + 40 - start.height / 2);
-                //start.line(position - (start.lerpedBuffer2[x] - start.width / 2, -(start.height / 2) ), position - start.lerpedBuffer2[x] - start.width / 2,color * 2 + 40 - start.height / 2);
+                float color = start.getBands()[i] / 2; //get the current fft used for color
+                start.noStroke();
+                start.fill(start.random(color, 400), start.random(color, 300), 280);
+
+                start.lerpedBuffer[i] = PApplet.lerp(start.getAmplitude()*20, start.getBands()[i], 0.08f); //smooth the circle
+                start.ellipse(sin(angle) * ( start.lerpedBuffer[i]), -cos(angle) * (cir + start.lerpedBuffer[i]), PApplet.abs(start.lerpedBuffer[i] * 4), PApplet.abs(start.lerpedBuffer[i] * 4));
+                
+                angle += PI / 20; //Draw 20 circles on the screen to form a big circle
             }
 
-            //bottom line
-            for (int x = 0; x < 60; x += 2) {
-                float color = start.getBands()[x]; //get the current fft us for color
-                float position = start.random(color, start.width); //find a random position to draw the line
-                start.stroke(start.random(color, 400), start.random(color, 300), 300);
-                start.strokeWeight(5);
-                start.line(position - start.width / 2, start.height / 2 - 60 , position - start.width / 2 , -(color * 2) - 40 + start.height /2 - 60);
+            //Ring
+            float ang = 0;
+            int stick = 15; //Length of the stick
+
+            for (int j = 0; j < 360; j++) {
+                float color = start.getBands()[j]; //Get the current fft used for color
+                start.stroke(start.random(color, 400), start.random(color, 300), 300, 200);
+                start.strokeWeight(3);
+                start.lerpedBuffer2[j] = PApplet.lerp(start.getAmplitude()*40, start.getBands()[j], 0.5f); //smooth the circle
+                start.line(-cos(ang) * (start.lerpedBuffer2[j] + stick), sin(ang) * (cir + start.lerpedBuffer2[j] + stick), -cos(ang) * (cir - start.lerpedBuffer2[j] - stick), sin(ang) * (cir - start.lerpedBuffer2[j] - stick));
+                ang += PI / 40; //Draw 40 lines on the screen to form a big circle
             }
 
-              // random triangle
-            colour = map(RandomNumber(), 0, start.width / 2, 0, 255);
+            //To only show when the song is playing
+            if(start.ap.isPlaying()) {
+                
+                //Top lines
+                for (int x = 0; x < 60; x += 2) {
+                    float color = start.getBands()[x]; //get the current fft us for color
+                    float position = start.random(color, start.width); //find a random position to draw the line
+                    start.stroke(start.random(color, 400), start.random(color, 300), 300);
+                    start.strokeWeight(5);
+                    start.line(position - start.width / 2, -(start.height / 2), position - start.width / 2, color * 2 + 40 - start.height / 2);
+                }
 
-            start.stroke(colour, 150, 255);
-            start.strokeWeight(2);
-            start.triangle(x, y, x, z, -10, -10);
-        }
+                //Bottom lines
+                for (int x = 0; x < 60; x += 2) {
+                    float color = start.getBands()[x]; //get the current fft us for color
+                    float position = start.random(color, start.width); //find a random position to draw the line
+                    start.stroke(start.random(color, 400), start.random(color, 300), 300);
+                    start.strokeWeight(5);
+                    start.line(position - start.width / 2, start.height / 2 - 60 , position - start.width / 2 , -(color * 2) - 40 + start.height /2 - 60);
+                }
 
-        
-        // flower dots
-        start.rotate(radians(rot));
+                //Random triangle from center
+                colour = map(RandomNumber(), 0, start.width / 2, 0, 255);
 
-        for(int i = 0; i < 360; i++) {
-            float color = start.getBands()[i] / 2; //get the current fft used for color
-            start.stroke(start.random(color, 400), start.random(color, 300), 300, 200);
+                start.stroke(colour, 150, 255);
+                start.strokeWeight(2);
+                start.triangle(x, y, x, z, -10, -10);
+            }
+
             
-            float r = 30 * cos(6 * i);
-            float x = r * cos(i);
-            float y = r * sin(i);
+            //Flower dots
+            start.rotate(radians(rot));
 
-            start.point(10 *(x - 40 * lerpedAverage * 2f), 10 * (y - 40 * lerpedAverage * 2f)); // get lerp avg
+            for(int i = 0; i < 360; i++) {
+                float color = start.getBands()[i] / 2; //get the current fft used for color
+                start.stroke(start.random(color, 400), start.random(color, 300), 300, 200);
+                
+                float r = 30 * cos(6 * i);
+                float x = r * cos(i);
+                float y = r * sin(i);
 
-            rot += 1;
-        }
+                start.point(10 *(x - 40 * lerpedAverage * 2f), 10 * (y - 40 * lerpedAverage * 2f)); // get lerp avg
+
+                rot += 1;
+            }
         
         start.popMatrix();
 
-        // // Building
-        // for (int i = 0; i < 360; i++) {
-        //     float color = start.getBands()[i] / 2; //get the current fft used for color
-        //     start.noStroke();
-        //     start.fill(start.random(color, 400), start.random(color, 300), 280);
-        //     start.rect(560, 80, -220, 220);
-            
-        // }
 
-         // CENTRE OF FLOWER BLUE PART
-         float r = 1f;
-            float thetaInc = PApplet.TWO_PI / (float) 3;
+        //___________Side Graphics
 
-            
+        float r = 1f;
+        float t = PApplet.TWO_PI / (float) 3;
  
-         // ----- light blue inner circle --------
-         start.pushMatrix();
- 
-         for (int i = 0; i < 75; i++) {
-             start.strokeWeight(2);
-             start.fill(map(start.getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
+        for (int i = 0; i < 75; i++) {
 
-             float theta = i * (thetaInc + start.getSmoothedAmplitude() * 5);
-             start.pushMatrix();
-             x = 50 + PApplet.sin(theta) * r;
-             y = 50 - PApplet.cos(theta) * r;
-             r += 2f + start.getSmoothedAmplitude();
- 
-             start.fill(0);
-             start.translate(start.width / 2 - 500, start.height / 2);
-             start.ellipse(0, 0, x, y);
-             start.translate(1000, 0);
-             start.ellipse(0, 0, x, y);
+            start.strokeWeight(2);
 
+            //Mapping on Amp
+            start.fill(map(start.getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
+            float theta = i * (t + start.getSmoothedAmplitude() * 5);
 
- 
-             start.popMatrix();
- 
-         } /// end loop
-         start.popMatrix();
+            start.pushMatrix();
 
-        
+                start.translate(start.width / 2 - 500, start.height / 2);
+
+                //X Y and Radius
+                x = 50 + PApplet.sin(theta) * r;
+                y = 50 - PApplet.cos(theta) * r;
+                r += 2f + start.getSmoothedAmplitude();
+
+                start.fill(0);
+                //Two side graphics
+                start.ellipse(0, 0, x, y);
+                start.translate(1000, 0);
+                start.ellipse(0, 0, x, y);
+
+            start.popMatrix();
+        } ///End Loop
 
     }
+    //End of render
 }

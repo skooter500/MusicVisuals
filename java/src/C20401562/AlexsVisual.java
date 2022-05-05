@@ -45,11 +45,11 @@ public class AlexsVisual extends Visual{
                 {
 
                     s.strokeWeight(2);
-                    float index = PApplet.map(i, 0 , 180 , 0, s.getAudioBuffer().size() - 1);
-                    s.stroke(PApplet.map(index, 0, s.getAudioBuffer().size(), 0, 255), 255,255);
+                    float index = PApplet.map(i, 0 , 180 , 0, ab.size() - 1);
+                    s.stroke(PApplet.map(index, 0, ab.size(), 0, 255), 255,255);
 
                     //Setting the length mapped to the index of the current audioBuffer
-                    float lenght = PApplet.map(s.getAudioBuffer().get((int)index) /2, -1 , 1, 0, 250);
+                    float lenght = PApplet.map(ab.get((int)index) /2, -1 , 1, 0, 250);
 
                     //Setting X and Y
                     float x = lenght * -sin(i);
@@ -134,6 +134,7 @@ public class AlexsVisual extends Visual{
 
         float rot = 0;
         rot += amp / 8.0f;
+        //Changing size on aplitude
         float r = PApplet.map(amp, 0, 1, 10, 100);
         
         s.pushMatrix();
