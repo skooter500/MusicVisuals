@@ -4,6 +4,8 @@ Name: Alexander Dergach, Jaycel Estrellado, Mendbayar Bat-Orshikh
 
 Student Number: C20401562, C20372876, C20458384
 
+Song: Love Is A Miracle, *Jinco*
+
 # Description of the assignment
 Welcome to our Music Visualizer Project. This assignment will consist of 5 distinct visual effects. An interactive menu will be displayed and as the user, you are able to switch through different renders using button clicks.
 
@@ -72,6 +74,7 @@ Being the assignment we created a Main class to operate our renders, extending t
 - Colour Mode = HSB
 
 Also to give a big thank you to past years creative inspirations!
+
 From here we were able to call all the other classes within a switch statement starting with the menu class by default.
 ```java
 	if(allowToPlay){
@@ -182,12 +185,15 @@ For effective team work we seperated our roles.
 
 As a group we were proud of the whole project but to identifiy each renders outstanding values would be :
 
+1. Menu
+When it came to the menu, the complex use of the mouse methods from proccessing, allowing to create an almost high end menu. Helping me understand how menus such as Spotify or Youtube are created. With the ability to select specific renders within the respective ranges.
+
 1. First
 
 1. Second
 
-
 1. Third
+The use of mathematical concepts in processing to create a sine wave that curves around a circle creating a smoothened wave thats sound and colour responsive.
 
 1. Fourth
 
