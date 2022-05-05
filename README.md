@@ -70,6 +70,7 @@ Being the assignment we created a Main class to operate our renders, extending t
 - 3D = True
 - Size of window = 1400 x 800
 - Colour Mode = HSB
+
 From here we were able to call all the other classes within a switch statement starting with the menu class by default.
 ```java
 	if(allowToPlay){
@@ -166,65 +167,32 @@ Moving from 2D shapes we were able to use 3D graphics as outlined in our setup m
 	s.box(f);
 ```
 
+# Project Managment
+
+For effective team work we seperated our roles.
+
+| Team Member | Role |
+|-----------|-----------|
+|Jay | Two Renders, Designer |
+|Alex | Two Renders, Merge Handler, Menu Creation|
+|Mende | Renders, Menu Creation |
+
 # What I am most proud of in the assignment
 
-# Markdown Tutorial
+As a group we were proud of the whole project but to identifiy each renders outstanding values would be
 
-This is *emphasis*
+1. First
 
-This is a bulleted list
+1. Second
 
-- Item
-- Item
+1. Third
 
-This is a numbered list
+1. Fourth
 
-1. Item
-1. Item
+1. Fifth
 
-This is a [hyperlink](http://bryanduggan.org)
-
-# Headings
-## Headings
-#### Headings
-##### Headings
-
-This is code:
-
-```Java
-public void render()
-{
-	ui.noFill();
-	ui.stroke(255);
-	ui.rect(x, y, width, height);
-	ui.textAlign(PApplet.CENTER, PApplet.CENTER);
-	ui.text(text, x + width * 0.5f, y + height * 0.5f);
-}
-```
-
-So is this without specifying the language:
-
-```
-public void render()
-{
-	ui.noFill();
-	ui.stroke(255);
-	ui.rect(x, y, width, height);
-	ui.textAlign(PApplet.CENTER, PApplet.CENTER);
-	ui.text(text, x + width * 0.5f, y + height * 0.5f);
-}
-```
-
-This is a youtube video:
+Our YouTube Video:
 
 [![YouTube](http://img.youtube.com/vi/J2kHSSFA4NU/0.jpg)](https://www.youtube.com/watch?v=J2kHSSFA4NU)
 
-This is a table:
-
-| Heading 1 | Heading 2 |
-|-----------|-----------|
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
 
