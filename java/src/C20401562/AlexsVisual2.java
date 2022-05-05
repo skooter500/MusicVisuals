@@ -81,7 +81,7 @@ public class AlexsVisual2 extends Visual{
                 if(i == 3){
                     s.stroke(255);
                 }else{
-                    s.stroke(PApplet.map(s.getSmoothedAmplitude()*2*i, 0, 1, 0, 255), 255, 255);  //React to the colors
+                    s.stroke(PApplet.map(s.getSmoothedAmplitude()*4*i, 0, 1, 0, 255), 255, 255);  //React to the colors
                 }
 
                 //Vertex layers building the triangles

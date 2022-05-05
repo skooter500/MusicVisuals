@@ -128,7 +128,7 @@ public class StartMenu {
 
             s.textSize(40);
             s.text("Jay", -space - space*2 - 35, heightOfBox/1.3f);
-            s.text("Jay 2", -space -space/2 - 35, heightOfBox/1.3f);
+            s.text("Jay 2", -space -space/2 - 40, heightOfBox/1.3f);
             s.text("Alex", -40 ,heightOfBox/1.3f);
             s.text("Alex 2", space + space/2 -heightOfBox + 5, heightOfBox/1.3f);
             s.text("Mende", space + space * 2 -heightOfBox, heightOfBox/1.3f);
@@ -208,6 +208,7 @@ public class StartMenu {
         //Loops through array from Start to know which text to put were
         s.fill(255);
         s.textSize(25);
+
         int leftbox = 0;
         int left2box = 0;
         int rightbox = 0;
@@ -220,7 +221,7 @@ public class StartMenu {
                 index3 = i;
                 leftbox = 1;
             }else if(s.mode != i && rightbox == 0){
-                s.text(s.name[i],s.width/2 + 110, s.height - 22);
+                s.text(s.name[i],s.width/2 + 118, s.height - 22);
                 index1 = i;
                 rightbox = 1;
             }else if(s.mode != i && right2box == 0){
