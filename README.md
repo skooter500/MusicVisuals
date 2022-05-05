@@ -66,78 +66,105 @@ A
 
 # How it works
 
-Being the assignment we created a Main class to operate our renders, extending the visuals class from ie/tudublin and interhiting from the Mimom library. From here we were able to call all the other classes within a switch statement starting with the menu class by default.
+Being the assignment we created a Main class to operate our renders, extending the visuals class from ie/tudublin and interhiting from the Mimim library. 
+- 3D = True
+- Size of window = 1400 x 800
+- Colour Mode = HSB
+From here we were able to call all the other classes within a switch statement starting with the menu class by default.
 ```java
-        if(allowToPlay){
-            switch (mode) 
-            {
-			case 0:
-                break;
-            case 1:
-                jay.render();
-                startm.lowerMenu();
-                break;
-            case 2:
-                jay2.render();
-                startm.lowerMenu();
-                break;
-            case 3:
-                for(int i = 0; i < particals; i++)
-                {
-                    partical[i].render(); 
-                }
-                alex.render();
-                startm.lowerMenu();
-                break;
-            case 4:
-                alex2.render();
-                startm.lowerMenu();
-                break;
-            case 5:
-                mende.render();
-                startm.lowerMenu();
-                break;
-            }
-        }else{
-            startm.render();
-        }
+	if(allowToPlay){
+		switch (mode) 
+		{
+
+		case 0:
+			break;
+		case 1:
+			jay.render();
+			startm.lowerMenu();
+			break;
+		case 2:
+			jay2.render();
+			startm.lowerMenu();
+			break;
+		case 3:
+			for(int i = 0; i < particals; i++)
+			{
+				partical[i].render(); 
+			}
+			alex.render();
+			startm.lowerMenu();
+			break;
+		case 4:
+			alex2.render();
+			startm.lowerMenu();
+			break;
+		case 5:
+			mende.render();
+			startm.lowerMenu();
+			break;
+
+		}
+	}else{
+		startm.render();
+	}
 ```
 
-The menu works off the *public void mouseClicked()* method, creating statments to allow the program to verify which render the user selected on the menu, and if it was selected then the user is allowed to play.
+The menu works off the *public void mouseClicked()* method, creating statments to allow the program to verify which render the user selected on the menu, and if it was selected then the user is allowed to play, the mode for the switch statment set for which render the user picked.
 Once the user selects a render the menu is collapsed down, with an array of renders showing at the button along with a responsive play/pause button which changes depending on the songs state.
 
 The sub classes, inherit from *Start.java* along with *Visuals.java*. With the use of processing we were able to create sound resposnive designs by mapping the values from indexs of a for loop and the audio buffers of the song as such:
 
 ```java
-                    float index = PApplet.map(i, 0 , 180 , 0, ab.size() - 1);
-                    s.stroke(PApplet.map(index, 0, ab.size(), 0, 255), 255,255);
+	float index = PApplet.map(i, 0 , 180 , 0, ab.size() - 1);
+	s.stroke(PApplet.map(index, 0, ab.size(), 0, 255), 255,255);
 ```
 
 The same logic being used to make it roate to sound and grow in scale.
-For alot of the gemotrical aspects of the visuals we needed to use mathicamitcal formauls such as sin, cos and radius' and example being the third graphics center circle waves
+For alot of the gemotrical aspects of the visuals we needed to use mathicamitcal formauls such as sin, cos and radius' and example being the third graphics center circles smoothened border waves
 
 ```java
+	for(float i = 0f; i < 360; i += space){
 
-                for(float i = 0f; i < 360; i += space){
+		float xoff = PApplet.map(cos(i), -1, 1, 0 ,3);
+		float yoff = PApplet.map(sin(i), -1, 1, 0 ,3);
 
-                    float xoff = PApplet.map(cos(i), -1, 1, 0 ,3);
-                    float yoff = PApplet.map(sin(i), -1, 1, 0 ,3);
+		float n = noise(xoff + start, yoff + start);
 
-                    float n = noise(xoff + start, yoff + start);
+		float h = PApplet.map(n, 0, 1, (amp*250) * -1 ,amp*500);
 
-                    float h = PApplet.map(n, 0, 1, (amp*250) * -1 ,amp*500);
+		s.fill(map(amp, 0, 1, 0, 255), 255, 255);
 
-                    s.fill(map(amp, 0, 1, 0, 255), 255, 255);
+		s.rotate(space);
 
-                    s.rotate(space);
+		s.rect(250,0,h,3);
 
-                    s.rect(250,0,h,3);
-
-                }
-
+	}
 ```
-Using the proccessing library along with mapping of the sin poistion of the i index thats to 360, allowing us to create circles.
+Using the proccessing library along with mapping of the sin poistion of the i index thats to 360, allowing us to create circles. Every visual being easer to map onto the screen using *push/pop Matrix's* along with *translate*, the idea of these proccessess is to change the coridnates of the starting x and y postions from 0,0 to the desired location and still keep it as 0,0 for indexing as such:
 
+```java
+	//______________Center Matrix
+	s.pushMatrix();
+
+		//Translating to middle of the screen
+		s.translate(s.width/2, s.height/2);
+
+			//_________________Center Circle
+			s.fill(15);
+			s.circle(0, 0, 500);
+			
+	s.popMatrix();
+```
+
+Moving from 2D shapes we were able to use 3D graphics as outlined in our setup method in the *Start.java*. Creating items such as spheres and cubes that responsive to sound, with scale and rotation.
+
+```java
+	s.sphere(30 * s.getSmoothedAmplitude() * 7);
+
+	s.rotateY(s.angle);
+	s.rotateX(s.angle);
+	s.box(f);
+```
 
 # What I am most proud of in the assignment
 
