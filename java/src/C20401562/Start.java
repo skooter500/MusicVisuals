@@ -9,6 +9,10 @@ public class Start extends Visual{
     //For Beat Detection
     BeatDetect beat;
     Particals[] partical = new Particals[300];
+    public boolean fourCircles = false;
+    public boolean fourCubes = false;
+    float h = height / 2;
+
 
 
     int mode = 0;
@@ -143,6 +147,116 @@ public class Start extends Visual{
                 break;
             case 4:
                 //Fourth Visual
+                float average = 0;
+                float sum = 0;
+        
+                // Calculates average of the sound buffer
+                for (int j = 0; j < ab.size(); j++)
+                {
+                    sum += abs(ab.get(j));
+                }
+                average = sum / ab.size();
+                lerpedAverage = lerp(lerpedAverage, average, 0.1f);
+        
+                //variables for circles
+                float x1 = 333.33f;
+                float y1 = 333.33f;
+        
+                //variables for squars
+                float angle = 0;
+                angle += 0.01f;
+                float s = 50 + (50 * lerpedAverage * 10);
+        
+                for (int i = 0; i < ab.size(); i++) {
+        
+                    float c = map(i, 0, ab.size(), 0, 255);
+        
+                    stroke(c, 255, 255);
+        
+                    lerpedBuffer[i] = lerp(lerpedBuffer[i], ab.get(i), 0.3f); 
+                    //line 1       
+                    line(width - x1, i, width - x1 - (lerpedBuffer[i] * h * 10), i);
+        
+                    //line 2
+                    line(width - (x1 * 2), i, width - (x1 * 2) - (lerpedBuffer[i] * h * 10), i);
+        
+                    //line 3
+                    line(i, 0 + y1, i, y1 - lerpedBuffer[i] * h * 10);
+        
+                    //line 4
+                    line(i, height - y1, i, (height - y1) - (lerpedBuffer[i] * h * 10));
+                }      
+                
+                float c = map(average, 0, 1, 0, 255);
+                fill(c, 255, 255);
+                int gap = 25;
+        
+                
+        
+                if(! fourCircles)
+                {
+                    ellipse(width - (x1 / 2), height - (y1 / 2), 50 + (lerpedAverage * 500), 50 + (lerpedAverage * 500));
+                    ellipse(width - (x1 / 2), height - (y1 / 2) * 5, 50 + (lerpedAverage * 500), 50 + (lerpedAverage * 500));
+                    ellipse(width - (x1 / 2) * 5, height - (y1 / 2), 50 + (lerpedAverage * 500), 50 + (lerpedAverage * 500));
+                    ellipse(width - (x1 / 2) * 5, height - (y1 / 2) * 5, 50 + (lerpedAverage * 500), 50 + (lerpedAverage * 500));
+                }
+                else
+                {
+                    ellipse(width / 2 + (x1 / 4) - gap, height / 2 + (y1 / 4) - gap, 50 + (lerpedAverage * 500), 50 + (lerpedAverage * 500));
+                    ellipse(width / 2 + (x1 / 4) - gap, height / 2 - (y1 / 4) + gap, 50 + (lerpedAverage * 500), 50 + (lerpedAverage * 500));
+                    ellipse(width / 2 - (x1 / 4) + gap, height / 2 + (y1 / 4) - gap, 50 + (lerpedAverage * 500), 50 + (lerpedAverage * 500));
+                    ellipse(width / 2 - (x1 / 4) + gap, height / 2 - (y1 / 4) + gap, 50 + (lerpedAverage * 500), 50 + (lerpedAverage * 500));
+        
+                    triangle(width - (x1 / 2) / 2, 0 + (y1 / 2) / 2, width - (x1 / 2) * 3, 0 + (y1 / 2) / 2, width - (x1 / 2), 0 + (y1 / 2) / 2);
+                }
+        
+                
+        
+                float b = map(average * 2, 0, 1, 0, 255);
+                fill(b, 255, 255);
+                if (! fourCubes)
+                {
+                    translate(width / 2, height / 2, 0);
+                    rotateY(angle);
+                    rotateX(angle);
+                    box(s);
+                }
+                else
+                {
+                    pushMatrix();
+                    translate(width - (x1 / 2) * 5, height / 2, 0);
+                    rotateY(angle);
+                    rotateX(angle);
+                    box(s);
+                    popMatrix();
+        
+                    pushMatrix();
+                    translate(width - (x1 / 2), height / 2, 0);
+                    rotateY(angle);
+                    rotateX(angle);
+                    box(s);
+                    popMatrix();
+        
+                    pushMatrix();
+                    translate(width / 2, height - (y1 / 2), 0);
+                    rotateY(angle);
+                    rotateX(angle);
+                    box(s);
+                    popMatrix();
+        
+                    pushMatrix();
+                    translate(width / 2, height - (y1 / 2) * 5, 0);
+                    rotateY(angle);
+                    rotateX(angle);
+                    box(s);
+                    popMatrix();
+                
+                
+                
+                
+        
+             
+            }
                 alex2.render();
                 startm.lowerMenu();
                 break;

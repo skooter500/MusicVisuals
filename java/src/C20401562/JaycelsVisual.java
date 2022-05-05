@@ -154,6 +154,38 @@ public class JaycelsVisual extends Visual{
             
         // }
 
+         // CENTRE OF FLOWER BLUE PART
+         float r = 1f;
+            float thetaInc = PApplet.TWO_PI / (float) 3;
+
+            
+ 
+         // ----- light blue inner circle --------
+         start.pushMatrix();
+ 
+         for (int i = 0; i < 75; i++) {
+             start.strokeWeight(2);
+             start.fill(map(start.getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
+
+             float theta = i * (thetaInc + start.getSmoothedAmplitude() * 5);
+             start.pushMatrix();
+             x = 50 + PApplet.sin(theta) * r;
+             y = 50 - PApplet.cos(theta) * r;
+             r += 2f + start.getSmoothedAmplitude();
+ 
+             start.fill(0);
+             start.translate(start.width / 2 - 500, start.height / 2);
+             start.ellipse(0, 0, x, y);
+             start.translate(1000, 0);
+             start.ellipse(0, 0, x, y);
+
+
+ 
+             start.popMatrix();
+ 
+         } /// end loop
+         start.popMatrix();
+
         
 
     }
