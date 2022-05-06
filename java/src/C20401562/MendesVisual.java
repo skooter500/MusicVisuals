@@ -2,7 +2,6 @@ package C20401562;
 
 import ie.tudublin.*;
 import processing.core.*;
-import java.util.*;
 
 public class MendesVisual extends Visual{
 
@@ -37,10 +36,6 @@ public class MendesVisual extends Visual{
         if (start.beat.isHat()) {
             bigpstart = bigpstart + 120;
         }
-<<<<<<< HEAD
-
-
-=======
         
         for(float i = 0f; i < 360; i++){
             //big pupil size
@@ -62,7 +57,6 @@ public class MendesVisual extends Visual{
             start.ellipse(5,0,0,ps);
             }
         start.popMatrix();
->>>>>>> mende
     }
     
 }
