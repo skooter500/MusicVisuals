@@ -21,8 +21,9 @@ public class MendesVisual extends Visual{
     public void render()
     {
         
-       
+        
         start.pushMatrix();
+        start.getFFT();
         start.translate(start.width/2, start.height/2);
         start.fill(170,255,250);
         start.circle(0, 0, 600);
