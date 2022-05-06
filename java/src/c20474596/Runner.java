@@ -35,7 +35,7 @@ public class Runner extends Visual{
         minim=new Minim(this);
         startMinim();
         getFFT();
-        loadAudio("rain.mp3");
+        loadAudio("light.mp3");
         colorMode(HSB,255);   
         hue = random(255);
         //sean edits
@@ -86,7 +86,7 @@ public class Runner extends Visual{
                 }
     
                 for(int i = 0;i<stars.length;i++){ //updates star(s) position on screen once they disappear
-                    stars[i].z = stars[i].z-20;
+                    stars[i].z = stars[i].z-25; //z - 25, 25 = speed of stars
                     if(stars[i].z < 1){
                         stars[i].z = width;
                         stars[i].x = random(-width,width);
