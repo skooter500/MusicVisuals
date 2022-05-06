@@ -118,7 +118,6 @@ From here we were able to call all the other classes within a switch statement s
 		startm.render();
 	}
 ```
-<<<<<<< HEAD
 
 The menu works off the *public void mouseClicked()* method, creating statements to allow the program to verify which render the user selected on the menu, and if it was selected then the user is allowed to play, the mode for the switch statement set for which render the user picked.
 Once the user selects a render the menu is collapsed down, with an array of renders showing at the button along with a responsive play/pause button which changes depending on the songs state.
@@ -149,38 +148,6 @@ For a lot of the geometrical aspects of the visuals we needed to use mathematica
 
 		s.rect(250,0,h,3);
 
-=======
-
-The menu works off the *public void mouseClicked()* method, creating statements to allow the program to verify which render the user selected on the menu, and if it was selected then the user is allowed to play, the mode for the switch statement set for which render the user picked.
-Once the user selects a render the menu is collapsed down, with an array of renders showing at the button along with a responsive play/pause button which changes depending on the songs state.
-
-The sub classes, inherit from *Start.java* along with *Visuals.java*. With the use of processing we were able to create sound responsive designs by mapping the values from index's of a for loop and the audio buffers of the song as such:
-
-```java
-	float index = PApplet.map(i, 0 , 180 , 0, ab.size() - 1);
-	s.stroke(PApplet.map(index, 0, ab.size(), 0, 255), 255,255);
-```
-
-The same logic being used to make it rotate to sound and grow in scale.
-For a lot of the geometrical aspects of the visuals we needed to use mathematical formals such as sin, cos and radius' and example being the third graphics center circles smoothened border waves.
-
-```java
-	for(float i = 0f; i < 360; i += space){
-
-		float xoff = PApplet.map(cos(i), -1, 1, 0 ,3);
-		float yoff = PApplet.map(sin(i), -1, 1, 0 ,3);
-
-		float n = noise(xoff + start, yoff + start);
-
-		float h = PApplet.map(n, 0, 1, (amp*250) * -1 ,amp*500);
-
-		s.fill(map(amp, 0, 1, 0, 255), 255, 255);
-
-		s.rotate(space);
-
-		s.rect(250,0,h,3);
-
->>>>>>> mende
 	}
 ```
 Using the processing library along with mapping of the sin position of the *i* index that's to 360, allowing us to create circles. Every visual being easer to map onto the screen using *push/pop Matrix's* along with *translate*, the idea of these processes is to change the coordinates of the starting x and y positions from 0,0 to the desired location and still keep it as 0,0 for indexing as such:
@@ -217,7 +184,7 @@ For effective team work we seperated our roles.
 |-----------|-----------|
 |Jay | Two Renders, Designer |
 |Alex | Two Renders, Merge Handler, Menu Creation|
-|Mende | Renders, Menu Creation |
+|Mende | Render|
 
 # What I am most proud of in the assignment
 
@@ -275,6 +242,6 @@ float size = 100;
 
 Our YouTube Video:
 
-[![YouTube](http://img.youtube.com/vi/J2kHSSFA4NU/0.jpg)](https://www.youtube.com/watch?v=J2kHSSFA4NU)
+[![YouTube]](https://www.youtube.com/watch?v=RUKFmpijMn4)
 
 
