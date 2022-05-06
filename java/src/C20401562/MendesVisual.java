@@ -38,7 +38,6 @@ public class MendesVisual extends Visual{
         }
         
         for(float i = 0f; i < 360; i++){
-            
             //big pupil size
             float pb = PApplet.map(y, 0, 1, (start.getSmoothedAmplitude()*500) * -1 ,start.getSmoothedAmplitude()*300);
 
@@ -46,10 +45,7 @@ public class MendesVisual extends Visual{
             start.stroke(
                 PApplet.map(i, 0, start.getAudioBuffer().size(),smallpstart , smallpend), 255, 255
                 );
-            
-           
             start.ellipse(300,0,pb,10);
-
         }
 
         for(float i = 0f; i < 360; i++){
