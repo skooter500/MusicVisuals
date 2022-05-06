@@ -54,7 +54,7 @@ public class MendesVisual extends Visual{
 
         for(float i = 0f; i < 360; i++){
             //small pupil size
-            float ps = PApplet.map(y, 0, 1, (s.getSmoothedAmplitude() * 1000) * 1 ,s.getSmoothedAmplitude()*50);
+            float ps = PApplet.map(y, 0, 1, (s.getSmoothedAmplitude() * 1000) * 1 ,s.getSmoothedAmplitude()*150);
             //colour to change with the beat
             s.stroke(
                 PApplet.map(i, 0, s.getAudioBuffer().size(),255 , smallpstart), 255, smallpstart);
