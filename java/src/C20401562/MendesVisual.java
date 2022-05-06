@@ -2,7 +2,6 @@ package C20401562;
 
 import ie.tudublin.*;
 import processing.core.*;
-import java.util.*;
 
 public class MendesVisual extends Visual{
 

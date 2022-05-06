@@ -50,6 +50,9 @@ The fifth visual makes a pulsating "eye" effect.
 
 It features a big red outermost layer of the eye that is made up of an array of ellipses giving it the further detail that an eye has while also changing size depending on the amplitude of the song. The outermost layer also changes to random colours when a beat is detected giving it a creepy vibe. The middle layer is there to fill in the space between the iris and outer layer so the composition of the graphic doesn't look empty. The iris is made to bump up and down like the outer layer but instead of soreading to the inside and outside, this layer just spreads outside. This effect also lets us have an after image when the song is finished where the irish slowly transitions and fades away.   
 
+![An image](java/data/fifthvis.png)
+
+
 # Instructions
 
 ### Starting Visuals
