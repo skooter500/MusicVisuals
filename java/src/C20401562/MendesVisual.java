@@ -2,41 +2,65 @@ package C20401562;
 
 import ie.tudublin.*;
 import processing.core.*;
+import java.util.*;
 
 public class MendesVisual extends Visual{
 
-    Start s;
-    float average;
-    float sum;
+    Start start;
     float lerpedAverage = 0;
+    float y= 0;
+    float smallpend = 0;
+    float smallpstart = 15;
+    float bigpstart = 0;
     
-
     public MendesVisual(Start start) 
     {
-        this.s = start;
+        this.start = start;
     }
-
 
     public void render()
     {
-        average = 0;
-        //calculate average buffer
-        for (int i = 0; i < s.getAudioBuffer().size(); i ++)
-        {
-            sum += abs(s.getAudioBuffer().get(i));
+        
+       
+        start.pushMatrix();
+        start.translate(start.width/2, start.height/2);
+        start.fill(170,255,250);
+        start.circle(0, 0, 600);
+        start.strokeWeight(start.width/120);
+        start.text("Game Over", -80, 250);
+        if (start.beat.isOnset() == true) {
+            smallpstart =smallpstart + 5 % 255;
+            smallpend =smallpend + random(200) % 255;                    
         }
-        average = sum / s.getAudioBuffer().size(); 
 
-        lerpedAverage = lerp(lerpedAverage, average, 0.1f); // move lerped average closer to frame 10%
-        for(int i = 0; i < s.width ;i++){
-            float index = PApplet.map(i, 0 , s.width, 0, s.getAudioBuffer().size());
-            float y = s.getAudioBuffer().get((int)index) * 50 + s.height / 2;
+        if (start.beat.isHat()) {
+            bigpstart = bigpstart + 120;
+        }
+        
+        for(float i = 0f; i < 360; i++){
+            
+            //big pupil size
+            float pb = PApplet.map(y, 0, 1, (start.getSmoothedAmplitude()*500) * -1 ,start.getSmoothedAmplitude()*300);
 
-            s.stroke(PApplet.map(index, 0, s.getAudioBuffer().size()* 2, 0, 255), 255, 255);
-
-            s.line(i, y, i, y + s.getAudioBuffer().get((int)index));
+            //colour to change with the beat
+            start.stroke(
+                PApplet.map(i, 0, start.getAudioBuffer().size(),smallpstart , smallpend), 255, 255
+                );
+            
+           
+            start.ellipse(300,0,pb,10);
 
         }
+
+        for(float i = 0f; i < 360; i++){
+            //small pupil size
+            float ps = PApplet.map(y, 0, 1, (start.getSmoothedAmplitude() * 1000) * 1 ,start.getSmoothedAmplitude()*30);
+            //colour to change with the beat
+            start.stroke(
+                PApplet.map(i, 0, start.getAudioBuffer().size(),255 , 255), 255, bigpstart);
+            start.ellipse(5,0,0,ps);
+            }
+        start.popMatrix();
     }
     
 }
