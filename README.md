@@ -1,8 +1,20 @@
 # Music Visualiser Project
 
-Name:
+Name: William Leka
 
-Student Number: 
+Student Number: C21423244
+
+Name: William Leka
+
+Student Number: C21423244
+
+Name: William Leka
+
+Student Number: C21423244
+
+Name: William Leka
+
+Student Number: C21423244
 
 ## Instructions
 - Fork this repository and use it a starter project for your assignment
