@@ -1,8 +1,16 @@
 # Music Visualiser Project
 
-Name:
+Student 1
+Name: Stephanie Ifeoma Ogu
+Student Number: D22126511
 
-Student Number: 
+Student 2
+Name: Nikka Omo
+Student Number: C21359691
+
+Student 3
+Name: Roxana Pohodnicaru
+Student Number: C21446942
 
 ## Instructions
 - Fork this repository and use it a starter project for your assignment
