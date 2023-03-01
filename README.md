@@ -1,6 +1,6 @@
 # Music Visualiser Project
 
-Name:
+Name: Luke Kiernan, Hao Lin , Vilim Mikic
 
 Student Number: 
 
