@@ -59,7 +59,7 @@ public class MusicVisualizer extends PApplet {
     private void loadSong() {
         // Initialize minim
         this.minim = new Minim(this);
-        this.audioPlayer = minim.loadFile("songs/heroplanet.mp3", 1024); // minim.getLineIn(Minim.MONO, frameSize, sampleRate, bitDepth); // minim.loadFile("shelter.mp3", 1024); // minim.getLineIn(Minim.MONO, frameSize, sampleRate, bitDepth);// minim.loadFile("shelter.mp3", 1024); // minim.getLineIn(Minim.MONO, frameSize, sampleRate, bitDepth); // minim.loadFile("shelter.mp3", 1024); // minim.getLineIn(Minim.MONO, frameSize, sampleRate, bitDepth);
+        this.audioPlayer = minim.loadFile("songs/somethingComforting.mp3", 1024); // minim.getLineIn(Minim.MONO, frameSize, sampleRate, bitDepth); // minim.loadFile("shelter.mp3", 1024); // minim.getLineIn(Minim.MONO, frameSize, sampleRate, bitDepth);// minim.loadFile("shelter.mp3", 1024); // minim.getLineIn(Minim.MONO, frameSize, sampleRate, bitDepth); // minim.loadFile("shelter.mp3", 1024); // minim.getLineIn(Minim.MONO, frameSize, sampleRate, bitDepth);
         this.audioPlayer.play();
         this.audioBuffer = audioPlayer.mix;
     } // End void loadSong()
