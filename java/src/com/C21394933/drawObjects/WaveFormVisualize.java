@@ -1,6 +1,9 @@
 package com.C21394933.drawObjects;
 
+import com.jogamp.common.util.Bitfield.Util;
+
 import ddf.minim.AudioBuffer;
+import ie.tudublin.Utils;
 import processing.core.PApplet;
 
 public class WaveFormVisualize extends PApplet {
@@ -21,12 +24,7 @@ public class WaveFormVisualize extends PApplet {
     } // End WaveFormVisualize Constructor
 
     public void render() {
-        try {
-            Thread.sleep(200);
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        Utils.waitFor(100);
         drawWaveForm();
     } // End void render()
 
