@@ -4,18 +4,20 @@ package com.C21394933.visual2;
 import ddf.minim.AudioBuffer;
 import processing.core.PApplet;
 
+import com.C21394933.drawObjects.BigBangUniverse;
 // Draw Objects
 import com.C21394933.drawObjects.WaveFormVisualize;
 
 public class Visual2 extends PApplet {
     // Private Variables
-    int windowWidth;
-    int windowHeight;
-    PApplet pApplet;
-    AudioBuffer audioBuffer;
+    protected int windowWidth;
+    protected int windowHeight;
+    protected PApplet pApplet;
+    protected AudioBuffer audioBuffer;
 
     //  Render Objects
     WaveFormVisualize waveFormVisualize;
+    BigBangUniverse bigBangUniverse;
 
     // LEAVE ALONE
     public Visual2(PApplet pApplet, AudioBuffer audioBuffer, int windowWidth, int windowHeight) {
@@ -28,7 +30,8 @@ public class Visual2 extends PApplet {
 
     // Draw Function for Visual 2
     public void drawVisual2() {
-        waveFormVisualize.render();
+        // waveFormVisualize.render();
+        bigBangUniverse.render();
     } // End drawVisual2
 
 
@@ -36,5 +39,6 @@ public class Visual2 extends PApplet {
     private void loadRenderObjects() {
         // Create your draw Objects here
         this.waveFormVisualize = new WaveFormVisualize(this.pApplet, this.audioBuffer, this.windowHeight, this.windowHeight);
+        this.bigBangUniverse = new BigBangUniverse(pApplet, audioBuffer, windowWidth, windowHeight);
     } // End void oadRenderObjects
 } // End class Visual2

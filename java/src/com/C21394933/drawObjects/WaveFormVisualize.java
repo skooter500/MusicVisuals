@@ -1,8 +1,7 @@
 package com.C21394933.drawObjects;
 
-import com.jogamp.common.util.Bitfield.Util;
-
 import ddf.minim.AudioBuffer;
+import ddf.minim.analysis.FFT;
 import ie.tudublin.Utils;
 import processing.core.PApplet;
 
@@ -13,6 +12,7 @@ public class WaveFormVisualize extends PApplet {
     int windowHeight;
 
     AudioBuffer audioBuffer;
+    FFT fft;
 
     float position = 30;
 
@@ -21,15 +21,21 @@ public class WaveFormVisualize extends PApplet {
         this.windowWidth = windowWidth;
         this.windowHeight = windowHeight;
         this.audioBuffer = audioBuffer;
+        this.fft = new FFT(2048, 44100);
+        
+
     } // End WaveFormVisualize Constructor
 
     public void render() {
-        Utils.waitFor(100);
-        drawWaveForm();
+
+        // Utils.waitFor(200);
+        drawFrequencySpectrum();
+        // drawWaveForm();
     } // End void render()
 
     public void drawWaveForm() {
         float half = windowHeight / 2;
+
         for (int i = 0; i < audioBuffer.size(); i++) {
             pApplet.strokeWeight(2);
             pApplet.stroke(255);
@@ -43,6 +49,15 @@ public class WaveFormVisualize extends PApplet {
         if (position >= 740) {
             position = 0;
             pApplet.background(0);
-        } // End if
-    }
+        } // End ifF
+    } // End void drawWaveForm()
+
+    public void drawFrequencySpectrum() {
+        int[] highestFrequencyIndex = Utils.getHighestFrequencyIndex(fft, audioBuffer);
+        pApplet.stroke(255);
+        pApplet.line(highestFrequencyIndex[0] * 2.0f, windowHeight, highestFrequencyIndex[0] * 2.0f, windowHeight - fft.getBand( highestFrequencyIndex[0]) * 5.0f);
+        pApplet.line(highestFrequencyIndex[1] * 2.0f, windowHeight, highestFrequencyIndex[1] * 2.0f, windowHeight - fft.getBand( highestFrequencyIndex[1]) * 5.0f);
+        pApplet.line(highestFrequencyIndex[2] * 2.0f, windowHeight, highestFrequencyIndex[2] * 2.0f, windowHeight - fft.getBand( highestFrequencyIndex[2]) * 5.0f);
+        println("Freq( " + fft.getFreq(highestFrequencyIndex[0]) + " ) ( " + fft.getFreq(highestFrequencyIndex[1]) + " ) ( " + fft.getFreq(highestFrequencyIndex[2]) + ")");
+    } // End void drawFrequencySpectrum()
 } // End class WaveFormVisualize
