@@ -2,6 +2,7 @@ package com.C21394933.visual2;
 
 // Dependencies
 import ddf.minim.AudioBuffer;
+import ddf.minim.AudioPlayer;
 import processing.core.PApplet;
 
 import com.C21394933.drawObjects.BigBangUniverse;
@@ -10,10 +11,11 @@ import com.C21394933.drawObjects.WaveFormVisualize;
 
 public class Visual2 extends PApplet {
     // Private Variables
-    protected int windowWidth;
-    protected int windowHeight;
-    protected PApplet pApplet;
-    protected AudioBuffer audioBuffer;
+    int windowWidth;
+    int windowHeight;
+    PApplet pApplet;
+    AudioPlayer audioPlayer;
+    AudioBuffer audioBuffer;
 
     //  Render Objects
     WaveFormVisualize waveFormVisualize;

@@ -44,7 +44,7 @@ public class Utils extends PApplet {
         // 261 Hz - 1046
         for(int i = 12; i < 49; i++) {
             // pApplet.line(i * scale, windowHeight, i * scale, windowHeight - fft.getBand(i) * 5.0f);
-            if(fft.getBand(i) > 50) {
+            if(fft.getBand(i) > 90) {
                 if(fft.getBand(i) > fft.getBand(loudestFrequencies[1])) {
                     loudestFrequencies[1] = i;
                 } // End if
