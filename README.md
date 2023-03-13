@@ -3,7 +3,7 @@
 C21782059 Ron Syhmon Pingol,
 C21394933 Ernest Decina,
 C21751999 Alex Tsang,
-C21460524 Daniel Wu,
+C21460524 Daniel Wu.
 
 
  
