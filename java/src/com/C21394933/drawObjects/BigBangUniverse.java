@@ -1,15 +1,11 @@
 package com.C21394933.drawObjects;
 
-import com.jogamp.common.util.Bitfield.Util;
-
 import ddf.minim.AudioBuffer;
 import ddf.minim.analysis.FFT;
 import ie.tudublin.Utils;
 import processing.core.PApplet;
 
 public class BigBangUniverse {
-    // Public Variables
-
     // Private Variables
     PApplet pApplet;
     int windowWidth;
@@ -20,12 +16,15 @@ public class BigBangUniverse {
 
     float bigBangRadiusLerped = 0.0f;
     float bigBangRotate = 0.0f;
-    float bigBangRotateSpeed = 0.01f;
+    float bigBangRotateSpeed = 0.02f;
     float bigBangRotateLerped = 0.0f;
 
     float ringLerped = 0.0f;
 
     int[] frequencyIndex;
+
+    int totalStars = 200;
+    float[][] starPositions = new float[totalStars][2];
 
     // Constructor
     public BigBangUniverse(PApplet pApplet2, AudioBuffer audioBuffer, int windowWidth, int windowHeight) {
@@ -35,6 +34,10 @@ public class BigBangUniverse {
         this.audioBuffer = audioBuffer;
         this.fft = new FFT(2048, 44100);
         
+        for(int counter = 0; counter < totalStars; counter++) {
+            starPositions[counter][0] = pApplet.random(-2000, windowWidth + 2000);
+            starPositions[counter][1] = pApplet.random(-2000, windowHeight + 2000);
+        } // End for
     } // End WaveFormVisualize Constructor
 
     public void render() {        
@@ -43,54 +46,88 @@ public class BigBangUniverse {
 
     private void drawBigBang() {
         frequencyIndex = Utils.getHighestFrequencyIndex(fft, audioBuffer);
-        pApplet.translate(windowWidth / 2, windowHeight / 2, 10);
         drawSphere();
-        drawRings();
+        drawBlackHole();
+        drawStarField();
     } // End void drawBigBang()
 
     private void drawSphere() {
-
+        float chageRadius = 10.0f;
         float highestBassFrequency = fft.indexToFreq(frequencyIndex[0]);
 
-        // Render Sphere
-        bigBangRadiusLerped = PApplet.lerp(bigBangRadiusLerped, highestBassFrequency, 0.2f) * 1.1f;
-    
+        // Render Sun
         
-        if(bigBangRadiusLerped > 60) {
-            pApplet.fill(pApplet.color(100, 255, 255));
-        } // End if
+        bigBangRadiusLerped = PApplet.lerp(bigBangRadiusLerped, highestBassFrequency, 0.2f) * 1.1f;
+        
+        pApplet.pushMatrix();
+        pApplet.pushStyle();
 
+        pApplet.translate(windowWidth / 2, windowHeight / 2, -1000);
         pApplet.rotateX(bigBangRotate);
-        pApplet.fill(pApplet.color(200, 255, 255));
+        pApplet.rotateY(bigBangRotate);
+        pApplet.rotateZ(bigBangRotate);
 
-        pApplet.sphere(bigBangRadiusLerped);
-        // End Rneder Sphere
+        drawRings();
+        
+        //  Planets
+        for(int planetIndex = 0; planetIndex < 30; planetIndex++) {
+            pApplet.fill(pApplet.color(200 * planetIndex % 255, 255, 255));
+            pApplet.rotateZ(PApplet.radians(chageRadius + (chageRadius * planetIndex)));
+            pApplet.translate(0, ringLerped * (2 * planetIndex), 0);
+            pApplet.sphere(0.9f * planetIndex);      
+        }
 
-        // bigBangRadius += 50;
         bigBangRotate  = bigBangRotate + bigBangRotateSpeed;
+
+        pApplet.popMatrix();
+        pApplet.popStyle();
     } // End void drawSphere
 
     private void drawRings() {
-        float baseRadius = 2f;
-        ringLerped = PApplet.lerp(ringLerped, frequencyIndex[1], 0.2f);
+        float baseRadius = 4f;
+        ringLerped = PApplet.lerp(ringLerped, frequencyIndex[1], 0.4f);
         
         pApplet.noFill();
         pApplet.stroke(255);
-
-        for(int circleIndex = 0; circleIndex < 20; circleIndex++) {
+        for(int circleIndex = 0; circleIndex < 50; circleIndex++) {
             pApplet.circle(0, 0, ringLerped * baseRadius * circleIndex);
         } // End for
     }
 
+    int counter = 0;
+    private void drawBlackHole() {
+        pApplet.pushMatrix();
+
+        pApplet.translate(windowWidth / 2, windowHeight / 2, -1000);
+
+        pApplet.pushStyle();
+        pApplet.stroke(255);
+        pApplet.strokeWeight(20);
+        pApplet.noFill();
+        pApplet.circle(0, 0, counter * 2.2f);
+        pApplet.popStyle();
+
+        pApplet.pushStyle();
+        pApplet.fill(0);
+        pApplet.sphere(counter);
+
+        counter += 2;
+        pApplet.popMatrix();
+        pApplet.popStyle();
+    } // End void drawStarField()
+
     private void drawStarField() {
+        pApplet.pushMatrix();
+        pApplet.pushStyle();
 
-    }
-
-    private class star {
-        float x;
-        float y;
-        float z;
-
+        // Render Star Field
+        pApplet.translate(0, 0, -2000);
+        for(int starIndex = 0; starIndex < totalStars; starIndex++) {
+            pApplet.circle(starPositions[starIndex][0], starPositions[starIndex][1], 20);
+        } // End for
         
-    } // End class star
+
+        pApplet.popMatrix();
+        pApplet.popStyle();
+    } // End void drawStarField()
 }

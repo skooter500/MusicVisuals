@@ -61,10 +61,7 @@ public class MusicVisualizer extends PApplet {
 
     public void draw() {
         background(0);
-
         playVisuals();
-
-
     } // End void draw()
 
 
