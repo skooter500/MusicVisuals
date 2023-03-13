@@ -1,8 +1,12 @@
 # Music Visualiser Project
 
-Name:
+C21782059 Ron Syhmon Pingol,
+C21394933 Ernest Decina,
+C21751999 Alex Tsang,
+C21460524 Daniel Wu,
 
-Student Number: 
+
+ 
 
 ## Instructions
 - Fork this repository and use it a starter project for your assignment
