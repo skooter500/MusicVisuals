@@ -1,8 +1,10 @@
 # Music Visualiser Project
 
-Name:
+Name: Mary Anne flores
 
-Student Number: 
+Student Number: C20461582
+
+hello?ljnjljngidtbhte5h5etrgtre
 
 ## Instructions
 - Fork this repository and use it a starter project for your assignment
