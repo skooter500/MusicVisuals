@@ -1,5 +1,7 @@
 package example;
 
+import java.util.concurrent.TimeUnit;
+
 import ie.tudublin.*;
 
 public class Monitor extends Visual
@@ -16,13 +18,28 @@ public class Monitor extends Visual
 
     public void setup()
     {
+        drawComputer();
+        startMinim();
+        loadAudio("fanBackground.mp3");
+        getAudioPlayer().play();
+        
     }
-
+    int count = 0;
 
     public void draw()
     {
-        drawComputer();
-        windowsLogo();
+        
+        loadingMode();
+
+        // Plays audio once, needs fix
+        if(count == 0) 
+        {
+            startMinim();
+            loadAudio("startupSound.mp3");
+            getAudioPlayer().play();
+            count++;
+        }
+        
         
     }
 
@@ -69,22 +86,41 @@ public class Monitor extends Visual
         rect(screenX,screenY,screenSize,screenSize);
     }
 
-    public void windowsLogo() 
+    public void windowsLogo(float x,float y,float extent) 
     {
+        float size = 20 * extent;
+        float offset = 1* extent;
+
         // Red Square
         fill(255,0,0);
-        quad(500,500, 700,513, 688,713, 488,700);
+        quad(x,y, x+size,y+offset, x+size-offset,y+size+offset, x-offset,y+size);
 
         // Green Square
         fill(0,255,0);
-        quad(725,513, 925,525, 913,725, 713,713);
+        quad(x+size+(offset*2), y+offset,   x+(size*2)+(offset*2), y+(offset*2),    x+(size*2)+offset, y+size+(offset*2),    x+size+offset, y+size+offset);
 
         // Yellow Square
         fill(255, 255, 0);
-        quad(488,725, 688,738, 676,938, 476,925);
+        quad(x-offset, y+size+(offset*2),   x+size-offset ,y+size+(offset*3),   x+size-(offset*2), y+(size*2)+(offset*3),   x-(offset*2),y+(size*2)+(offset*2));
 
         // Blue Square
         fill(0,0,255);
-        quad(713,738, 913,750, 900,950, 700,938);
+        quad(x+size+offset, y+size+(offset*3),   x+(size*2)+offset, y+size+(offset*4),   x+(size*2), y+(size*2)+(offset*4),   x+size, y+(size*2)+(offset*3));
+    }
+
+
+    public void loadingMode() 
+    {
+        //Times out loading screen
+        try {
+            TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        windowsLogo(850, 200,6);
+        fill(255);
+        textSize(80);
+        text("Loading...", 800,800);
     }
 }
