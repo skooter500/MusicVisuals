@@ -1,8 +1,8 @@
 # Music Visualiser Project
 
-Name:
+Name:Rana Hayes, Isadora Valentini, Ceren Ucan
 
-Student Number: 
+Student Number: C21920856, D21124013, D21125681
 
 ## Instructions
 - Fork this repository and use it a starter project for your assignment
