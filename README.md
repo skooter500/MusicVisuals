@@ -1,8 +1,10 @@
 # Music Visualiser Project
 
-Name:Fajar Albalushi
+Name: Fajar Albalushi
+Bayan Alwardi
 
 Student Number: D20125707
+D20125581
 
 ## Instructions
 - Fork this repository and use it a starter project for your assignment
