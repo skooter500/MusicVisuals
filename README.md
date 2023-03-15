@@ -1,9 +1,9 @@
 # Music Visualiser Project
 
-Name: Fajar Albalushi
+Name: Fajar Albalushi,
 Bayan Alwardi
 
-Student Number: D20125707
+Student Number: D20125707,
 D20125581
 
 ## Instructions
