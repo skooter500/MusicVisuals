@@ -3,9 +3,15 @@ package example;
 import java.util.concurrent.TimeUnit;
 
 import ie.tudublin.*;
+import processing.core.PFont;
+import processing.core.PImage;
 
 public class Monitor extends Visual
 {   
+    PImage img;
+    PFont MS95;
+
+    boolean computerStarted = false;
     
 
     public void settings()
@@ -22,20 +28,26 @@ public class Monitor extends Visual
         startMinim();
         loadAudio("fanBackground.mp3");
         getAudioPlayer().play();
-        
+        // img = loadImage("test.jpg");
+        // image(img, 525, 80);
+        MS95 = createFont("W95FA.otf", 128); 
     }
     int count = 0;
 
     public void draw()
     {
+        if(computerStarted == false) {
+            loadingMode();
+        } else {
+            desktopMode();
+        }
         
-        loadingMode();
-
-        // Plays audio once, needs fix
+        
+        //Plays audio once, needs fix
         if(count == 0) 
         {
             startMinim();
-            loadAudio("startupSound.mp3");
+            loadAudio("startupSound95.mp3");
             getAudioPlayer().play();
             count++;
         }
@@ -68,7 +80,7 @@ public class Monitor extends Visual
 
 
         // Monitor
-        fill(222, 221, 213);
+        fill(202, 201, 193);
         noStroke();
         rect(MonitorX,MonitorY,monitorSize,monitorSize,10);
 
@@ -85,7 +97,7 @@ public class Monitor extends Visual
         noStroke();
         rect(screenX,screenY,screenSize,screenSize);
     }
-    
+
 
     public void windowsLogo(float x,float y,float extent) 
     {
@@ -112,6 +124,12 @@ public class Monitor extends Visual
 
     public void loadingMode() 
     {
+        float screenX = 526;
+        float screenY = 81;
+        float screenSize = 916;
+        fill(10,10,10);
+        rect(screenX,screenY,screenSize,screenSize);
+        
         //Times out loading screen
         try {
             TimeUnit.SECONDS.sleep(1);
@@ -123,5 +141,88 @@ public class Monitor extends Visual
         fill(255);
         textSize(80);
         text("Loading...", 800,800);
+        computerStarted = true;       
+    }
+
+    public void desktopMode() 
+    {
+        //Times out loading screen
+        try {
+            TimeUnit.SECONDS.sleep(4);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        float screenX = 526;
+        float screenY = 81;
+        float screenSize = 916;
+
+        float taskbarHeight = 35;
+
+        float taskbarStartHeight = 25;
+        float taskbarStartWidth = 65;
+
+        float taskbarTimeHeight = 25;
+        float taskbarTimeWidth = 100;
+
+        // Desktop Background
+        fill(0,128,128);
+        rect(screenX,screenY,screenSize,screenSize);
+
+        //Taskbar
+        fill(192,192,192);
+        rect(screenX, screenSize+screenY-taskbarHeight, screenSize, taskbarHeight);
+
+        //Taskbar Start
+        fill(192,192,192);
+        stroke(0);
+        rect(screenX+5, screenSize+screenY-30, taskbarStartWidth, taskbarStartHeight);
+        windowsLogo(screenX+10, screenSize+screenY-25, (float) 0.3);
+        
+        fill(0);
+        textFont(MS95);
+        textSize(20);
+        // Font Bold Effect
+        text("Start", screenX+30, screenSize+screenY-10);
+        text("Start", screenX+31, screenSize+screenY-10);
+        text("Start", screenX+29, screenSize+screenY-10);
+
+        //Taskbar Time
+        fill(192,192,192);
+        rect(screenSize+screenX-taskbarTimeWidth-5, screenSize+screenY-30, taskbarTimeWidth, taskbarTimeHeight);
+
+        // Obtains time from computer
+        int m = minute();  // Values from 0 - 59
+        int h = hour();    // Values from 0 - 23
+        String time =  ""; // AM or PM value
+        
+        // IF time should be PM or AM
+        if(h > 12) 
+        {
+            time = " PM";
+        } else {
+            time = " AM";
+        } // end IF
+         
+        String curTime = String.format("%02d:%02d "+ time, h, m);
+        fill(0);
+        
+        // Print Taskbar TIme
+        text(curTime, screenSize+screenX-taskbarTimeWidth+5, screenSize+screenY-10);
+
+        // Icons
+        desktopIcon("Visual1.exe", screenX+20, screenY+10);
+        desktopIcon("Visual2.exe", screenX+20, screenY+100);
+        desktopIcon("Visual3.exe", screenX+20, screenY+190);
+    }
+
+    public void desktopIcon(String text, float x, float y) 
+    {
+        //Icon Template
+        fill(191,186,197);
+        rect(x, y, 50, 50);
+
+        //Text
+        fill(255);
+        text(text,x-15, y+70);
     }
 }
