@@ -85,6 +85,7 @@ public class Monitor extends Visual
         noStroke();
         rect(screenX,screenY,screenSize,screenSize);
     }
+    
 
     public void windowsLogo(float x,float y,float extent) 
     {
