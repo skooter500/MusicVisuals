@@ -5,7 +5,7 @@ Name:Rana Hayes, Isadora Valentini, Ceren Ucan
 Student Number: C21920856, D21124013, D21125681
 
 ## Instructions
-- Fork this repository and use it a starter project for your assignment
+- this repository and use it a starter project for your assignment
 - Create a new package named your student number and put all your code in this package.
 - You should start by creating a subclass of ie.tudublin.Visual
 - There is an example visualiser called MyVisual in the example package
