@@ -42,12 +42,12 @@ public class Audio1 extends PApplet
     public void setup()
     {
         minim = new Minim(this);
-        // Uncomment this to use the microphone
-        // ai = minim.getLineIn(Minim.MONO, width, 44100, 16);
-        // ab = ai.mix; 
+         //Uncomment this to use the microphone
+        //ai = minim.getLineIn(Minim.MONO, width, 44100, 16);
+        //ab = ai.mix; 
 
         // And comment the next two lines out
-        ap = minim.loadFile("java/data/heroplanet.mp3", 1024);
+        ap = minim.loadFile("java/data/surething.mp3", 1024);
         ap.play();
         ab = ap.mix;
         colorMode(HSB);
