@@ -23,7 +23,7 @@ public class MyVisual extends Visual
         startMinim();
                 
         // Call loadAudio to load an audio file to process 
-        //loadAudio("heroplanet.mp3");   
+        loadAudio("java/data/heroplanet.mp3");   
 
         
         // Call this instead to read audio from the microphone
