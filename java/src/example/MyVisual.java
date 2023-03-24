@@ -70,10 +70,12 @@ public class MyVisual extends Visual
 
     void keyPressingLogic(){
         if(keyPressed){
-            if(!lastPressed){
-                mode = (mode+1) % numbersOfPurts;
+            if(key == 'n'){
+                if(!lastPressed){
+                    mode = (mode+1) % numbersOfPurts;
+                }
+                lastPressed = true;
             }
-            lastPressed = true;
         } else{
             lastPressed = false;
         }
