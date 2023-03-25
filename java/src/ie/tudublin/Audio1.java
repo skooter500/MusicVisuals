@@ -6,8 +6,6 @@ import ddf.minim.AudioPlayer;
 import ddf.minim.Minim;
 import processing.core.PApplet;
 
-
-
 public class Audio1 extends PApplet
 {
     Minim minim;
@@ -21,6 +19,7 @@ public class Audio1 extends PApplet
     float smoothedY = 0;
     float smoothedAmplitude = 0;
     float[] spectrum = new float[512];
+    Planet[] planets = new Planet[4];
 
     public void keyPressed() {
 		if (key >= '0' && key <= '9') {
@@ -38,8 +37,7 @@ public class Audio1 extends PApplet
 
     public void settings()
     {
-        size(1024, 1000);
-        //fullScreen(P3D, SPAN);
+        size(1024, 1000);        //fullScreen(P3D, SPAN);
     }
 
     public void setup()
@@ -57,9 +55,14 @@ public class Audio1 extends PApplet
 
         y = height / 2;
         smoothedY = y;  
+
+        for (int i = 0; i < planets.length; i++ ) {
+            planets[i] = new Planet(64 + i*32,24);
+          }
+        }
         
        
-    }
+    
 
     float off = 0;
 
@@ -88,6 +91,7 @@ public class Audio1 extends PApplet
         //float cx = width / 2;
         //float cy = height / 2;
 
+        
         switch (mode) {
 			case 0:
                 background(0);
@@ -102,30 +106,42 @@ public class Audio1 extends PApplet
                 break;
         case 1:
             background(0);
-            for(int i = 0 ; i < ab.size() ; i ++)
-            {
-            float a =0;
-            float b =0;
-            float col =0; 
-
-            stroke(col, 80, 80, 20);
-
-            float x0 = map(sin(a), -1, 1, 20, width-20);
-            float y0 = map(cos(a), -1, 1, 20, height-20);
-            
-            float x1 = map(sin(b), -1, 1, 20, width-20);
-            float y1 = map(cos(a), -1, 1, 20, width-20);
-
-            line(x0, y0, x1, y1);
-
-            a = (float) (a + 0.03);
-            b = (float) (b + 0.05);
-
-            col = col +1;
-            if (col > 100){
-                col = 0;
-            }
-        }
+    int from = color(255, 0, 0);
+    int to = color(0, 255);
+    int c1 = lerpColor(from, to, (float) 0.33);
+    int c2 = lerpColor(from, to, (float) 0.66);
+    for (int i = 0; i < 15; i++) {
+      fill(from);
+      quad(
+        random(-40, 220), random(height),
+        random(-40, 220), random(height),
+        random(-40, 220), random(height),
+        random(-40, 220), random(height)
+      );
+      fill(c1);
+      quad(
+        random(140, 380), random(height),
+        random(140, 380), random(height),
+        random(140, 380), random(height),
+        random(140, 380), random(height)
+      );
+      fill(c2);
+      quad(
+        random(320, 580), random(height),
+        random(320, 580), random(height),
+        random(320, 580), random(height),
+        random(320, 580), random(height)
+      );
+      fill(to);
+      quad(
+        random(500, 760), random(height),
+        random(500, 760), random(height),
+        random(500, 760), random(height),
+        random(500, 760), random(height)
+      );
+    frameRate(5);
+  }
+  
             break;      
         case 2:
             background(0);
@@ -139,8 +155,25 @@ public class Audio1 extends PApplet
                 line(i, 0, i, f);          
                 line(i, height, i, height - f);              
             }
-            break;    
-
+            break;   
+            
+            case 3:
+            background(0);
+            // Drawing the Sun
+            pushMatrix();
+            translate(width/2,height/2);
+            stroke(0);
+            fill(255);
+            ellipse(0,0,64,64);
+            
+            // Drawing all Planets
+            for (int i = 0; i < planets.length; i++ ) {
+              planets[i].update();
+              planets[i].display();
+            }
+            popMatrix();
+            break;
+          
         }
         
         // Other examples we made in the class
