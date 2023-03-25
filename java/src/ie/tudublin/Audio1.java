@@ -6,6 +6,8 @@ import ddf.minim.AudioPlayer;
 import ddf.minim.Minim;
 import processing.core.PApplet;
 
+
+
 public class Audio1 extends PApplet
 {
     Minim minim;
@@ -18,6 +20,7 @@ public class Audio1 extends PApplet
     float y = 0;
     float smoothedY = 0;
     float smoothedAmplitude = 0;
+    float[] spectrum = new float[512];
 
     public void keyPressed() {
 		if (key >= '0' && key <= '9') {
@@ -47,13 +50,15 @@ public class Audio1 extends PApplet
         //ab = ai.mix; 
 
         // And comment the next two lines out
-        ap = minim.loadFile("java/data/surething.mp3", 1024);
+        ap = minim.loadFile("java/data/horizon.mp3", 1024);
         ap.play();
         ab = ap.mix;
         colorMode(HSB);
 
         y = height / 2;
-        smoothedY = y;        
+        smoothedY = y;  
+        
+       
     }
 
     float off = 0;
@@ -99,12 +104,28 @@ public class Audio1 extends PApplet
             background(0);
             for(int i = 0 ; i < ab.size() ; i ++)
             {
-                //float c = map(ab.get(i), -1, 1, 0, 255);
-                float c = map(i, 0, ab.size(), 0, 255);
-                stroke(c, 255, 255);
-                float f = lerpedBuffer[i] * halfH * 4.0f;
-                line(i, halfH + f, halfH - f, i);                    
+            float a =0;
+            float b =0;
+            float col =0; 
+
+            stroke(col, 80, 80, 20);
+
+            float x0 = map(sin(a), -1, 1, 20, width-20);
+            float y0 = map(cos(a), -1, 1, 20, height-20);
+            
+            float x1 = map(sin(b), -1, 1, 20, width-20);
+            float y1 = map(cos(a), -1, 1, 20, width-20);
+
+            line(x0, y0, x1, y1);
+
+            a = (float) (a + 0.03);
+            b = (float) (b + 0.05);
+
+            col = col +1;
+            if (col > 100){
+                col = 0;
             }
+        }
             break;      
         case 2:
             background(0);
@@ -118,10 +139,9 @@ public class Audio1 extends PApplet
                 line(i, 0, i, f);          
                 line(i, height, i, height - f);              
             }
-            break;          
+            break;    
+
         }
-
-
         
         // Other examples we made in the class
         /*
