@@ -7,6 +7,7 @@ public class MyVisual extends Visual
 {
     WaveForm wf;
     AudioBandsVisual abv;
+    Stars ss;
 
 
 
@@ -32,7 +33,8 @@ public class MyVisual extends Visual
         startMinim();
                 
         // Call loadAudio to load an audio file to process 
-        loadAudio("Hensonn_Flare.mp3");   
+        loadAudio("Hensonn_Flare.mp3");  
+         
 
         
         // Call this instead to read audio from the microphone
@@ -40,6 +42,7 @@ public class MyVisual extends Visual
         
         wf = new WaveForm(this);
         abv = new AudioBandsVisual(this);
+        ss = new Stars(this);
     }
 
 
@@ -110,14 +113,16 @@ public class MyVisual extends Visual
 
 
     void partTwo(){
-        color(255);
-        text("Part Two", 100, 100);
-
+        ss.render();
     }
 
 
     void partThree(){
         color(255);
         text("Part Three", 100, 100);
+    }
+
+
+    public void star(int i, int j, int k, int l, int m) {
     }
 }
