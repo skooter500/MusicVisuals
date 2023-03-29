@@ -1,16 +1,19 @@
 package example;
 
-
 import ie.tudublin.*;
 
+
 public class MyVisual extends Visual
-{    
+{
     WaveForm wf;
     AudioBandsVisual abv;
+
+
 
     int mode = 1;
     int numbersOfPurts = 3;
     boolean lastPressed = false;
+
 
     public void settings()
     {
@@ -23,20 +26,22 @@ public class MyVisual extends Visual
         //fullScreen(P3D, SPAN); 
     }
 
+
     public void setup()
     {
         startMinim();
                 
         // Call loadAudio to load an audio file to process 
-        //loadAudio("heroplanet.mp3");   
+        loadAudio("Hensonn_Flare.mp3");   
 
         
         // Call this instead to read audio from the microphone
-        startListening(); 
+        //startListening(); 
         
         wf = new WaveForm(this);
         abv = new AudioBandsVisual(this);
     }
+
 
     public void keyPressed()
     {
@@ -46,6 +51,7 @@ public class MyVisual extends Visual
             getAudioPlayer().play();
         }
     }
+
 
     @Override
     public void draw(){
@@ -68,6 +74,7 @@ public class MyVisual extends Visual
         keyPressingLogic();
 }
 
+
     void keyPressingLogic(){
         if(keyPressed){
             if(key == 'n'){
@@ -80,6 +87,7 @@ public class MyVisual extends Visual
             lastPressed = false;
         }
     }
+
 
     void partOne(){
         try
@@ -100,11 +108,13 @@ public class MyVisual extends Visual
             abv.render();
     }
 
+
     void partTwo(){
         color(255);
         text("Part Two", 100, 100);
 
     }
+
 
     void partThree(){
         color(255);
