@@ -5,7 +5,8 @@
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
-	</classpathentry>
+	</classpathentry>	
+	<classpathentry kind="lib" path="lib/GameControlPlus.jar"/>
 	<classpathentry kind="lib" path="lib/core.jar"/>
 	<classpathentry kind="lib" path="lib/jl1.0.1.jar"/>
 	<classpathentry kind="lib" path="lib/jsminim.jar"/>

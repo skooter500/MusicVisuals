@@ -2,6 +2,10 @@ package example;
 
 import ie.tudublin.*;
 
+import net.java.games.input.*;
+import org.gamecontrolplus.*;
+import org.gamecontrolplus.gui.*;
+
 public class MyVisual extends Visual
 {    
     WaveForm wf;
@@ -9,10 +13,10 @@ public class MyVisual extends Visual
 
     public void settings()
     {
-        size(1024, 500);
-        
+        size(1024, 500, P3D);
+  
         // Use this to make fullscreen
-        //fullScreen();
+        //fullScreen(P3D);
 
         // Use this to make fullscreen and use P3D for 3D graphics
         //fullScreen(P3D, SPAN); 
@@ -31,6 +35,10 @@ public class MyVisual extends Visual
         
         wf = new WaveForm(this);
         abv = new AudioBandsVisual(this);
+
+        // Connect to a game controller
+        controlIO = ControlIO.getInstance(this);
+        connectToController();
     }
 
     public void keyPressed()
@@ -61,5 +69,29 @@ public class MyVisual extends Visual
         calculateAverageAmplitude();        
         wf.render();
         abv.render();
+
+        // Gamepad input
+        printSliders();
     }
+
+    void printSliders()
+    {
+        for(int i = 0 ; i < device.getNumberOfSliders() ; i ++)
+        {
+            println("Slider: " + i + ": \t" + device.getSlider(i));
+        }
+    }
+
+    void connectToController()
+    {
+        for(int i = 0; i < controlIO.getNumberOfDevices(); i++){
+            ControlDevice device = controlIO.getDevice(i);
+            println(device);
+        }
+        device = controlIO.getDevice(0);
+        
+    }
+
+    ControlDevice device;
+    ControlIO controlIO;
 }
