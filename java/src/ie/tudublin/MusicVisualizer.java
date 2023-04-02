@@ -7,6 +7,8 @@ import ddf.minim.AudioPlayer;
 import ddf.minim.Minim;
 import processing.core.PApplet;
 
+import java.util.ArrayList;
+
 // Visuals
 import com.C21782059.visual1.Visual1;
 import com.C21394933.visual2.Visual2;
@@ -18,13 +20,17 @@ public class MusicVisualizer extends PApplet {
     // Render Visuals
     // C21394933 (Ernest John Decina)
     Visual1 visual1;
+    //
     Visual2 visual2;
+    //
     Visual3 visual3;
+    //
     Visual4 visual4;
 
     // Private Variables
     int windowHeight = 720;
     int windowWidth = 1080;
+    ArrayList<VisualAbstractClass> visualList;
 
     Minim minim;
     AudioInput audioInput;
@@ -34,7 +40,15 @@ public class MusicVisualizer extends PApplet {
     int frameSize = 1024;
     int sampleRate = 96000; // 44100;
     int bitDepth = 16;
+    
     float lerpedR = 0;
+    int[] timings = {667, 1075, 1328, 1868, 2262};
+    int timingsCounter = 0;
+    int currentTime = 0;
+
+    public MusicVisualizer() {
+        visualList = new ArrayList<VisualAbstractClass>();
+    } // End MusicVisualizer
 
     public void settings() {
         size(windowWidth, windowHeight, P3D);
@@ -48,10 +62,7 @@ public class MusicVisualizer extends PApplet {
 
     public void draw() {
         background(0);
-        // this.visual1.drawVisual1();
-        // this.visual2.drawVisual2();
-        // this.visual3.drawVisual3();
-        // this.visual4.drawVisual4();
+        playVisuals();
     } // End void draw()
 
 
@@ -59,18 +70,33 @@ public class MusicVisualizer extends PApplet {
     private void loadSong() {
         // Initialize minim
         this.minim = new Minim(this);
-        this.audioPlayer = minim.loadFile("songs/heroplanet.mp3", 1024); // minim.getLineIn(Minim.MONO, frameSize, sampleRate, bitDepth); // minim.loadFile("shelter.mp3", 1024); // minim.getLineIn(Minim.MONO, frameSize, sampleRate, bitDepth);// minim.loadFile("shelter.mp3", 1024); // minim.getLineIn(Minim.MONO, frameSize, sampleRate, bitDepth); // minim.loadFile("shelter.mp3", 1024); // minim.getLineIn(Minim.MONO, frameSize, sampleRate, bitDepth);
+        this.audioPlayer = minim.loadFile("songs/somethingComforting.mp3", 2048); 
         this.audioPlayer.play();
         this.audioBuffer = audioPlayer.mix;
+        Utils.skipSecondsSong(audioPlayer, 39.5f);
     } // End void loadSong()
 
     private void loadVisuals() {
         // Refresh Frame
         // background(0);
-        this.visual1 = new Visual1(this, this.audioBuffer, this.windowWidth, this.windowHeight);
-        this.visual2 = new Visual2(this, this.audioBuffer, this.windowWidth, this.windowHeight);
-        this.visual3 = new Visual3(this, this.audioBuffer, this.windowWidth, this.windowHeight);
-        this.visual4 = new Visual4(this, this.audioBuffer, this.windowWidth, this.windowHeight);
+        this.visual2 = new Visual2(this, this.audioBuffer, this.audioPlayer, this.windowWidth, this.windowHeight);
+        this.visual3 = new Visual3(this, this.audioBuffer, this.audioPlayer, this.windowWidth, this.windowHeight);
+        this.visual1 = new Visual1(this, this.audioBuffer, this.audioPlayer, this.windowWidth, this.windowHeight);
+        this.visual4 = new Visual4(this, this.audioBuffer, this.audioPlayer, this.windowWidth, this.windowHeight);
+
+        visualList.add(visual1);
+        visualList.add(visual2);
+        visualList.add(visual3);
+        visualList.add(visual4);
     } // End void loadVisuals
+
+    private void playVisuals() {
+        currentTime = audioPlayer.position();
+        System.out.println((float)currentTime / 100);
+        if(currentTime / 100 > timings[timingsCounter]) 
+            timingsCounter++;
+        
+        visualList.get(timingsCounter).drawVisual();
+    } // End void playVisual
 
 } // End class MusicVisualizer
