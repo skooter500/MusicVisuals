@@ -1,6 +1,7 @@
 package com.C21782059.visual1;
 
 import com.C21460524.drawObjects.ExampleDraw;
+import com.C21782059.drawObjects.AudioHm;
 
 // Dependencies
 import ddf.minim.AudioBuffer;
@@ -17,7 +18,7 @@ public class Visual1 extends VisualAbstractClass {
     AudioBuffer audioBuffer;
 
     //  Render Objects
-    // Place Objects Here
+    AudioHm test;
     ExampleDraw exampleDraw;
     //
     //
@@ -35,9 +36,10 @@ public class Visual1 extends VisualAbstractClass {
 } // End Visual2 Constructor
 
     // Draw Function for Visual 3
-    public void drawVisual1() {
+    public void drawVisual() {
         // Call Draw Functions in here
-        exampleDraw.drawExample();
+        test.render();
+        //System.out.println("hello");
     } // End drawVisual2
 
 
@@ -45,5 +47,6 @@ public class Visual1 extends VisualAbstractClass {
     private void loadRenderObjects() {
         // Create your draw Objects here
         exampleDraw = new ExampleDraw(this.pApplet, this.audioBuffer, this.windowWidth, this.windowHeight);
+        test = new AudioHm(pApplet, audioBuffer, fft, windowWidth, windowHeight);
     } // End void oadRenderObjects
 } // End class Visual1

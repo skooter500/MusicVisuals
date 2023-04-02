@@ -55,9 +55,11 @@ public class MusicVisualizer extends PApplet {
     } // End void settings()
 
     public void setup() {
-        colorMode(HSB);
+        colorMode(RGB);
+        frameRate(60);
         loadSong();
         loadVisuals();
+        
     } // End void setup()
 
     public void draw() {
@@ -73,7 +75,7 @@ public class MusicVisualizer extends PApplet {
         this.audioPlayer = minim.loadFile("songs/somethingComforting.mp3", 2048); 
         this.audioPlayer.play();
         this.audioBuffer = audioPlayer.mix;
-        Utils.skipSecondsSong(audioPlayer, 39.5f);
+        Utils.skipSecondsSong(audioPlayer, 132.8f);
     } // End void loadSong()
 
     private void loadVisuals() {
@@ -85,9 +87,11 @@ public class MusicVisualizer extends PApplet {
         this.visual4 = new Visual4(this, this.audioBuffer, this.audioPlayer, this.windowWidth, this.windowHeight);
 
         visualList.add(visual1);
-        visualList.add(visual2);
-        visualList.add(visual3);
-        visualList.add(visual4);
+        visualList.add(visual1);
+        visualList.add(visual1);
+        visualList.add(visual1);
+        visualList.add(visual1);
+
     } // End void loadVisuals
 
     private void playVisuals() {
