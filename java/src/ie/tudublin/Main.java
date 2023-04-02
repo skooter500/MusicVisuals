@@ -1,7 +1,8 @@
 package ie.tudublin;
 
-//import example.CubeVisual;
-import example.Monitor;
+import C21423244.Monitor;
+import example.CubeVisual;
+import example.Test;
 
 public class Main
 {	
@@ -10,6 +11,12 @@ public class Main
 	{
 		String[] a = {"MAIN"};
         processing.core.PApplet.runSketch( a, new Monitor());		
+	}
+
+	public void testUI()
+	{
+		String[] a = {"MAIN"};
+        processing.core.PApplet.runSketch( a, new Test());		
 	}
 
 	public static void main(String[] args)
