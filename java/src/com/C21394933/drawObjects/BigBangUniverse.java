@@ -2,18 +2,12 @@ package com.C21394933.drawObjects;
 
 import ddf.minim.AudioBuffer;
 import ddf.minim.analysis.FFT;
+import ie.tudublin.DrawObjectAbstractClass;
 import ie.tudublin.Utils;
 import processing.core.PApplet;
 
-public class BigBangUniverse {
+public class BigBangUniverse extends DrawObjectAbstractClass {
     // Private Variables
-    PApplet pApplet;
-    int windowWidth;
-    int windowHeight;
-
-    AudioBuffer audioBuffer;
-    FFT fft;
-
     float bigBangRadiusLerped = 0.0f;
     float bigBangRotate = 0.0f;
     float bigBangRotateSpeed = 0.02f;

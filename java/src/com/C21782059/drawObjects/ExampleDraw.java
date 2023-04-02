@@ -1,9 +1,10 @@
 package com.C21782059.drawObjects;
 
 import ddf.minim.AudioBuffer;
+import ie.tudublin.DrawObjectAbstractClass;
 import processing.core.PApplet;
 
-public class ExampleDraw {
+public class ExampleDraw extends DrawObjectAbstractClass {
     // Private Feilds
     PApplet pApplet;
     int windowWidth;

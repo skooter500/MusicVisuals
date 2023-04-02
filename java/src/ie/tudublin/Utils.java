@@ -4,7 +4,6 @@ package ie.tudublin;
 // Dependencies
 import processing.core.PApplet;
 
-import java.util.concurrent.TimeUnit;
 
 import ddf.minim.AudioBuffer;
 import ddf.minim.AudioPlayer;
@@ -25,9 +24,8 @@ public class Utils extends PApplet {
 
     public static int[] getHighestFrequencyIndex(FFT fft, AudioBuffer audioBuffer) {
         int[] loudestFrequencies = {0, 0, 0};
-
-
         fft.forward(audioBuffer);
+
         // Draw Bass
         // 20 Hz - 261 Hz
         for(int i = 0; i < 12; i++) {

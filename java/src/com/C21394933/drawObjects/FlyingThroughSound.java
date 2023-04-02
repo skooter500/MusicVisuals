@@ -1,20 +1,11 @@
 package com.C21394933.drawObjects;
 
-import java.time.format.SignStyle;
-
 import ddf.minim.AudioBuffer;
 import ddf.minim.analysis.FFT;
+import ie.tudublin.DrawObjectAbstractClass;
 import processing.core.PApplet;
 
-public class FlyingThroughSound {
-    // Private Vairables
-    PApplet pApplet;
-    int windowWidth;
-    int windowHeight;
-
-    AudioBuffer audioBuffer;
-    FFT fft;
-    
+public class FlyingThroughSound extends DrawObjectAbstractClass {    
     public FlyingThroughSound(PApplet pApplet2, AudioBuffer audioBuffer, FFT fft, int windowWidth, int windowHeight) {
         this.pApplet = pApplet2;
         this.windowWidth = windowWidth;
