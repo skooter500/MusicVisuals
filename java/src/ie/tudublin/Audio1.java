@@ -5,6 +5,10 @@ import ddf.minim.AudioInput;
 import ddf.minim.AudioPlayer;
 import ddf.minim.Minim;
 import processing.core.PApplet;
+import ddf.minim.analysis.*;
+//import ddf.minim.*;
+//import ddf.minim.signals.*;
+ 
 
 public class Audio1 extends PApplet
 {
@@ -12,6 +16,11 @@ public class Audio1 extends PApplet
     AudioPlayer ap;
     AudioInput ai;
     AudioBuffer ab;
+    FFT fft;
+
+    float n4;
+    float n6;
+
 
     int mode = 0;
 
@@ -52,6 +61,9 @@ public class Audio1 extends PApplet
         ap.play();
         ab = ap.mix;
         colorMode(HSB);
+        noCursor();
+        smooth();
+        frameRate(24);
 
         y = height / 2;
         smoothedY = y;  
@@ -61,9 +73,6 @@ public class Audio1 extends PApplet
           }
         }
         
-       
-    
-
     float off = 0;
 
     float lerpedBuffer[] = new float[1024];
@@ -94,28 +103,28 @@ public class Audio1 extends PApplet
         
         switch (mode) {
 			case 0:
-                background(0);
-                for(int i = 0 ; i < ab.size() ; i ++)
-                {
-                    //float c = map(ab.get(i), -1, 1, 0, 255);
-                    float c = map(i, 0, ab.size(), 0, 255);
-                    stroke(c, 255, 255);
-                    float f = lerpedBuffer[i] * halfH * 4.0f;
-                    line(i, halfH + f, i, halfH - f);                    
-                }
-                break;
+        background(0);
+        for(int i = 0 ; i < ab.size() ; i ++)
+        {
+            //float c = map(ab.get(i), -1, 1, 0, 255);
+            float c = map(i, 0, ab.size(), 0, 255);
+            stroke(c, 255, 255);
+            float f = lerpedBuffer[i] * halfH * 4.0f;
+            line(i, halfH + f, i, halfH - f);                    
+        }
+        break;
         case 1:
             background(0);
-    int from = color(255, 0, 0);
-    int to = color(0, 255);
-    int c1 = lerpColor(from, to, (float) 0.33);
-    int c2 = lerpColor(from, to, (float) 0.66);
-    for (int i = 0; i < 15; i++) {
-      fill(from);
-      quad(
-        random(-40, 220), random(height),
-        random(-40, 220), random(height),
-        random(-40, 220), random(height),
+            int from = color(255, 0, 0);
+            int to = color(0, 255);
+            int c1 = lerpColor(from, to, (float) 0.33);
+            int c2 = lerpColor(from, to, (float) 0.66);
+           for (int i = 0; i < 15; i++) {
+               fill(from);
+               quad(
+               random(-40, 220), random(height),
+               random(-40, 220), random(height),
+               random(-40, 220), random(height),
         random(-40, 220), random(height)
       );
       fill(c1);
@@ -158,23 +167,55 @@ public class Audio1 extends PApplet
             break;   
             
             case 3:
-            background(0);
-            // Drawing the Sun
-            pushMatrix();
-            translate(width/2,height/2);
-            stroke(0);
-            fill(255);
-            ellipse(0,0,64,64);
-            
-            // Drawing all Planets
-            for (int i = 0; i < planets.length; i++ ) {
-              planets[i].update();
-              planets[i].display();
+             background(0);
+             fill(0,50);  
+             noStroke();
+             rect(0, 0, width, height);
+             translate(width/2, height/2);
+
+             for (int i = 0; i < ap.bufferSize() - 1; i++) {
+ 
+              float angle = sin(i+n4)* 10; 
+              float angle2 = sin(i+n6)* 300; 
+           
+              float x = sin(radians(i))*(angle2+30); 
+              float y = cos(radians(i))*(angle2+30);
+           
+              float x3 = sin(radians(i))*(500/angle); 
+              float y3 = cos(radians(i))*(500/angle);
+           
+              fill (90, 90); //yellow
+              ellipse(x, y, ap.left.get(i)*10, ap.left.get(i)*10);
+           
+            fill ( 60, 60); //wt
+              rect(x3, y3, ap.left.get(i)*20, ap.left.get(i)*10);
+           
+              fill ( 90  , 90); //orange
+              rect(x, y, ap.right.get(i)*10, ap.left.get(i)*10);
+           
+              fill( 70 , 70); //wt
+              rect(x3, y3, ap.right.get(i)*10, ap.right.get(i)*20);
             }
-            popMatrix();
+           
+            n4 += 0.008;
+            n6 += 0.04;
+            break;
+          }
+
+           
+            /*case 4:
+            background(0);
+            int n=0;
+            translate (width/2,height/2);
+             for (int i = 0; i < ap. bufferSize () - 2; i++) {
+                  rotate(n*-PI/200*0.1);
+                  fill (255,0,0) ;
+                  ellipse(i,i,ap. left.get (i) *50,ap. left.get (i) *50) ;
+              } n++;
             break;
           
-        }
+        }*/
+
         
         // Other examples we made in the class
         /*
@@ -189,5 +230,8 @@ public class Audio1 extends PApplet
         circle(200, smoothedY, 50);
         */
 
-    }        
-}
+    }
+  }   
+
+
+
