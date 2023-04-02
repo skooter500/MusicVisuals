@@ -22,15 +22,13 @@ public class WaveFormVisualize extends PApplet {
         this.windowHeight = windowHeight;
         this.audioBuffer = audioBuffer;
         this.fft = new FFT(2048, 44100);
-        
-
     } // End WaveFormVisualize Constructor
 
     public void render() {
 
         // Utils.waitFor(200);
-        drawFrequencySpectrum();
-        // drawWaveForm();
+        // drawFrequencySpectrum();
+        drawWaveForm();
     } // End void render()
 
     public void drawWaveForm() {

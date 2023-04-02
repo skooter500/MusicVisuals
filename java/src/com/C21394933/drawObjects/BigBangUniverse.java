@@ -27,12 +27,12 @@ public class BigBangUniverse {
     float[][] starPositions = new float[totalStars][2];
 
     // Constructor
-    public BigBangUniverse(PApplet pApplet2, AudioBuffer audioBuffer, int windowWidth, int windowHeight) {
+    public BigBangUniverse(PApplet pApplet2, AudioBuffer audioBuffer, FFT fft, int windowWidth, int windowHeight) {
         this.pApplet = pApplet2;
         this.windowWidth = windowWidth;
         this.windowHeight = windowHeight;
         this.audioBuffer = audioBuffer;
-        this.fft = new FFT(2048, 44100);
+        this.fft = fft;
         
         for(int counter = 0; counter < totalStars; counter++) {
             starPositions[counter][0] = pApplet.random(-2000, windowWidth + 2000);
