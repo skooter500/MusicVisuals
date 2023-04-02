@@ -1,17 +1,17 @@
-package example;
+package C21423244;
 
 import java.util.concurrent.TimeUnit;
 
 import ie.tudublin.*;
 import processing.core.PFont;
 import processing.core.PImage;
-
 public class Monitor extends Visual
 {   
     PImage img;
     PFont MS95;
 
     boolean computerStarted = false;
+    boolean startDone = false;
     
 
     public void settings()
@@ -28,6 +28,7 @@ public class Monitor extends Visual
         startMinim();
         loadAudio("fanBackground.mp3");
         getAudioPlayer().play();
+
         // img = loadImage("test.jpg");
         // image(img, 525, 80);
         MS95 = createFont("W95FA.otf", 128); 
@@ -38,7 +39,12 @@ public class Monitor extends Visual
     {
         if(computerStarted == false) {
             loadingMode();
+            
         } else {
+            if(startDone == false) {
+                wait(4);
+            }
+            startDone = true;
             desktopMode();
         }
         
@@ -52,7 +58,33 @@ public class Monitor extends Visual
             count++;
         }
         
-        
+        iconHover();
+    }
+
+    public void iconHover() 
+    {
+        //fill(0,128,128);
+        if(mouseX >= 531 && mouseX <= 622 && mouseY >= 86 && mouseY <= 166)
+        {
+            stroke(0,182,255);
+            fill(49,182,255,65);
+            rect(531, 86, 91, 50+30);
+        }
+ 
+        if(mouseX >= 531 && mouseX <= 622 && mouseY >= 176 && mouseY <= 256)
+        {
+            stroke(0,182,255);
+            fill(49,182,255,65);
+            rect(531, 176, 91, 50+30);
+        }
+ 
+        if(mouseX >= 531 && mouseX <= 622 && mouseY >= 266 && mouseY <= 345)
+        {
+            stroke(0,182,255);
+            fill(49,182,255,65);
+            rect(531, 266, 91, 50+30);
+        }
+        stroke(0);
     }
 
     public void drawComputer() 
@@ -130,28 +162,18 @@ public class Monitor extends Visual
         fill(10,10,10);
         rect(screenX,screenY,screenSize,screenSize);
         
-        //Times out loading screen
-        try {
-            TimeUnit.SECONDS.sleep(1);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        wait(1);
 
         windowsLogo(850, 200,6);
         fill(255);
         textSize(80);
         text("Loading...", 800,800);
-        computerStarted = true;       
+        computerStarted = true;    
+           
     }
 
     public void desktopMode() 
     {
-        //Times out loading screen
-        try {
-            TimeUnit.SECONDS.sleep(4);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         float screenX = 526;
         float screenY = 81;
         float screenSize = 916;
@@ -210,19 +232,59 @@ public class Monitor extends Visual
         text(curTime, screenSize+screenX-taskbarTimeWidth+5, screenSize+screenY-10);
 
         // Icons
-        desktopIcon("Visual1.exe", screenX+20, screenY+10);
-        desktopIcon("Visual2.exe", screenX+20, screenY+100);
-        desktopIcon("Visual3.exe", screenX+20, screenY+190);
+        desktopIcon("Visual1.exe","icon1.png", screenX+20, screenY+10);
+        desktopIcon("Visual2.exe", "icon2.png", screenX+20, screenY+100);
+        desktopIcon("Visual3.exe", "icon3.png", screenX+20, screenY+190);
     }
 
-    public void desktopIcon(String text, float x, float y) 
+    public void desktopIcon(String text, String imgName, float x, float y) 
     {
+        img = loadImage(imgName);
+        image(img, x, y);
+        
         //Icon Template
-        fill(191,186,197);
-        rect(x, y, 50, 50);
+       // fill(191,186,197);
+        //rect(x, y, 50, 50);
 
         //Text
         fill(255);
         text(text,x-15, y+70);
+    }
+
+    public void mousePressed() {
+       if(mouseX >= 531 && mouseX <= 622 && mouseY >= 86 && mouseY <= 166)
+       {
+        rect(531, 86, 91, 50+30);
+       }
+
+       if(mouseX >= 531 && mouseX <= 622 && mouseY >= 176 && mouseY <= 256)
+       {
+        rect(531, 176, 91, 50+30);
+       }
+
+       if(mouseX >= 531 && mouseX <= 622 && mouseY >= 266 && mouseY <= 345)
+       {
+        rect(531, 266, 91, 50+30);
+       }
+
+
+
+
+
+
+
+       System.out.println(mouseX);
+       System.out.println(mouseY);
+       System.out.println();
+    }
+
+    private void wait(int waitSeconds) 
+    {
+        //Times out loading screen
+        try {
+            TimeUnit.SECONDS.sleep(waitSeconds);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
