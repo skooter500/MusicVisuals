@@ -58,5 +58,6 @@ public class Visual2 extends VisualAbstractClass {
         drawObjects.add(bigBangUniverse);
         drawObjects.add(waveFormVisualize);
         drawObjects.add(flyingThroughSound);
+        drawObjects.add(flyingThroughSound);
     } // End void oadRenderObjects
 } // End class Visual2
