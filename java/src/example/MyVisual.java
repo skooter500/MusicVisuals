@@ -7,8 +7,7 @@ public class MyVisual extends Visual
 {
     WaveForm wf;
     AudioBandsVisual abv;
-
-
+    CloudsBackground cb;
 
     int mode = 1;
     int numbersOfPurts = 3;
@@ -40,6 +39,7 @@ public class MyVisual extends Visual
         
         wf = new WaveForm(this);
         abv = new AudioBandsVisual(this);
+        cb = new CloudsBackground(this);
     }
 
 
@@ -89,29 +89,17 @@ public class MyVisual extends Visual
     }
 
 
-    void partOne(){
-        try
-            {
-                // Call this if you want to use FFT data
-                calculateFFT(); 
-            }
-            catch(VisualException e)
-            {
-                e.printStackTrace();
-            }
-            // Call this is you want to use frequency bands
-            calculateFrequencyBands(); 
+    void partOne(){   
 
-            // Call this is you want to get the average amplitude
-            calculateAverageAmplitude();        
             wf.render();
             abv.render();
+            text("Part One", 100, 100);
     }
 
 
     void partTwo(){
-        color(255);
-        text("Part Two", 100, 100);
+        
+        cb.render();
 
     }
 
