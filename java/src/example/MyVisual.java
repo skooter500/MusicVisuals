@@ -7,7 +7,7 @@ public class MyVisual extends Visual
 {
     WaveForm wf;
     AudioBandsVisual abv;
-    Stars ss;
+    
 
 
 
@@ -42,7 +42,7 @@ public class MyVisual extends Visual
         
         wf = new WaveForm(this);
         abv = new AudioBandsVisual(this);
-        ss = new Stars(this);
+
     }
 
 
@@ -113,7 +113,24 @@ public class MyVisual extends Visual
 
 
     void partTwo(){
-        ss.render();
+        try
+        {
+            // Call this if you want to use FFT data
+            calculateFFT(); 
+        }
+        catch(VisualException e)
+        {
+            e.printStackTrace();
+        }
+        // Call this is you want to use frequency bands
+        calculateFrequencyBands(); 
+
+        // Call this is you want to get the average amplitude
+        calculateAverageAmplitude();  
+        for (int i = 0; i < 50 ; i++){
+            Stars s = new Stars(this);
+            s.draw();
+        }
     }
 
 
@@ -122,7 +139,5 @@ public class MyVisual extends Visual
         text("Part Three", 100, 100);
     }
 
-
-    public void star(int i, int j, int k, int l, int m) {
-    }
+    
 }

@@ -8,43 +8,47 @@ import processing.core.*;
 public class Stars 
 {
     MyVisual mv;
-    float cy = 0;
+    float x;
+    float y;
+    float weight;
+    int color;
 
     public Stars(MyVisual mv)
     {
         this.mv = mv;
-        cy = this.mv.height / 2;
+        this.x = mv.random(this.mv.width);
+        this.y = mv.random(this.mv.height);
+        int MAXIMUM_WEIGHT = 10;
+        this.weight = mv.random(MAXIMUM_WEIGHT);
+        this.color = mv.color(mv.random(255),mv.random(255),mv.random(255));
+
+
+
     }
 
-
-
-    public void render()
+    public void draw()
     {
-        // for(int i = 0 ; i < mv.getAudioBuffer().size() ; i ++)
-        // {
-        //     mv.pushMatrix();
-        //     mv.fill(255,255,255);
-        //     mv.translate(mv.width,mv.height);
-        //     mv.rotate(mv.frameCount);
-        //     mv.rect(100, 100, 50, 70, 30); 
-        //     mv.popMatrix();
-        // }
+        
+        mv.stroke(color);
+        mv.strokeWeight(weight);
+        
+        // making the circles into a more star like shape by drawing five lines radiating out from center
+        for (int i = 0; i < 5; i++)
+        {
+            float angle = PApplet.TWO_PI * i / 5.0f;
+            float x2 = x + 20 * PApplet.cos(angle);
+            float y2 = y + 20 * PApplet.sin(angle);
+            mv.line(x,y,x2,y2);
 
-        // float[] x = new float[100];
-        // float[] y = new float[100];
-        // float[] speed = new float[100];
-
-        // mv.colorMode(PApplet.HSB);
-        // for(int i = 0 ; i < mv.getAudioBuffer().size() ; i ++)
-        // {
-        //     while(i < 100) {  
-        //       x[i] = mv.random(0, mv.width);
-        //       y[i] = mv.random(0, mv.height);
-        //       speed[i] = mv.random(1, 5);
-        //       i = i + 1;
-        // }
-
-
+            
+        }
+     
+        mv.ellipse(x,y,weight,weight);
     }
-
+        
 }
+
+
+
+
+
