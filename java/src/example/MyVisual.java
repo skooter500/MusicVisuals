@@ -100,7 +100,6 @@ public class MyVisual extends Visual
     void partTwo(){
         
         cb.render();
-        text("Part Two", 100, 100);
 
     }
 
