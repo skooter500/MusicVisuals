@@ -20,15 +20,25 @@ public class Stars
         this.y = mv.random(this.mv.height);
         int MAXIMUM_WEIGHT = 10;
         this.weight = mv.random(MAXIMUM_WEIGHT);
-        this.color = mv.color(mv.random(255),mv.random(255),mv.random(255));
-
-
+        mv.colorMode(PApplet.HSB, 255);
+        float hue = mv.random(255);
+        float saturation = 255;
+        float brightness = PApplet.map(this.weight, 0, MAXIMUM_WEIGHT, 150, 255);
+        this.color = mv.color(hue, saturation, brightness);
+        
 
     }
 
     public void draw()
     {
-        
+        // calculting amplitude in order for stars to move dynamically with star_speed
+        float amplitude = mv.getAmplitude();
+        float star_speed = PApplet.map(amplitude, 0, 1, 0.5f, 5);
+        x += mv.random(-star_speed, star_speed);
+        y += mv.random(-star_speed, star_speed);
+
+
+
         mv.stroke(color);
         mv.strokeWeight(weight);
         
@@ -43,6 +53,7 @@ public class Stars
             
         }
      
+       
         mv.ellipse(x,y,weight,weight);
     }
         

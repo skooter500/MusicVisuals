@@ -1,5 +1,5 @@
 package example;
-
+import processing.core.*;
 import ie.tudublin.*;
 
 
@@ -114,7 +114,10 @@ public class MyVisual extends Visual
 
 
     void partTwo(){
-        for (int i = 0; i < 50 ; i++){
+        calculateAverageAmplitude(); 
+        
+        int numStars = PApplet.round(map(getAmplitude(), 0, 1, 0, 50));
+        for (int i = 0; i < numStars ; i++){
             Stars s = new Stars(this);
             s.draw();
         }
