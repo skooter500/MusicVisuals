@@ -56,6 +56,7 @@ public class MyVisual extends Visual
     }
 
 
+
     @Override
     public void draw(){
         background(0);
@@ -113,20 +114,6 @@ public class MyVisual extends Visual
 
 
     void partTwo(){
-        try
-        {
-            // Call this if you want to use FFT data
-            calculateFFT(); 
-        }
-        catch(VisualException e)
-        {
-            e.printStackTrace();
-        }
-        // Call this is you want to use frequency bands
-        calculateFrequencyBands(); 
-
-        // Call this is you want to get the average amplitude
-        calculateAverageAmplitude();  
         for (int i = 0; i < 50 ; i++){
             Stars s = new Stars(this);
             s.draw();
