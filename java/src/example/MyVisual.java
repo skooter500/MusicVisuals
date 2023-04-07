@@ -1,5 +1,5 @@
 package example;
-
+import processing.core.*;
 import ie.tudublin.*;
 
 
@@ -8,6 +8,7 @@ public class MyVisual extends Visual
     WaveForm wf;
     AudioBandsVisual abv;
     CloudsBackground cb;
+
 
     int mode = 1;
     int numbersOfPurts = 3;
@@ -31,7 +32,8 @@ public class MyVisual extends Visual
         startMinim();
                 
         // Call loadAudio to load an audio file to process 
-        loadAudio("Hensonn_Flare.mp3");   
+        loadAudio("Hensonn_Flare.mp3");  
+         
 
         
         // Call this instead to read audio from the microphone
@@ -40,6 +42,7 @@ public class MyVisual extends Visual
         wf = new WaveForm(this);
         abv = new AudioBandsVisual(this);
         cb = new CloudsBackground(this);
+
     }
 
 
@@ -51,6 +54,7 @@ public class MyVisual extends Visual
             getAudioPlayer().play();
         }
     }
+
 
 
     @Override
@@ -98,8 +102,18 @@ public class MyVisual extends Visual
 
 
     void partTwo(){
+
+        calculateAverageAmplitude(); 
+        
+        int numStars = PApplet.round(map(getAmplitude(), 0, 1, 0, 50));
+        for (int i = 0; i < numStars ; i++){
+            Stars s = new Stars(this);
+            s.draw();
+        }
+
         
         cb.render();
+
 
     }
 
@@ -108,4 +122,6 @@ public class MyVisual extends Visual
         color(255);
         text("Part Three", 100, 100);
     }
+
+    
 }
