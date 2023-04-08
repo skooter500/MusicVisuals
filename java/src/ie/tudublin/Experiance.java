@@ -56,6 +56,7 @@ public class Experiance extends PApplet{
 
     public void draw()
     {
+        background(0);
         switch (mode) {
 			case 0://first to play (grace)
 
@@ -64,7 +65,7 @@ public class Experiance extends PApplet{
                 
                 break;
         case 1://When you press key 1 (hadassah)
-            background(0);
+            
                     
             break;
 
@@ -78,6 +79,7 @@ public class Experiance extends PApplet{
             break;
 
         case 4://when you press key 4 (aisha)
+        
 
             break;
         }
