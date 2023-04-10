@@ -59,12 +59,58 @@ public class Experiance extends PApplet{
         switch (mode) {
 			case 0://first to play (grace)
 
-          
+               
           
                 
                 break;
         case 1://When you press key 1 (hadassah)
-            background(0);
+                float rotationX = 0;
+                float rotationY = 0;
+                float rotationZ = 0;
+                float sphereRadius = 250;
+                int lineCount = 30;
+                int squareSize = 15;
+                int colorChangeRate = 20;
+                int colorTime = 0;
+
+                background(0);
+                translate(width/2, height/2, 0);
+                rotateX(rotationX);
+                rotateY(rotationY);
+                rotateZ(rotationZ);
+                colorTime++;
+                if (colorTime % colorChangeRate == 0) {
+                stroke(random(255), random(255), random(255));
+                }
+                for (int i = 0; i < lineCount; i++) {
+                for (int j = 0; j < lineCount; j++) {
+                    pushMatrix();
+                    float xPos = map(i, 0, lineCount, -sphereRadius, sphereRadius);
+                    float yPos = map(j, 0, lineCount, -sphereRadius, sphereRadius);
+                    translate(xPos, yPos, 0);
+                    float dist = sqrt(sq(xPos) + sq(yPos));
+                    float angle = atan2(yPos, xPos);
+                    float zPos = sqrt(sq(sphereRadius) - sq(dist));
+                    translate(0, 0, zPos);
+                    float rotAngle = map(zPos, 0, sphereRadius, 0, PI);
+                    rotateX(rotAngle);
+                    rotateY(angle + radians(frameCount));
+                    for (int k = 0; k < 4; k++) {
+                    line(-squareSize/2, -squareSize/2, -squareSize/2, squareSize/2);
+                    line(-squareSize/2, squareSize/2, squareSize/2, squareSize/2);
+                    line(squareSize/2, squareSize/2, squareSize/2, -squareSize/2);
+                    line(squareSize/2, -squareSize/2, -squareSize/2, -squareSize/2);
+                    translate(0, 0, squareSize/2);
+                    rotateX(PI/2);
+                    }
+                    popMatrix();
+                }
+                }
+                rotationX += 0.01;
+                rotationY += 0.02;
+                rotationZ += 0.03;
+            
+                strokeWeight(2);
                     
             break;
 
