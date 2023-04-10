@@ -7,7 +7,10 @@ public class MyVisual extends Visual
     WaveForm wf;
    // AudioBandsVisual abv;
 
-    public void settings()
+    public MyVisual(stars stars) {
+	}
+
+	public void settings()
     {
         size(1024, 500);
         
@@ -29,7 +32,7 @@ public class MyVisual extends Visual
         // Call this instead to read audio from the microphone
         startListening(); 
         
-        wf = new WaveForm(this);
+       // wf = new WaveForm(this);
        // abv = new AudioBandsVisual(this);
     }
 

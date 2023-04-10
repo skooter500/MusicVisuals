@@ -3,6 +3,8 @@ package ie.tudublin;
 import java.util.ArrayList;
 import ddf.minim.*;
 import ddf.minim.analysis.*;
+//import processing.core.PApplet;
+import example.MyVisual;
 
 public class stars extends Visual {
 
@@ -10,7 +12,9 @@ public class stars extends Visual {
     AudioPlayer player;
     FFT fft;
 
+    MyVisual visual;
     ArrayList<Particle> particles = new ArrayList<Particle>();
+    
 
     public void settings() {
         size(1024, 1000, P3D);
@@ -19,6 +23,7 @@ public class stars extends Visual {
 
     public void setup() {
         startMinim();
+        visual = new MyVisual(this);
         minim = new Minim(this);
         player = minim.loadFile("MusicVisuals/java/data/Victoria_Mon_t_ft_Khalid_-_Experience.mp3", 512);
         player.play();
@@ -93,9 +98,12 @@ public class stars extends Visual {
 
     }
 
+
+
     public void draw() {
         background(0);
         drawDaisy();
+     
 
         fft.forward(player.mix);
 
@@ -159,5 +167,6 @@ public class stars extends Visual {
             ellipse(x, y, size, size);
         }
     }
+    
 
 }
