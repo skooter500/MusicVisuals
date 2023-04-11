@@ -3,8 +3,7 @@ package ie.tudublin;
 import java.util.ArrayList;
 import ddf.minim.*;
 import ddf.minim.analysis.*;
-//import processing.core.PApplet;
-import example.MyVisual;
+import processing.core.PApplet;
 
 public class stars extends Visual {
 
@@ -12,9 +11,16 @@ public class stars extends Visual {
     AudioPlayer player;
     FFT fft;
 
-    MyVisual visual;
+    AudioInput ai;
+    AudioBuffer ab;
+
+    int mode = 0;
+
+    float y = 0;
+    float smoothedY = 0;
+    float smoothedAmplitude = 0;
+
     ArrayList<Particle> particles = new ArrayList<Particle>();
-    
 
     public void settings() {
         size(1024, 1000, P3D);
@@ -23,10 +29,11 @@ public class stars extends Visual {
 
     public void setup() {
         startMinim();
-        visual = new MyVisual(this);
+
         minim = new Minim(this);
         player = minim.loadFile("MusicVisuals/java/data/Victoria_Mon_t_ft_Khalid_-_Experience.mp3", 512);
         player.play();
+        ab = player.mix;
 
         fft = new FFT(player.bufferSize(), player.sampleRate());
 
@@ -35,7 +42,13 @@ public class stars extends Visual {
             particles.add(p);
         }
 
+        y = height / 2;
+        smoothedY = y;
     }
+
+    float off = 0;
+
+    float lerpedBuffer[] = new float[1024];
 
     void drawDaisy() {
         // Set the center point of the daisy
@@ -98,12 +111,41 @@ public class stars extends Visual {
 
     }
 
+    void drawstem() {
+        float halfH = height/2;
+        float average = 0;
+        float sum = 0;
+        off += 1;
 
+        // Calculate sum and average of the samples
+        // Also lerp each element of buffer;
+        for (int i = 0; i < ab.size(); i++) {
+            sum += abs(ab.get(i));
+            lerpedBuffer[i] = lerp(lerpedBuffer[i], ab.get(i), 0.1f);
+        }
+        average = sum / (float) ab.size();
+
+        smoothedAmplitude = lerp(smoothedAmplitude, average, 0.1f);
+
+        float cx = width/2 ;
+        float cy = 1500 ;
+
+        for (int i = 0; i < ab.size(); i++) {
+            
+            float c = map(i, 0, ab.size(), 0, 255);
+            stroke(c, 255, 255);
+            float x = halfH +lerpedBuffer[i] * halfH * 4.0f;
+            float y = map(i, 0, ab.size(), halfH, 40);
+            line(cx , cy - x, x, y); 
+        }
+
+    }
 
     public void draw() {
         background(0);
         drawDaisy();
-     
+        drawstem();
+        
 
         fft.forward(player.mix);
 
@@ -167,6 +209,5 @@ public class stars extends Visual {
             ellipse(x, y, size, size);
         }
     }
-    
 
 }
