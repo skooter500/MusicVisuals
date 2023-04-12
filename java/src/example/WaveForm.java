@@ -11,7 +11,7 @@ public class WaveForm
     public WaveForm(MyVisual mv)
     {
         this.mv = mv;
-        cy = this.mv.height / 2;
+        cy = this.mv.height/2;
     }
 
     public void render()
