@@ -1,6 +1,5 @@
 package example;
 import example.parts.Part4;
-import example.parts.Part5;
 import example.parts.PixelDisintegrationVisual;
 import processing.core.*;
 import ie.tudublin.*;
@@ -11,7 +10,6 @@ public class MyVisual extends Visual
 {
     WaveForm wf;
     Part4 p4;
-    Part5 p5;
     AudioBandsVisual abv;
     PixelDisintegrationVisual pdv;
     CloudsBackground cb;
@@ -19,11 +17,9 @@ public class MyVisual extends Visual
 
 
     int mode = 1;
-    int numbersOfPurts = 3;
+    int numbersOfPurts = 4;
     boolean lastPressed = false;
     
-
-
 
     public void settings()
     {
@@ -51,7 +47,6 @@ public class MyVisual extends Visual
         
         wf = new WaveForm(this);
         p4 = new Part4(this);
-        p5 = new Part5(this);
         abv = new AudioBandsVisual(this);
         pdv = new PixelDisintegrationVisual(this);
         cb = new CloudsBackground(this);
@@ -89,8 +84,11 @@ public class MyVisual extends Visual
             case 2: 
                 partTwo(); 
                 break;
-            case 0: 
+            case 3: 
                 partThree();
+                break;    
+            case 0: 
+                partFour();
                 break;
             default:
                 break;
@@ -114,9 +112,6 @@ public class MyVisual extends Visual
         }
     }
 
-
-
-    
 
     void partOne(){   
 
@@ -166,6 +161,5 @@ public class MyVisual extends Visual
 
     }
 }
-    
-}
+
  
