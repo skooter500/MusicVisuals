@@ -1,10 +1,12 @@
-package example;
+package example.parts.backgrounds;
 
 import processing.core.*;
 
 import java.util.ArrayList;
 
 import java.util.List;
+
+import example.MyVisual;
 
 
 public class CloudsBackground {

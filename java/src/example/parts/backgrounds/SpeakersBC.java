@@ -1,14 +1,14 @@
-package example.parts;
+package example.parts.backgrounds;
 
 import example.MyVisual;
 
-public class PixelDisintegrationVisual {
+public class SpeakersBC {
 
     MyVisual mv;
     int ballX;
     int ballY;
 
-    public PixelDisintegrationVisual(MyVisual mv){
+    public SpeakersBC(MyVisual mv){
         this.mv = mv;
         ballX = mv.height/2;
         ballY = mv.width/2;
