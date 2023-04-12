@@ -1,9 +1,10 @@
 package example;
-
 import example.parts.Part4;
 import example.parts.Part5;
 import example.parts.PixelDisintegrationVisual;
+import processing.core.*;
 import ie.tudublin.*;
+
 
 
 public class MyVisual extends Visual
@@ -13,12 +14,15 @@ public class MyVisual extends Visual
     Part5 p5;
     AudioBandsVisual abv;
     PixelDisintegrationVisual pdv;
-
+    CloudsBackground cb;
+    PoliceText pt;
 
 
     int mode = 1;
     int numbersOfPurts = 3;
     boolean lastPressed = false;
+    
+
 
 
     public void settings()
@@ -26,7 +30,7 @@ public class MyVisual extends Visual
         size(1024, 1024);
         
         // Use this to make fullscreen
-        // fullScreen();
+        //fullScreen();
 
         ///Use this to make fullscreen and use P3D for 3D graphics
         //fullScreen(P3D, SPAN); 
@@ -38,7 +42,8 @@ public class MyVisual extends Visual
         startMinim();
                 
         // Call loadAudio to load an audio file to process 
-        loadAudio("Hensonn_Flare.mp3");   
+        loadAudio("Hensonn_Flare.mp3");  
+         
 
         
         // Call this instead to read audio from the microphone
@@ -49,6 +54,8 @@ public class MyVisual extends Visual
         p5 = new Part5(this);
         abv = new AudioBandsVisual(this);
         pdv = new PixelDisintegrationVisual(this);
+        cb = new CloudsBackground(this);
+        pt =  new PoliceText(this);
     }
 
 
@@ -59,7 +66,16 @@ public class MyVisual extends Visual
             getAudioPlayer().cue(0);
             getAudioPlayer().play();
         }
+        else if(key == 'p') 
+        {
+            pt.showTape = true;
+        }
+        else if(key == 'o') 
+        {
+            pt.showTape = false;
+        }
     }
+
 
 
     @Override
@@ -68,8 +84,7 @@ public class MyVisual extends Visual
 
 		switch(mode) {
             case 1: 
-                partFour();
-                //partOne();
+                partOne();
                 break;
             case 2: 
                 partTwo(); 
@@ -82,6 +97,7 @@ public class MyVisual extends Visual
         }   
 
         keyPressingLogic();
+
 }
 
 
@@ -99,39 +115,35 @@ public class MyVisual extends Visual
     }
 
 
-    void partOne(){
-        try
-            {
-                // Call this if you want to use FFT data
-                calculateFFT(); 
-            }
-            catch(VisualException e)
-            {
-                e.printStackTrace();
-            }
-            // Call this is you want to use frequency bands
-            calculateFrequencyBands(); 
 
-            // Call this is you want to get the average amplitude
-            calculateAverageAmplitude();        
+    
+
+    void partOne(){   
+
             wf.render();
             abv.render();
+            text("Part One", 100, 100);
     }
 
 
     void partTwo(){
         color(255);
         text("Part Two", 100, 100);
+        
+        calculateAverageAmplitude(); 
+        cb.render();
+
+        
+        int numStars = PApplet.round(map(getAmplitude(), 0, 1, 0, 50));
+        for (int i = 0; i < numStars ; i++){
+            Stars s = new Stars(this);
+            s.draw();
+        }
     }
 
 
     void partThree(){
-        color(255);
-        text("Part Three", 100, 100);
-    }
-
-    void partFour(){
-        try {
+         try {
                 // Call this if you want to use FFT data
                 calculateFFT(); 
             }
@@ -148,4 +160,12 @@ public class MyVisual extends Visual
             pdv.render();
             p4.render();
     }
+
+    void partFour(){
+               pt.draw();
+
+    }
 }
+    
+}
+ 
