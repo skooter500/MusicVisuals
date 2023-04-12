@@ -3,16 +3,20 @@ import processing.core.*;
 import ie.tudublin.*;
 
 
+
 public class MyVisual extends Visual
 {
     WaveForm wf;
     AudioBandsVisual abv;
     CloudsBackground cb;
+    PoliceText pt;
 
 
     int mode = 1;
     int numbersOfPurts = 3;
     boolean lastPressed = false;
+    
+
 
 
     public void settings()
@@ -20,7 +24,7 @@ public class MyVisual extends Visual
         size(1024, 1024);
         
         // Use this to make fullscreen
-        // fullScreen();
+        //fullScreen();
 
         ///Use this to make fullscreen and use P3D for 3D graphics
         //fullScreen(P3D, SPAN); 
@@ -42,6 +46,7 @@ public class MyVisual extends Visual
         wf = new WaveForm(this);
         abv = new AudioBandsVisual(this);
         cb = new CloudsBackground(this);
+        pt =  new PoliceText(this);
 
     }
 
@@ -52,6 +57,14 @@ public class MyVisual extends Visual
         {
             getAudioPlayer().cue(0);
             getAudioPlayer().play();
+        }
+        else if(key == 'p') 
+        {
+            pt.showTape = true;
+        }
+        else if(key == 'o') 
+        {
+            pt.showTape = false;
         }
     }
 
@@ -64,6 +77,7 @@ public class MyVisual extends Visual
 		switch(mode) {
             case 1: 
                 partOne();
+                
                 break;
             case 2: 
                 partTwo(); 
@@ -76,6 +90,7 @@ public class MyVisual extends Visual
         }   
 
         keyPressingLogic();
+
 }
 
 
@@ -93,6 +108,9 @@ public class MyVisual extends Visual
     }
 
 
+
+    
+
     void partOne(){   
 
             wf.render();
@@ -104,6 +122,8 @@ public class MyVisual extends Visual
     void partTwo(){
 
         calculateAverageAmplitude(); 
+        cb.render();
+
         
         int numStars = PApplet.round(map(getAmplitude(), 0, 1, 0, 50));
         for (int i = 0; i < numStars ; i++){
@@ -112,16 +132,16 @@ public class MyVisual extends Visual
         }
 
         
-        cb.render();
+        
 
 
     }
 
 
     void partThree(){
-        color(255);
-        text("Part Three", 100, 100);
+        pt.draw();
     }
 
     
 }
+ 
