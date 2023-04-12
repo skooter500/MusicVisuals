@@ -28,10 +28,10 @@ public class PoliceText {
                 if (i % 2 == 0) { // if index is even = right
                     cx = (tapeMovement + i * mv.width) % mv.width;
                 } else { // if index is odd = left
-                    float textWidth = mv.textWidth("If you were a vegetable, you'd be a cute-cumber."); // width of the text message
+                    float textWidth = mv.textWidth("If you were a vegetable, you'd be a cute-cumber"); // width of the text message
                     cx = ((mv.width - textWidth) / 2) - ((tapeMovement + (i + 1) * mv.width) % mv.width);
                 }
-                float textWidth = mv.textWidth("If you were a vegetable, you'd be a cute-cumber."); 
+                float textWidth = mv.textWidth("If you were a vegetable, you'd be a cute-cumber"); 
                 float x_end_text = cx + textWidth; // x_end_text = end of the text message
                 if (x_end_text > 0) {
                     mv.line(cx, cy, x_end_text, cy);
