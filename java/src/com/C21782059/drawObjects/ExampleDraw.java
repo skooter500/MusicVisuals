@@ -5,7 +5,7 @@ import ie.tudublin.DrawObjectAbstractClass;
 import processing.core.PApplet;
 
 public class ExampleDraw extends DrawObjectAbstractClass {
-    // Private Feilds
+    // Private Fields
     PApplet pApplet;
     int windowWidth;
     int windowHeight;
