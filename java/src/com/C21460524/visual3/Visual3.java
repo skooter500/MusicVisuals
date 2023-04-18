@@ -1,6 +1,7 @@
 package com.C21460524.visual3;
 
 import com.C21460524.drawObjects.ExampleDraw;
+import com.C21460524.drawObjects.Galaxy;
 
 // Dependencies
 import ddf.minim.AudioBuffer;
@@ -19,6 +20,7 @@ public class Visual3 extends PApplet {
     //  Render Objects
     // Place Objects Here
     ExampleDraw exampleDraw;
+    Galaxy stars;
     //
     //
     //
@@ -35,13 +37,14 @@ public class Visual3 extends PApplet {
     // Draw Function for Visual 3
     public void drawVisual3() {
         // Call Draw Functions in here
-        exampleDraw.drawExample();
+        stars.drawExample();
     } // End drawVisual2
 
 
     // Load Render Objects
     private void loadRenderObjects() {
         // Create your draw Objects here
-        exampleDraw = new ExampleDraw(this.pApplet, this.audioBuffer, this.windowWidth, this.windowHeight);
+        stars = new Galaxy(this.pApplet, this.audioBuffer, this.windowWidth, this.windowHeight);
+        //galaxy = new Test(this.pApplet, this.audioBuffer, this.windowWidth, this.windowHeight);
     } // End void oadRenderObjects
 } // End class Visual3

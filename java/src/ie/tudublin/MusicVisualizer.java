@@ -49,8 +49,8 @@ public class MusicVisualizer extends PApplet {
     public void draw() {
         background(0);
         // this.visual1.drawVisual1();
-        // this.visual2.drawVisual2();
-        // this.visual3.drawVisual3();
+         //this.visual2.drawVisual2();
+         this.visual3.drawVisual3();
         // this.visual4.drawVisual4();
     } // End void draw()
 
