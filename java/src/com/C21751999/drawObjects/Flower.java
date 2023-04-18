@@ -6,9 +6,9 @@ import processing.core.*;
 
 
 public class Flower extends DrawObjectAbstractClass {
-    float rot = 0;
-    float lerpedAverage = 0;
 
+    float lerpedAverage = 0;
+    float rot = 0;
 
     public Flower(PApplet pApplet2, AudioBuffer audioBuffer, FFT fft, int windowWidth, int windowHeight) {
         this.pApplet = pApplet2;
