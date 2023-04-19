@@ -64,14 +64,9 @@ public class MusicVisualizer extends PApplet {
 
     public void draw() {
         background(0);
-<<<<<<< HEAD
-        // this.visual1.drawVisual1();
-         //this.visual2.drawVisual2();
-         this.visual3.drawVisual3();
-        // this.visual4.drawVisual4();
-=======
+
         playVisuals();
->>>>>>> 0e52cb29819f300c400041f3ea37b6cda88a68ec
+
     } // End void draw()
 
 
@@ -93,7 +88,7 @@ public class MusicVisualizer extends PApplet {
         this.visual1 = new Visual1(this, this.audioBuffer, this.audioPlayer, this.windowWidth, this.windowHeight);
         this.visual4 = new Visual4(this, this.audioBuffer, this.audioPlayer, this.windowWidth, this.windowHeight);
 
-        visualList.add(visual4);
+        visualList.add(visual3);
         visualList.add(visual4);
         visualList.add(visual2);
         visualList.add(visual1);
