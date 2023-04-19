@@ -100,7 +100,6 @@ public class BigBangUniverse extends DrawObjectAbstractClass {
         pApplet.noFill();
         pApplet.circle(0, 0, counter * 2.3f);
         pApplet.popStyle();
-
         pApplet.pushStyle();
         pApplet.fill(0);
         pApplet.noStroke();
