@@ -87,10 +87,6 @@ public class MusicVisualizer extends PApplet {
         this.visual4 = new Visual4(this, this.audioBuffer, this.audioPlayer, this.windowWidth, this.windowHeight);
 
         visualList.add(visual4);
-<<<<<<< HEAD
-=======
-        visualList.add(visual2);
->>>>>>> df6216c5d7b49c39548b7559ec18792d8e8a9b92
         visualList.add(visual2);
         visualList.add(visual1);
         visualList.add(visual1);
