@@ -73,6 +73,7 @@ public class BigBangUniverse extends DrawObjectAbstractClass {
 
         bigBangRotate  = bigBangRotate + bigBangRotateSpeed;
 
+
         pApplet.popMatrix();
         pApplet.popStyle();
     } // End void drawSphere
@@ -98,7 +99,12 @@ public class BigBangUniverse extends DrawObjectAbstractClass {
         pApplet.stroke(255);
         pApplet.strokeWeight(20);
         pApplet.noFill();
+<<<<<<< HEAD
+        pApplet.circle(0, 0, counter * 2.2f);
+        pApplet.noStroke();
+=======
         pApplet.circle(0, 0, counter * 2.3f);
+>>>>>>> df6216c5d7b49c39548b7559ec18792d8e8a9b92
         pApplet.popStyle();
         pApplet.pushStyle();
         pApplet.fill(0);
