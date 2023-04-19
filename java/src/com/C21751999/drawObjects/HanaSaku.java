@@ -4,22 +4,12 @@ import ddf.minim.AudioBuffer;
 import ie.tudublin.DrawObjectAbstractClass;
 import processing.core.*;
 
-<<<<<<< HEAD:java/src/com/C21751999/drawObjects/HanaSaku.java
 public class HanaSaku extends DrawObjectAbstractClass {
     float rot = 0;
     float lerpedAverage = 0;
     PMatrix3D matrixStack; // Matrix stack to store transformations
 
     public HanaSaku(PApplet pApplet2, AudioBuffer audioBuffer, FFT fft, int windowWidth, int windowHeight) {
-=======
-
-public class Flower extends DrawObjectAbstractClass {
-
-    float lerpedAverage = 0;
-    float rot = 0;
-
-    public Flower(PApplet pApplet2, AudioBuffer audioBuffer, FFT fft, int windowWidth, int windowHeight) {
->>>>>>> 093938c236f47324a5a4156863c697a7b347c22f:java/src/com/C21751999/drawObjects/Flower.java
         this.pApplet = pApplet2;
         this.windowWidth = windowWidth;
         this.windowHeight = windowHeight;
