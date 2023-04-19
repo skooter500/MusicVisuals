@@ -98,15 +98,17 @@ public class BigBangUniverse extends DrawObjectAbstractClass {
         pApplet.stroke(255);
         pApplet.strokeWeight(20);
         pApplet.noFill();
-        pApplet.circle(0, 0, counter * 2.2f);
+        pApplet.circle(0, 0, counter * 2.3f);
         pApplet.popStyle();
 
         pApplet.pushStyle();
         pApplet.fill(0);
+        pApplet.noStroke();
         pApplet.sphere(counter);
 
         counter += 2;
         pApplet.popMatrix();
+        pApplet.noStroke();
         pApplet.popStyle();
     } // End void drawStarField()
 
