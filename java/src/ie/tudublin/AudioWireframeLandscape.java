@@ -2,21 +2,20 @@ package ie.tudublin;
 
 import processing.core.PApplet;
 import ddf.minim.*;
-import ddf.minim.analysis.*;
+import ddf.minim.analysis.FFT;
 
-public class ParasiteEveVisualizer extends PApplet {
+public class AudioWireframeLandscape extends PApplet {
 
   private Minim minim;
   private AudioPlayer player;
   private FFT fft;
-
-  private float[] spectrum;
 
   private int numPoints = 80;
   private float pointSpacing;
   private float terrainHeight = 200;
 
   private float[] terrain;
+  private float[] spectrum;
 
   public void settings() {
     size(800, 600, P3D);
@@ -24,7 +23,7 @@ public class ParasiteEveVisualizer extends PApplet {
 
   public void setup() {
     minim = new Minim(this);
-    player = minim.loadFile("java/data/Parasite.mp3", 1024);
+    player = minim.loadFile("song.mp3");
     player.play();
     fft = new FFT(player.bufferSize(), player.sampleRate());
     fft.logAverages(22, numPoints);
@@ -40,12 +39,11 @@ public class ParasiteEveVisualizer extends PApplet {
 
     fft.forward(player.mix);
 
-    stroke(255, 255, 255);
-    noFill();
-
     float yOffset = height / 2;
     float xOffset = width / 2;
+
     float terrainScale = 0.1f;
+    float noiseScale = 0.1f;
 
     float spectrumTotal = 0;
     for (int i = 0; i < numPoints; i++) {
@@ -64,15 +62,17 @@ public class ParasiteEveVisualizer extends PApplet {
     float spectrumAvg = spectrumTotal / numPoints;
     terrainHeight = map(spectrumAvg, 0, 255, 100, 400);
 
+    float terrainX = 0;
+    float terrainY = 0;
+    float terrainZ = 0;
+
     pushMatrix();
     translate(xOffset, yOffset + terrainHeight);
     rotateX(PI / 3);
     rotateZ(frameCount * 0.01f);
 
-    float terrainX = 0;
-    float terrainY = 0;
-    float terrainZ = 0;
-    float noiseScale = 0.1f;
+    stroke(255, 255, 255);
+    noFill();
 
     for (int y = 0; y < height; y += 20) {
       beginShape(QUAD_STRIP);
@@ -84,6 +84,9 @@ public class ParasiteEveVisualizer extends PApplet {
 
         vertex(x, y, terrainZ);
         vertex(x, y + 20, terrainZ);
+
+        // Add some color to the wireframe based on the spectrum values
+        stroke(map(spectrum[(int) x / 20], 0, 255, 0, 255), map(spectrum[(int) x / 20], 0, 255, 255, 0), 255);
       }
       endShape();
     }
@@ -98,6 +101,6 @@ public class ParasiteEveVisualizer extends PApplet {
   }
 
   public static void main(String[] args) {
-    PApplet.main("ie.tudublin.ParasiteEveVisualizer");
+    PApplet.main("ie.tudublin.AudioWireframeLandscape");
   }
 }
