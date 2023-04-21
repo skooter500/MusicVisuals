@@ -68,11 +68,14 @@ public class Galaxy extends PApplet
         float y = windowHeight / 2;
         float amplitude = audioBuffer.level() * 1000; // use the amplitude of the audio buffer to control the size of the sphere
         float diameter = initialDiameter + amplitude + (timeElapsed * timeScale); // increase diameter over time
-        pApplet.fill(255, 0, 0);
-        pApplet.noStroke();
 
         // Draw sphere
         pApplet.pushMatrix();
+        pApplet.pushStyle();
+
+        pApplet.fill(255, 0, 0);
+        pApplet.noStroke();
+
         pApplet.translate(x, y, -diameter/2); // move the sphere back along the z-axis
         pApplet.rotate(rotationAngle, 1, 1, 0); // apply rotation around the x and y axes
         pApplet.beginShape(PConstants.TRIANGLES);
@@ -111,6 +114,7 @@ public class Galaxy extends PApplet
 
         pApplet.endShape();
         pApplet.popMatrix();
+        pApplet.popStyle();
 
         // Increment time elapsed and rotation angle
         timeElapsed += 1;
