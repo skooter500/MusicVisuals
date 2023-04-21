@@ -20,6 +20,6 @@ public class ExampleDraw extends DrawObjectAbstractClass {
     } // End ExampleDraw Constructor
 
     public void drawExample() {
-        pApplet.circle(windowWidth / 2, windowHeight / 2, 5);
+        pApplet.circle(windowWidth / 2, windowHeight / 2, 500);
     } // End void drawExample()
 } // End class ExampleDraw

@@ -1,6 +1,7 @@
 package com.C21751999.visual4;
 
 import com.C21460524.drawObjects.ExampleDraw;
+import com.C21751999.drawObjects.HanaSaku;
 
 import ddf.minim.AudioBuffer;
 import ddf.minim.AudioPlayer;
@@ -18,7 +19,7 @@ public class Visual4 extends VisualAbstractClass {
     //  Render Objects
     // Place Objects Here
     ExampleDraw exampleDraw;
-    //
+    HanaSaku hana;
     //
     //
 
@@ -31,18 +32,19 @@ public class Visual4 extends VisualAbstractClass {
     this.windowHeight = windowHeight;
     this.fft = new FFT(2048, 44100);
     loadRenderObjects();
-} // End Visual2 Constructor
+} // End Visual4 Constructor
 
     // Draw Function for Visual 3
     public void drawVisual() {
         // Call Draw Functions in here
-        exampleDraw.drawExample();
+        hana.render();
     } // End drawVisual2
 
 
     // Load Render Objects
     private void loadRenderObjects() {
         // Create your draw Objects here
-        exampleDraw = new ExampleDraw(this.pApplet, this.audioBuffer, this.windowWidth, this.windowHeight);
+        // exampleDraw = new ExampleDraw(this.pApplet, this.audioBuffer, this.windowWidth, this.windowHeight);
+        hana = new HanaSaku(pApplet, audioBuffer, fft, windowWidth, windowHeight);
     } // End void oadRenderObjects
 } // End clas Visual4
