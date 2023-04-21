@@ -32,7 +32,9 @@ public class DisplayAIGeneratedImage extends DrawObjectAbstractClass {
     } // End void render()
 
     public void drawAIGeneratedImage() {
-        tiles = 100;
+        if(rotate % 5 == 0 && tiles < 100)
+            tiles++;
+
         tileSize = 512 / tiles;
 
         pApplet.pushMatrix();
@@ -40,17 +42,17 @@ public class DisplayAIGeneratedImage extends DrawObjectAbstractClass {
         pApplet.color(255, 255, 255);
 
         pApplet.translate((windowWidth / 2) - 256, (windowHeight / 2) - 256, 500 - rotate);
-        rotate += 5;
+        rotate += 1;
 
         for(int x = 0; x < tiles; x++) {
             for(int y = 0; y < tiles; y++) {
                 
                 int pixelValue = aiGeneratedImage.get((int)(x * tileSize), (int)(y * tileSize));
-                float size = PApplet.map(pApplet.brightness(pixelValue), 0, 255, 0, 4);
-                float brightness = PApplet.map(pApplet.brightness(pixelValue), 0, 255, 0, 20);
+                float size = PApplet.map(pApplet.brightness(pixelValue), 0, 255, 0, 5);
+                // float brightness = PApplet.map(pApplet.brightness(pixelValue), 0, 255, 0, 20);
 
                 pApplet.pushMatrix();
-                pApplet.translate(0, 0, brightness);
+                // pApplet.translate(0, 0, brightness);
                 pApplet.circle((x * tileSize), (y * tileSize), size);
                 pApplet.popMatrix();
             } // End for
