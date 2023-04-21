@@ -15,5 +15,5 @@ public abstract class VisualAbstractClass extends PApplet {
     protected FFT fft;
 
     public void drawVisual() {};
-    private void loadRenderObjects() {};
+    // private void loadRenderObjects() {};
 }
