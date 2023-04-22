@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 // Visuals
 import com.C21782059.visual1.Visual1;
+import com.C21394933.drawObjects.BigBangUniverse;
 import com.C21394933.visual2.Visual2;
 import com.C21460524.visual3.Visual3;
 import com.C21751999.visual4.Visual4;
@@ -88,6 +89,8 @@ public class MusicVisualizer extends PApplet {
         this.visual1 = new Visual1(this, this.audioBuffer, this.audioPlayer, this.windowWidth, this.windowHeight);
         this.visual4 = new Visual4(this, this.audioBuffer, this.audioPlayer, this.windowWidth, this.windowHeight);
 
+
+
         visualList.add(visual4);
         visualList.add(visual2);
         visualList.add(visual3);
@@ -100,7 +103,7 @@ public class MusicVisualizer extends PApplet {
     {
 
         currentTime = audioPlayer.position();
-        
+
         System.out.println((float)currentTime / 100);
         if(currentTime / 100 > timings[timingsCounter]) 
             timingsCounter++;
