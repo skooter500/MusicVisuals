@@ -100,7 +100,7 @@ public class MusicVisualizer extends PApplet {
 
         currentTime = audioPlayer.position();
         
-        System.out.println((float)currentTime / 100);
+        // System.out.println((float)currentTime / 100);
         if(currentTime / 100 > timings[timingsCounter]) 
             timingsCounter++;
         
