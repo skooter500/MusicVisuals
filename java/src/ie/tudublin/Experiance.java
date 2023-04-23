@@ -1,5 +1,7 @@
 package ie.tudublin;
 
+import ie.tudublin.stars;
+
 import ddf.minim.AudioBuffer;
 import ddf.minim.AudioInput;
 import ddf.minim.AudioPlayer;
@@ -115,7 +117,8 @@ public class Experiance extends PApplet{
             break;
 
         case 2:// when you press key 2 (cece)
-            
+       
+    
 
             break;
 
