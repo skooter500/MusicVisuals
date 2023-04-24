@@ -1,4 +1,6 @@
-package ie.tudublin;
+/*package ie.tudublin;
+
+
 
 import ddf.minim.AudioBuffer;
 import ddf.minim.AudioInput;
@@ -17,9 +19,13 @@ public class Audio1 extends PApplet
     AudioInput ai;
     AudioBuffer ab;
     FFT fft;
+    Minim m;
 
     float n4;
     float n6;
+
+    float radius1 = 150;
+    float radius2 = 75;
 
 
     int mode = 0;
@@ -46,7 +52,9 @@ public class Audio1 extends PApplet
 
     public void settings()
     {
-        size(1024, 1000);        //fullScreen(P3D, SPAN);
+        size(1024, 1000); 
+       //fullScreen(P3D, SPAN);
+       noStroke();
     }
 
     public void setup()
@@ -68,18 +76,19 @@ public class Audio1 extends PApplet
         y = height / 2;
         smoothedY = y;  
 
-        for (int i = 0; i < planets.length; i++ ) {
-            planets[i] = new Planet(64 + i*32,24);
+       /*  for (int i = 0; i < planets.length; i++ ) {
+            planets[i] = new Plane();
           }
         }
         
     float off = 0;
 
-    float lerpedBuffer[] = new float[1024];
+    float lerpedBuffer[] = new float[1024];*/
 
-    public void draw()
+    /*public void draw()
     {
-        //background(0);
+    }
+       /*  //background(0);
         float halfH = height / 2;
         float average = 0;
         float sum = 0;
@@ -184,23 +193,45 @@ public class Audio1 extends PApplet
               float x3 = sin(radians(i))*(500/angle); 
               float y3 = cos(radians(i))*(500/angle);
            
-              fill (90, 90); //yellow
+              fill (0, 0, 0, 90); //yellow
               ellipse(x, y, ap.left.get(i)*10, ap.left.get(i)*10);
            
-            fill ( 60, 60); //wt
+            fill ( 255, 255, 255, 60); //wt
               rect(x3, y3, ap.left.get(i)*20, ap.left.get(i)*10);
            
-              fill ( 90  , 90); //orange
+              fill ( 255, 152, 0, 90); //orange
               rect(x, y, ap.right.get(i)*10, ap.left.get(i)*10);
            
-              fill( 70 , 70); //wt
+              fill( 255, 255, 255, 70); //wt
               rect(x3, y3, ap.right.get(i)*10, ap.right.get(i)*20);
             }
            
             n4 += 0.008;
             n6 += 0.04;
             break;
-          }
+
+            case 4:
+            noStroke();
+            noCursor();
+            
+            fill(0, 100);
+            rect(0, 0, width, height);
+            fill(255);
+            translate(width / 2, height / 2);
+            for(int ang1 = 0; ang1 < 360; ang1 +=5)
+            {
+              float radian1 = radians(ang1);
+              pushMatrix();
+              translate(radius1 * cos(radian1), radius1 * sin(radian1));
+              for(float ang2 = 0; ang2 < 90; ang2 += 10){
+                  float radian2 = (float) (radians(ang2) - frameCount * 0.02 + radian1);
+                 ellipse(radius2 * cos(radian2), radius2 * sin(radian2), 2, 2);
+              }
+            
+              popMatrix();
+             saveFrame("line-######.png");
+      break;
+          }*/
 
            
             /*case 4:
@@ -228,10 +259,12 @@ public class Audio1 extends PApplet
         y += random(-10, 10);
         smoothedY = lerp(smoothedY, y, 0.1f);        
         circle(200, smoothedY, 50);
-        */
+        
 
     }
-  }   
+  }  
 
 
 
+
+*/
