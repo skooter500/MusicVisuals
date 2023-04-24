@@ -31,7 +31,7 @@ public class DisplayAIGeneratedImage extends DrawObjectAbstractClass {
             @Override
             public void run() {
                 String link = PostOpenAPI.run("2 guys fighting over a pint of guinness");
-                DownloadAIGeneratedImage.downloadImage(link);
+                // DownloadAIGeneratedImage.downloadImage(link);
                 aiGeneratedImage = pApplet.loadImage("images/ai-image-0.png");
             }
        }).start();
