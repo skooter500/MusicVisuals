@@ -168,7 +168,7 @@ public class Galaxy2 extends DrawObjectAbstractClass
 
     private void drawEarthquakeEffect() {
         float amplitude = audioBuffer.level() * 1000;
-        if (amplitude > 200) { // You can adjust the threshold as needed
+        if (amplitude > 150) { // You can adjust the threshold as needed
             float shakeIntensity = PApplet.map(amplitude, 50, 300, 5, 100);
             float shakeX = pApplet.random(-shakeIntensity, shakeIntensity);
             float shakeY = pApplet.random(-shakeIntensity, shakeIntensity);
