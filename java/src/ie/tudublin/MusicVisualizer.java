@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 // Visuals
 import com.C21782059.visual1.Visual1;
+import com.C21394933.startMenu.StartMenuVisual;
 import com.C21394933.visual2.Visual2;
 import com.C21460524.visual3.Visual3;
 import com.C21751999.visual4.Visual4;
@@ -19,6 +20,7 @@ import com.C21751999.visual4.Visual4;
 public class MusicVisualizer extends PApplet {
     // Render Visuals
     // C21394933 (Ernest John Decina)
+    StartMenuVisual startMenuVisual;
     Visual1 visual1;
     //
     Visual2 visual2;
@@ -42,8 +44,8 @@ public class MusicVisualizer extends PApplet {
     int bitDepth = 16;
     
     float lerpedR = 0;
-    int[] timings = {667, 1075, 1328, 1868, 2262};
-    int timingsCounter = 0;
+    int[] timings = {0, 667, 1075, 1328, 1868, 2262};
+    public static int timingsCounter = 0;
     int currentTime = 0;
 
     public MusicVisualizer() {
@@ -63,9 +65,7 @@ public class MusicVisualizer extends PApplet {
 
     public void draw() {
         background(0);
-
         playVisuals();
-
     } // End void draw()
 
 
@@ -74,7 +74,6 @@ public class MusicVisualizer extends PApplet {
         // Initialize minim
         this.minim = new Minim(this);
         this.audioPlayer = minim.loadFile("songs/somethingComforting.mp3", 2048); 
-        this.audioPlayer.play();
         this.audioBuffer = audioPlayer.mix;
         Utils.skipSecondsSong(audioPlayer, 66.7f);
     } // End void loadSong()
@@ -82,11 +81,13 @@ public class MusicVisualizer extends PApplet {
     private void loadVisuals() {
         // Refresh Frame
         // background(0);
+        this.startMenuVisual = new StartMenuVisual(this, this.audioBuffer, this.audioPlayer, this.windowWidth, this.windowHeight);
         this.visual2 = new Visual2(this, this.audioBuffer, this.audioPlayer, this.windowWidth, this.windowHeight);
         this.visual3 = new Visual3(this, this.audioBuffer, this.audioPlayer, this.windowWidth, this.windowHeight);
         this.visual1 = new Visual1(this, this.audioBuffer, this.audioPlayer, this.windowWidth, this.windowHeight);
         this.visual4 = new Visual4(this, this.audioBuffer, this.audioPlayer, this.windowWidth, this.windowHeight);
 
+        visualList.add(startMenuVisual);
         visualList.add(visual3);
         visualList.add(visual2);
         visualList.add(visual4);
@@ -97,15 +98,13 @@ public class MusicVisualizer extends PApplet {
 
     private void playVisuals() 
     {
-
         currentTime = audioPlayer.position();
+        // System.out.println(MusicVisualizer.timingsCounter);
+        System.out.println((float)currentTime / 100);
+        if(currentTime / 100 > timings[MusicVisualizer.timingsCounter] && MusicVisualizer.timingsCounter != 0) 
+            MusicVisualizer.timingsCounter++;
         
-        // System.out.println((float)currentTime / 100);
-        if(currentTime / 100 > timings[timingsCounter]) 
-            timingsCounter++;
-        
-        visualList.get(timingsCounter).drawVisual();
-
+        visualList.get(MusicVisualizer.timingsCounter).drawVisual();
     } // End void playVisual
 
 } // End class MusicVisualizer
