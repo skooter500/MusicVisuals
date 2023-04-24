@@ -23,7 +23,7 @@ public class Visual3 extends VisualAbstractClass {
     int windowHeight;
     PApplet pApplet;
     AudioBuffer audioBuffer;
-    int[] visual2Timings = {392, 667};
+    int[] visual2Timings = {667, 1075};
     int drawObjectsIndex = 0;
     ArrayList<DrawObjectAbstractClass> drawObjects;
 
