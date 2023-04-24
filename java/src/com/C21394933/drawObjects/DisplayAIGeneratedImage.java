@@ -1,5 +1,8 @@
 package com.C21394933.drawObjects;
 
+import com.C21394933.network.DownloadAIGeneratedImage;
+import com.C21394933.network.PostOpenAPI;
+
 import ddf.minim.AudioBuffer;
 import ddf.minim.analysis.FFT;
 import ie.tudublin.DrawObjectAbstractClass;
@@ -24,7 +27,14 @@ public class DisplayAIGeneratedImage extends DrawObjectAbstractClass {
         this.audioBuffer = audioBuffer;
         this.fft = new FFT(2048, 44100);
 
-        aiGeneratedImage = pApplet.loadImage("images/ai-image-1.jpg");
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                String link = PostOpenAPI.run("2 guys fighting over a pint of guinness");
+                DownloadAIGeneratedImage.downloadImage(link);
+                aiGeneratedImage = pApplet.loadImage("images/ai-image-0.png");
+            }
+       }).start();
     } // End WaveFormVisualize Constructor
 
     public void render() {
@@ -32,7 +42,7 @@ public class DisplayAIGeneratedImage extends DrawObjectAbstractClass {
     } // End void render()
 
     public void drawAIGeneratedImage() {
-        if(rotate % 5 == 0 && tiles < 100)
+        if(rotate % 5 == 0 && tiles < 512)
             tiles++;
 
         tileSize = 512 / tiles;
@@ -40,6 +50,7 @@ public class DisplayAIGeneratedImage extends DrawObjectAbstractClass {
         pApplet.pushMatrix();
         pApplet.pushStyle();
         pApplet.color(255, 255, 255);
+        pApplet.noStroke();
 
         pApplet.translate((windowWidth / 2) - 256, (windowHeight / 2) - 256, 500 - rotate);
         rotate += 1;
@@ -53,6 +64,7 @@ public class DisplayAIGeneratedImage extends DrawObjectAbstractClass {
 
                 pApplet.pushMatrix();
                 // pApplet.translate(0, 0, brightness);
+                pApplet.fill(pixelValue);
                 pApplet.circle((x * tileSize), (y * tileSize), size);
                 pApplet.popMatrix();
             } // End for
