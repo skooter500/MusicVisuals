@@ -30,8 +30,8 @@ public class DisplayAIGeneratedImage extends DrawObjectAbstractClass {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                String link = PostOpenAPI.run("2 guys fighting over a pint of guinness");
-                // DownloadAIGeneratedImage.downloadImage(link);
+                String link = PostOpenAPI.run("watermelon");
+                DownloadAIGeneratedImage.downloadImage(link);
                 aiGeneratedImage = pApplet.loadImage("images/ai-image-0.png");
             }
        }).start();
@@ -60,10 +60,10 @@ public class DisplayAIGeneratedImage extends DrawObjectAbstractClass {
                 
                 int pixelValue = aiGeneratedImage.get((int)(x * tileSize), (int)(y * tileSize));
                 float size = PApplet.map(pApplet.brightness(pixelValue), 0, 255, 0, 5);
-                // float brightness = PApplet.map(pApplet.brightness(pixelValue), 0, 255, 0, 20);
+                float brightness = PApplet.map(pApplet.brightness(pixelValue), 0, 255, 0, 100);
 
                 pApplet.pushMatrix();
-                // pApplet.translate(0, 0, brightness);
+                pApplet.translate(0, 0, brightness);
                 pApplet.fill(pixelValue);
                 pApplet.circle((x * tileSize), (y * tileSize), size);
                 pApplet.popMatrix();
