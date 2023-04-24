@@ -1,14 +1,15 @@
 package com.C21460524.drawObjects;
 
 
-
 // Dependencies
 import ddf.minim.AudioBuffer;
+import ddf.minim.analysis.FFT;
 import processing.core.PApplet;
 import processing.core.PConstants;
+import ie.tudublin.DrawObjectAbstractClass;
 
 
-public class Galaxy extends PApplet 
+public class Galaxy extends DrawObjectAbstractClass
 {
 
     // Private Fields
@@ -38,11 +39,16 @@ public class Galaxy extends PApplet
         {
 
             float x = i * windowWidth / numStars; // evenly space stars along the x axis
-            float y = random(0, windowHeight);
+            float y = pApplet.random(0, windowHeight);
             stars[i] = new Star(x, y);
 
         }
     }
+
+    public void render() {
+        drawExample();
+    } // End void render()
+    
 
     public void drawExample() 
     {
@@ -77,7 +83,7 @@ public class Galaxy extends PApplet
     
         // Map the amplitude value to a hue value
         pApplet.colorMode(PConstants.HSB, 360, 100, 100);
-        float hue = map(amplitude, 0, 200, 0, 360);
+        float hue = PApplet.map(amplitude, 0, 200, 0, 360);
         pApplet.fill(hue, 100, 100);
     
         // Draw sphere
@@ -88,7 +94,7 @@ public class Galaxy extends PApplet
         
         pApplet.noStroke();
     
-        float adjustedRotationSpeed = map(amplitude, 0, 350, rotationSpeed, rotationSpeed * 40);
+        float adjustedRotationSpeed = PApplet.map(amplitude, 0, 350, rotationSpeed, rotationSpeed * 40);
         rotationAngle += adjustedRotationSpeed;
     
         pApplet.rotate(rotationAngle, 1, 1, 0);
@@ -102,15 +108,15 @@ public class Galaxy extends PApplet
             for (int i = 0; i < detail; i++) {
                 float phi1 = PApplet.map(i, 0, detail, 0, PConstants.PI);
                 float phi2 = PApplet.map(i + 1, 0, detail, 0, PConstants.PI);
-                float x1 = diameter * sin(phi1) * cos(theta1);
-                float y1 = diameter * sin(phi1) * sin(theta1);
-                float z1 = diameter * cos(phi1);
-                float x2 = diameter * sin(phi1) * cos(theta2);
-                float y2 = diameter * sin(phi1) * sin(theta2);
-                float z2 = diameter * cos(phi1);
-                float x3 = diameter * sin(phi2) * cos(theta2);
-                float y3 = diameter * sin(phi2) * sin(theta2);
-                float z3 = diameter * cos(phi2);
+                float x1 = diameter * PApplet.sin(phi1) * PApplet.cos(theta1);
+                float y1 = diameter * PApplet.sin(phi1) * PApplet.sin(theta1);
+                float z1 = diameter * PApplet.cos(phi1);
+                float x2 = diameter * PApplet.sin(phi1) * PApplet.cos(theta2);
+                float y2 = diameter * PApplet.sin(phi1) * PApplet.sin(theta2);
+                float z2 = diameter * PApplet.cos(phi1);
+                float x3 = diameter * PApplet.sin(phi2) * PApplet.cos(theta2);
+                float y3 = diameter * PApplet.sin(phi2) * PApplet.sin(theta2);
+                float z3 = diameter * PApplet.cos(phi2);
                 pApplet.vertex(x1, y1, z1);
                 pApplet.vertex(x2, y2, z2);
                 pApplet.vertex(x3, y3, z3);
@@ -135,7 +141,7 @@ public class Galaxy extends PApplet
 
     private void drawScreenFlash() {
         float amplitude = audioBuffer.level() * 1000;
-        float flashOpacity = map(amplitude, 0, 800, 0, 255);
+        float flashOpacity = PApplet.map(amplitude, 0, 800, 0, 255);
         pApplet.fill(255, 255, 255, flashOpacity);
         pApplet.rect(0, 0, windowWidth, windowHeight);
     }
@@ -145,7 +151,7 @@ public class Galaxy extends PApplet
     private void drawStarfield() {
         for (int i = 0; i < numStars; i++) {
             Star star = stars[i];
-            float radius = random(1, 3);
+            float radius = pApplet.random(1, 3);
             float diameter = radius * 2;
             // Move star to the right
             star.x = (star.x + starSpeed) % windowWidth;
