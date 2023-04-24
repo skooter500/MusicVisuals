@@ -1,4 +1,4 @@
-package com.C21394933.startMenu;
+package com.C21394933.visual2;
 
 import com.C21394933.drawObjects.AIGenerationMenu;
 

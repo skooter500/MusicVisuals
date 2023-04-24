@@ -6,12 +6,11 @@ import ddf.minim.AudioInput;
 import ddf.minim.AudioPlayer;
 import ddf.minim.Minim;
 import processing.core.PApplet;
-
 import java.util.ArrayList;
 
 // Visuals
 import com.C21782059.visual1.Visual1;
-import com.C21394933.startMenu.StartMenuVisual;
+import com.C21394933.visual2.StartMenuVisual;
 import com.C21394933.visual2.Visual2;
 import com.C21460524.visual3.Visual3;
 import com.C21751999.visual4.Visual4;
@@ -47,6 +46,7 @@ public class MusicVisualizer extends PApplet {
     int[] timings = {0, 667, 1075, 1328, 1868, 2262};
     public static int timingsCounter = 0;
     int currentTime = 0;
+
 
     public MusicVisualizer() {
         visualList = new ArrayList<VisualAbstractClass>();
@@ -87,7 +87,7 @@ public class MusicVisualizer extends PApplet {
         this.visual1 = new Visual1(this, this.audioBuffer, this.audioPlayer, this.windowWidth, this.windowHeight);
         this.visual4 = new Visual4(this, this.audioBuffer, this.audioPlayer, this.windowWidth, this.windowHeight);
 
-        visualList.add(startMenuVisual);
+        // visualList.add(startMenuVisual);
         visualList.add(visual3);
         visualList.add(visual2);
         visualList.add(visual4);
