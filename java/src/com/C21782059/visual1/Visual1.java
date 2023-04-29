@@ -19,7 +19,7 @@ public class Visual1 extends VisualAbstractClass {
     PApplet pApplet;
     AudioBuffer audioBuffer;
 
-    int[] visual1Timings = { 1990, 4000};
+    int[] visual1Timings = { 1990, 2263, 4370};
     int drawObjectsIndex = 0;
     ArrayList<DrawObjectAbstractClass> drawObjects;
 
@@ -65,6 +65,7 @@ public class Visual1 extends VisualAbstractClass {
         this.squaresSpace = new SquaresSpace(pApplet, audioBuffer, fft, windowWidth, windowHeight);
 
         drawObjects.add(test);
+        drawObjects.add(squaresSpace);
         drawObjects.add(squaresSpace);
     } // End void oadRenderObjects
 } // End class Visual1

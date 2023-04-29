@@ -24,7 +24,7 @@ public class Visual3 extends VisualAbstractClass {
     PApplet pApplet;
     AudioBuffer audioBuffer;
     
-    int[] visual3Timings = {398, 667};
+    int[] visual3Timings = {1075, 1990};
 
     int drawObjectsIndex = 0;
     ArrayList<DrawObjectAbstractClass> drawObjects;
