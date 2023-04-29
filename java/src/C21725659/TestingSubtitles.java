@@ -6,7 +6,7 @@ import Global.*;
 import ie.tudublin.Visual;
 import ie.tudublin.VisualException;
 
-public class DemiAina extends Visual {
+public class TestingSubtitles extends Visual {
 
     int currentTime = 0;
     boolean isPlaying = false;
