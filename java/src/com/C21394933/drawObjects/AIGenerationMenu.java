@@ -8,10 +8,12 @@ import ddf.minim.analysis.FFT;
 import ie.tudublin.DrawObjectAbstractClass;
 import ie.tudublin.MusicVisualizer;
 import processing.core.PApplet;
+import processing.core.PImage;
 
 public class AIGenerationMenu extends DrawObjectAbstractClass {
     static int timingsCounter;
     AudioPlayer audioPlayer;
+    PImage background;
 
     boolean errorMessage = false;
     boolean downloadErrorMessage = false;
@@ -37,12 +39,16 @@ public class AIGenerationMenu extends DrawObjectAbstractClass {
 
         this.textbox = new TEXTBOX(pApplet);
         this.submitButton = new SubmitButton(pApplet, (windowWidth / 2) + 80, (windowHeight/ 2) + 100);
+        this.background = pApplet.loadImage("images/background-image.jpg");
     } // End WaveFormVisualize Constructor
 
     int frame = 0;
     boolean state, pstate;
     int time = -1;
     public void render() {
+        pApplet.pushStyle();
+        pApplet.background(background);
+
         this.textbox.DRAW();
         this.submitButton.render();
         textboxLogic();
@@ -51,6 +57,8 @@ public class AIGenerationMenu extends DrawObjectAbstractClass {
         renderDownlaodMessage();
         renderDownlaodErrorMessage();
         renderErrorMessage();
+
+        pApplet.popStyle();
     }
 
     private void renderPrompt() {

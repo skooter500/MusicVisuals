@@ -58,6 +58,7 @@ public class MusicVisualizer extends PApplet {
 
     public void setup() {
         colorMode(RGB);
+  
         frameRate(60);
         loadSong();
         loadVisuals();
