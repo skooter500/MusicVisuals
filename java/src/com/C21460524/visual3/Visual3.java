@@ -53,7 +53,7 @@ public class Visual3 extends VisualAbstractClass {
 
     // Draw Function for Visual 3
     public void drawVisual() {
-        if(audioPlayer.position() / 100 > visual2Timings[drawObjectsIndex]) 
+        if(audioPlayer.position() / 100 > visual3Timings[drawObjectsIndex]) 
             drawObjectsIndex++;
 
         drawObjects.get(drawObjectsIndex).render();
