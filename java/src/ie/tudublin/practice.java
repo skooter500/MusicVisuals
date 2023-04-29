@@ -77,6 +77,8 @@ public class practice extends Visual
         }
         calculateFrequencyBands();
         bands = getSmoothedBands();
+    
+        pushMatrix();
 
         for (int i = 0; i < stars.length; i++) {
             Star star = stars[i];
@@ -85,8 +87,8 @@ public class practice extends Visual
             star.size = size;
             star.display(bands);
         }
-    }
 
+    }
 }
 
 class Star extends PApplet
