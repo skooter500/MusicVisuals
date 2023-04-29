@@ -120,8 +120,7 @@ public class Experiance extends PApplet{
             break;
 
         case 2:// when you press key 2 (cece)
-       
-        star.render();
+      
     
 
             break;

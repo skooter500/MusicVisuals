@@ -16,7 +16,6 @@ public class stars extends PApplet {
 
     Heart leftHeart;
     Heart rightHeart;
-    
 
     int mode = 0;
 
@@ -49,11 +48,10 @@ public class stars extends PApplet {
         y = height / 2;
         smoothedY = y;
 
-        
         // Create the left and right hearts
-        leftHeart = new Heart(width * 0.25f, height / 2, 50, color(255, 0, 0));
-        rightHeart = new Heart(width * 0.75f, height / 2, 50, color(255, 0, 0));
-        
+        leftHeart = new Heart(width * 0.2f, height / 2, 50, color(255, 0, 0));
+        rightHeart = new Heart(width * 0.8f, height / 2, 50, color(255, 0, 0));
+
     }
 
     float off = 0;
@@ -66,27 +64,27 @@ public class stars extends PApplet {
         float centerY = height / 2;
         float average = 0;
         float sum = 0;
-      
+
         // Set the size of the daisy
         float daisySize = 200;
-      
+
         // Calculate sum and average of the samples
         for (int i = 0; i < ab.size(); i++) {
             sum += abs(ab.get(i));
         }
         average = sum / (float) ab.size();
         smoothedAmplitude = lerp(smoothedAmplitude, average, 0.2f);
-      
+
         // Map the amplitude value to a range of values that will control the size of
         // the center circle
         float size = map(smoothedAmplitude, 0, 1, 130, 800);
-      
+
         // Set the color of the daisy
         fill(255, 255, 0); // yellow
-      
+
         // Draw the center of the daisy with the mapped size value
         ellipse(centerX, centerY, size, size);
-      
+
         // Draw the petals of the daisy
         fill(255, 255, 255); // white
         for (int i = 0; i < 6; i++) {
@@ -99,42 +97,40 @@ public class stars extends PApplet {
             ellipse(0, 0, 110, 100);
             popMatrix();
         }
-      
+
         // Set the color of the daisy
         fill(255, 255, 0); // yellow
-      
+
         // Draw the center of the daisy with the mapped size value
         ellipse(centerX, centerY, 130, 130);
-      
+
         // Set the color and stroke for the smile
         // Draw the smile
         strokeWeight(5);
         stroke(0);
         noFill();
         arc(centerX, centerY + 25, 60, 60, 0, PI);
-      
+
         // Draw the eyes
         fill(0);
         noStroke();
         ellipse(centerX - 25, centerY - 10, 20, 20);
         ellipse(centerX + 25, centerY - 10, 20, 20);
-      
+
         // blush
         fill(255, 192, 203);
         noStroke();
         ellipse(centerX - 35, centerY + 9, 15, 10);
         ellipse(centerX + 35, centerY + 9, 15, 10);
     }
-    
-    
 
     void drawstem() {
-        float halfH = (height / 2)+65;
+        float halfH = (height / 2) + 65;
         float halfW = (width / 2);
         float average = 0;
         float sum = 0;
         off += 1;
-    
+
         // Calculate sum and average of the samples
         // Also lerp each element of buffer;
         for (int i = 0; i < ab.size(); i++) {
@@ -142,21 +138,21 @@ public class stars extends PApplet {
             lerpedBuffer[i] = lerp(lerpedBuffer[i], ab.get(i), 0.1f);
         }
         average = sum / (float) ab.size();
-    
+
         smoothedAmplitude = lerp(smoothedAmplitude, average, 0.1f);
-    
+
         for (int i = 0; i < ab.size(); i++) {
             float x = halfW - (lerpedBuffer[i] * halfH * 0.5f);
             float y = map(i, 0, ab.size(), halfH, height);
             stroke(map(i, 0, ab.size(), 0, 255), 252, 0);
             line(halfW, y, x, y);
+        }
     }
-}
 
     public void draw() {
         background(0);
         drawDaisy();
-        drawstem(); 
+        drawstem();
 
         fft.forward(player.mix);
 
@@ -180,9 +176,9 @@ public class stars extends PApplet {
             p.draw();
         }
 
-         // Draw the left and right hearts
-    leftHeart.draw();
-    rightHeart.draw();
+        // Draw the left and right hearts
+        leftHeart.draw();
+        rightHeart.draw();
 
     }
 
@@ -225,30 +221,28 @@ public class stars extends PApplet {
         }
     }
 
+    class Heart {
+        float x, y;
+        float size;
+        int color;
 
-class Heart {
-    float x, y;
-    float size;
-    int color;
+        Heart(float x, float y, float size, int color) {
+            this.x = x;
+            this.y = y;
+            this.size = size;
+            this.color = color;
+        }
 
-    Heart(float x, float y, float size, int color) {
-        this.x = x;
-        this.y = y;
-        this.size = size;
-        this.color = color;
-    }
-
-    void draw() {
-        // Draw the heart shape using bezier curves
-        smooth();
-        noStroke();
-        fill(255,0,0);
-        beginShape();
-        vertex(50, 15);
-        bezierVertex(50, -5, 90, 5, 50, 40);
-        vertex(50, 15);
-        bezierVertex(50, -5, 10, 5, 50, 40);
-        endShape();
-      }
+        void draw() {
+            // Draw the heart shape using bezier curves
+            smooth();
+            noStroke();
+            fill(color);
+            beginShape();
+            vertex(x, y);
+            bezierVertex(x - size * 1, y - size * 2, x - size * 3, y + size / 2, x, y + size * 2);
+            bezierVertex(x + size * 3, y + size / 2, x + size * 1, y - size * 2, x, y);
+            endShape();
+        }
     }
 }
