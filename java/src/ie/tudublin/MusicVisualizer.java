@@ -91,7 +91,7 @@ public class MusicVisualizer extends PApplet {
 
 
 
-        visualList.add(visual4);
+        visualList.add(visual3);
         visualList.add(visual3);
         visualList.add(visual3);
         visualList.add(visual1);
