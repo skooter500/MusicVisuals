@@ -24,7 +24,7 @@ public class Visual1 extends VisualAbstractClass {
     ArrayList<DrawObjectAbstractClass> drawObjects;
 
     //  Render Objects
-    AudioHm test;
+    AudioHm audioHm;
     SquaresSpace squaresSpace;
     //ExampleDraw exampleDraw;
     //
@@ -61,10 +61,10 @@ public class Visual1 extends VisualAbstractClass {
     private void loadRenderObjects() {
         // Create your draw Objects here
         //exampleDraw = new ExampleDraw(this.pApplet, this.audioBuffer, this.windowWidth, this.windowHeight);
-        this.test = new AudioHm(pApplet, audioBuffer, fft, windowWidth, windowHeight);
+        this.audioHm = new AudioHm(pApplet, audioBuffer, fft, windowWidth, windowHeight);
         this.squaresSpace = new SquaresSpace(pApplet, audioBuffer, fft, windowWidth, windowHeight);
 
-        drawObjects.add(test);
+        drawObjects.add(audioHm);
         drawObjects.add(squaresSpace);
         drawObjects.add(squaresSpace);
     } // End void oadRenderObjects

@@ -24,7 +24,7 @@ public class Visual3 extends VisualAbstractClass {
     PApplet pApplet;
     AudioBuffer audioBuffer;
     
-    int[] visual3Timings = {1075, 1990};
+    int[] visual3Timings = { 300,802};
 
     int drawObjectsIndex = 0;
     ArrayList<DrawObjectAbstractClass> drawObjects;
@@ -68,6 +68,7 @@ public class Visual3 extends VisualAbstractClass {
         //galaxy = new Test(this.pApplet, this.audioBuffer, this.windowWidth, this.windowHeight);
 
         drawObjects.add(stars);
+        drawObjects.add(stars2);
         drawObjects.add(stars2);
     } // End void oadRenderObjects
 
