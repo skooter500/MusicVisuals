@@ -1,20 +1,22 @@
 package ie.tudublin;
 
+// import processing.core.*;
 import processing.core.PApplet;
 import ddf.minim.*;
 import ddf.minim.analysis.FFT;
 
 public class practice extends Visual
 {
-
-    private Minim minim;
     AudioPlayer ap;
     AudioInput ai;
     AudioBuffer ab;
+    float colour = 0;
     int mode = 0;
 
     FFT fft;
+
     Star[] stars;
+    
 
     public void settings()
     {
