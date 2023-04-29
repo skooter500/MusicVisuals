@@ -8,16 +8,23 @@ public class Main
 		String[] a = {"MAIN"};
         processing.core.PApplet.runSketch( a, new Experiance());		
 	}
-	public void discoBallUI()
+	// public void discoBallUI()
+	// {
+	// 	String[] a = {"MAIN"};
+    //     processing.core.PApplet.runSketch( a, new DiscoBall());		
+	// }
+
+	public void music()
 	{
 		String[] a = {"MAIN"};
-        processing.core.PApplet.runSketch( a, new DiscoBall());		
+        processing.core.PApplet.runSketch( a, new music_note());		
 	}
 
 	public static void main(String[] args)
 	{
 		Main main = new Main();
 		//main.startUI();	
-		main.discoBallUI();		
+		// main.discoBallUI();	
+		main.music();	
 	}
 }

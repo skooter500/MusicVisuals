@@ -88,7 +88,10 @@ public class music_note extends Visual
             star.display(bands);
         }
 
+        popMatrix();
+
         drawNotes();
+
 
     }
 
