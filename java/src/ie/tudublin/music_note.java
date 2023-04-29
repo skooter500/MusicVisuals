@@ -127,26 +127,51 @@ public class music_note extends Visual
         int noteX2 = noteX + staffSpacing*2;
         int noteY2 = noteY + staffSpacing;
 
+        // Calculate the vertical position of the notes based on the amplitude
+        float amplitude = getSmoothedAmplitude();
+        float yOffset = map(amplitude, 0, 1, -staffHeight/2, staffHeight/2);
+
         fill(100, 255, 255);
 
-        ellipse(noteX + noteDistance - 10, noteY2, noteSize, noteSize);
-        line(noteX + noteDistance + 10, noteY2, noteX + noteDistance, staffY - staffHeight/5);
+        ellipse(noteX + noteDistance - 10, noteY2 + yOffset, noteSize, noteSize);
+        line(noteX + noteDistance + 10, noteY2 + yOffset, noteX + noteDistance, staffY - staffHeight/5 + yOffset);
 
-        ellipse(noteX2 - 10, noteY + (noteDistance/2 + 10), noteSize, noteSize);
-        line(noteX2 + 10, noteY + (noteDistance/2 + 10), noteX2, staffY - staffHeight/3);
+        ellipse(noteX2 - 10, noteY + (noteDistance/2 + 10) + yOffset, noteSize, noteSize);
+        line(noteX2 + 10, noteY + (noteDistance/2 + 10) + yOffset, noteX2, staffY - staffHeight/3 + yOffset);
 
-        line(noteX + noteDistance, noteY2 - staffSpacing, noteX2, noteY - staffSpacing/4);
+        line(noteX + noteDistance, noteY2 - staffSpacing + yOffset, noteX2, noteY - staffSpacing/4 + yOffset);
 
         // another note
         fill(100, 255, 255);
         
-        ellipse((noteX2 - 10) * 2, noteY + (noteDistance/2 + 10), noteSize, noteSize);
-        line(noteX2 * 2, noteY + (noteDistance/2 + 10), noteX2 * 2, noteY - staffHeight/15);
+        ellipse((noteX2 - 10) * 2, noteY + (noteDistance/2 + 10) + yOffset, noteSize, noteSize);
+        line(noteX2 * 2, noteY + (noteDistance/2 + 10) + yOffset, noteX2 * 2, noteY - staffHeight/15 + yOffset);
 
-        ellipse((noteX + noteDistance - 10) * 2, noteY2 - (noteDistance - 20), noteSize, noteSize);
-        line((noteX + noteDistance) * 2, noteY2 - (noteDistance - 20) , (noteX + noteDistance) * 2, staffY - staffHeight/2);
+        ellipse((noteX + noteDistance - 10) * 2, noteY2 - (noteDistance - 20) + yOffset, noteSize, noteSize);
+        line((noteX + noteDistance) * 2, noteY2 - (noteDistance - 20) + yOffset, (noteX + noteDistance) * 2, staffY - staffHeight/2 + yOffset);
 
-        line((noteX + noteDistance) * 2, staffY - staffHeight/2, noteX2 * 2, noteY - staffHeight/15);
+        line((noteX + noteDistance) * 2, staffY - staffHeight/2 + yOffset, noteX2 * 2, noteY - staffHeight/15 + yOffset);
+
+        // fill(100, 255, 255);
+
+        // ellipse(noteX + noteDistance - 10, noteY2, noteSize, noteSize);
+        // line(noteX + noteDistance + 10, noteY2, noteX + noteDistance, staffY - staffHeight/5);
+
+        // ellipse(noteX2 - 10, noteY + (noteDistance/2 + 10), noteSize, noteSize);
+        // line(noteX2 + 10, noteY + (noteDistance/2 + 10), noteX2, staffY - staffHeight/3);
+
+        // line(noteX + noteDistance, noteY2 - staffSpacing, noteX2, noteY - staffSpacing/4);
+
+        // // another note
+        // fill(100, 255, 255);
+        
+        // ellipse((noteX2 - 10) * 2, noteY + (noteDistance/2 + 10), noteSize, noteSize);
+        // line(noteX2 * 2, noteY + (noteDistance/2 + 10), noteX2 * 2, noteY - staffHeight/15);
+
+        // ellipse((noteX + noteDistance - 10) * 2, noteY2 - (noteDistance - 20), noteSize, noteSize);
+        // line((noteX + noteDistance) * 2, noteY2 - (noteDistance - 20) , (noteX + noteDistance) * 2, staffY - staffHeight/2);
+
+        // line((noteX + noteDistance) * 2, staffY - staffHeight/2, noteX2 * 2, noteY - staffHeight/15);
 
         popMatrix();
     }
