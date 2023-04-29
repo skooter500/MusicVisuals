@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 // Dependencies
 import ddf.minim.AudioBuffer;
-import ddf.minim.analysis.FFT;
 import processing.core.PApplet;
 import processing.core.PConstants;
 import processing.core.PVector;

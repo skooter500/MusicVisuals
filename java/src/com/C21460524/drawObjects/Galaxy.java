@@ -3,7 +3,6 @@ package com.C21460524.drawObjects;
 
 // Dependencies
 import ddf.minim.AudioBuffer;
-import ddf.minim.analysis.FFT;
 import processing.core.PApplet;
 import processing.core.PConstants;
 import ie.tudublin.DrawObjectAbstractClass;
@@ -81,6 +80,7 @@ public class Galaxy extends DrawObjectAbstractClass
 
         float x = windowWidth / 2;
         float y = windowHeight / 2;
+
         float amplitude = audioBuffer.level() * 1000;
         float diameter = initialDiameter + amplitude + (timeElapsed * timeScale);
     
