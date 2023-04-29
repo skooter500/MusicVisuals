@@ -52,6 +52,9 @@ public class stars extends PApplet {
         leftHeart = new Heart(width * 0.2f, height / 2, 10, color(255, 0, 0));
         rightHeart = new Heart(width * 0.8f, height / 2, 10, color(255, 0, 0));
 
+        // Add lights for 3D shading
+        lights();
+
     }
 
     float off = 0;
@@ -176,13 +179,20 @@ public class stars extends PApplet {
             p.draw();
         }
 
-      // Update the left and right hearts based on the audio amplitude
-  leftHeart.update(smoothedAmplitude);
-  rightHeart.update(smoothedAmplitude);
+    
 
-  // Draw the left and right hearts
-  leftHeart.draw();
-  rightHeart.draw();
+        // Update the left and right hearts based on the audio amplitude
+        leftHeart.update(smoothedAmplitude);
+        rightHeart.update(smoothedAmplitude);
+
+         // Set the material properties for the heart
+         ambientMaterial(255, 0, 0); // set the heart color
+         specularMaterial(255, 255, 255); // set the specular highlight color
+ 
+
+        // Draw the left and right hearts
+        leftHeart.draw();
+        rightHeart.draw();
     }
 
     class Particle {
@@ -223,33 +233,35 @@ public class stars extends PApplet {
             ellipse(x, y, size, size);
         }
     }
+
     class Heart {
         float x, y;
         float size;
         int color;
-        
+
         Heart(float x, float y, float size, int color) {
-          this.x = x;
-          this.y = y;
-          this.size = size;
-          this.color = color;
+            this.x = x;
+            this.y = y;
+            this.size = size;
+            this.color = color;
         }
-        
+
         void draw() {
-          // Draw the heart shape using bezier curves
-          smooth();
-          noStroke();
-          fill(color);
-          beginShape();
-          vertex(x, y);
-          bezierVertex(x - size * 1, y - size * 2, x - size * 3, y + size / 2, x, y + size * 2);
-          bezierVertex(x + size * 3, y + size / 2, x + size * 1, y - size * 2, x, y);
-          endShape();
+            // Draw the heart shape using bezier curves
+            smooth();
+            noStroke();
+            fill(color);
+            beginShape();
+            vertex(x, y);
+            bezierVertex(x - size * 1, y - size * 2, x - size * 3, y + size / 2, x, y + size * 2);
+            bezierVertex(x + size * 3, y + size / 2, x + size * 1, y - size * 2, x, y);
+            endShape();
         }
-        
+
         void update(float amplitude) {
-          // Map the amplitude value to a range of values that will control the size of the heart
-          size = map(amplitude, 0, 1, 25, 100);
+            // Map the amplitude value to a range of values that will control the size of
+            // the heart
+            size = map(amplitude, 0, 1, 25, 100);
         }
-      }
+    }
 }
