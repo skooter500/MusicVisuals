@@ -1,5 +1,3 @@
-
-
 package ie.tudublin;
 
 import ddf.minim.AudioBuffer;
@@ -19,8 +17,6 @@ public class DiscoBall extends PApplet {
     AudioBuffer ab;
     FFT fft;
 
-
-    
     float heartSize = 50;
     float heartX, heartBottomY;
     float r;
@@ -43,10 +39,15 @@ public class DiscoBall extends PApplet {
 
     float rotationSpeed = (float) 0.01;
 
+    ArrayList<Heart> hearts;
+
     public void settings() {
         size(800, 800, P3D);
         noSmooth();
+        hearts = new ArrayList<Heart>();
+        frameRate(60);
     }
+
 
     public void setup() {
         minim = new Minim(this);
@@ -57,6 +58,12 @@ public class DiscoBall extends PApplet {
         fft = new FFT(ab.size(), ((AudioSource) ap).sampleRate());
     }
 
+    void update() {
+        y += speed;
+        if (y > height+size) {
+          alive = false;
+        }
+      }
 
     public void draw() {
 
@@ -90,53 +97,35 @@ public class DiscoBall extends PApplet {
         fill(212,175,55);
         sphere(250);
 
-        float level = ap.mix.level();
-
-        if (level > 0.1) {
-          // Set heart position and color
-          heartX = random(width);
-          heartBottomY = random(height+heartSize);
-          r = random(255);
-
-
-        float heartSize = random(10, 100);
-        heartX = random(width);
-        heartBottomY = random(height+heartSize);
       
-        float r = random(255);
-    
-      
-        fill(r, 0, 0);
-        stroke(r, 0, 0);
-        }
-        
-        
-        //dark hearts have light outlines and vice versa
-        stroke(255-r);
-      
-        //left half of heart
-        beginShape();
-        curveVertex(heartX, heartBottomY+heartSize); //anchor point
-        curveVertex(heartX, heartBottomY); //bottom tip
-        curveVertex(heartX - heartSize/2, (float) (heartBottomY-heartSize/1.5)); //left edge
-        curveVertex(heartX - heartSize/3, heartBottomY-heartSize); //top of left edge
-        curveVertex(heartX, (float) (heartBottomY-heartSize*.75)); //top middle dip
-        curveVertex(heartX, heartBottomY); //guiding point
-        endShape();
-      
-        //right half of heart
-        beginShape();
-        curveVertex(heartX, heartBottomY);
-        curveVertex(heartX, (float) (heartBottomY-heartSize*.75));
-        curveVertex(heartX + heartSize/3, heartBottomY-heartSize);
-        curveVertex(heartX + heartSize/2, (float) (heartBottomY-heartSize/1.5));
-        curveVertex(heartX, heartBottomY);
-        curveVertex(heartX, heartBottomY + heartSize);
-        endShape();
     }
+               
+    void display() {
+        if (alive) {
+          noStroke();
+          fill(r, g, b);
+          
+          //left half of heart
+          beginShape();
+          curveVertex(x, y+size); //anchor point
+          curveVertex(x, y); //bottom tip
+          curveVertex(x - size/2, (y-size/1.5)); //left edge
+          curveVertex(x - size/3, y-size); //top of left edge
+          curveVertex(x, (y-size*.75)); //top middle dip
+          curveVertex(x, y); //guiding point
+          endShape();
         
-
-
+          //right half of heart
+          beginShape();
+          curveVertex(x, y);
+          curveVertex(x, (y-size*.75));
+          curveVertex(x + size/3, y-size);
+          curveVertex(x + size/2, (y-size/1.5));
+          curveVertex(x, y);
+          curveVertex(x, y + size);
+          endShape();
+        }
+      }
 
     private float map2(float value, float start1, float stop1, double d, double e) {
         return (float) (d + (e - d) * ((value - start1) / (stop1 - start1)));
@@ -144,6 +133,22 @@ public class DiscoBall extends PApplet {
 
     }
 
+}
 
 
-   }
+class Heart {
+    float x, y, size, speed;
+    int r, g, b;
+    boolean alive;
+    
+    Heart(float _x, float _y, float _size) {
+        x = _x;
+        y = _y;
+        size = _size;
+        speed = random(1, 5);
+        r = int(random(255));
+        g = int(random(100));
+        b = int(random(100));
+        alive = true;
+    }
+
