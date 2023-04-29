@@ -75,12 +75,10 @@ public class MusicVisualizer extends PApplet {
         this.minim = new Minim(this);
         this.audioPlayer = minim.loadFile("songs/somethingComforting.mp3", 2048); 
         this.audioBuffer = audioPlayer.mix;
-        // Utils.skipSecondsSong(audioPlayer, 66.7f);
+        Utils.skipSecondsSong(audioPlayer, 66.7f);
     } // End void loadSong()
 
     private void loadVisuals() {
-        // Refresh Frame
-        // background(0);
         this.startMenuVisual = new StartMenuVisual(this, this.audioBuffer, this.audioPlayer, this.windowWidth, this.windowHeight);
         this.visual2 = new Visual2(this, this.audioBuffer, this.audioPlayer, this.windowWidth, this.windowHeight);
         this.visual3 = new Visual3(this, this.audioBuffer, this.audioPlayer, this.windowWidth, this.windowHeight);
@@ -104,7 +102,7 @@ public class MusicVisualizer extends PApplet {
         if(currentTime / 100 > timings[MusicVisualizer.timingsCounter] && MusicVisualizer.timingsCounter != 0) 
             MusicVisualizer.timingsCounter++;
 
-        
+    
         visualList.get(MusicVisualizer.timingsCounter).drawVisual();
     } // End void playVisual
 

@@ -17,8 +17,10 @@ public class AIGenerationMenu extends DrawObjectAbstractClass {
     boolean downloadErrorMessage = false;
     boolean downloadMessage = false;
     boolean downloadState = false;
+    int loadingDots = 0;
 
     private String imageLink = "";
+    
 
     // Draw Objects
     TEXTBOX textbox;
@@ -45,17 +47,22 @@ public class AIGenerationMenu extends DrawObjectAbstractClass {
         this.submitButton.render();
         textboxLogic();
         checkSubmit();
+        renderPrompt();
         renderDownlaodMessage();
         renderDownlaodErrorMessage();
         renderErrorMessage();
+    }
 
-        /*
-        if(pApplet.keyPressed && timingsCounter == 0) {
-            MusicVisualizer.timingsCounter++;
-            audioPlayer.play();
-            System.out.println("Hello");
-        }
-        */
+    private void renderPrompt() {
+        pApplet.pushMatrix();
+        pApplet.pushStyle();
+
+        pApplet.fill(255);
+        pApplet.textAlign(PApplet.CENTER);
+        pApplet.text("AI Image Generator", (windowWidth / 2) + 180, (windowHeight / 2) - 300);
+        pApplet.text("Enter image to be generated: ", (windowWidth / 2) + 180, (windowHeight / 2) - 10);
+        pApplet.popMatrix();
+        pApplet.popStyle();
     }
 
     private void renderDownlaodMessage() {
@@ -66,7 +73,7 @@ public class AIGenerationMenu extends DrawObjectAbstractClass {
 
         pApplet.fill(255);
         pApplet.textAlign(PApplet.CENTER);
-        pApplet.text("Processing AI Generated Image", (windowWidth / 2) + 180, (windowHeight / 2) - 200);
+        pApplet.text("Processing AI Generated Image...", (windowWidth / 2) + 180, (windowHeight / 2) - 200);
 
         pApplet.popMatrix();
         pApplet.popStyle();
@@ -121,6 +128,8 @@ public class AIGenerationMenu extends DrawObjectAbstractClass {
         pstate = state; // Update previous state for next loop.
     }
 
+
+
     private void checkSubmit() {
         if(!submitButton.getSubmitState() || downloadState) return;
 
@@ -138,6 +147,8 @@ public class AIGenerationMenu extends DrawObjectAbstractClass {
             if(imageLink == null) {
                 downloadMessage = false;
                 errorMessage = true;
+                downloadState = false;
+                
                 System.out.println("Failed query");
                 this.submitButton.setSubmitStateFalse();
                 textbox.resetText();
@@ -147,11 +158,13 @@ public class AIGenerationMenu extends DrawObjectAbstractClass {
             // Download image
             if(!DownloadAIGeneratedImage.downloadImage(imageLink)) {
                 downloadErrorMessage = true;
+                downloadState = false;
                 this.submitButton.setSubmitStateFalse();
                 textbox.resetText();
                 return;
             }
             
+            // Start Visualizer
             MusicVisualizer.timingsCounter++;
             audioPlayer.play();
         }).start();

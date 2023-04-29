@@ -14,8 +14,7 @@ public class DisplayAIGeneratedImage extends DrawObjectAbstractClass {
     // Private Feilds
     PImage aiGeneratedImage;
     float position = 30;
-
-    // TODO: REMOVE
+    boolean loadImageState = false;
     float tiles;
     float tileSize;
     float rotate = 10;
@@ -25,18 +24,17 @@ public class DisplayAIGeneratedImage extends DrawObjectAbstractClass {
         this.windowWidth = windowWidth;
         this.windowHeight = windowHeight;
         this.audioBuffer = audioBuffer;
-        this.fft = new FFT(2048, 44100);
-        
-        aiGeneratedImage = pApplet.loadImage("images/ai-image-0.png");
+        this.fft = new FFT(2048, 44100); 
     } // End WaveFormVisualize Constructor
 
     public void render() {
+        loadImage();
         drawAIGeneratedImage();
     } // End void render()
 
     public void drawAIGeneratedImage() {
         if(rotate % 5 == 0 && tiles < 512)
-            tiles++;
+            tiles += 1;
 
         tileSize = 512 / tiles;
 
@@ -78,4 +76,13 @@ public class DisplayAIGeneratedImage extends DrawObjectAbstractClass {
         pApplet.line(highestFrequencyIndex[1] * 2.0f, windowHeight, highestFrequencyIndex[1] * 2.0f, windowHeight - fft.getBand( highestFrequencyIndex[1]) * 5.0f);
         pApplet.line(highestFrequencyIndex[2] * 2.0f, windowHeight, highestFrequencyIndex[2] * 2.0f, windowHeight - fft.getBand( highestFrequencyIndex[2]) * 5.0f);
     } // End void drawFrequencySpectrum()
+
+
+    private void loadImage() {
+        if(loadImageState) {
+            loadImageState = true;
+            return;
+        }
+        aiGeneratedImage = pApplet.loadImage("images/ai-image-0.png");
+    }
 } // End class WaveFormVisualize
