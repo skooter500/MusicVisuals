@@ -11,8 +11,7 @@ public class music_note extends Visual
     AudioInput ai;
     AudioBuffer ab;
     float colour = 0;
-    int i = 0;
-    float speed = 50;
+    int mode = 0;
 
     FFT fft;
 
@@ -41,6 +40,20 @@ public class music_note extends Visual
         loadAudio("MusicVisuals/java/data/Victoria_Mon_t_ft_Khalid_-_Experience.mp3");
         getAudioPlayer().play();
     }
+
+    public void keyPressed() {
+		if (key >= '0' && key <= '9') {
+			mode = key - '0';
+		}
+		if (keyCode == ' ') {
+            if (ap.isPlaying()) {
+                ap.pause();
+            } else {
+                ap.rewind();
+                ap.play();
+            }
+        }
+	}
 
     public void draw()
     {
@@ -74,12 +87,12 @@ public class music_note extends Visual
             star.size = size;
             star.display(bands);
         }
-        popMatrix();
-        drawNotes(bands);
-    }
-    
 
-    public void drawNotes(float[] bands)
+        drawNotes();
+
+    }
+
+    public void drawNotes()
     {
         pushMatrix();
         stroke(255);
@@ -121,8 +134,7 @@ public class music_note extends Visual
 
         line(noteX + noteDistance, noteY2 - staffSpacing, noteX2, noteY - staffSpacing/4);
 
-
-        // // Draw second music note
+        // another note
         fill(100, 255, 255);
         
         ellipse((noteX2 - 10) * 2, noteY + (noteDistance/2 + 10), noteSize, noteSize);
@@ -134,9 +146,7 @@ public class music_note extends Visual
         line((noteX + noteDistance) * 2, staffY - staffHeight/2, noteX2 * 2, noteY - staffHeight/15);
 
         popMatrix();
-
     }
-
 }
 
 class Star extends PApplet
@@ -189,7 +199,6 @@ class Star extends PApplet
 
     }
 
-    
     void display(float[] bands) 
     {
         p.pushMatrix();
@@ -233,5 +242,6 @@ class Star extends PApplet
         }
         p.endShape();
         p.popMatrix();
-    }  
+    } 
+
 }
