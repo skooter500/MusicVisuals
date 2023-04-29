@@ -21,6 +21,7 @@ public class StartMenuVisual extends VisualAbstractClass {
         this.audioPlayer = audioPlayer;
         this.windowWidth = windowWidth;
         this.windowHeight = windowHeight;
+        
         loadRenderObjects();
     } // End Visual2 Constructor
 

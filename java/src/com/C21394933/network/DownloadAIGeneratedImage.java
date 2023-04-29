@@ -8,7 +8,7 @@ import java.net.URL;
 
 
 public class DownloadAIGeneratedImage {
-    public static void downloadImage(String link) {
+    public static boolean downloadImage(String link) {
         try { 
             URL url = new URL(link);
             InputStream in = new BufferedInputStream(url.openStream());
@@ -27,7 +27,9 @@ public class DownloadAIGeneratedImage {
             fos.close();
             System.out.println("Download Complete");
         } catch(Exception e) {
-            System.out.println(e);
+            return false;
         } 
+
+        return true;
     } // End void downloadImage
 }

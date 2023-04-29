@@ -26,16 +26,8 @@ public class DisplayAIGeneratedImage extends DrawObjectAbstractClass {
         this.windowHeight = windowHeight;
         this.audioBuffer = audioBuffer;
         this.fft = new FFT(2048, 44100);
-
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                String link = PostOpenAPI.run("watermelon");
-                DownloadAIGeneratedImage.downloadImage(link);
-                aiGeneratedImage = pApplet.loadImage("images/ai-image-0.png");
-            }
-       }).start();
+        
+        aiGeneratedImage = pApplet.loadImage("images/ai-image-0.png");
     } // End WaveFormVisualize Constructor
 
     public void render() {
