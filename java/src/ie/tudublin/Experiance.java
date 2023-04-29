@@ -24,7 +24,6 @@ public class Experiance extends PApplet{
     int mode = 0;
 
     float y = 0;
-    
 
     public void keyPressed() {
 		if (key >= '0' && key <= '9') {
@@ -42,7 +41,7 @@ public class Experiance extends PApplet{
     
     public void settings()
     {
-        size(1024, 1024);
+        size(700, 700);
     }
 
     public void setup()
@@ -61,6 +60,28 @@ public class Experiance extends PApplet{
 
     public void draw()
     {
+<<<<<<< HEAD
+        switch (mode) 
+        {
+			case 1://first to play (grace)
+            background(60, 100, 100);
+                break;
+            case 2://When you press key 1 (hadassah)
+            background(0, 120, 240);
+            break;
+            case 3:// when you press key 2 (cece)
+            background(0, 120, 0);
+                break;
+            case 4: // when you press key 3 (molly)
+                background(0);
+                break;
+            case 5://when you press key 4 (aisha)
+                background(150);
+                break;
+            
+            default:
+                break;
+=======
         switch (mode) {
 			case 0://first to play (grace)
 
@@ -132,10 +153,18 @@ public class Experiance extends PApplet{
         case 4://when you press key 4 (aisha)
 
             break;
+>>>>>>> f387a0699b82556071321e17529d36ec7126ad90
         }
-
-        
     }
-
-    
+     
 }
+
+
+
+
+
+   
+
+
+
+
