@@ -23,6 +23,7 @@ public class Experiance extends PApplet{
 
     int mode = 0;
 
+<<<<<<< HEAD
     float f = 0;
 
     int numShapes = 50;
@@ -34,6 +35,9 @@ public class Experiance extends PApplet{
         float[] colorBrightness = new float[numShapes];
         float[] colorAlpha = new float[numShapes];
     
+=======
+    float y = 0;
+>>>>>>> 57d5b3a23a69e6c808ff618a41e24176b8c7a131
 
     public void keyPressed() {
 		if (key >= '0' && key <= '9') {
@@ -51,7 +55,7 @@ public class Experiance extends PApplet{
     
     public void settings()
     {
-        size(1024, 1024);
+        size(700, 700);
     }
 
     public void setup()
@@ -96,15 +100,38 @@ public class Experiance extends PApplet{
             break;
 
         case 2:// when you press key 2 (cece)
+<<<<<<< HEAD
             
+=======
+      
+    
+>>>>>>> 57d5b3a23a69e6c808ff618a41e24176b8c7a131
 
 
                 
         
 
+<<<<<<< HEAD
 
         
-    }
+=======
+            break;
 
-    
+        case 4://when you press key 4 (aisha)
+
+            break;
+        }
+>>>>>>> 57d5b3a23a69e6c808ff618a41e24176b8c7a131
+    }
+     
 }
+
+
+
+
+
+   
+
+
+
+
