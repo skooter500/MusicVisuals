@@ -7,7 +7,7 @@ import processing.core.*;
 public class HanaSaku extends DrawObjectAbstractClass {
     float rot = 0;
     float lerpedAverage = 0;
-    PMatrix3D matrixStack; // Matrix stack to store transformations
+    
  
     public HanaSaku(PApplet pApplet2, AudioBuffer audioBuffer, FFT fft, int windowWidth, int windowHeight) {
         this.pApplet = pApplet2;
@@ -15,7 +15,7 @@ public class HanaSaku extends DrawObjectAbstractClass {
         this.windowHeight = windowHeight;
         this.audioBuffer = audioBuffer;
         this.fft = fft;
-        this.matrixStack = new PMatrix3D(); // Initialize the matrix stack
+       
     }
 
     public void render(){

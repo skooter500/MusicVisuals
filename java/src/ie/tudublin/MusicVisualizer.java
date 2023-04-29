@@ -43,7 +43,7 @@ public class MusicVisualizer extends PApplet {
     int bitDepth = 16;
     
     float lerpedR = 0;
-    int[] timings = {0, 667, 1075, 1328, 1868, 2262};
+    int[] timings = {5, 667, 1075, 1328, 1868, 2262, 5000};
     public static int timingsCounter = 0;
     int currentTime = 0;
 
@@ -76,7 +76,8 @@ public class MusicVisualizer extends PApplet {
         this.minim = new Minim(this);
         this.audioPlayer = minim.loadFile("songs/somethingComforting.mp3", 2048); 
         this.audioBuffer = audioPlayer.mix;
-        Utils.skipSecondsSong(audioPlayer, 66.7f);
+        // this.audioPlayer.play();
+        // Utils.skipSecondsSong(audioPlayer, 132.8f);
     } // End void loadSong()
 
     private void loadVisuals() {
@@ -92,19 +93,20 @@ public class MusicVisualizer extends PApplet {
         visualList.add(visual4);
         visualList.add(visual1);
         visualList.add(visual1);
-
+        visualList.add(visual1);
+        visualList.add(visual1);
     } // End void loadVisuals
 
     private void playVisuals() 
     {
         currentTime = audioPlayer.position();
-        // System.out.println(MusicVisualizer.timingsCounter);
-        // System.out.println((float)currentTime / 100);
-        if(currentTime / 100 > timings[MusicVisualizer.timingsCounter] && MusicVisualizer.timingsCounter != 0) 
-            MusicVisualizer.timingsCounter++;
+        
+        System.out.println((float)currentTime / 100);
+        if(currentTime / 100 > timings[timingsCounter]) 
+            timingsCounter++;
+        
+        visualList.get(timingsCounter).drawVisual();
 
-    
-        visualList.get(MusicVisualizer.timingsCounter).drawVisual();
     } // End void playVisual
 
 } // End class MusicVisualizer

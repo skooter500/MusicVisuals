@@ -20,7 +20,7 @@ public class PostOpenAPI {
             HttpPost request = new HttpPost("https://api.openai.com/v1/images/generations");
             StringEntity params = new StringEntity(payload, ContentType.APPLICATION_JSON);
             request.addHeader("content-type", "application/json");
-            request.addHeader("authorization", "Bearer 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");
+            request.addHeader("authorization", "Bearer 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");
 
 
             request.setEntity(params);

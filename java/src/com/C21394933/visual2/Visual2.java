@@ -49,6 +49,7 @@ public class Visual2 extends VisualAbstractClass {
     } // End drawVisual2
 
 
+    
     // Load Render Objects
     private void loadRenderObjects() {
         // Create your draw Objects here
