@@ -88,6 +88,13 @@ public class practice extends Visual
             star.display(bands);
         }
 
+        drawNotes();
+
+    }
+
+    public void drawNotes()
+    {
+        
     }
 }
 
