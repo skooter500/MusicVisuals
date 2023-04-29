@@ -104,7 +104,7 @@ public class music_note extends Visual
             line(staffX, y, staffX + staffWidth, y);
         }
 
-        // Draw the note on the 3rd line
+        // Draw first music note
         fill(255);
         smooth();
         strokeWeight(4);
@@ -112,7 +112,6 @@ public class music_note extends Visual
         int noteY2 = noteY + staffSpacing;
 
         fill(100, 255, 255);
-        
 
         ellipse(noteX + noteDistance - 10, noteY2, noteSize, noteSize);
         line(noteX + noteDistance + 10, noteY2, noteX + noteDistance, staffY - staffHeight/5);
@@ -123,9 +122,8 @@ public class music_note extends Visual
         line(noteX + noteDistance, noteY2 - staffSpacing, noteX2, noteY - staffSpacing/4);
 
 
-        // another note
+        // // Draw second music note
         fill(100, 255, 255);
-        
         
         ellipse((noteX2 - 10) * 2, noteY + (noteDistance/2 + 10), noteSize, noteSize);
         line(noteX2 * 2, noteY + (noteDistance/2 + 10), noteX2 * 2, noteY - staffHeight/15);
@@ -159,7 +157,7 @@ class Star extends PApplet
     int colorIndex = (int) random(3);
     int[] colors = { color(230, 0, 255), color(255, 232, 31), color(255, 209, 220) };
     int frameCount = 0;
-    int colorChangeInterval = 20; // Change color every 30 frames
+    int colorChangeInterval = 20; // Change color every 20 frames
 
     Star(PApplet p, float x, float y, float size, float speed, float height, float width, Star[] stars) 
     {
@@ -211,15 +209,26 @@ class Star extends PApplet
 
         p.beginShape();
 
+        // change number of points for the star based on the fifth audio frequency band value
         num_point = (int) map(bands[4], 0, 255, 5, 10);
-        for (int i = 0; i < num_point; i++) {
+        for (int i = 0; i < num_point; i++) 
+        {
+            // calculate angle of the current point
             float angle = TWO_PI * i / num_point;
+
+            // calculate the angle of first vertex
             float x = cos(angle) * 100;
             float y = sin(angle) * 100;
+
+            // add vertex to shape
             p.vertex(x, y);
+
+            // get next vertex
             angle += TWO_PI / (num_point * 2);
             x = cos(angle) * 50;
             y = sin(angle) * 50;
+
+            // add vertex to shape
             p.vertex(x, y);
         }
         p.endShape();
