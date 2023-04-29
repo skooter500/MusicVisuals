@@ -78,7 +78,7 @@ public class MusicVisualizer extends PApplet {
         this.audioPlayer = minim.loadFile("songs/somethingComforting.mp3", 2048); 
         this.audioPlayer.play();
         this.audioBuffer = audioPlayer.mix;
-         //Utils.skipSecondsSong(audioPlayer, 132.8f);
+         Utils.skipSecondsSong(audioPlayer, 132.8f);
     } // End void loadSong()
 
     private void loadVisuals() {
@@ -92,8 +92,8 @@ public class MusicVisualizer extends PApplet {
 
 
         visualList.add(visual4);
-        visualList.add(visual3);
-        visualList.add(visual3);
+        visualList.add(visual1);
+        visualList.add(visual1);
         visualList.add(visual1);
         visualList.add(visual1);
 
