@@ -1,7 +1,5 @@
 package com.C21394933.drawObjects;
 
-import com.C21394933.network.DownloadAIGeneratedImage;
-import com.C21394933.network.PostOpenAPI;
 
 import ddf.minim.AudioBuffer;
 import ddf.minim.analysis.FFT;

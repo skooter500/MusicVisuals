@@ -14,14 +14,13 @@ public class PostOpenAPI {
     static public String run(String prompt) {
         String link= "";
 
-        String payload = String.format("{\"prompt\": \"%s\",\"n\": 1,\"size\": \"512x512\"}", prompt);
+        String payload = String.format("{\"prompt\": \"%s\"}", prompt);
 
         try(CloseableHttpClient httpClient = HttpClientBuilder.create().build()) {
-            HttpPost request = new HttpPost("https://api.openai.com/v1/images/generations");
+            HttpPost request = new HttpPost("https://api.ernestjohndecina.com/api/dalle/image");
             StringEntity params = new StringEntity(payload, ContentType.APPLICATION_JSON);
             request.addHeader("content-type", "application/json");
-            request.addHeader("authorization", "Bearer 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");
-
+        
 
             request.setEntity(params);
             ClassicHttpResponse response = (ClassicHttpResponse) httpClient.execute(request);
@@ -29,9 +28,8 @@ public class PostOpenAPI {
 
             String json = EntityUtils.toString(response.getEntity());
             JSONObject responseJson = new JSONObject(json);
-            JSONArray data = responseJson.getJSONArray("data");
-            JSONObject url = data.getJSONObject(0);
-            link = url.getString("url");
+            String data = responseJson.getString("link");
+            link = data;
         } catch(Exception e) {
             return null;
         }

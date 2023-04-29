@@ -79,7 +79,7 @@ public class MusicVisualizer extends PApplet {
         this.audioBuffer = audioPlayer.mix;
 
         // this.audioPlayer.play();
-        // Utils.skipSecondsSong(audioPlayer, 132.8f);
+        // Utils.skipSecondsSong(audioPlayer, 66.7f);
     } // End void loadSong()
 
     private void loadVisuals() {
@@ -104,7 +104,7 @@ public class MusicVisualizer extends PApplet {
     {
         currentTime = audioPlayer.position();
 
-        System.out.println((float)currentTime / 100);
+        //System.out.println((float)currentTime / 100);
         if(currentTime / 100 > timings[timingsCounter]) 
             timingsCounter++;
         
