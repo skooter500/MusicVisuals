@@ -10,42 +10,23 @@ import processing.core.PApplet;
 
 public class DiscoBall extends PApplet {
 
-   
     Minim minim;
     AudioPlayer ap;
     AudioInput ai;
     AudioBuffer ab;
     FFT fft;
 
-    float heartSize = 50;
-    float heartX, heartBottomY;
-    float r;
+    // float heartSize = 50;
+    // float heartX, heartBottomY;
+    // float r;
     int mode = 0;
     float theta = 0;
-
-    public void keyPressed() {
-        if (key >= '0' && key <= '9') {
-            mode = key - '0';
-        }
-        if (keyCode == ' ') {
-            if (ap.isPlaying()) {
-                ap.pause();
-            } else {
-                ap.rewind();
-                ap.play();
-            }
-        }
-    }
-
     float rotationSpeed = (float) 0.01;
-
-    ArrayList<Heart> hearts;
 
     public void settings() {
         size(800, 800, P3D);
         noSmooth();
-        hearts = new ArrayList<Heart>();
-        frameRate(60);
+
     }
 
 
@@ -56,101 +37,101 @@ public class DiscoBall extends PApplet {
         ap.loop();
         ab = ap.mix;
         fft = new FFT(ab.size(), ((AudioSource) ap).sampleRate());
-    }
 
-    void update() {
-        y += speed;
-        if (y > height+size) {
-          alive = false;
-        }
-      }
-
-    public void draw() {
-
-         // Create gradient background
-       for (int y = 0; y < height; y++) {
+        // Create gradient background
+      for (int y = 0; y < height; y++) {
         // Calculate the color at each row
-        int c = lerpColor(color(139,0,139), color(255,140,0), map2(y, 0, height, 0, 1));
+        int c = lerpColor(color(139, 0, 139), color(255, 140, 0), map2(y, 0, height, 0, 1));
         // Set the color for the row
         stroke(c);
         // Draw a line for the row
         line(0, y, width, y);
-         }
+      }
+    }
 
-       translate(width/2, height/2, 0); // Move the sphere to the center of the screen
-        float angle = (float) (frameCount * 0.01); // Use a fixed rotation speed based on frame count
-        rotateY(angle); // Rotate the sphere based on the angle
+    public void draw() {
 
-        fft = new FFT(ap.bufferSize(), ap.sampleRate()); // Initialize FFT with the audio buffer size and sample rate
-        fft.forward(ab); // Perform FFT on the audio buffer
-        float[] spectrum = fft.getSpectrumImaginary(); // Get frequency spectrum data
+      // Draw the hearts
+      pushMatrix(); // Save the current transformation matrix
+      for (int i = 0; i < 5; i++) {
+        Heart heart = new Heart();
+        fill(255, 0, 0);
+        heart.display();
+      }
+      popMatrix(); // Restore the previous transformation matrix
+    
+      translate(width/2, height/2, 0); // Move the sphere to the center of the screen
+      float angle = (float) (frameCount * 0.01); // Use a fixed rotation speed based on frame count
+      rotateY(angle); // Rotate the sphere based on the angle
+    
+      fft = new FFT(ap.bufferSize(), ap.sampleRate()); // Initialize FFT with the audio buffer size and sample rate
+      fft.forward(ab); // Perform FFT on the audio buffer
+      float[] spectrum = fft.getSpectrumImaginary(); // Get frequency spectrum data
+    
+      float sum = 0;
+      for (int i = 0; i < spectrum.length; i++) {
+        sum += spectrum[i]; // Calculate the sum of all frequency values
+      }
+      float average = sum / spectrum.length; // Calculate the average frequency value
+    
+      rotationSpeed = map2(average, 0, 255, 0.001, 0.1); // Map the average frequency value to a rotation speed range
+      rotateY(rotationSpeed * frameCount); // Rotate the sphere based on the current frame count and rotation speed
+    
+      // Draw the sphere
+      fill(212, 175, 55);
+      sphere(250);
+    }
+    
 
-        float sum = 0;
-        for (int i = 0; i < spectrum.length; i++) {
-            sum += spectrum[i]; // Calculate the sum of all frequency values
-        }
-        float average = sum / spectrum.length; // Calculate the average frequency value
+      private float map2(float value, float start1, float stop1, double d, double e) {
+        return (float) (d + (e - d) * ((value - start1) / (stop1 - start1)));
+      }
 
-        float rotationSpeed = map2(average, 0, 255, 0.001, 0.1); // Map the average frequency value to a rotation speed range
-        rotateY(rotationSpeed * frameCount); // Rotate the sphere based on the current frame count and rotation speed
-
-        fill(212,175,55);
-        sphere(250);
-  
-        if (frameCount % 20 == 0) { // create new heart every 20 frames
-          float x = random(width);
-          float y = -50;
-          float size = random(50, 150);
-          Heart h = new Heart(x, y, size);
-          hearts.add(h);
+      class Heart {
+        float heartSize;
+        float heartX;
+        float heartBottomY;
+        float r;
+        
+        Heart() {
+          heartSize = random(10, 100);
+          heartX = random(width);
+          heartBottomY = random(height+heartSize);
+          r = random(255);
         }
         
-        for (int i = hearts.size()-1; i >= 0; i--) {
-          Heart h = hearts.get(i);
-          h.update();
-          h.display();
-          if (!h.alive) {
-            hearts.remove(i);
-          }
-        }
-
+        void display() {
+          float level = ap.mix.level();
       
-    }
-               
-    void display() {
-        if (alive) {
-          noStroke();
-          fill(r, g, b);
-          
+          if (level > 0.1) {
+            // Set heart position and color
+            heartX = random(width);
+            heartBottomY = random(height+heartSize);
+            r = random(255);
+          }
+      
+          fill(r, 0, 0);
+          stroke(r, 0, 0);
+      
           //left half of heart
           beginShape();
-          curveVertex(x, y+size); //anchor point
-          curveVertex(x, y); //bottom tip
-          curveVertex(x - size/2, (y-size/1.5)); //left edge
-          curveVertex(x - size/3, y-size); //top of left edge
-          curveVertex(x, (y-size*.75)); //top middle dip
-          curveVertex(x, y); //guiding point
+          curveVertex(heartX, heartBottomY+heartSize); //anchor point
+          curveVertex(heartX, heartBottomY); //bottom tip
+          curveVertex(heartX - heartSize/2, (float) (heartBottomY-heartSize/1.5)); //left edge
+          curveVertex(heartX - heartSize/3, heartBottomY-heartSize); //top of left edge
+          curveVertex(heartX, (float) (heartBottomY-heartSize*.75)); //top middle dip
+          curveVertex(heartX, heartBottomY); //guiding point
           endShape();
-        
+      
           //right half of heart
           beginShape();
-          curveVertex(x, y);
-          curveVertex(x, (y-size*.75));
-          curveVertex(x + size/3, y-size);
-          curveVertex(x + size/2, (y-size/1.5));
-          curveVertex(x, y);
-          curveVertex(x, y + size);
+          curveVertex(heartX, heartBottomY);
+          curveVertex(heartX, (float) (heartBottomY-heartSize*.75));
+          curveVertex(heartX + heartSize/3, heartBottomY-heartSize);
+          curveVertex(heartX + heartSize/2, (float) (heartBottomY-heartSize/1.5));
+          curveVertex(heartX, heartBottomY);
+          curveVertex(heartX, heartBottomY + heartSize);
           endShape();
         }
       }
-
-    private float map2(float value, float start1, float stop1, double d, double e) {
-        return (float) (d + (e - d) * ((value - start1) / (stop1 - start1)));
-      
-
-    }
-
-
-
-
 }
