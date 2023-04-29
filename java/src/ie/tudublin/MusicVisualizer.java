@@ -103,6 +103,7 @@ public class MusicVisualizer extends PApplet {
         System.out.println((float)currentTime / 100);
         if(currentTime / 100 > timings[MusicVisualizer.timingsCounter] && MusicVisualizer.timingsCounter != 0) 
             MusicVisualizer.timingsCounter++;
+
         
         visualList.get(MusicVisualizer.timingsCounter).drawVisual();
     } // End void playVisual

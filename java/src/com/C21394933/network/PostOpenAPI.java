@@ -16,13 +16,12 @@ public class PostOpenAPI {
 
         String payload = String.format("{\"prompt\": \"%s\",\"n\": 1,\"size\": \"512x512\"}", prompt);
 
-        System.out.println(payload);
-
         try(CloseableHttpClient httpClient = HttpClientBuilder.create().build()) {
             HttpPost request = new HttpPost("https://api.openai.com/v1/images/generations");
             StringEntity params = new StringEntity(payload, ContentType.APPLICATION_JSON);
             request.addHeader("content-type", "application/json");
             request.addHeader("authorization", "Bearer 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");
+
 
             request.setEntity(params);
             ClassicHttpResponse response = (ClassicHttpResponse) httpClient.execute(request);

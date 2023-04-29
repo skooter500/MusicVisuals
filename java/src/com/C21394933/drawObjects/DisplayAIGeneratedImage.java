@@ -27,12 +27,12 @@ public class DisplayAIGeneratedImage extends DrawObjectAbstractClass {
         this.audioBuffer = audioBuffer;
         this.fft = new FFT(2048, 44100);
 
-        
+
         new Thread(new Runnable() {
             @Override
             public void run() {
-                // String link = PostOpenAPI.run("2 guys fighting over a pint of guinness");
-                // DownloadAIGeneratedImage.downloadImage(link);
+                String link = PostOpenAPI.run("watermelon");
+                DownloadAIGeneratedImage.downloadImage(link);
                 aiGeneratedImage = pApplet.loadImage("images/ai-image-0.png");
             }
        }).start();
@@ -51,8 +51,9 @@ public class DisplayAIGeneratedImage extends DrawObjectAbstractClass {
          
         pApplet.pushMatrix();
         pApplet.pushStyle();
+
+        pApplet.color(255, 255, 255);
         pApplet.noStroke();
-        // pApplet.color(255, 255, 255);
 
         pApplet.translate((windowWidth / 2) - 256, (windowHeight / 2) - 256, 500 - rotate);
         rotate += 1;
@@ -62,7 +63,7 @@ public class DisplayAIGeneratedImage extends DrawObjectAbstractClass {
                 
                 int pixelValue = aiGeneratedImage.get((int)(x * tileSize), (int)(y * tileSize));
                 float size = PApplet.map(pApplet.brightness(pixelValue), 0, 255, 0, 5);
-                float brightness = PApplet.map(pApplet.brightness(pixelValue), 0, 255, 0, 150);
+                float brightness = PApplet.map(pApplet.brightness(pixelValue), 0, 255, 0, 100);
 
                 pApplet.pushMatrix();
                 pApplet.translate(0, 0, brightness);
