@@ -94,7 +94,22 @@ public class practice extends Visual
 
     public void drawNotes()
     {
-        
+        pushMatrix();
+        stroke(255);
+
+        noFill();
+        strokeWeight(4);
+        int staffHeight = 200;
+        int staffWidth = width - 300;
+        int staffY = height/2;
+        int staffX = width/2 - staffWidth/2;
+
+        strokeWeight(1);
+        for (int i = 0; i < 5; i++) {
+            int y = staffY - (2 * staffHeight/5) + (i * staffHeight/5);
+            line(staffX, y, staffX + staffWidth, y);
+        }
+
     }
 }
 
