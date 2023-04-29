@@ -75,7 +75,7 @@ public class DiscoBall extends PApplet {
         stroke(c);
         // Draw a line for the row
         line(0, y, width, y);
-    }
+         }
 
        translate(width/2, height/2, 0); // Move the sphere to the center of the screen
         float angle = (float) (frameCount * 0.01); // Use a fixed rotation speed based on frame count
@@ -96,6 +96,23 @@ public class DiscoBall extends PApplet {
 
         fill(212,175,55);
         sphere(250);
+  
+        if (frameCount % 20 == 0) { // create new heart every 20 frames
+          float x = random(width);
+          float y = -50;
+          float size = random(50, 150);
+          Heart h = new Heart(x, y, size);
+          hearts.add(h);
+        }
+        
+        for (int i = hearts.size()-1; i >= 0; i--) {
+          Heart h = hearts.get(i);
+          h.update();
+          h.display();
+          if (!h.alive) {
+            hearts.remove(i);
+          }
+        }
 
       
     }
@@ -133,22 +150,7 @@ public class DiscoBall extends PApplet {
 
     }
 
+
+
+
 }
-
-
-class Heart {
-    float x, y, size, speed;
-    int r, g, b;
-    boolean alive;
-    
-    Heart(float _x, float _y, float _size) {
-        x = _x;
-        y = _y;
-        size = _size;
-        speed = random(1, 5);
-        r = int(random(255));
-        g = int(random(100));
-        b = int(random(100));
-        alive = true;
-    }
-
