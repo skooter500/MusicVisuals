@@ -103,6 +103,13 @@ public class practice extends Visual
         int staffWidth = width - 300;
         int staffY = height/2;
         int staffX = width/2 - staffWidth/2;
+        int staffSpacing = height / 10;
+
+        // Draw the note on the 4th line
+        int noteSize = width / 25;
+        int noteX = staffX + staffWidth/10;
+        int noteY = staffY - staffHeight/5;
+        int noteDistance = width / 10;
 
         strokeWeight(1);
         for (int i = 0; i < 5; i++) {
@@ -110,6 +117,37 @@ public class practice extends Visual
             line(staffX, y, staffX + staffWidth, y);
         }
 
+        // Draw the note on the 3rd line
+        fill(255);
+        smooth();
+        strokeWeight(4);
+        int noteX2 = noteX + staffSpacing*2;
+        int noteY2 = noteY + staffSpacing;
+
+        fill(100, 255, 255);
+        
+
+        ellipse(noteX + noteDistance - 10, noteY2, noteSize, noteSize);
+        line(noteX + noteDistance + 10, noteY2, noteX + noteDistance, staffY - staffHeight/5);
+
+        ellipse(noteX2 - 10, noteY + (noteDistance/2 + 10), noteSize, noteSize);
+        line(noteX2 + 10, noteY + (noteDistance/2 + 10), noteX2, staffY - staffHeight/3);
+
+        line(noteX + noteDistance, noteY2 - staffSpacing, noteX2, noteY - staffSpacing/4);
+
+        // another note
+        fill(100, 255, 255);
+        
+        
+        ellipse((noteX2 - 10) * 2, noteY + (noteDistance/2 + 10), noteSize, noteSize);
+        line(noteX2 * 2, noteY + (noteDistance/2 + 10), noteX2 * 2, noteY - staffHeight/15);
+
+        ellipse((noteX + noteDistance - 10) * 2, noteY2 - (noteDistance - 20), noteSize, noteSize);
+        line((noteX + noteDistance) * 2, noteY2 - (noteDistance - 20) , (noteX + noteDistance) * 2, staffY - staffHeight/2);
+
+        line((noteX + noteDistance) * 2, staffY - staffHeight/2, noteX2 * 2, noteY - staffHeight/15);
+
+        popMatrix();
     }
 }
 
