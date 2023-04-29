@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 // Visuals
 import com.C21782059.visual1.Visual1;
+import com.C21394933.drawObjects.BigBangUniverse;
 import com.C21394933.visual2.Visual2;
 import com.C21460524.visual3.Visual3;
 import com.C21751999.visual4.Visual4;
@@ -42,7 +43,7 @@ public class MusicVisualizer extends PApplet {
     int bitDepth = 16;
     
     float lerpedR = 0;
-    int[] timings = {667, 1075, 1328, 1868, 2262};
+    int[] timings = {667, 1075, 1328, 1868, 2262, 4370};
     int timingsCounter = 0;
     int currentTime = 0;
 
@@ -77,7 +78,8 @@ public class MusicVisualizer extends PApplet {
         this.audioPlayer = minim.loadFile("songs/somethingComforting.mp3", 2048); 
         this.audioPlayer.play();
         this.audioBuffer = audioPlayer.mix;
-        Utils.skipSecondsSong(audioPlayer, 132.8f);
+         //Utils.skipSecondsSong(audioPlayer, 110.8f);
+
     } // End void loadSong()
 
     private void loadVisuals() {
@@ -88,8 +90,11 @@ public class MusicVisualizer extends PApplet {
         this.visual1 = new Visual1(this, this.audioBuffer, this.audioPlayer, this.windowWidth, this.windowHeight);
         this.visual4 = new Visual4(this, this.audioBuffer, this.audioPlayer, this.windowWidth, this.windowHeight);
 
-        visualList.add(visual1);
-        visualList.add(visual1);
+
+
+        visualList.add(visual3);
+        visualList.add(visual2);
+        visualList.add(visual4);
         visualList.add(visual1);
         visualList.add(visual1);
         visualList.add(visual1);
@@ -100,7 +105,7 @@ public class MusicVisualizer extends PApplet {
     {
 
         currentTime = audioPlayer.position();
-        
+
         System.out.println((float)currentTime / 100);
         if(currentTime / 100 > timings[timingsCounter]) 
             timingsCounter++;
