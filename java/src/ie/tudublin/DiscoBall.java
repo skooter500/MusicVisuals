@@ -49,6 +49,10 @@ public class DiscoBall extends PApplet {
       }
     }
 
+
+
+    
+
     public void draw() {
 
       // Draw the hearts
@@ -92,22 +96,36 @@ public class DiscoBall extends PApplet {
         float heartX;
         float heartBottomY;
         float r;
+        int lifespan; // Added lifespan variable
+        int framesPerSecond = 1; // Added frames per second
         
         Heart() {
           heartSize = random(10, 100);
           heartX = random(width);
-          heartBottomY = random(height+heartSize);
+          heartBottomY = random(height + heartSize);
           r = random(255);
+          lifespan = framesPerSecond * 2; // Initialize lifespan to 2 seconds
         }
-        
+      
         void display() {
           float level = ap.mix.level();
       
-          if (level > 0.1) {
+          if (level > 0.0) {
             // Set heart position and color
             heartX = random(width);
-            heartBottomY = random(height+heartSize);
+            heartBottomY = random(height + heartSize);
             r = random(255);
+          }
+          
+          // Decrement lifespan each frame
+          lifespan--;
+          if (lifespan <= 0) {
+            // If lifespan is over, create a new heart with a new lifespan
+            heartSize = random(10, 100);
+            heartX = random(width);
+            heartBottomY = random(height + heartSize);
+            r = random(255);
+            lifespan = framesPerSecond * 2;
           }
       
           fill(r, 0, 0);
@@ -115,20 +133,20 @@ public class DiscoBall extends PApplet {
       
           //left half of heart
           beginShape();
-          curveVertex(heartX, heartBottomY+heartSize); //anchor point
+          curveVertex(heartX, heartBottomY + heartSize); //anchor point
           curveVertex(heartX, heartBottomY); //bottom tip
-          curveVertex(heartX - heartSize/2, (float) (heartBottomY-heartSize/1.5)); //left edge
-          curveVertex(heartX - heartSize/3, heartBottomY-heartSize); //top of left edge
-          curveVertex(heartX, (float) (heartBottomY-heartSize*.75)); //top middle dip
+          curveVertex(heartX - heartSize / 2, (float)(heartBottomY - heartSize / 1.5)); //left edge
+          curveVertex(heartX - heartSize / 3, heartBottomY - heartSize); //top of left edge
+          curveVertex(heartX, (float)(heartBottomY - heartSize * .75)); //top middle dip
           curveVertex(heartX, heartBottomY); //guiding point
           endShape();
       
           //right half of heart
           beginShape();
           curveVertex(heartX, heartBottomY);
-          curveVertex(heartX, (float) (heartBottomY-heartSize*.75));
-          curveVertex(heartX + heartSize/3, heartBottomY-heartSize);
-          curveVertex(heartX + heartSize/2, (float) (heartBottomY-heartSize/1.5));
+          curveVertex(heartX, (float)(heartBottomY - heartSize * .75));
+          curveVertex(heartX + heartSize / 3, heartBottomY - heartSize);
+          curveVertex(heartX + heartSize / 2, (float)(heartBottomY - heartSize / 1.5));
           curveVertex(heartX, heartBottomY);
           curveVertex(heartX, heartBottomY + heartSize);
           endShape();
