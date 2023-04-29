@@ -5,7 +5,7 @@ import processing.core.PApplet;
 import ddf.minim.*;
 import ddf.minim.analysis.FFT;
 
-public class practice extends Visual
+public class music_note extends Visual
 {
     AudioPlayer ap;
     AudioInput ai;
