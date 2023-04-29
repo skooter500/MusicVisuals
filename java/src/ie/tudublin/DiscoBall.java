@@ -10,7 +10,6 @@ import processing.core.PApplet;
 
 public class DiscoBall extends PApplet {
 
-   
     Minim minim;
     AudioPlayer ap;
     AudioInput ai;
@@ -22,30 +21,12 @@ public class DiscoBall extends PApplet {
     float r;
     int mode = 0;
     float theta = 0;
-
-    public void keyPressed() {
-        if (key >= '0' && key <= '9') {
-            mode = key - '0';
-        }
-        if (keyCode == ' ') {
-            if (ap.isPlaying()) {
-                ap.pause();
-            } else {
-                ap.rewind();
-                ap.play();
-            }
-        }
-    }
-
     float rotationSpeed = (float) 0.01;
-
-    ArrayList<Heart> hearts;
 
     public void settings() {
         size(800, 800, P3D);
         noSmooth();
-        hearts = new ArrayList<Heart>();
-        frameRate(60);
+
     }
 
 
@@ -57,13 +38,6 @@ public class DiscoBall extends PApplet {
         ab = ap.mix;
         fft = new FFT(ab.size(), ((AudioSource) ap).sampleRate());
     }
-
-    void update() {
-        y += speed;
-        if (y > height+size) {
-          alive = false;
-        }
-      }
 
     public void draw() {
 
@@ -96,61 +70,9 @@ public class DiscoBall extends PApplet {
 
         fill(212,175,55);
         sphere(250);
-  
-        if (frameCount % 20 == 0) { // create new heart every 20 frames
-          float x = random(width);
-          float y = -50;
-          float size = random(50, 150);
-          Heart h = new Heart(x, y, size);
-          hearts.add(h);
-        }
-        
-        for (int i = hearts.size()-1; i >= 0; i--) {
-          Heart h = hearts.get(i);
-          h.update();
-          h.display();
-          if (!h.alive) {
-            hearts.remove(i);
-          }
-        }
-
-      
-    }
-               
-    void display() {
-        if (alive) {
-          noStroke();
-          fill(r, g, b);
-          
-          //left half of heart
-          beginShape();
-          curveVertex(x, y+size); //anchor point
-          curveVertex(x, y); //bottom tip
-          curveVertex(x - size/2, (y-size/1.5)); //left edge
-          curveVertex(x - size/3, y-size); //top of left edge
-          curveVertex(x, (y-size*.75)); //top middle dip
-          curveVertex(x, y); //guiding point
-          endShape();
-        
-          //right half of heart
-          beginShape();
-          curveVertex(x, y);
-          curveVertex(x, (y-size*.75));
-          curveVertex(x + size/3, y-size);
-          curveVertex(x + size/2, (y-size/1.5));
-          curveVertex(x, y);
-          curveVertex(x, y + size);
-          endShape();
-        }
       }
 
-    private float map2(float value, float start1, float stop1, double d, double e) {
+      private float map2(float value, float start1, float stop1, double d, double e) {
         return (float) (d + (e - d) * ((value - start1) / (stop1 - start1)));
-      
-
-    }
-
-
-
-
+      }
 }

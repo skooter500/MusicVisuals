@@ -12,10 +12,16 @@ public class Main
 		String[] a = {"MAIN"};
         processing.core.PApplet.runSketch( a, new stars());		
 	}
+	public void discoBallUI()
+	{
+		String[] a = {"MAIN"};
+        processing.core.PApplet.runSketch( a, new DiscoBall());		
+	}
 
 	public static void main(String[] args)
 	{
 		Main main = new Main();
-		main.startUI();			
+		//main.startUI();	
+		main.discoBallUI();		
 	}
 }
