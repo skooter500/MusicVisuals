@@ -44,14 +44,14 @@ public class Galaxy extends DrawObjectAbstractClass
 
         }
     }
-
-    public void render() {
-        drawExample();
-    } // End void render()
     
 
     public void drawExample() 
     {
+
+        pApplet.pushMatrix();
+        pApplet.pushStyle();
+
         pApplet.background(0);
         pApplet.stroke(255);
         pApplet.strokeWeight(2);
@@ -64,6 +64,9 @@ public class Galaxy extends DrawObjectAbstractClass
 
         // Screen flash effect
         drawScreenFlash();
+
+        pApplet.popMatrix();
+        pApplet.popStyle();
 
     }
 
@@ -138,6 +141,11 @@ public class Galaxy extends DrawObjectAbstractClass
         // Increment time elapsed
         timeElapsed += 1;
     }
+
+    public void render() {
+        drawExample();
+    } // End void render()
+
 
     private void drawScreenFlash() {
         float amplitude = audioBuffer.level() * 1000;
