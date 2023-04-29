@@ -11,7 +11,8 @@ public class practice extends Visual
     AudioInput ai;
     AudioBuffer ab;
     float colour = 0;
-    int mode = 0;
+    int i = 0;
+    float speed = 50;
 
     FFT fft;
 
@@ -40,20 +41,6 @@ public class practice extends Visual
         loadAudio("MusicVisuals/java/data/Victoria_Mon_t_ft_Khalid_-_Experience.mp3");
         getAudioPlayer().play();
     }
-
-    public void keyPressed() {
-		if (key >= '0' && key <= '9') {
-			mode = key - '0';
-		}
-		if (keyCode == ' ') {
-            if (ap.isPlaying()) {
-                ap.pause();
-            } else {
-                ap.rewind();
-                ap.play();
-            }
-        }
-	}
 
     public void draw()
     {
@@ -87,12 +74,12 @@ public class practice extends Visual
             star.size = size;
             star.display(bands);
         }
-
-        drawNotes();
-
+        popMatrix();
+        drawNotes(bands);
     }
+    
 
-    public void drawNotes()
+    public void drawNotes(float[] bands)
     {
         pushMatrix();
         stroke(255);
@@ -135,6 +122,7 @@ public class practice extends Visual
 
         line(noteX + noteDistance, noteY2 - staffSpacing, noteX2, noteY - staffSpacing/4);
 
+
         // another note
         fill(100, 255, 255);
         
@@ -148,7 +136,9 @@ public class practice extends Visual
         line((noteX + noteDistance) * 2, staffY - staffHeight/2, noteX2 * 2, noteY - staffHeight/15);
 
         popMatrix();
+
     }
+
 }
 
 class Star extends PApplet
@@ -165,6 +155,11 @@ class Star extends PApplet
     int num_point = 5;
     Star[] stars;
     int i = 0;
+
+    int colorIndex = (int) random(3);
+    int[] colors = { color(230, 0, 255), color(255, 232, 31), color(255, 209, 220) };
+    int frameCount = 0;
+    int colorChangeInterval = 20; // Change color every 30 frames
 
     Star(PApplet p, float x, float y, float size, float speed, float height, float width, Star[] stars) 
     {
@@ -196,10 +191,6 @@ class Star extends PApplet
 
     }
 
-    int colorIndex = (int) random(3);
-    int[] colors = { color(230, 0, 255), color(255, 232, 31), color(255, 209, 220) };
-    int frameCount = 0;
-    int colorChangeInterval = 20; // Change color every 30 frames
     
     void display(float[] bands) 
     {
@@ -233,6 +224,5 @@ class Star extends PApplet
         }
         p.endShape();
         p.popMatrix();
-    } 
-
+    }  
 }
