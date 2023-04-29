@@ -5,9 +5,12 @@ import ie.tudublin.*;
 public class MyVisual extends Visual
 {    
     WaveForm wf;
-    AudioBandsVisual abv;
+   // AudioBandsVisual abv;
 
-    public void settings()
+    public MyVisual(stars stars) {
+	}
+
+	public void settings()
     {
         size(1024, 500);
         
@@ -29,8 +32,8 @@ public class MyVisual extends Visual
         // Call this instead to read audio from the microphone
         startListening(); 
         
-        wf = new WaveForm(this);
-        abv = new AudioBandsVisual(this);
+       // wf = new WaveForm(this);
+       // abv = new AudioBandsVisual(this);
     }
 
     public void keyPressed()
@@ -60,6 +63,6 @@ public class MyVisual extends Visual
         // Call this is you want to get the average amplitude
         calculateAverageAmplitude();        
         wf.render();
-        abv.render();
+        //abv.render();
     }
 }
