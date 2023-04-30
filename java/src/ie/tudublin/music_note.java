@@ -41,23 +41,7 @@ public class music_note extends Visual
         getAudioPlayer().play();
     }
 
-    // public void keyPressed() 
-    // {
-	// 	if (key >= '0' && key <= '9') {
-	// 		mode = key - '0';
-	// 	}
-	// 	if (keyCode == ' ') {
-    //         if (ap.isPlaying()) 
-    //         {
-    //             ap.pause();
-    //         } 
-    //         else {
-    //             ap.rewind();
-    //             ap.play();
-    //         }
-    //     }
-	// }
-
+ 
     public void draw()
     {
         background(0);

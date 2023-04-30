@@ -86,12 +86,10 @@ public class Experiance extends PApplet{
             break;
 
         case 2:// when you press key 2 (cece)
-      
     
-
-
-                
-        
+            break;
+    
+        case 3:// when you press key 3 (molly)
 
             break;
 
