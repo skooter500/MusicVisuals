@@ -41,14 +41,17 @@ public class music_note extends Visual
         getAudioPlayer().play();
     }
 
-    public void keyPressed() {
+    public void keyPressed() 
+    {
 		if (key >= '0' && key <= '9') {
 			mode = key - '0';
 		}
 		if (keyCode == ' ') {
-            if (ap.isPlaying()) {
+            if (ap.isPlaying()) 
+            {
                 ap.pause();
-            } else {
+            } 
+            else {
                 ap.rewind();
                 ap.play();
             }
@@ -80,7 +83,8 @@ public class music_note extends Visual
     
         pushMatrix();
 
-        for (int i = 0; i < stars.length; i++) {
+        for (int i = 0; i < stars.length; i++) 
+        {
             Star star = stars[i];
             star.update();
             float size = map(amplitude, 0, 1, 20, 200);
@@ -89,7 +93,6 @@ public class music_note extends Visual
         }
 
         popMatrix();
-
         drawNotes();
 
 
@@ -104,7 +107,7 @@ public class music_note extends Visual
         strokeWeight(4);
         int staffHeight = 200;
         int staffWidth = width - 300;
-        int staffY = height/2;
+        int staffY = height/2 + 50;
         int staffX = width/2 - staffWidth/2;
         int staffSpacing = height / 10;
 
@@ -129,7 +132,7 @@ public class music_note extends Visual
 
         // Calculate the vertical position of the notes based on the amplitude
         float amplitude = getSmoothedAmplitude();
-        float yOffset = map(amplitude, 0, 1, -staffHeight/2, staffHeight/2);
+        float yOffset = map(amplitude, 0, 1, -staffHeight/3, staffHeight/2);
 
         fill(100, 255, 255);
 
@@ -151,27 +154,6 @@ public class music_note extends Visual
         line((noteX + noteDistance) * 2, noteY2 - (noteDistance - 20) + yOffset, (noteX + noteDistance) * 2, staffY - staffHeight/2 + yOffset);
 
         line((noteX + noteDistance) * 2, staffY - staffHeight/2 + yOffset, noteX2 * 2, noteY - staffHeight/15 + yOffset);
-
-        // fill(100, 255, 255);
-
-        // ellipse(noteX + noteDistance - 10, noteY2, noteSize, noteSize);
-        // line(noteX + noteDistance + 10, noteY2, noteX + noteDistance, staffY - staffHeight/5);
-
-        // ellipse(noteX2 - 10, noteY + (noteDistance/2 + 10), noteSize, noteSize);
-        // line(noteX2 + 10, noteY + (noteDistance/2 + 10), noteX2, staffY - staffHeight/3);
-
-        // line(noteX + noteDistance, noteY2 - staffSpacing, noteX2, noteY - staffSpacing/4);
-
-        // // another note
-        // fill(100, 255, 255);
-        
-        // ellipse((noteX2 - 10) * 2, noteY + (noteDistance/2 + 10), noteSize, noteSize);
-        // line(noteX2 * 2, noteY + (noteDistance/2 + 10), noteX2 * 2, noteY - staffHeight/15);
-
-        // ellipse((noteX + noteDistance - 10) * 2, noteY2 - (noteDistance - 20), noteSize, noteSize);
-        // line((noteX + noteDistance) * 2, noteY2 - (noteDistance - 20) , (noteX + noteDistance) * 2, staffY - staffHeight/2);
-
-        // line((noteX + noteDistance) * 2, staffY - staffHeight/2, noteX2 * 2, noteY - staffHeight/15);
 
         popMatrix();
     }
@@ -216,12 +198,15 @@ class Star extends PApplet
         y += speed;
         rotate_Star += 0.01;
         
-        if (y > height) {
+        if (y > height) 
+        {
             y = 0;
             x = p.random(width);
             size = p.random(20, 200);
             speed = p.random(1, 4);
-        } else if (y < 0) {
+        } 
+        else if (y < 0) 
+        {
             y = height;
         }
 
