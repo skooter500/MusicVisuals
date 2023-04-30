@@ -64,16 +64,24 @@ public class SquaresSpace extends DrawObjectAbstractClass {
     }
 
     private void drawCubeField() {
+
+        // Rotating angles
         pApplet.rotateX(angle / 30.0f);
         pApplet.rotateY(angle * 1.3f / 30.0f);
         pApplet.rotateZ(angle * 0.7f / 30.0f);
         pApplet.noStroke();
         fft.forward(audioBuffer);
+
+        // get size of freq band
         for (int i = 0; i < numBands; i++) {
             bandSize[i] = fft.getBand(i) * 5;
         }
+
+        // update angle, colour depending on freq band
         angle += PApplet.map(bandSize[0], 0, 100, 0.01f, 0.1f);
         colorAngle += PApplet.map(bandSize[1], 0, 100, 0.001f, 0.01f);
+
+        // draw cubes
         for (int i = -200; i < 200; i += 20) {
             for (int j = -200; j < 200; j += 20) {
                 for (int k = -200; k < 200; k += 20) {
@@ -87,10 +95,10 @@ public class SquaresSpace extends DrawObjectAbstractClass {
                             PApplet.map(j + colorAngle, 0, 512, 0, 255),
                             PApplet.map(k + colorAngle, 0, 512, 0, 255));
                     pApplet.fill(cubeColor);
-                    pApplet.pushMatrix();
+                    pApplet.pushMatrix(); // save curr matrix
                     pApplet.translate(x, y + yOffset, z);
                     pApplet.box(size);
-                    pApplet.popMatrix();
+                    pApplet.popMatrix(); // get prev matrix
                 }
             }
         }
