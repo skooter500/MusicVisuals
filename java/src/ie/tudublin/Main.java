@@ -1,5 +1,6 @@
 package ie.tudublin;
 
+import C21725659.DemiAudioVisualiser;
 import C21725659.RippleEcho;
 import C21725659.TestingSubtitles;
 import example.CubeVisual;
@@ -10,7 +11,7 @@ public class Main {
 
 	public void startUI() {
 		String[] a = { "MAIN" };
-		processing.core.PApplet.runSketch(a, new RippleEcho());
+		processing.core.PApplet.runSketch(a, new DemiAudioVisualiser());
 	}
 
 	public static void main(String[] args) {
