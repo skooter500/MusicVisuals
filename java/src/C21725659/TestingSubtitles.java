@@ -124,18 +124,16 @@ public class TestingSubtitles extends Visual {
             currentSubtitleIndex = subtitleIndex;
         }
     
- 
-    
-         if (currentSubtitleIndex >= 0 && currentSubtitleIndex < subtitles.size()) {
-        // Display the subtitle text on the screen
-        String currentSubtitle = subtitles.get(currentSubtitleIndex).getText();
-        textAlign(CENTER);
-        // Black text
-        fill(0);
-        textSize(32);
-        text(currentSubtitle, 0, -300);
-        println("Current subtitle: " + currentSubtitle);
-    }
+        if (currentSubtitleIndex >= 0 && currentSubtitleIndex < subtitles.size()) {
+            // Display the subtitle text on the screen
+            String currentSubtitle = subtitles.get(currentSubtitleIndex).getText();
+            textAlign(CENTER, CENTER);
+            // White text
+            fill(255);
+            textSize(12);
+            text(currentSubtitle, width / 2, height - 100);
+            println("Current subtitle: " + currentSubtitle);
+        }
     }
     
     
@@ -143,6 +141,7 @@ public class TestingSubtitles extends Visual {
 
     public void draw()
     {
+        background(0);
         // Print subtitles
         displayCurrentSubtitle();
 
