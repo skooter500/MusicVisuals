@@ -1,6 +1,7 @@
 package ie.tudublin;
 
 // import processing.core.*;
+import java.util.ArrayList;
 import processing.core.PApplet;
 import ddf.minim.*;
 import ddf.minim.analysis.FFT;
@@ -93,12 +94,12 @@ public class music_note extends Visual
         }
 
         popMatrix();
-        drawNotes();
+        drawNotes(bands);
 
 
     }
 
-    public void drawNotes()
+    public void drawNotes(float[] bands)
     {
         pushMatrix();
         stroke(255);
@@ -123,8 +124,16 @@ public class music_note extends Visual
             line(staffX, y, staffX + staffWidth, y);
         }
 
-        // Draw first music note
-        fill(255);
+        int frameCount = 0;
+        int colorChangeInterval = 20;
+        int colour = 0;
+        
+        if (frameCount % colorChangeInterval == 0) {
+            colour = (int) color(map(bands[2], 0, 255, 0, 255), 255);
+        }
+        frameCount++;
+
+        
         smooth();
         strokeWeight(4);
         int noteX2 = noteX + staffSpacing*2;
@@ -134,8 +143,9 @@ public class music_note extends Visual
         float amplitude = getSmoothedAmplitude();
         float yOffset = map(amplitude, 0, 1, -staffHeight/3, staffHeight/2);
 
-        fill(100, 255, 255);
+        fill(colour, 255, 255);
 
+        // draw first note
         ellipse(noteX + noteDistance - 10, noteY2 + yOffset, noteSize, noteSize);
         line(noteX + noteDistance + 10, noteY2 + yOffset, noteX + noteDistance, staffY - staffHeight/5 + yOffset);
 
@@ -145,7 +155,7 @@ public class music_note extends Visual
         line(noteX + noteDistance, noteY2 - staffSpacing + yOffset, noteX2, noteY - staffSpacing/4 + yOffset);
 
         // another note
-        fill(100, 255, 255);
+        fill(colour, 255, 255);
         
         ellipse((noteX2 - 10) * 2, noteY + (noteDistance/2 + 10) + yOffset, noteSize, noteSize);
         line(noteX2 * 2, noteY + (noteDistance/2 + 10) + yOffset, noteX2 * 2, noteY - staffHeight/15 + yOffset);
@@ -229,7 +239,7 @@ class Star extends PApplet
 
         // Only change color every colorChangeInterval frames
         if (frameCount % colorChangeInterval == 0) {
-            colourIndex = (colourIndex + 1) % colours.length;
+            colourIndex = (colourIndex + 1) % colours.size();
         }
         frameCount++;
 
