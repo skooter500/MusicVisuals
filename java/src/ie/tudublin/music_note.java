@@ -1,6 +1,5 @@
 package ie.tudublin;
 
-// import processing.core.*;
 import java.util.ArrayList;
 import processing.core.PApplet;
 import ddf.minim.*;
@@ -42,28 +41,26 @@ public class music_note extends Visual
         getAudioPlayer().play();
     }
 
-    public void keyPressed() 
-    {
-		if (key >= '0' && key <= '9') {
-			mode = key - '0';
-		}
-		if (keyCode == ' ') {
-            if (ap.isPlaying()) 
-            {
-                ap.pause();
-            } 
-            else {
-                ap.rewind();
-                ap.play();
-            }
-        }
-	}
+    // public void keyPressed() 
+    // {
+	// 	if (key >= '0' && key <= '9') {
+	// 		mode = key - '0';
+	// 	}
+	// 	if (keyCode == ' ') {
+    //         if (ap.isPlaying()) 
+    //         {
+    //             ap.pause();
+    //         } 
+    //         else {
+    //             ap.rewind();
+    //             ap.play();
+    //         }
+    //     }
+	// }
 
     public void draw()
     {
         background(0);
-        noFill();
-        noStroke();
         float amplitude = 0;
         float[] bands;
         frameRate(50);
@@ -84,19 +81,18 @@ public class music_note extends Visual
     
         pushMatrix();
 
+        // loop through al stars in the stars array
         for (int i = 0; i < stars.length; i++) 
         {
             Star star = stars[i];
             star.update();
-            float size = map(amplitude, 0, 1, 20, 200);
+            float size = map(amplitude, 0, 1, 30, 200);
             star.size = size;
             star.display(bands);
         }
 
         popMatrix();
         drawNotes(bands);
-
-
     }
 
     public void drawNotes(float[] bands)
@@ -117,7 +113,7 @@ public class music_note extends Visual
         int noteY = staffY - staffHeight/5;
         int noteDistance = width / 10;
 
-        // variables for colour of notes
+        // for colour of notes
         int frameCount = 0;
         int colourChangeInterval = 20;
         int colour = 0;
