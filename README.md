@@ -75,6 +75,42 @@ Dimensions will be listed by the order they are played out
 
 ## Ron Pingol ()
 
+	This was a difficult assignment as i have never done processing before and learning these things all in one semester was a very tough task. i am proud of drawing my shapes, it made me learn alot of new methods and has opened my eyes to the more art aspect of coding.
+	
+```    private void drawCubeField() {
+        pApplet.rotateX(angle / 30.0f);
+        pApplet.rotateY(angle * 1.3f / 30.0f);
+        pApplet.rotateZ(angle * 0.7f / 30.0f);
+        pApplet.noStroke();
+        fft.forward(audioBuffer);
+        for (int i = 0; i < numBands; i++) {
+            bandSize[i] = fft.getBand(i) * 5;
+        }
+        angle += PApplet.map(bandSize[0], 0, 100, 0.01f, 0.1f);
+        colorAngle += PApplet.map(bandSize[1], 0, 100, 0.001f, 0.01f);
+        for (int i = -200; i < 200; i += 20) {
+            for (int j = -200; j < 200; j += 20) {
+                for (int k = -200; k < 200; k += 20) {
+                    float x = i;
+                    float y = j;
+                    float z = k;
+                    float size = PApplet.map(bandSize[(i + 200) / 20], 0, 255, 0, 50);
+                    float yOffset = pApplet.noise(i * noiseScale, j * noiseScale, k * noiseScale) * noiseStrength;
+                    // Assign a different color for each cube based on its position
+                    int cubeColor = pApplet.color(PApplet.map(i + colorAngle, 0, 512, 0, 255),
+                            PApplet.map(j + colorAngle, 0, 512, 0, 255),
+                            PApplet.map(k + colorAngle, 0, 512, 0, 255));
+                    pApplet.fill(cubeColor);
+                    pApplet.pushMatrix();
+                    pApplet.translate(x, y + yOffset, z);
+                    pApplet.box(size);
+                    pApplet.popMatrix();
+                }
+            }
+        }
+    }
+    ```
+
 ## Ernest John Decina (C21394933)
 
 	I am most proud of getting an AI Generated image to render to the users screen, this was alot of learning using Oracle's java http library and making sure that a error is prompt to the user if there was any problems.
