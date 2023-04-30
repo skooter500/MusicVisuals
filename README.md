@@ -39,7 +39,19 @@ Dimensions will be listed by the order they are played out
 
 ### Visual Dimension 4: Alex Tsang ()
 
-### Visual Dimension 1: Ron Pingol ()
+### Visual Dimension 1: Ron Pingol (C21782059)
+
+### Desc
+	
+	My visual consists of multiple shapes that make up multiple rings then transitioning into a cube filled dimesnion, looking like the tesseract area in the movie 	Interstellar
+	
+### Part 1
+
+	Multiple coloured shapes will be moving and they will be rotating on a ring.
+	
+### Part 2
+
+	My Second visual, will transition from the multicoloured shaped. Then lots and lots (like lots), of cubes will appear and when they rotate their colours will change.
 
 # Instructions to work Visualizer
 
