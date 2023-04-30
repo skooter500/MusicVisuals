@@ -119,7 +119,7 @@ public class music_note extends Visual
 
         // variables for colour of notes
         int frameCount = 0;
-        int colorChangeInterval = 20;
+        int colourChangeInterval = 20;
         int colour = 0;
 
         // for drawing the staff on the screen
@@ -131,7 +131,7 @@ public class music_note extends Visual
 
     
         // set colour of notes to change 
-        if (frameCount % colorChangeInterval == 0) {
+        if (frameCount % colourChangeInterval == 0) {
             colour = (int) map(bands[2], 0, 255, 0, 255);
         }
         frameCount++;
@@ -189,9 +189,8 @@ class Star extends PApplet
 
     int colourIndex = (int) random(3);
     ArrayList<Integer> colours = new ArrayList<Integer>();
-    //int[] colors = { color(230, 0, 255), color(255, 232, 31), color(255, 209, 220) };
     int frameCount = 0;
-    int colorChangeInterval = 20; // Change color every 20 frames
+    int colourChangeInterval = 20; // Change colour every 20 frames
 
     Star(PApplet p, float x, float y, float size, float speed, float height, float width, Star[] stars) 
     {
@@ -217,6 +216,7 @@ class Star extends PApplet
         y += speed;
         rotate_Star += 0.01;
         
+        // star still on screen, update it
         if (y > height) 
         {
             y = 0;
@@ -224,7 +224,7 @@ class Star extends PApplet
             size = p.random(20, 200);
             speed = p.random(1, 4);
         } 
-        else if (y < 0) 
+        else if (y < 0) // reset star to fall from the top of the screen again
         {
             y = height;
         }
@@ -240,8 +240,8 @@ class Star extends PApplet
         p.noStroke();
 
 
-        // Only change color every colorChangeInterval frames
-        if (frameCount % colorChangeInterval == 0) {
+        // Only change colour every colourChangeInterval frames
+        if (frameCount % colourChangeInterval == 0) {
             colourIndex = (colourIndex + 1) % colours.size();
         }
         frameCount++;
