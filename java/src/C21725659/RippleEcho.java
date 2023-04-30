@@ -12,7 +12,7 @@ public class RippleEcho extends Visual {
     final int step = 8;
     final float DIST = 100;
     float DISTORTION = 110;
-    Part[][] parts = new Part[nb][nb];
+    part[][] parts = new part[nb][nb];
     Boolean mode = true;
     BeatDetect beat;
     float beatValue = 1;
@@ -36,7 +36,7 @@ public class RippleEcho extends Visual {
         int dx = (width - nb * step) / 2;
         for (int i = 0; i < nb; i++) {
             for (int j = 0; j < nb; j++) {
-                parts[i][j] = new Part(i * step + dx, j * step + dx);
+                parts[i][j] = new part(i * step + dx, j * step + dx, DIST);
             }
         }
     }
@@ -57,53 +57,8 @@ public class RippleEcho extends Visual {
                 if (beat.isOnset()) {
                     stroke(random(50, 150), random(50, 150), random(50, 150), 200);
                 }
-                parts[i][j].update(m);
+                parts[i][j].update(m, mode, DISTORTION, beatValue, width, this);
             }
-        }
-    }
-
-    class Part {
-        PVector pos, speed, origin;
-
-        Part(int x, int y) {
-            pos = new PVector(x, y);
-            origin = pos.get();
-            speed = new PVector(0, 0);
-        }
-
-        void update(PVector m) {
-            PVector tmp = origin.get();
-            tmp.sub(m);
-            float d = tmp.mag();
-            float c = map(d, 0, DIST, 0, PI);
-            tmp.normalize();
-
-            PVector beatMovement = tmp.copy();
-            if (mode) {
-                beatMovement.mult(DISTORTION * sin(c) * beatValue);
-            }
-
-            PVector mouseMovement = tmp.copy();
-            if (d < DIST) {
-                strokeWeight(1 + 10 * abs(cos(c / 2)));
-                if (!mode) {
-                    mouseMovement.mult(DISTORTION * sin(c) * beatValue);
-                }
-            } else {
-                strokeWeight(map(min(d, width), 0f, width, 6f, (float) .3));
-            }
-
-            // Calculate the weighted average of beat and mouse movement
-            PVector weightedMovement = PVector.add(beatMovement.mult(0.7f), mouseMovement.mult(0.3f));
-
-            PVector target = PVector.add(origin, weightedMovement);
-            tmp = pos.get();
-            tmp.sub(target);
-            tmp.mult(-map(m.dist(pos), 0f, 2f * width, .1f, .01f));
-            speed.add(tmp);
-            speed.mult(.57f);
-            pos.add(speed);
-            point(pos.x, pos.y);
         }
     }
 
