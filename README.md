@@ -7,8 +7,7 @@ Student Number: D20125707,
 D20125581
 
 #Youtube Video
-[![YouTube] (https://www.youtube.com/watch?v=5zI0J1447Vs)] https://www.youtube.com/watch?v=5zI0J1447Vs
-
+[![YouTube] (https://www.youtube.com/watch?v=5zI0J1447Vs)] 
 ## Instructions
 - Fork this repository and use it a starter project for your assignment
 - Create a new package named your student number and put all your code in this package.
