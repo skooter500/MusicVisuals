@@ -1,67 +1,110 @@
 package C21725659;
 
 import ie.tudublin.Visual;
+import ie.tudublin.VisualException;
+import processing.core.PVector;
 
 import java.util.ArrayList;
-
-import processing.core.PVector;
 
 public class DemiAudioVisualiser extends Visual {
     ArrayList<Particle> particles = new ArrayList<Particle>();
 
-    // Define the required variables here
-    float threshold = 5;
-    float velocityMultiplier = 5;
-    float maxAmplitude = 200;
-    float minSize = 2;
-    float maxSize = 20;
-    int startColor = color(255, 0, 0);
-    int endColor = color(0, 255, 0);
-    float minLifespan = 20;
-    float maxLifespan = 100;
+    class Particle {
+        PVector position;
+        PVector velocity;
+        float size;
+        int color;
+        float lifespan;
+
+        Particle(PVector position, PVector velocity, float size, int color, float lifespan) {
+            this.position = position;
+            this.velocity = velocity;
+            this.size = size;
+            this.color = color;
+            this.lifespan = lifespan;
+        }
+
+        void update() {
+            position.add(velocity);
+            lifespan--;
+        }
+
+        void display() {
+            pushMatrix();
+            translate(position.x, position.y, position.z);
+            fill(color, lifespan);
+            sphere(size);
+            popMatrix();
+        }
+
+        boolean isDead() {
+            return lifespan <= 0;
+        }
+    }
 
     public void settings() {
-        size(600, 600);
-        println("CWD: " + System.getProperty("user.dir"));
+        size(600, 600, P3D);
     }
 
     public void setup() {
-        setFrameSize(256);
-
         startMinim();
         loadAudio("InitialD-KillingMyLove.mp3");
         getAudioPlayer().play();
-        getAudioPlayer().cue(60000);
     }
 
+    float radius = 200;
+    float rot = 0;
+
     public void draw() {
-        background(0);
         calculateAverageAmplitude();
+        try {
+            calculateFFT();
+        } catch (VisualException e) {
+            e.printStackTrace();
+        }
         calculateFrequencyBands();
+        background(0);
+        noFill();
+        stroke(255);
+        lights();
+        stroke(map(getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
+        camera(0, -500, 500, 0, 0, 0, 0, 1, 0);
 
-        for (int i = 0; i < getBands().length; i++) {
-            float amplitude = getBands()[i];
-            if (amplitude > threshold) {
-                PVector position = new PVector(width / 2, height / 2);
-                PVector velocity = PVector.random2D().mult(amplitude * velocityMultiplier);
-                float size = map(amplitude, 0, maxAmplitude, minSize, maxSize);
-                int particleColor = color(map(i, 0, getBands().length, startColor, endColor), 255);
-                float lifespan = map(amplitude, 0, maxAmplitude, minLifespan, maxLifespan);
+        rot += getAmplitude() / 8.0f;
+        rotateY(rot);
 
-                Particle p = new Particle(this, position, velocity, size, particleColor, lifespan);
+        float[] bands = getSmoothedBands();
+        for (int i = 0; i < bands.length; i++) {
+            float theta = map(i, 0, bands.length, 0, TWO_PI);
+            stroke(map(i, 0, bands.length, 0, 255), 255, 255);
+            float x = sin(theta) * radius;
+            float z = cos(theta) * radius;
+            float h = bands[i];
+            pushMatrix();
+            translate(x, -h / 2, z);
+            rotateY(theta);
+            box(50, h, 50);
+            popMatrix();
+        }
 
-                particles.add(p);
-            }
+        // Particle system
+        if (getAmplitude() > 0.1) {
+            PVector position = new PVector(0, 0, 0);
+            PVector velocity = PVector.random3D().mult(getAmplitude() * 200);
+            float size = map(getAmplitude(), 0, 1, 5, 20);
+            int color = color(random(255), random(255), random(255));
+            float lifespan = random(20, 100);
+            particles.add(new Particle(position, velocity, size, color, lifespan));
         }
 
         for (int i = particles.size() - 1; i >= 0; i--) {
             Particle p = particles.get(i);
             p.update();
             p.display();
+
             if (p.isDead()) {
                 particles.remove(i);
             }
         }
     }
 }
-
