@@ -28,7 +28,7 @@ public class TrumpetBandVisual
         mv.stroke(208, 152, 3);
         mv.translate(0, +30, 0);
         mv.circle(mv.width / 2, mv.height / 2, 300 + (mv.getSmoothedBands()[6] * 0.35f)); 
+        mv.image(mv.justice, (mv.width/2) - 125, -40);
         mv.translate(0, -30, 0);
-
     }
 }

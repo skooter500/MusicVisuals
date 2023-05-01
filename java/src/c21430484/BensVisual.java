@@ -2,6 +2,7 @@ package c21430484;
 
 import ddf.minim.AudioBuffer;
 import ie.tudublin.*;
+import processing.core.PImage;
 
 
 
@@ -12,7 +13,10 @@ public class BensVisual extends Visual
     AudioBandsVisual abv;
     TrumpetBandVisual tbv;
 
+    PImage justice; 
     AudioBuffer ab; 
+
+    long startTime;
 
     public void settings()
     {
@@ -41,6 +45,10 @@ public class BensVisual extends Visual
         abv = new AudioBandsVisual(this);
         tbv = new TrumpetBandVisual(this);
         cv = new CrossVisual(this);
+        
+        justice = loadImage("justice.png");
+
+        startTime = -1;
     }
 
     public void keyPressed()
@@ -49,6 +57,7 @@ public class BensVisual extends Visual
         {
             getAudioPlayer().cue(0);
             getAudioPlayer().play();
+            startTime = System.currentTimeMillis();
         }
     }
 
@@ -78,28 +87,8 @@ public class BensVisual extends Visual
 
         cv.render(); 
         
+
+
         // abv.render();
-    }
-
-    public void renderCircle()
-    {
-        float sum = 0;
-        float radius = 1; 
-        ab = getAudioBuffer();
-
-        for(int i = 0; i < ab.size(); i++)
-        {
-            sum += abs(ab.get(i));
-        }
-
-        float average = sum / ab.size(); 
-
-        radius = lerp(radius, average * 10000f, 0.1f);
-
-
-        noFill(); 
-        stroke(208, 152, 3);
-        circle(width / 2, height / 2, 100 + radius); 
-
-    }
+    }  
 }
