@@ -1,21 +1,50 @@
 package ie.tudublin;
 
-import example.CubeVisual;
-import example.MyVisual;
-import example.RotatingAudioBands;
 
 public class Main
-{	
-
-	public void startUI()
+{
+	public static void strawberry()
 	{
 		String[] a = {"MAIN"};
-        processing.core.PApplet.runSketch( a, new RotatingAudioBands());		
-	}
+        processing.core.PApplet.runSketch(a, new StrawberryBush());
+    }
 
-	public static void main(String[] args)
+	public static void Tree()
 	{
-		Main main = new Main();
-		main.startUI();			
+		String[] a = {"MAIN"};
+        processing.core.PApplet.runSketch( a, new tree());
+    }
+	
+
+
+	public static void Flower()
+	{
+		String[] a = {"MAIN"};
+        processing.core.PApplet.runSketch( a, new flower());
+    }
+
+	public static void vines()
+	{
+		String[] a = {"MAIN"};
+        processing.core.PApplet.runSketch( a, new vines());
+    }
+
+	public static void notes()
+	{
+		String[] a = {"MAIN"};
+        processing.core.PApplet.runSketch( a, new notes());
+    }
+
+	public static void main(String[] args) throws InterruptedException
+	{
+		System.out.println("Hello world");
+
+    	//Tree();
+		//strawberry();
+		//Flower();
+		//vines();
+		notes();
 	}
+	
+	
 }
