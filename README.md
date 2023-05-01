@@ -39,6 +39,13 @@ Dimensions will be listed by the order they are played out
 
 ### Visual Dimension 4: Alex Tsang ()
 
+### Desc
+	My visualizer is based off the Rose Pattern used in mathematics. 
+	
+### Part 1 
+	
+	My part consists of a rotating flower pattern has colors changing on each petal throughout the duration of the song, it also zooms in and out.
+
 ### Visual Dimension 1: Ron Pingol (C21782059)
 
 ### Desc
@@ -144,7 +151,7 @@ Dimensions will be listed by the order they are played out
 ## Daniel Wu ()
 
 ## Alex Tsang ()
-The thing I am most proud of in this assignment is learning how to use the Rose(mathematics) pattern and implementing it into code. Learning processing was hard and implementing this pattern took a lot guidance. I am also really happy on having the colors change on each petal.
+	The thing I am most proud of in this assignment is learning how to use the Rose(mathematics) pattern and implementing it into code. Learning processing was 	    hard and implementing this pattern took a lot guidance. I am also really happy on having the colors change on each petal.
 
 ```
             // Use sin() and cos() functions to smoothly interpolate between colors
