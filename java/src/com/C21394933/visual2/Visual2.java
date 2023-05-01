@@ -13,17 +13,19 @@ import java.util.ArrayList;
 // Draw Objects
 import com.C21394933.drawObjects.WaveFormVisualize;
 import com.C21394933.drawObjects.BigBangUniverse;
+import com.C21394933.drawObjects.DisplayAIGeneratedImage;
 import com.C21394933.drawObjects.FlyingThroughSound;
 
 public class Visual2 extends VisualAbstractClass {
     // Private Variables
-    int[] visual2Timings = {802, 935, 1075};
+    int[] visual2Timings = {780, 935, 1075};
     int drawObjectsIndex = 0;
     ArrayList<DrawObjectAbstractClass> drawObjects;
 
     //  Render Objects
     WaveFormVisualize waveFormVisualize;
     BigBangUniverse bigBangUniverse;
+    DisplayAIGeneratedImage displayAIGeneratedImage;
     FlyingThroughSound flyingThroughSound;
 
     // LEAVE ALONE
@@ -41,8 +43,7 @@ public class Visual2 extends VisualAbstractClass {
 
     // Draw Function for Visual 2
     public void drawVisual() {
-        if(audioPlayer.position() / 100 > visual2Timings[drawObjectsIndex]) 
-            drawObjectsIndex++;
+        changeDrawObject();
 
         drawObjects.get(drawObjectsIndex).render();
     } // End drawVisual2
@@ -54,10 +55,19 @@ public class Visual2 extends VisualAbstractClass {
         // Create your draw Objects here
         this.waveFormVisualize = new WaveFormVisualize(this.pApplet, this.audioBuffer, this.windowHeight, this.windowHeight);
         this.bigBangUniverse = new BigBangUniverse(pApplet, audioBuffer, fft, windowWidth, windowHeight);
+        this.displayAIGeneratedImage = new DisplayAIGeneratedImage(pApplet, audioBuffer, windowWidth, windowHeight);
         this.flyingThroughSound = new FlyingThroughSound(pApplet, audioBuffer, fft, windowWidth, windowHeight);
+        
 
         drawObjects.add(bigBangUniverse);
-        drawObjects.add(waveFormVisualize);
+        drawObjects.add(displayAIGeneratedImage);
+        drawObjects.add(flyingThroughSound);
         drawObjects.add(flyingThroughSound);
     } // End void oadRenderObjects
+
+
+    private void changeDrawObject() {
+        if(audioPlayer.position() / 100 > visual2Timings[drawObjectsIndex]) 
+            drawObjectsIndex++;
+    }
 } // End class Visual2

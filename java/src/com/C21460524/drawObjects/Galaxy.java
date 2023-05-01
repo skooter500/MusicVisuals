@@ -3,7 +3,6 @@ package com.C21460524.drawObjects;
 
 // Dependencies
 import ddf.minim.AudioBuffer;
-import ddf.minim.analysis.FFT;
 import processing.core.PApplet;
 import processing.core.PConstants;
 import ie.tudublin.DrawObjectAbstractClass;
@@ -44,14 +43,14 @@ public class Galaxy extends DrawObjectAbstractClass
 
         }
     }
-
-    public void render() {
-        drawExample();
-    } // End void render()
     
 
     public void drawExample() 
     {
+
+        pApplet.pushMatrix();
+        pApplet.pushStyle();
+
         pApplet.background(0);
         pApplet.stroke(255);
         pApplet.strokeWeight(2);
@@ -64,6 +63,9 @@ public class Galaxy extends DrawObjectAbstractClass
 
         // Screen flash effect
         drawScreenFlash();
+
+        pApplet.popMatrix();
+        pApplet.popStyle();
 
     }
 
@@ -78,6 +80,7 @@ public class Galaxy extends DrawObjectAbstractClass
 
         float x = windowWidth / 2;
         float y = windowHeight / 2;
+
         float amplitude = audioBuffer.level() * 1000;
         float diameter = initialDiameter + amplitude + (timeElapsed * timeScale);
     
@@ -138,6 +141,11 @@ public class Galaxy extends DrawObjectAbstractClass
         // Increment time elapsed
         timeElapsed += 1;
     }
+
+    public void render() {
+        drawExample();
+    } // End void render()
+
 
     private void drawScreenFlash() {
         float amplitude = audioBuffer.level() * 1000;

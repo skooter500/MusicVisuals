@@ -1,19 +1,15 @@
 package com.C21460524.drawObjects;
 
-
 import java.util.ArrayList;
 
 // Dependencies
 import ddf.minim.AudioBuffer;
-import ddf.minim.analysis.FFT;
 import processing.core.PApplet;
 import processing.core.PConstants;
 import processing.core.PVector;
 import ie.tudublin.DrawObjectAbstractClass;
 
-
-public class Galaxy2 extends DrawObjectAbstractClass
-{
+public class Galaxy2 extends DrawObjectAbstractClass {
 
     // Private Fields
     PApplet pApplet;
@@ -26,11 +22,8 @@ public class Galaxy2 extends DrawObjectAbstractClass
     int numStars = 50;
     Star[] stars = new Star[numStars];
     float starSpeed = 1.5f; // speed at which stars move
-    
 
-
-    public Galaxy2(PApplet pApplet, AudioBuffer audioBuffer, int windowWidth, int windowHeight) 
-    {
+    public Galaxy2(PApplet pApplet, AudioBuffer audioBuffer, int windowWidth, int windowHeight) {
 
         this.pApplet = pApplet;
         this.audioBuffer = audioBuffer;
@@ -38,8 +31,7 @@ public class Galaxy2 extends DrawObjectAbstractClass
         this.windowHeight = windowHeight;
 
         // Initialize stars
-        for (int i = 0; i < numStars; i++) 
-        {
+        for (int i = 0; i < numStars; i++) {
 
             float x = i * windowWidth / numStars; // evenly space stars along the x axis
             float y = pApplet.random(0, windowHeight);
@@ -48,14 +40,14 @@ public class Galaxy2 extends DrawObjectAbstractClass
         }
     }
 
-        // Particle system
-        ArrayList<Particle> particles = new ArrayList<>();
+    // Particle system
+    ArrayList<Particle> particles = new ArrayList<>();
 
-        public void render() {
-            drawExample();
-        } // End void render()
 
     public void drawExample() {
+
+        pApplet.pushMatrix();
+        pApplet.pushStyle();
 
         // Draw earthquake effect
         drawEarthquakeEffect();
@@ -63,7 +55,6 @@ public class Galaxy2 extends DrawObjectAbstractClass
         pApplet.background(0);
         pApplet.stroke(255);
         pApplet.strokeWeight(2);
-
 
         // Draw starfield
         drawStarfield();
@@ -76,53 +67,53 @@ public class Galaxy2 extends DrawObjectAbstractClass
 
         // Screen flash effect
         drawScreenFlash();
-    }
 
+        pApplet.popMatrix();
+        pApplet.popStyle();
+    
+    }
 
     private float timeElapsed = 0;
     private float timeScale = 0.04f; // controls the rate at which the diameter increases
     private float initialDiameter = 300;
     private float rotationAngle = 0;
     private float rotationSpeed = 0.005f; // controls the speed of rotation
-    
-
-
 
     private void drawCircle() {
         float x = windowWidth / 2;
         float y = windowHeight / 2;
         float amplitude = audioBuffer.level() * 1000;
         float diameter = (initialDiameter + amplitude + (timeElapsed * timeScale)) / 2;
-    
+
         // Map the amplitude value to a hue value
         pApplet.colorMode(PConstants.HSB, 360, 100, 100);
         float hue = PApplet.map(amplitude, 0, 200, 0, 360);
-    
+
         // Calculate the opacity based on a sine wave
         float opacity = PApplet.map(PApplet.sin(pApplet.frameCount * 0.05f), -1, 1, 50, 255);
-    
+
         for (int k = 0; k < 4; k++) {
             float offsetX = PApplet.cos(rotationAngle) * diameter * 1.5f;
             float offsetY = PApplet.sin(rotationAngle) * diameter * 1.5f;
-    
+
             pApplet.pushMatrix();
             pApplet.pushStyle();
             pApplet.translate(x + offsetX, y + offsetY, -diameter / 2);
-    
+
             pApplet.noStroke();
-    
+
             float adjustedRotationSpeed = PApplet.map(amplitude, 0, 200, rotationSpeed, rotationSpeed * 10);
             rotationAngle += adjustedRotationSpeed;
-    
+
             pApplet.fill(hue, 100, 100, opacity); // Use the calculated opacity value
             pApplet.rotate(rotationAngle, 1, 1, 0);
             pApplet.beginShape(PConstants.TRIANGLES);
-    
+
             int detail = 100;
             for (int j = 0; j < detail; j++) {
                 float theta1 = PApplet.map(j, 0, detail, 0, PConstants.TWO_PI);
                 float theta2 = PApplet.map(j + 1, 0, detail, 0, PConstants.TWO_PI);
-    
+
                 for (int i = 0; i < detail; i++) {
                     float phi1 = PApplet.map(i, 0, detail, 0, PConstants.PI);
                     float phi2 = PApplet.map(i + 1, 0, detail, 0, PConstants.PI);
@@ -143,8 +134,7 @@ public class Galaxy2 extends DrawObjectAbstractClass
                     pApplet.vertex(x2, y2, z2);
                 }
             }
-    
-    
+
             pApplet.endShape();
 
             if (amplitude > 20) {
@@ -158,13 +148,16 @@ public class Galaxy2 extends DrawObjectAbstractClass
             pApplet.popStyle();
             rotationAngle += PConstants.PI / 2; // Divide the full circle into 4 equal parts for each circle
         }
-    
+
         pApplet.noStroke();
-             
 
         // Increment time elapsed
         timeElapsed += 1;
     }
+
+    public void render() {
+        drawExample();
+    } // End void render()
 
     private void drawEarthquakeEffect() {
         float amplitude = audioBuffer.level() * 1000;
@@ -175,7 +168,6 @@ public class Galaxy2 extends DrawObjectAbstractClass
             pApplet.translate(shakeX, shakeY);
         }
     }
-    
 
     private void createExplosion(float x, float y, float hue, int numParticles) {
         for (int i = 0; i < numParticles; i++) {
@@ -186,7 +178,6 @@ public class Galaxy2 extends DrawObjectAbstractClass
             particles.add(particle);
         }
     }
-    
 
     // Particle System
     private void updateParticles() {
@@ -206,33 +197,30 @@ public class Galaxy2 extends DrawObjectAbstractClass
         PVector velocity;
         float lifespan;
         float hue;
-    
+
         Particle(PVector position, float hue) {
             this.position = position.copy();
             this.velocity = new PVector(pApplet.random(-2, 2), pApplet.random(-2, 2));
             this.lifespan = 255;
             this.hue = hue;
         }
-    
+
         void update() {
             position.add(velocity);
             lifespan -= 3; // Decrease the value for a slower fade-out effect
             velocity.mult(0.95f); // Add some friction to the particle movement
         }
-    
+
         void display() {
             float particleSize = pApplet.random(2, 6);
             pApplet.fill(hue, 100, 100, lifespan);
             pApplet.ellipse(position.x, position.y, particleSize, particleSize);
         }
-    
+
         boolean isDead() {
             return lifespan <= 0;
         }
     }
-
-    
-    
 
     private void drawScreenFlash() {
         float amplitude = audioBuffer.level() * 1000;
@@ -240,8 +228,6 @@ public class Galaxy2 extends DrawObjectAbstractClass
         pApplet.fill(255, 255, 255, flashOpacity);
         pApplet.rect(0, 0, windowWidth, windowHeight);
     }
-    
-
 
     private void drawStarfield() {
         for (int i = 0; i < numStars; i++) {
@@ -250,7 +236,7 @@ public class Galaxy2 extends DrawObjectAbstractClass
             float diameter = radius * 2;
             // Move star to the right
             star.x = (star.x + starSpeed) % windowWidth;
-            
+
             // Draw star with a glowing effect
             int glowAlpha = 100;
             int numGlowLayers = 3;
@@ -261,13 +247,10 @@ public class Galaxy2 extends DrawObjectAbstractClass
         }
     }
 
-
-
     // Inner class representing a star object
-    private class Star 
-    {
+    private class Star {
         float x;
-        
+
         float y;
 
         public Star(float x, float y) {
@@ -276,6 +259,5 @@ public class Galaxy2 extends DrawObjectAbstractClass
         }
 
     }
-
 
 }

@@ -23,7 +23,9 @@ public class Visual3 extends VisualAbstractClass {
     int windowHeight;
     PApplet pApplet;
     AudioBuffer audioBuffer;
-    int[] visual2Timings = {667, 1075};
+    
+    int[] visual3Timings = { 300,802};
+
     int drawObjectsIndex = 0;
     ArrayList<DrawObjectAbstractClass> drawObjects;
 
@@ -51,7 +53,7 @@ public class Visual3 extends VisualAbstractClass {
 
     // Draw Function for Visual 3
     public void drawVisual() {
-        if(audioPlayer.position() / 100 > visual2Timings[drawObjectsIndex]) 
+        if(audioPlayer.position() / 100 > visual3Timings[drawObjectsIndex]) 
             drawObjectsIndex++;
 
         drawObjects.get(drawObjectsIndex).render();
@@ -66,6 +68,7 @@ public class Visual3 extends VisualAbstractClass {
         //galaxy = new Test(this.pApplet, this.audioBuffer, this.windowWidth, this.windowHeight);
 
         drawObjects.add(stars);
+        drawObjects.add(stars2);
         drawObjects.add(stars2);
     } // End void oadRenderObjects
 

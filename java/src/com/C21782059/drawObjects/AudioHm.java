@@ -83,15 +83,21 @@ public class AudioHm extends DrawObjectAbstractClass {
             bandSize[i] = fft.getBand(i) * 5;
         }
 
-        // Update the rotation angle and color angle based on the audio data
-        angle += PApplet.map(bandSize[0], 0, 100, 0.01f, 0.1f);
-        colorAngle += PApplet.map(bandSize[1], 0, 100, 0.001f, 0.01f);
+        // storing previous angles
+        float prevAngle = angle;
+        float prevColorAngle = colorAngle;
 
-        for (int i = 0; i < 360; i += 5) {
+        // Update the rotation angle and color angle based on the audio data
+        angle = PApplet.lerp(prevAngle, prevAngle + PApplet.map(bandSize[0], 0, 100, 0.01f, 0.1f), 0.5f);
+        colorAngle = PApplet.lerp(prevColorAngle, prevColorAngle + PApplet.map(bandSize[1], 0, 100, 0.001f, 0.01f),
+                0.5f);
+
+                // can change increment, this will change the visual
+        for (int i = 0; i < 360; i += 3) {
             float x = r * PApplet.cos(PApplet.radians(i)); // Calculate the X position of the sphere
             float y = r * PApplet.sin(PApplet.radians(i)); // Calculate the Y position of the sphere
             float z = 0; // The Z position of the sphere (always 0)
-            float size = PApplet.map(bandSize[i / 5], 0, 255, 0, 50); // Calculate the size of the sphere based on the
+            float size = PApplet.map(bandSize[i / 5], 0, 255, 0, 30); // Calculate the size of the sphere based on the
                                                                       // frequency band
             float yOffset = PApplet.map(PApplet.sin(angle + i), -1, 1, -50, 50); // Calculate the Y offset of the sphere
                                                                                  // based on the rotation angle
