@@ -9,38 +9,7 @@ import java.util.ArrayList;
 public class DemiAudioVisualiser extends Visual {
     ArrayList<Particle> particles = new ArrayList<Particle>();
 
-    class Particle {
-        PVector position;
-        PVector velocity;
-        float size;
-        int color;
-        float lifespan;
-
-        Particle(PVector position, PVector velocity, float size, int color, float lifespan) {
-            this.position = position;
-            this.velocity = velocity;
-            this.size = size;
-            this.color = color;
-            this.lifespan = lifespan;
-        }
-
-        void update() {
-            position.add(velocity);
-            lifespan--;
-        }
-
-        void display() {
-            pushMatrix();
-            translate(position.x, position.y, position.z);
-            fill(color, lifespan);
-            sphere(size);
-            popMatrix();
-        }
-
-        boolean isDead() {
-            return lifespan <= 0;
-        }
-    }
+    
 
     public void settings() {
         size(600, 600, P3D);
@@ -94,7 +63,7 @@ public class DemiAudioVisualiser extends Visual {
             float size = map(getAmplitude(), 0, 1, 5, 20);
             int color = color(random(255), random(255), random(255));
             float lifespan = random(20, 100);
-            particles.add(new Particle(position, velocity, size, color, lifespan));
+            particles.add(new Particle(this,position, velocity, size, color, lifespan));
         }
 
         for (int i = particles.size() - 1; i >= 0; i--) {
