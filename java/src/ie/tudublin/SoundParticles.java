@@ -9,9 +9,28 @@ import processing.core.PVector;
 import ddf.minim.analysis.*;
 
 
-public class test3 extends PApplet {
+public class SoundParticles extends PApplet {
     Minim minim;
    AudioPlayer mySound;
+   
+
+   // pause/play key
+   int mode = 0;
+
+   //if space key is pressed pause/play
+   public void keyPressed() {
+    if (key >= '0' && key <= '9') {
+        mode = key - '0';
+    }
+    if (keyCode == ' ') {
+        if (mySound.isPlaying()) {
+            mySound.pause();
+        } else {
+            mySound.rewind();
+            mySound.play();
+        }
+    }
+}
  
 public void settings()
     {
