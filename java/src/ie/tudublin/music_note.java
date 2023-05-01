@@ -154,7 +154,7 @@ public class music_note extends Visual
 
         // treble clef
         line(noteX - noteDistance, noteY2 - staffSpacing, noteX - noteDistance, noteY2 + staffSpacing );
-
+        curve(noteX - 30, noteY + staffSpacing, noteY2 - 45, noteX2 + 50, noteDistance + noteY2, noteY);
         popMatrix();
     }
 }
