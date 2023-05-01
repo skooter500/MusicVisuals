@@ -47,9 +47,9 @@ public class vines extends PApplet
         float size2;
         float size3;
         
-        y1 = 700;
+        y1 = 800;
         //x2 = x-200;
-        y2 = 650;
+        y2 = 750;
         y3 = y2-70;
         y4 = y3-60;
         size1 = 80;
@@ -77,6 +77,32 @@ public class vines extends PApplet
 
     }
 
+    public void clouds() 
+    {
+        float x1;
+        float y1;
+
+        float x2;
+        float y2;
+
+        x1 = 100;
+        y1 = 700;
+
+        x2 = 100;
+        y2 = 500;
+                
+        strokeWeight(4);
+        //stroke(130, 200, 200);
+        stroke(130, 60, 255);
+        fill(130, 100, 250);
+        circle(x, y, size);
+        stroke(130, 60, 255);
+        fill(130, 60, 255);
+        circle(x+20, y-20, size/5);
+        circle(x+30, y-5, size/10);
+        
+    }
+
     float lerpedBuffer[] = new float[1024];
     float totalX = 100;
     float totalY = 0;
@@ -87,7 +113,8 @@ public class vines extends PApplet
         float sum = 0;
         int highestIndex = 0;
 
-        background(80,0,50);
+        background(150,120,160);
+
 
         for(int i = 0 ;i < fft.specSize() / 2 ; i ++)
         {
@@ -118,13 +145,18 @@ public class vines extends PApplet
         System.out.println(freq);
 
 
+        // if the song gets louder
+
         if (freq > 100)
         {
-            //totalX++;
+            // increase the second coordinate of y
             totalY++;
         }
-        if (freq < 20 && totalY>0)
+
+        // if it dips below a certain level and isn't at starting height
+        if (freq < 40 && totalY>0)
         {
+            // shrinks the tree
             totalY--;
         }
 
