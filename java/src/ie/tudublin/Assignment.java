@@ -11,6 +11,7 @@ import ddf.minim.signals.*;
 import processing.core.PVector;
 import ddf.minim.analysis.*;
 
+
 public class Assignment extends PApplet {
 
     // sphere
@@ -24,6 +25,55 @@ public class Assignment extends PApplet {
     float smoothedAmplitude = 0;
     float off = 0;
     float lerpedBuffer[] = new float[1024];
+
+     //CDWaves
+     int x;
+     int radius = 200;
+     float hue = 0;
+
+    // spiralNodes
+    FFT fft;
+
+    Node[] nodes = new Node[1200];
+
+    class Node {
+        PVector loc;
+        PVector velocity = new PVector(random(-2, 2), random(-2, 2));
+        float size = 10;
+        float angle = random(0, TWO_PI);
+
+        Node(float x, float y) {
+            this.loc = new PVector(x, y);
+        }
+
+        void run(float freq) {
+            this.display();
+            this.move(freq);
+            this.bounce();
+        }
+
+        void display() {
+            point(loc.x, loc.y);
+        }
+
+        void move(float freq) {
+            float spiralSpeed = freq * 0.1f;
+            angle += spiralSpeed;
+            float radius = freq * 0.5f;
+            loc.x += cos(angle) * radius;
+            loc.y += sin(angle) * radius;
+        }
+
+        void bounce() {
+            if ((this.loc.x > width) || (this.loc.x < 0)) {
+                velocity.x = velocity.x * -1;
+            }
+            if ((this.loc.y > height) || (this.loc.y < 0)) {
+                velocity.y = velocity.y * -1;
+            }
+        }
+    }
+
 
 
     public void keyPressed() {
@@ -59,6 +109,22 @@ public class Assignment extends PApplet {
         smooth();
         background(0);
         frameRate(24);
+
+        // spiralNodes
+        smooth();
+        for (int i = 0; i < nodes.length; i++) {
+            nodes[i] = new Node(random(width), random(height));
+        }
+
+        minim = new Minim(this);
+        fft = new FFT(ap.bufferSize(), ap.sampleRate());
+        ap.play();
+
+        for (int i = 0; i < nodes.length; i++) {
+            nodes[i] = new Node(random(width), random(height));
+        }
+
+        x = 0;
 
     }
 
@@ -173,7 +239,86 @@ public class Assignment extends PApplet {
 
                 break;
 
+            case 3:
+            //spiralNNodes
+                noStroke();
+                noCursor();
+                colorMode(RGB);
+                background(0);
+                fft.forward(ap.mix);
+
+                for (int i = 0; i < nodes.length; i++) {
+                    float freq = fft
+                            .getFreq((float) (dist(nodes[i].loc.x, nodes[i].loc.y, width / 2, height / 2) * 2.2));
+
+                    strokeWeight(freq / 10);
+                    stroke((1 - nodes[i].loc.y / 800) * 255, (nodes[i].loc.x / 800) * 255,
+                            (nodes[i].loc.y / 800) * 255);
+                    for (int j = i + 1; j < nodes.length; j++) {
+                        Node other = nodes[j];
+                        float dist = nodes[i].loc.dist(other.loc);
+                        if (dist > 0 && dist < 60) {
+                            line(nodes[i].loc.x, nodes[i].loc.y, other.loc.x, other.loc.y);
+                        }
+                    }
+                    stroke(255);
+                    nodes[i].run(freq);
+                }
+                break;
+
+                case 4:
+                //CDWaives
+                translate(width / 2, height / 2);
+                background(0);
+        
+                colorMode(HSB, 255);
+        
+                float avgAmplitude = ap.mix.level() * 255;
+                fill(avgAmplitude, 0, 0);
+                circle(0, 0, 120);
+                fill(255);
+                circle(cos(radians(x)) * 5, sin(radians(x)) * 5, 110);
+                fill(0);
+                circle(0, 0, 10);
+        
+                if (ap.isPlaying()) x += 2;
+        
+                fft.forward(ap.mix);
+                float bands = fft.specSize();
+        
+                for (int i = 0; i < bands * 2; i++) {
+                    float start_x = radius * cos(PI * (i + x) / bands);
+                    float start_y = radius * sin(PI * (i + x) / bands);
+        
+                    float bandAmplitude;
+                    if (i < bands) {
+                        bandAmplitude = fft.getBand(i);
+                    } else {
+                        bandAmplitude = fft.getFreq(i);
+                    }
+                    hue += 0.5;
+                    if (hue > 255) {
+                        hue = 0;
+                    }
+                    int currentColor = color(hue, 255, 255, 100);
+                    int nextColor = color(hue + 1, 255, 255, 100);
+                    int blendedColor = lerpColor(currentColor, nextColor, bandAmplitude / 2);
+                    fill(blendedColor);
+                    noStroke();
+        
+                    float angle = PI * (i + x) / bands;
+                    float arcWidth = 20 + bandAmplitude * 2;
+                    float arcHeight = 20 + bandAmplitude * 2;
+        
+                    pushMatrix();
+                    translate(start_x, start_y);
+                    rotate(angle);
+                    arc(0, 0, arcWidth, arcHeight, 0, PI);
+                    popMatrix();
+                }
+                break;
         }
+
     }
 
 }
