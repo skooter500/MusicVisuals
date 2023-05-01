@@ -152,6 +152,9 @@ public class music_note extends Visual
         // connect note
         line((noteX + noteDistance) * 2, staffY - staffHeight/2 + yOffset, noteX2 * 2, noteY - staffHeight/15 + yOffset);
 
+        // treble clef
+        line(noteX - noteDistance, noteY2 - staffSpacing, noteX - noteDistance, noteY2 + staffSpacing );
+
         popMatrix();
     }
 }
