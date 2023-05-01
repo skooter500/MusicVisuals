@@ -101,6 +101,7 @@ public class WarpedSpace extends PApplet {
 	
 	public void draw() {
 		background(0, 0, 0, 10);
+		translate(width / 2, height / 2);
 		for (Star s : stars) {
 			s.update();
 			s.show();
