@@ -31,6 +31,7 @@ Notice how the colors, shapes, and movements change in sync with the audio input
 
 # How it works
 The visuals created by the provided code can be related to the song "Mantra" by interpreting the visuals in a way that captures the essence and mood of the song. Here's a possible interpretation:
+
 Sphere (Mode 1):
 The dynamic lines and vibrant colors of the sphere visualization can represent the energetic and pulsating nature of the song "Mantra."
 The changing positions and lengths of the lines can mirror the rhythmic patterns and melodic movements in the music.
