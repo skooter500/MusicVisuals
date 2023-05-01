@@ -154,7 +154,7 @@ public class music_note extends Visual
 
         // treble clef
         line(noteX - noteDistance, noteY2 - staffSpacing, noteX - noteDistance, noteY2 + staffSpacing );
-        curve(noteX - 30, noteY + staffSpacing, noteY2 - 45, noteX2 + 50, noteDistance + noteY2, noteY, yOffset + noteY, yOffset - noteX);
+        curve(noteX - 40, noteY + staffSpacing - 15, noteY2 - 50, noteX2 + 50, noteDistance + noteY2, noteY, yOffset + noteY, staffY - noteX);
         popMatrix();
     }
 }
@@ -260,6 +260,7 @@ class Star extends PApplet
             // add vertex to shape
             p.vertex(x, y);
         }
+
         p.endShape();
         p.popMatrix();
     } 
