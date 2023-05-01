@@ -27,6 +27,8 @@ public class music_note extends Visual
     public void setup()
     {
         colorMode(HSB);
+
+        // create star objects
         stars = new Star[25];
         for (int i = 0; i < stars.length; i++) 
         {
