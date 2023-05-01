@@ -19,10 +19,13 @@ public class DemiAudioVisualiser extends Visual {
     PFont subtitleFont;
     float strobeTimer = 0;
     float strobeInterval = 0;
+  
+
 
     public void settings() {
         size(600, 600, P3D);
     }
+
     float eyeX = 0;
     float eyeY = -500;
     float eyeZ = 500;
@@ -32,13 +35,8 @@ public class DemiAudioVisualiser extends Visual {
     float upX = 0;
     float upY = 1;
     float upZ = 0;
-    
-    
-   
-    
 
     boolean[] keys = new boolean[128];
-    
 
     public void keyPressed() {
         if (key >= 0 && key < keys.length) {
@@ -55,7 +53,7 @@ public class DemiAudioVisualiser extends Visual {
     public void updateCamera() {
         float cameraMoveAmount = 5;
         float cameraRotAmount = 0.01f;
-    
+
         if (keys[UP]) {
             eyeY += cameraMoveAmount;
         }
@@ -87,7 +85,6 @@ public class DemiAudioVisualiser extends Visual {
             centerZ -= cameraMoveAmount;
         }
     }
-    
 
     public void setup() {
         textSize(20);
@@ -129,14 +126,17 @@ public class DemiAudioVisualiser extends Visual {
         updateCamera();
         camera(eyeX, eyeY, eyeZ, centerX, centerY, centerZ, upX, upY, upZ);
         rot += getAmplitude() / 8.0f;
+         textAlign(CENTER, CENTER);
         rotateY(rot);
 
         displayCurrentSubtitle();
 
-        // Draw fractical tree
-        pushMatrix();
-        drawBranch(200);
-        popMatrix();
+        // // Draw fractical tree
+        // pushMatrix();
+        // drawBranch(200);
+        // popMatrix();
+
+       
 
         float[] bands = getSmoothedBands();
         for (int i = 0; i < bands.length; i++) {
@@ -173,6 +173,8 @@ public class DemiAudioVisualiser extends Visual {
         }
     }
 
+    
+
     void drawBranch(float len) {
         float amplitudeScaling = map(getSmoothedAmplitude(), 0, 1, 0.5f, 2);
         len *= amplitudeScaling;
@@ -192,11 +194,13 @@ public class DemiAudioVisualiser extends Visual {
         }
     }
 
+    
+
     public void displayCurrentSubtitle() {
         int playPosition = getAudioPlayer().position();
         int totalTimeInSeconds = playPosition / 1000;
         int subtitleIndex = -1;
-
+    
         for (int i = 0; i < subtitles.size(); i++) {
             Subtitle subtitle = subtitles.get(i);
             if (totalTimeInSeconds >= subtitle.getStart() / 1000.0f
@@ -205,22 +209,32 @@ public class DemiAudioVisualiser extends Visual {
                 break;
             }
         }
-
+    
         if (subtitleIndex != currentSubtitleIndex) {
             currentSubtitleIndex = subtitleIndex;
         }
-
+    
         if (currentSubtitleIndex >= 0 && currentSubtitleIndex < subtitles.size()) {
             // Display the subtitle text on the screen
             String currentSubtitle = subtitles.get(currentSubtitleIndex).getText();
+           
             textAlign(CENTER);
-
-            pushMatrix(); // Reset the matrix
-            resetMatrix();
-            text(currentSubtitle, 0, 0); // Adjust the
-            popMatrix();
-            println(currentSubtitle);
+            fill(255);
+            text(currentSubtitle, 0, -300); // Adjust the position to be centered and close to the top
+            
+            
         }
+        noFill();
+        pushMatrix();
+        translate(0, -200, 0);
+        float sphereSize = map(getAmplitude(), 0, 1, 0, 200);
+        noStroke();
+        fill(map(getAmplitude(), 0, 1, 0, 255), 255, 255);
+        sphere(sphereSize);
+        popMatrix();
+        noFill();
     }
+    
+     
 
 }
