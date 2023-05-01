@@ -15,6 +15,8 @@ public class CrossVisual
     float scaler;
     float abScale;
 
+    long currentTime;
+
     public CrossVisual(BensVisual mv)
     {
         this.mv = mv; 
@@ -70,9 +72,10 @@ public class CrossVisual
         innerCross.setFill(mv.color(0));
         mv.shape(innerCross);
 
+        currentTime = System.currentTimeMillis();
         // cross.rotateX(0.005f);
 
-        if(mv.startTime != -1 && System.currentTimeMillis() - mv.startTime > 5000)
+        if(mv.startTime != -1 && currentTime - mv.startTime > 5000)
         {
             cross.rotateY(0.005f);
             cross.rotateZ(0.005f);    
@@ -81,7 +84,39 @@ public class CrossVisual
             innerCross.rotateZ(0.005f);    
         }
 
-        if(mv.startTime != -1 && System.currentTimeMillis() - mv.startTime > 38600)
+        if(mv.startTime != -1 && currentTime - mv.startTime > 38700)
+        {
             changeScale();
+
+            cross.rotateX(-0.0005f);   
+            innerCross.rotateX(-0.0005f);
+        }    
+
+        if(currentTime - mv.startTime > 125000 && currentTime - mv.startTime < 137500)
+        {
+            if(currentTime - mv.startTime < 131250)
+            {
+                cross.rotateY(0.02f);
+                cross.rotateZ(0.02f);    
+    
+                innerCross.rotateY(0.02f);
+                innerCross.rotateZ(0.02f);  
+    
+                cross.rotateX(-0.02f);   
+                innerCross.rotateX(-0.02f);
+            }
+            else 
+            {
+                cross.rotateY(-0.02f);
+                cross.rotateZ(-0.02f);    
+    
+                innerCross.rotateY(-0.02f);
+                innerCross.rotateZ(-0.02f);  
+    
+                cross.rotateX(0.04f);   
+                innerCross.rotateX(0.04f);
+            }
+        }
+
     }
 }

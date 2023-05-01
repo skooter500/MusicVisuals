@@ -3,6 +3,7 @@ package c21430484;
 import ddf.minim.AudioBuffer;
 import ie.tudublin.*;
 import processing.core.PImage;
+import processing.core.PShape;
 
 
 
@@ -17,6 +18,7 @@ public class BensVisual extends Visual
     AudioBuffer ab; 
 
     long startTime;
+    long currentTime;
 
     public void settings()
     {
@@ -46,9 +48,11 @@ public class BensVisual extends Visual
         tbv = new TrumpetBandVisual(this);
         cv = new CrossVisual(this);
         
-        justice = loadImage("justice.png");
+        justice = loadImage("justice2.png");
 
         startTime = -1;
+
+        background(0);
     }
 
     public void keyPressed()
@@ -61,9 +65,23 @@ public class BensVisual extends Visual
         }
     }
 
+    boolean drawBackground = true; 
+    
     public void draw()
     {
-        background(0);
+        currentTime = System.currentTimeMillis();
+        if(startTime != -1)
+        {
+            if(currentTime - startTime > 125000 && currentTime - startTime < 137500)
+                drawBackground = false;
+            else 
+                drawBackground = true;
+        }
+
+        if(drawBackground)
+            background(0);
+
+
         try
         {
             // Call this if you want to use FFT data
@@ -82,6 +100,9 @@ public class BensVisual extends Visual
 
 
         translate(-width/2, -height/2, 0);
+
+
+
         tbv.render();
         wf.render();
 
