@@ -54,7 +54,10 @@ By relating the visuals to the song's characteristics, such as its energy, repet
 
 # What I am most proud of in the assignment
 Fajar:
-I am proud of the code's responsiveness to the audio input. The visualizations dynamically adjust based on the amplitude, frequency, and rhythm of the music. This synchronization between the visuals and the music creates a seamless and coherent experience, where the visuals and music complement each other perfectly. Furthermore, this project helped me to gain better understanding of git.
+I am proud of the code's responsiveness to the audio input. The visualizations dynamically adjust based on the amplitude, frequency, and rhythm of the music. This synchronization between the visuals and the music creates a seamless and coherent experience, where the visuals and music complement each other perfectly. Furthermore, this project helped me to gain better understanding of git. Throughout the project, we faced various challenges that tested our problem-solving abilities and teamwork. Aligning the audio and visual components was a critical aspect of the project. Achieving synchronization between the music and visuals required meticulous attention to detail and thorough testing. 
+
+Bayan:
+
 # Markdown Tutorial
 
 
