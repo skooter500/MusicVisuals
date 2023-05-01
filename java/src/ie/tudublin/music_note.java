@@ -137,6 +137,7 @@ public class music_note extends Visual
         ellipse(noteX2 - 10, noteY + (noteDistance/2 + 10) + yOffset, noteSize, noteSize);
         line(noteX2 + 10, noteY + (noteDistance/2 + 10) + yOffset, noteX2, staffY - staffHeight/3 + yOffset);
 
+        // connect note
         line(noteX + noteDistance, noteY2 - staffSpacing + yOffset, noteX2, noteY - staffSpacing/4 + yOffset);
 
         // another note
@@ -148,6 +149,7 @@ public class music_note extends Visual
         ellipse((noteX + noteDistance - 10) * 2, noteY2 - (noteDistance - 20) + yOffset, noteSize, noteSize);
         line((noteX + noteDistance) * 2, noteY2 - (noteDistance - 20) + yOffset, (noteX + noteDistance) * 2, staffY - staffHeight/2 + yOffset);
 
+        // connect note
         line((noteX + noteDistance) * 2, staffY - staffHeight/2 + yOffset, noteX2 * 2, noteY - staffHeight/15 + yOffset);
 
         popMatrix();
