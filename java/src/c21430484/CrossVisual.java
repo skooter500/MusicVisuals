@@ -12,6 +12,8 @@ public class CrossVisual
     PShape innerCross; 
 
     float objScale; 
+    float scaler;
+    float abScale;
 
     public CrossVisual(BensVisual mv)
     {
@@ -32,15 +34,15 @@ public class CrossVisual
     
     public void changeScale()
     {
-        float testScale2 = 0.8f;  
-        float test = (mv.getSmoothedBands()[0] * 0.35f); 
-        float testScale1 = PApplet.map(test, 0f, 40f, 0.8f, 1.2f);
-        testScale2 = PApplet.lerp(testScale2, testScale1, 0.8f);
+        float scaler = 0.8f;  
 
+        abScale = (mv.getSmoothedBands()[0] * 0.8f); 
+        abScale = PApplet.map(abScale, 0f, 40f, 0.8f, 1.1f);
+        scaler = PApplet.lerp(scaler, abScale, 0.85f);
 
-        if(objScale > testScale2)
+        if(objScale > scaler)
         {   
-            while(objScale > testScale2)
+            while(objScale > scaler)
             {
                 objScale = objScale * 0.999f;
                 cross.scale(0.999f);
@@ -49,7 +51,7 @@ public class CrossVisual
         }
         else 
         {
-            while(objScale < testScale2)
+            while(objScale < scaler)
             {
                 objScale = objScale * 1.001f;
                 cross.scale(1.001f);
@@ -79,6 +81,7 @@ public class CrossVisual
             innerCross.rotateZ(0.005f);    
         }
 
-        changeScale();
+        if(mv.startTime != -1 && System.currentTimeMillis() - mv.startTime > 38600)
+            changeScale();
     }
 }
