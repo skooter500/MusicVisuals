@@ -75,7 +75,7 @@ public abstract class Visual extends PApplet
 			}
 			average /= (float) w;
 			bands[i] = average * 5.0f;
-			smoothedBands[i] = lerp(smoothedBands[i], bands[i], 0.05f);
+			smoothedBands[i] = lerp(smoothedBands[i], bands[i], 0.03f);
 		}
 	}
 
