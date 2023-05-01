@@ -30,7 +30,6 @@ public class CrossVisual
 
         innerCross.rotateX(+260);
         innerCross.scale(objScale);
-
     }
 
     
@@ -62,7 +61,8 @@ public class CrossVisual
         }
     }
 
-    public void render()
+
+    public void render(int phase)
     {
         cross.setFill(mv.color(208, 152, 3));
         mv.camera(0f, 0f, mv.height * .86602f, 0f, 0f, 0f, 0f, 1f, 0f);
@@ -75,6 +75,14 @@ public class CrossVisual
         currentTime = System.currentTimeMillis();
         // cross.rotateX(0.005f);
 
+        if(phase == 1)
+            renderPhase1();
+        else if(phase == 2)
+            renderPhase2(); 
+    }
+
+    public void renderPhase1()
+    {
         if(mv.startTime != -1 && currentTime - mv.startTime > 5000)
         {
             cross.rotateY(0.005f);
@@ -117,6 +125,11 @@ public class CrossVisual
                 innerCross.rotateX(0.04f);
             }
         }
+    }
 
+    public void renderPhase2()
+    {
+        cross.rotateZ(0.01f);    
+        innerCross.rotateZ(0.01f);  
     }
 }

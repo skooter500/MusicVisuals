@@ -13,6 +13,7 @@ public class BensVisual extends Visual
     CrossVisual cv; 
     AudioBandsVisual abv;
     TrumpetBandVisual tbv;
+    CircularWaveVisual cbv;
 
     PImage justice; 
     AudioBuffer ab; 
@@ -47,6 +48,7 @@ public class BensVisual extends Visual
         abv = new AudioBandsVisual(this);
         tbv = new TrumpetBandVisual(this);
         cv = new CrossVisual(this);
+        cbv = new CircularWaveVisual(this);
         
         justice = loadImage("justice2.png");
 
@@ -99,17 +101,31 @@ public class BensVisual extends Visual
         
 
 
+        
+        // renderPhase1();
+        renderPhase2();
+
+    }  
+    
+    public void renderPhase1()
+    {
         translate(-width/2, -height/2, 0);
-
-
-
         tbv.render();
         wf.render();
-
-        cv.render(); 
         
-
-
-        // abv.render();
-    }  
+        cv.render(1); 
+    }
+    
+    public void renderPhase2()
+    {
+        translate(-width/2, -height/2, 0);
+        cbv.render();
+        popMatrix();
+        
+        abv.render();
+        
+        
+        cv.render(2);
+        
+    }
 }
