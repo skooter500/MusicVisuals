@@ -33,6 +33,7 @@ Notice how the colors, shapes, and movements change in sync with the audio input
 The visuals created by the provided code can be related to the song "Mantra" by interpreting the visuals in a way that captures the essence and mood of the song. Here's a possible interpretation:
 
 Bayan:
+
 Sphere (Mode 1):
 The dynamic lines and vibrant colors of the sphere visualization can represent the energetic and pulsating nature of the song "Mantra."
 The changing positions and lengths of the lines can mirror the rhythmic patterns and melodic movements in the music.
@@ -44,6 +45,7 @@ The nodes' interactions and bouncing movements can convey a sense of harmony and
 The changing thickness and color of the lines connecting the nodes can symbolize the intricate layers and textures in the song's composition, adding a sense of complexity and depth to the visual representation.
 
 Fajar:
+
 Sound Particles (Mode 2):
 The moving particles in this visualization can symbolize the repetitive and trance-like nature of the song "Mantra."
 The particles' movements and sizes can follow the pulsating beats and subtle variations in the music, creating a mesmerizing and hypnotic visual effect.
