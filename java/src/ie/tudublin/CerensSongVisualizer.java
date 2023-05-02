@@ -124,7 +124,7 @@ public class CerensSongVisualizer extends PApplet {
             Particle(float angle, float radius, float speed, float size) {
                 this.angle = angle;
                 this.radius = radius;
-                this.speed = speed;
+                this.speed = random(2.0f, 1.0f); // Adjust the speed range here
                 this.size = size;
                 this.rotation = 0;
             }
