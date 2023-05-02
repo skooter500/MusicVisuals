@@ -52,6 +52,8 @@ The moving particles in this visualization can symbolize the repetitive and tran
 The particles' movements and sizes can follow the pulsating beats and subtle variations in the music, creating a mesmerizing and hypnotic visual effect.
 The changing colors of the particles can correspond to the shifting tones and emotions in the song, reflecting its introspective and evocative qualities.
 
+https://user-images.githubusercontent.com/123604689/235655738-f9708e1e-cc01-45cf-9286-2e05bf5a20db.mov
+
 CDWaves (Mode 4):
 The circular waves in this visualization can signify the expansive and transformative qualities of the song "Mantra."
 The size and color variations of the waves can capture the ebb and flow of intensity and emotion throughout the song.
