@@ -33,20 +33,24 @@ Notice how the colors, shapes, and movements change in sync with the audio input
 # How it works
 The visuals created by the provided code can be related to the song "Mantra" by interpreting the visuals in a way that captures the essence and mood of the song. Here's a possible interpretation:
 
+Bayan:
+
 Sphere (Mode 1):
 The dynamic lines and vibrant colors of the sphere visualization can represent the energetic and pulsating nature of the song "Mantra."
 The changing positions and lengths of the lines can mirror the rhythmic patterns and melodic movements in the music.
 The size and color variations of the dots can symbolize the different layers and frequencies present in the song, adding depth and complexity to the visual representation.
 
-Sound Particles (Mode 2):
-The moving particles in this visualization can symbolize the repetitive and trance-like nature of the song "Mantra."
-The particles' movements and sizes can follow the pulsating beats and subtle variations in the music, creating a mesmerizing and hypnotic visual effect.
-The changing colors of the particles can correspond to the shifting tones and emotions in the song, reflecting its introspective and evocative qualities.
-
 Spiral Nodes (Mode 3):
 The spiral pattern and fluid movements of the nodes can represent the continuous and cyclical nature of the song "Mantra."
 The nodes' interactions and bouncing movements can convey a sense of harmony and synchronization with the music.
 The changing thickness and color of the lines connecting the nodes can symbolize the intricate layers and textures in the song's composition, adding a sense of complexity and depth to the visual representation.
+
+Fajar:
+
+Sound Particles (Mode 2):
+The moving particles in this visualization can symbolize the repetitive and trance-like nature of the song "Mantra."
+The particles' movements and sizes can follow the pulsating beats and subtle variations in the music, creating a mesmerizing and hypnotic visual effect.
+The changing colors of the particles can correspond to the shifting tones and emotions in the song, reflecting its introspective and evocative qualities.
 
 CDWaves (Mode 4):
 The circular waves in this visualization can signify the expansive and transformative qualities of the song "Mantra."
@@ -59,6 +63,7 @@ Fajar:
 I am proud of the code's responsiveness to the audio input. The visualizations dynamically adjust based on the amplitude, frequency, and rhythm of the music. This synchronization between the visuals and the music creates a seamless and coherent experience, where the visuals and music complement each other perfectly. Furthermore, this project helped me to gain better understanding of git. Throughout the project, we faced various challenges that tested our problem-solving abilities and teamwork. Aligning the audio and visual components was a critical aspect of the project. Achieving synchronization between the music and visuals required meticulous attention to detail and thorough testing. 
 
 Bayan:
+I am most proud of the visuals I created for the project. Despite facing difficulties and restrictions on my Mac OS which didn't allow me to use P3D for 3D visuals, I adapted and used my knowledge of shapes, dimensions, and colors to create visuals that gave a 3D feel to the project. I spent a lot of time experimenting with different shapes and colors to make sure the visuals were dynamic and interesting to look at while still synchronizing with the audio. I'm happy with the way the visuals turned out and I think they are a great complement to the audio. It was a challenging but rewarding experience and I'm proud of what I was able to achieve.
 
 # Markdown Tutorial
 
