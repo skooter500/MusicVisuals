@@ -47,7 +47,7 @@ The spiral pattern and fluid movements of the nodes can represent the continuous
 The nodes' interactions and bouncing movements can convey a sense of harmony and synchronization with the music.
 The changing thickness and color of the lines connecting the nodes can symbolize the intricate layers and textures in the song's composition, adding a sense of complexity and depth to the visual representation.
 
-https://user-images.githubusercontent.com/123604689/235656099-d93a6e7b-cf6f-49f1-8e65-b3acce9808da.mov
+https://user-images.githubusercontent.com/123604689/235656790-142de04e-0c49-49ae-aea1-3fb6aa91ad2f.mov
 
 Fajar:
 
