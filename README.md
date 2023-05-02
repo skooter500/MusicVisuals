@@ -40,12 +40,22 @@ The dynamic lines and vibrant colors of the sphere visualization can represent t
 The changing positions and lengths of the lines can mirror the rhythmic patterns and melodic movements in the music.
 The size and color variations of the dots can symbolize the different layers and frequencies present in the song, adding depth and complexity to the visual representation.
 
+-The sphere visualization represents the audio by drawing lines that vary in length and color based on the amplitude of the audio.
+-As the song plays, the lines change their positions and lengths, creating a dynamic and immersive visual experience.
+-The size of the dots also changes based on the amplitude, with different colors representing different frequencies.
+-The visual elements respond to the audio, resulting in an abstract and vibrant representation of the song.
+
 https://user-images.githubusercontent.com/123604689/235656017-cc7cb52c-ae20-4dcc-975e-f09605cbae56.mov
 
 Spiral Nodes (Mode 3):
 The spiral pattern and fluid movements of the nodes can represent the continuous and cyclical nature of the song "Mantra."
 The nodes' interactions and bouncing movements can convey a sense of harmony and synchronization with the music.
 The changing thickness and color of the lines connecting the nodes can symbolize the intricate layers and textures in the song's composition, adding a sense of complexity and depth to the visual representation.
+
+-This visualization consists of nodes arranged in a spiral pattern that react to the audio input.
+-The nodes move and bounce around the screen, with their speed and direction influenced by the frequency of the audio.
+-The lines connecting the nodes are drawn with varying thickness and color, reflecting the audio's intensity and frequency.
+-As the song progresses, the spiral nodes create a visually intricate and evolving pattern.
 
 https://user-images.githubusercontent.com/123604689/235656790-142de04e-0c49-49ae-aea1-3fb6aa91ad2f.mov
 
@@ -56,6 +66,10 @@ The moving particles in this visualization can symbolize the repetitive and tran
 The particles' movements and sizes can follow the pulsating beats and subtle variations in the music, creating a mesmerizing and hypnotic visual effect.
 The changing colors of the particles can correspond to the shifting tones and emotions in the song, reflecting its introspective and evocative qualities.
 
+-This visualization displays moving particles that respond to the audio input.
+-The particles' positions and sizes are influenced by the amplitude of the audio, creating a visual effect that corresponds to the intensity of the sound.
+-The colors of the particles also change based on the audio input, further enhancing the visual representation of the song.
+
 https://user-images.githubusercontent.com/123604689/235655738-f9708e1e-cc01-45cf-9286-2e05bf5a20db.mov
 
 CDWaves (Mode 4):
@@ -63,6 +77,11 @@ The circular waves in this visualization can signify the expansive and transform
 The size and color variations of the waves can capture the ebb and flow of intensity and emotion throughout the song.
 The central circle representing the audio source can symbolize the core mantra or recurring motif in the music, while the surrounding waves reflect the subtle variations and harmonies that build upon it.
 By relating the visuals to the song's characteristics, such as its energy, repetition, cyclical nature, and transformative qualities, the visualizations can enhance the listener's experience and provide a synchronized and immersive representation of the song "Mantra."
+
+-In this visualization, circular waves are created based on the audio input.
+-The size and color of the waves change dynamically with the amplitude of the audio.
+-The visualization includes a central circle that represents the audio source, with its size and color responding to the average amplitude of the audio.
+-The circular waves around the central circle are drawn with different colors and widths, representing different frequency bands in the audio.
 
 https://user-images.githubusercontent.com/123604689/235656205-7f4b17ef-9335-4daf-9d47-6a98f95477a6.mov
 
