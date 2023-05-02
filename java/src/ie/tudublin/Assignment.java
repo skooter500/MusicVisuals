@@ -91,7 +91,7 @@ public class Assignment extends PApplet {
     }
 
     public void settings() {
-        size(1500, 900);
+        size(1024, 1000);
         // fullScreen(P3D, SPAN);
     }
 
@@ -129,38 +129,37 @@ public class Assignment extends PApplet {
     }
 
     public void draw() {
-        
+        float average = 0;
+        float sum = 0;
+        off += 1;
+
+        // Calculate sum and average of the samples
+        // Also lerp each element of buffer;
+        for (int i = 0; i < ab.size(); i++) {
+            sum += abs(ab.get(i));
+            lerpedBuffer[i] = lerp(lerpedBuffer[i], ab.get(i), 0.1f);
+        }
+        average = sum / (float) ab.size();
+
+        smoothedAmplitude = lerp(smoothedAmplitude, average, 0.1f);
+
+        // Calculate sum and average of the samples
+        // Also lerp each element of buffer;
+        for (int i = 0; i < ab.size(); i++) {
+            sum += abs(ab.get(i));
+            lerpedBuffer[i] = lerp(lerpedBuffer[i], ab.get(i), 0.1f);
+        }
+        average = sum / (float) ab.size();
+
+        smoothedAmplitude = lerp(smoothedAmplitude, average, 0.1f);
+
         switch (mode) {
             // sphere code
             case 1:
 
-            float average = 0;
-            float sum = 0;
-            off += 1;
-    
-            // Calculate sum and average of the samples
-            // Also lerp each element of buffer;
-            for (int i = 0; i < ab.size(); i++) {
-                sum += abs(ab.get(i));
-                lerpedBuffer[i] = lerp(lerpedBuffer[i], ab.get(i), 0.1f);
-            }
-            average = sum / (float) ab.size();
-    
-            smoothedAmplitude = lerp(smoothedAmplitude, average, 0.1f);
-    
-            // Calculate sum and average of the samples
-            // Also lerp each element of buffer;
-            for (int i = 0; i < ab.size(); i++) {
-                sum += abs(ab.get(i));
-                lerpedBuffer[i] = lerp(lerpedBuffer[i], ab.get(i), 0.1f);
-            }
-            average = sum / (float) ab.size();
-    
-            smoothedAmplitude = lerp(smoothedAmplitude, average, 0.1f);
-
-                colorMode(HSB);
                 background(0);
                 noFill();
+                colorMode(HSB);
                 translate(width / 2, height / 2);
 
                 // Draw the sphere
@@ -272,7 +271,7 @@ public class Assignment extends PApplet {
                 translate(width / 2, height / 2);
                 background(0);
         
-                colorMode(HSB);
+                colorMode(HSB, 255);
         
                 float avgAmplitude = ap.mix.level() * 255;
                 fill(avgAmplitude, 0, 0);
