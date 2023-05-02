@@ -1,98 +1,172 @@
 package ie.tudublin;
 
-import ddf.minim.*;
-import ddf.minim.analysis.*;
-import processing.core.*;
+import ddf.minim.AudioBuffer;
+import ddf.minim.AudioPlayer;
+import ddf.minim.Minim;
+import ddf.minim.analysis.FFT;
+import processing.core.PApplet;
 
 import java.util.ArrayList;
 
-public class Visualizer extends PApplet {
-
+public class AudioVisual extends PApplet {
     Minim minim;
-    AudioPlayer player;
+    AudioPlayer ap;
+    AudioBuffer ab;
     FFT fft;
-    float[] bands;
 
-    ArrayList<PVector> points = new ArrayList<PVector>();
-    int maxPoints = 1000;
+    ArrayList<Particle> particles;
+    int numParticles = 200;
+    int[] palette;
+    int[] particlePalette;
+
+    float smoothedAmplitude = 0;
 
     public void settings() {
         size(1024, 768, P3D);
     }
 
     public void setup() {
-        colorMode(HSB, 360, 100, 100);
-        noFill();
-
         minim = new Minim(this);
-        player = minim.loadFile("Parasite.mp3", 1024);
-        player.play();
+        ap = minim.loadFile("Parasite.mp3", 1024);
+        ap.play();
+        ab = ap.mix;
+        fft = new FFT(ab.size(), ap.sampleRate());
+        colorMode(HSB);
 
-        fft = new FFT(player.bufferSize(), player.sampleRate());
-        bands = new float[fft.specSize()];
+        lerpedBuffer = new float[ab.size()];
+        for (int i = 0; i < ab.size(); i++) {
+            lerpedBuffer[i] = 0;
+        }
 
-        // Create initial set of points
-        for (int i = 0; i < maxPoints; i++) {
-            points.add(new PVector(random(width), random(height), random(50, 200)));
+        particles = new ArrayList<Particle>();
+        for (int i = 0; i < numParticles; i++) {
+            particles.add(new Particle(this));
+        }
+
+        palette = new int[]{
+            color(0, 200, 255),
+            color(50, 255, 200),
+            color(255, 200, 100),
+            color(200, 50, 255)
+        };
+
+        particlePalette = new int[]{
+                color(20, 180, 200),
+                color(70, 235, 150)
+        };
+    }
+
+    float[] lerpedBuffer;
+    class Particle {
+        PApplet parent;
+        float x, y, z;
+        float vx, vy, vz;
+        float lifespan;
+        float size;
+    
+        Particle(PApplet parent) {
+            this.parent = parent;
+            x = random(-width / 2, width / 2);
+            y = random(-height / 2, height / 2);
+            z = random(-200, 200);
+            vx = random(-2, 2);
+            vy = random(-2, 2);
+            vz = random(-2, 2);
+            lifespan = random(100, 255);
+            size = random(2, 5);
+        }
+    
+        void update(float amplitude) {
+            x += vx * amplitude;
+            y += vy * amplitude;
+            z += vz * amplitude;
+            lifespan -= 1;
+    
+            if (lifespan <= 0 || x < -width / 2 || x > width / 2 || y < -height / 2 || y > height / 2 || z < -200 || z > 200) {
+                x = random(-width / 2, width / 2);
+                y = random(-height / 2, height / 2);
+                z = random(-200, 200);
+                vx = random(-2, 2);
+                vy = random(-2, 2);
+                vz = random(-2, 2);
+                lifespan = random(100, 255);
+                size = random(2, 5);
+            }
+        }
+        void display() {
+            parent.pushMatrix();
+            parent.translate(width / 2 + x, height / 2 + y, z);
+            parent.noStroke();
+            float alpha = map(lifespan, 0, 255, 0, 1);
+            parent.fill(lerpColor(particlePalette[0], particlePalette[1], alpha), alpha * 255);
+            parent.sphere(size);
+            parent.popMatrix();
         }
     }
 
     public void draw() {
+        float halfH = height / 2;
+        float sum = 0;
+
+        for (int i = 0; i < ab.size(); i++) {
+            lerpedBuffer[i] = lerp(lerpedBuffer[i], ab.get(i), 0.1f);
+            sum += abs(lerpedBuffer[i]);
+        }
+
+        smoothedAmplitude = lerp(smoothedAmplitude, sum / (float) ab.size(), 0.5f);
+
         background(0);
-        fft.forward(player.mix);
 
-        // Update point positions based on FFT bands
-        for (int i = 0; i < points.size(); i++) {
-            PVector p = points.get(i);
-            float band = bands[i % bands.length];
-            float x = map(band, 0, 255, -width, width);
-            float y = map(band, 0, 255, -height, height);
-            p.x += x * noise(p.z) * 0.1f;
-            p.y += y * noise(p.z) * 0.1f;
-            p.z -= 1;
-            if (p.z < 0) {
-                p.z = random(50, 200);
-                p.x = random(width);
-                p.y = random(height);
-            }
+        float colorAngle = (frameCount * 0.01f) % TWO_PI;
+        float hue = map(sin(colorAngle), -1, 1, 0, 255);
+        float sat = map(smoothedAmplitude, 0, 1, 50, 255);
+        float brightness = map(smoothedAmplitude, 0, 1, 200, 255);
+
+        fill(hue, sat, brightness);
+        stroke(hue, sat, brightness);
+
+        for (int i = 0; i < ab.size() - 1; i++) {
+            float x1 = map(i, 0, ab.size(), 0, width);
+            float x2 = map(i + 1, 0, ab.size(), 0, width);
+            float y1 = halfH - lerpedBuffer[i] * halfH;
+            float y2 = halfH - lerpedBuffer[i + 1] * halfH;
+
+            line(x1, y1, x2, y2);
         }
 
-        // Calculate FFT bands
-        for (int i = 0; i < bands.length; i++) {
-            bands[i] = fft.getBand(i);
+        for (Particle p : particles) {
+            p.update(smoothedAmplitude);
+            p.display();
         }
 
-        // Draw jagged lines using FFT bands
-        strokeWeight(3);
-        stroke(0, 80, 100);
-        beginShape();
-        for (int i = 0; i < bands.length; i++) {
-            float x = map(i, 0, bands.length, 0, width);
-            float y = map(bands[i], 0, 255, height / 2, 0);
-            y += noise(i) * 50;
-            vertex(x, y);
-        }
-        endShape();
+        // Flashy border
+        float flashiness = map(smoothedAmplitude, 0, 1, 0, 255);
+        int numLights = 20;
+        float lightWidth = width / (float) numLights;
+        float lightHeight = height / (float) numLights;
+        
+        for (int i = 0; i < numLights; i++) {
+            float xPos = i * lightWidth;
+            float yPos = i * lightHeight;
+            stroke(hue, sat, flashiness);
+            strokeWeight(5);
 
-        // Draw particles at each point
-        strokeWeight(2);
-        for (PVector p : points) {
-            float hue = map(p.z, 50, 200, 0, 360);
-            stroke(hue, 100, 100);
-            point(p.x, p.y, p.z);
-        }
-    }
+            // Top border
+            line(xPos, 0, xPos + lightWidth, 0);
 
-    public void stop() {
-        player.close();
-        minim.stop();
-        super.stop();
+            // Bottom border
+            line(xPos, height, xPos + lightWidth, height);
+
+            // Left border
+            line(0, yPos, 0, yPos + lightHeight);
+
+            // Right border
+            line(width, yPos, width, yPos + lightHeight);
+        }
     }
 
     public static void main(String[] args) {
-        String[] processingArgs = {"Visualizer"};
-        Visualizer visualizer = new Visualizer();
-        PApplet.runSketch(processingArgs, visualizer);
+        PApplet.main("ie.tudublin.AudioVisual");
     }
-
 }
+
