@@ -42,6 +42,6 @@ public class Main
     }
 	public static void main(String[] args)
 	{
-		audio7();
+		audio6();
 	}
 }
