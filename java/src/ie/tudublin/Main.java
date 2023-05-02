@@ -8,7 +8,11 @@ public class Main
 		String[] a = {"MAIN"};
         processing.core.PApplet.runSketch( a, new Experiance());		
 	}
-
+	public void discoBallUI()
+	{
+		String[] a = {"MAIN"};
+        processing.core.PApplet.runSketch( a, new DiscoBall());		
+	}
 
 	public static void main(String[] args)
 	{
