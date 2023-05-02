@@ -103,7 +103,7 @@ public class BensVisual extends Visual
 
         if(startTime != -1)
         {
-            if(timeElapsed() > 137500)
+            if(timeElapsed() > 137450)
                 renderPhase2();
             else 
                 renderPhase1();
@@ -140,6 +140,9 @@ public class BensVisual extends Visual
 
     public long timeElapsed()
     {
+        if(startTime == -1)
+            return 0; 
+
         return currentTime - startTime; 
     }
 }

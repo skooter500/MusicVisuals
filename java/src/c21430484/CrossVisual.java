@@ -83,7 +83,7 @@ public class CrossVisual
 
     public void renderPhase1()
     {
-        if(mv.startTime != -1 && mv.timeElapsed() > 5000)
+        if(mv.timeElapsed() > 5000)
         {
             cross.rotateY(0.005f);
             cross.rotateZ(0.005f);    
@@ -92,7 +92,7 @@ public class CrossVisual
             innerCross.rotateZ(0.005f);    
         }
 
-        if(mv.startTime != -1 && mv.timeElapsed() > 38700)
+        if(mv.timeElapsed() > 38700)
         {
             changeScale();
 
