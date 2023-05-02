@@ -40,10 +40,14 @@ The dynamic lines and vibrant colors of the sphere visualization can represent t
 The changing positions and lengths of the lines can mirror the rhythmic patterns and melodic movements in the music.
 The size and color variations of the dots can symbolize the different layers and frequencies present in the song, adding depth and complexity to the visual representation.
 
+https://user-images.githubusercontent.com/123604689/235656017-cc7cb52c-ae20-4dcc-975e-f09605cbae56.mov
+
 Spiral Nodes (Mode 3):
 The spiral pattern and fluid movements of the nodes can represent the continuous and cyclical nature of the song "Mantra."
 The nodes' interactions and bouncing movements can convey a sense of harmony and synchronization with the music.
 The changing thickness and color of the lines connecting the nodes can symbolize the intricate layers and textures in the song's composition, adding a sense of complexity and depth to the visual representation.
+
+https://user-images.githubusercontent.com/123604689/235656790-142de04e-0c49-49ae-aea1-3fb6aa91ad2f.mov
 
 Fajar:
 
@@ -52,11 +56,15 @@ The moving particles in this visualization can symbolize the repetitive and tran
 The particles' movements and sizes can follow the pulsating beats and subtle variations in the music, creating a mesmerizing and hypnotic visual effect.
 The changing colors of the particles can correspond to the shifting tones and emotions in the song, reflecting its introspective and evocative qualities.
 
+https://user-images.githubusercontent.com/123604689/235655738-f9708e1e-cc01-45cf-9286-2e05bf5a20db.mov
+
 CDWaves (Mode 4):
 The circular waves in this visualization can signify the expansive and transformative qualities of the song "Mantra."
 The size and color variations of the waves can capture the ebb and flow of intensity and emotion throughout the song.
 The central circle representing the audio source can symbolize the core mantra or recurring motif in the music, while the surrounding waves reflect the subtle variations and harmonies that build upon it.
 By relating the visuals to the song's characteristics, such as its energy, repetition, cyclical nature, and transformative qualities, the visualizations can enhance the listener's experience and provide a synchronized and immersive representation of the song "Mantra."
+
+https://user-images.githubusercontent.com/123604689/235656205-7f4b17ef-9335-4daf-9d47-6a98f95477a6.mov
 
 # What I am most proud of in the assignment
 Fajar:
