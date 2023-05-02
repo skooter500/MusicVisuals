@@ -7,9 +7,6 @@ Student Number: D20125707,
 D20125581
 
 #Youtube Video
-[![YouTube] (https://www.youtube.com/embed/5zI0J1447Vs) https://www.youtube.com/watch?v=5zI0J1447Vs)
-
-![MusicVisuals](https://user-images.githubusercontent.com/123570704/235653303-596fd465-284e-43c2-a2e4-f6dcb338d83a.jpg)
 
 [![YouTube](https://user-images.githubusercontent.com/123570704/235653303-596fd465-284e-43c2-a2e4-f6dcb338d83a.jpg)](https://www.youtube.com/watch?v=5zI0J1447Vs)
 
