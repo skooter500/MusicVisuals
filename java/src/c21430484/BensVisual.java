@@ -50,7 +50,7 @@ public class BensVisual extends Visual
         cv = new CrossVisual(this);
         cbv = new CircularWaveVisual(this);
         
-        justice = loadImage("justice2.png");
+        justice = loadImage("justice.png");
 
         startTime = -1;
 
@@ -75,7 +75,7 @@ public class BensVisual extends Visual
 
         if(startTime != -1)
         {
-            if(timeElapsed() > 125000 && timeElapsed() < 137500)
+            if((timeElapsed() > 124060 && timeElapsed() < 137500) || (timeElapsed() > 181500 && timeElapsed() < 186500))
                 drawBackground = false;
             else 
                 drawBackground = true;
@@ -103,7 +103,7 @@ public class BensVisual extends Visual
 
         if(startTime != -1)
         {
-            if(timeElapsed() > 137450)
+            if(timeElapsed() > 137500 && timeElapsed() < 186500)
                 renderPhase2();
             else 
                 renderPhase1();
@@ -111,10 +111,13 @@ public class BensVisual extends Visual
         else 
             renderPhase1();
         
+        // renderPhase2();
         
-            // 
+            
 
     }  
+
+
     
     public void renderPhase1()
     {

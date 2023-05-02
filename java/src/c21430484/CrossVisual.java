@@ -131,6 +131,18 @@ public class CrossVisual
     {
         cross.rotateZ(0.01f);    
         innerCross.rotateZ(0.01f);  
+
+        if(mv.timeElapsed() > 170000 && mv.timeElapsed() < 187000)
+        {
+            cross.rotateY(-0.02f);
+            cross.rotateZ(-0.02f);    
+
+            innerCross.rotateY(-0.02f);
+            innerCross.rotateZ(-0.02f);  
+
+            cross.rotateX(-0.02f);   
+            innerCross.rotateX(-0.02f);  
+        }
     }
 }   
 

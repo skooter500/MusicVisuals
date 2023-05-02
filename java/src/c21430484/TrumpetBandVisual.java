@@ -18,6 +18,10 @@ public class TrumpetBandVisual
 
     public void render()
     {
+
+        if(mv.timeElapsed() > 235000)
+            return; 
+
         float gap = mv.width / (float) mv.getBands().length;
         mv.noStroke();
 
@@ -34,7 +38,7 @@ public class TrumpetBandVisual
         
 
         // mv.rotateX(0.7f);
-        mv.circle(mv.width / 2, mv.height / 2, 300 + (mv.getSmoothedBands()[6] * 0.35f)); 
+        // mv.circle(mv.width / 2, mv.height / 2, 300 + (mv.getSmoothedBands()[6] * 0.35f)); 
 
         // System.out.println((mv.timeElapsed() + 5) / 10 * 5);
         
@@ -56,7 +60,7 @@ public class TrumpetBandVisual
             
             if(mv.currentTime - lastIncrement > 500)
             {
-                noCircles++;
+                noCircles += 2;
                 lastIncrement = mv.currentTime;
             }
         }
@@ -74,12 +78,13 @@ public class TrumpetBandVisual
             }
         }
 
+        mv.translate(0, 0, -175f);
         for(int i = 0; i < noCircles; i++)
         {
-            mv.circle(mv.width / 2, mv.height / 2, 300 + (mv.getSmoothedBands()[6] * (0.35f - (0.07f * i)))); 
+            mv.circle(mv.width / 2, mv.height / 2, 380 + (mv.getSmoothedBands()[6] * (0.45f - (0.07f * i)))); 
         }
 
-        mv.image(mv.justice, (mv.width/2) - 125, -40);
-        mv.translate(0, -30, 0);
+        mv.image(mv.justice, (mv.width/2) - 125, -100);
+        mv.translate(0, -30, 175);
     }
 }
