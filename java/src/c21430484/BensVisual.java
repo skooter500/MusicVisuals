@@ -72,9 +72,10 @@ public class BensVisual extends Visual
     public void draw()
     {
         currentTime = System.currentTimeMillis();
+
         if(startTime != -1)
         {
-            if(currentTime - startTime > 125000 && currentTime - startTime < 137500)
+            if(timeElapsed() > 125000 && timeElapsed() < 137500)
                 drawBackground = false;
             else 
                 drawBackground = true;
@@ -100,10 +101,18 @@ public class BensVisual extends Visual
         calculateAverageAmplitude();        
         
 
-
+        if(startTime != -1)
+        {
+            if(timeElapsed() > 137500)
+                renderPhase2();
+            else 
+                renderPhase1();
+        }
+        else 
+            renderPhase1();
         
-        // renderPhase1();
-        renderPhase2();
+        
+            // 
 
     }  
     
@@ -127,5 +136,10 @@ public class BensVisual extends Visual
         
         cv.render(2);
         
+    }
+
+    public long timeElapsed()
+    {
+        return currentTime - startTime; 
     }
 }

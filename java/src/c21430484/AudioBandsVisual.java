@@ -17,12 +17,12 @@ public class AudioBandsVisual
         float gap = mv.width / (float) mv.getBands().length;
         float testGap = mv.height / (float) mv.getBands().length;
         
-        float brightness = 60 / (float) mv.getBands().length;
+        // float brightness = 60 / (float) mv.getBands().length;
         
         mv.noStroke();
         for(int i = 0 ; i < mv.getBands().length ; i ++)
         {
-            mv.fill(208, 152, 3, 40 + (i * brightness));
+            mv.fill(208, 152, 3, 40 + 100 - (i * 10));
 
             // mv.rect(i * gap, mv.height, gap,-mv.getSmoothedBands()[i] * 0.2f); 
             // mv.rect(i * gap, 0, gap, mv.getSmoothedBands()[i] * 0.2f); 

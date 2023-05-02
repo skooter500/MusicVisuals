@@ -72,7 +72,7 @@ public class CrossVisual
         innerCross.setFill(mv.color(0));
         mv.shape(innerCross);
 
-        currentTime = System.currentTimeMillis();
+        // currentTime = System.currentTimeMillis();
         // cross.rotateX(0.005f);
 
         if(phase == 1)
@@ -83,7 +83,7 @@ public class CrossVisual
 
     public void renderPhase1()
     {
-        if(mv.startTime != -1 && currentTime - mv.startTime > 5000)
+        if(mv.startTime != -1 && mv.timeElapsed() > 5000)
         {
             cross.rotateY(0.005f);
             cross.rotateZ(0.005f);    
@@ -92,7 +92,7 @@ public class CrossVisual
             innerCross.rotateZ(0.005f);    
         }
 
-        if(mv.startTime != -1 && currentTime - mv.startTime > 38700)
+        if(mv.startTime != -1 && mv.timeElapsed() > 38700)
         {
             changeScale();
 
@@ -100,9 +100,9 @@ public class CrossVisual
             innerCross.rotateX(-0.0005f);
         }    
 
-        if(currentTime - mv.startTime > 125000 && currentTime - mv.startTime < 137500)
+        if(mv.timeElapsed() > 125000 && mv.timeElapsed() < 137500)
         {
-            if(currentTime - mv.startTime < 131250)
+            if(mv.timeElapsed() < 131250)
             {
                 cross.rotateY(0.02f);
                 cross.rotateZ(0.02f);    
@@ -121,8 +121,8 @@ public class CrossVisual
                 innerCross.rotateY(-0.02f);
                 innerCross.rotateZ(-0.02f);  
     
-                cross.rotateX(0.04f);   
-                innerCross.rotateX(0.04f);
+                cross.rotateX(0.07f);   
+                innerCross.rotateX(0.07f);
             }
         }
     }
@@ -132,4 +132,5 @@ public class CrossVisual
         cross.rotateZ(0.01f);    
         innerCross.rotateZ(0.01f);  
     }
-}
+}   
+
