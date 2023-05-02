@@ -14,8 +14,8 @@ public class WarpedSpace extends PApplet {
 	
 	public void setup() {
 		speed = 10;	//increase speed to make the particles appear longer
-		stars = new Star[1500];
-		for (int i = 0; i < 1500; i++) stars[i] = new Star();
+		stars = new Star[2500];
+		for (int i = 0; i < 2500; i++) stars[i] = new Star();
 		translate(width/2, height/2);
 	}
 	
