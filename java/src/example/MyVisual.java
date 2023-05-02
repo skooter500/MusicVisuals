@@ -7,7 +7,7 @@ public class MyVisual extends Visual
     WaveForm wf;
    // AudioBandsVisual abv;
 
-    public MyVisual(stars stars) {
+    public MyVisual() {
 	}
 
 	public void settings()
