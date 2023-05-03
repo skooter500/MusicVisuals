@@ -5,6 +5,8 @@ import ie.tudublin.*;
 import processing.core.PImage;
 import processing.core.PShape;
 
+import example.*;
+
 
 
 public class BensVisual extends Visual
@@ -38,7 +40,7 @@ public class BensVisual extends Visual
         // colorMode(HSB);
                 
         // Call loadAudio to load an audio file to process 
-        loadAudio("Genesis.mp3");   
+        loadAudio("segments/Piano-buildup.mp3");   
 
         
         // Call this instead to read audio from the microphone
@@ -49,7 +51,7 @@ public class BensVisual extends Visual
         tbv = new TrumpetBandVisual(this);
         cv = new CrossVisual(this);
         cbv = new CircularWaveVisual(this);
-        
+
         justice = loadImage("justice.png");
 
         startTime = -1;
@@ -101,6 +103,7 @@ public class BensVisual extends Visual
         calculateAverageAmplitude();        
         
 
+
         if(startTime != -1)
         {
             if(timeElapsed() > 137500 && timeElapsed() < 186500)
@@ -111,10 +114,7 @@ public class BensVisual extends Visual
         else 
             renderPhase1();
         
-        // renderPhase2();
-        
-            
-
+        renderPhase2();
     }  
 
 

@@ -1,15 +1,16 @@
 package example;
 
+import c21430484.BensVisual;
 import processing.core.*;
 
 // This is an example of a visual that uses the audio bands
 public class ExampleAudioBandsVisual
 {
-    MyVisual mv;
+    BensVisual mv;
 
-    public ExampleAudioBandsVisual(MyVisual mv)
+    public ExampleAudioBandsVisual(BensVisual bensVisual)
     {
-        this.mv = mv; 
+        this.mv = bensVisual; 
     }
 
     public void render()

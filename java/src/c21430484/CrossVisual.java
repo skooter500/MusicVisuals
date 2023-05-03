@@ -134,11 +134,11 @@ public class CrossVisual
 
         if(mv.timeElapsed() > 170000 && mv.timeElapsed() < 187000)
         {
-            cross.rotateY(-0.02f);
-            cross.rotateZ(-0.02f);    
-
-            innerCross.rotateY(-0.02f);
-            innerCross.rotateZ(-0.02f);  
+            cross.rotateY(0.035f);
+            innerCross.rotateY(0.035f);
+            
+            cross.rotateZ(0.045f);     
+            innerCross.rotateZ(0.045f);  
 
             cross.rotateX(-0.02f);   
             innerCross.rotateX(-0.02f);  

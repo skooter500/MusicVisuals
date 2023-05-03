@@ -36,21 +36,6 @@ public class TrumpetBandVisual
         mv.stroke(208, 152, 3);
         mv.translate(0, +30, 0);
         
-
-        // mv.rotateX(0.7f);
-        // mv.circle(mv.width / 2, mv.height / 2, 300 + (mv.getSmoothedBands()[6] * 0.35f)); 
-
-        // System.out.println((mv.timeElapsed() + 5) / 10 * 5);
-        
-
-        
-        // if(mv.timeElapsed() > 38700 && mv.timeElapsed() < 62300)
-        // {
-        //     noCircles = 2; 
-        //     // mv.circle(mv.width / 2, mv.height / 2, 300 + (mv.getSmoothedBands()[6] * 0.4f)); 
-        //     // mv.circle(mv.width / 2, mv.height / 2, 300 + (mv.getSmoothedBands()[6] * 0.45f)); 
-        // }
-        
         if((mv.timeElapsed() > 63500 && mv.timeElapsed() < 71000) ||
            (mv.timeElapsed() > 104400 && mv.timeElapsed() < 120000))
         {
