@@ -107,6 +107,93 @@ Each team member or individual needs to write a paragraph or two explaining what
     }
 ```
 
+## Visual Dimension 3: Daniel Wu (C21460524)
+
+### Desc
+	
+	In my visual it first shows a big Sun that is going through its giant phase, it then splits into 4 different Sun's and then it shows the universe collapsing
+        and shaking and showing lots of chaos.
+	
+### Part 1
+
+	The first part of my visual shows the Sun slowly growing according to the amplitude of the music.
+	
+### Part 2
+
+	The second part of my visual shows the Sun split into 4 smaller suns rotating around the center of the screen.
+	
+### Part 3
+
+	The last part of my visual shows the screen shaking and explosions happening according to amplitude.
+	
+## Daniel Wu (C21460524)
+
+      There was lots of things that i was proud of in this assignment but the thing that i was most proud of was getting the sphere to split into four seperate sphere and adding the screen shake. I am also proud that i got the spheres to rotate around the center.
+
+ private void drawCircle() {
+        float x = windowWidth / 2;
+        float y = windowHeight / 2;
+        float amplitude = audioBuffer.level() * 1000;
+        float diameter = (initialDiameter + amplitude + (timeElapsed * timeScale)) / 2;
+        // Map the amplitude value to a hue value
+        pApplet.colorMode(PConstants.HSB, 360, 100, 100);
+        float hue = PApplet.map(amplitude, 0, 200, 0, 360);
+        // Calculate the opacity based on a sine wave
+        float opacity = PApplet.map(PApplet.sin(pApplet.frameCount * 0.05f), -1, 1, 50, 255);
+        for (int k = 0; k < 4; k++) {
+            float offsetX = PApplet.cos(rotationAngle) * diameter * 1.5f;
+            float offsetY = PApplet.sin(rotationAngle) * diameter * 1.5f;
+            pApplet.pushMatrix();
+            pApplet.pushStyle();
+            pApplet.translate(x + offsetX, y + offsetY, -diameter / 2);
+            pApplet.noStroke();
+            float adjustedRotationSpeed = PApplet.map(amplitude, 0, 200, rotationSpeed, rotationSpeed * 10);
+            rotationAngle += adjustedRotationSpeed;
+            pApplet.fill(hue, 100, 100, opacity); // Use the calculated opacity value
+            pApplet.rotate(rotationAngle, 1, 1, 0);
+            pApplet.beginShape(PConstants.TRIANGLES);
+            int detail = 100;
+            for (int j = 0; j < detail; j++) {
+                float theta1 = PApplet.map(j, 0, detail, 0, PConstants.TWO_PI);
+                float theta2 = PApplet.map(j + 1, 0, detail, 0, PConstants.TWO_PI);
+                for (int i = 0; i < detail; i++) {
+                    float phi1 = PApplet.map(i, 0, detail, 0, PConstants.PI);
+                    float phi2 = PApplet.map(i + 1, 0, detail, 0, PConstants.PI);
+                    float x1 = diameter * PApplet.sin(phi1) * PApplet.cos(theta1);
+                    float y1 = diameter * PApplet.sin(phi1) * PApplet.sin(theta1);
+                    float z1 = diameter * PApplet.cos(phi1);
+                    float x2 = diameter * PApplet.sin(phi1) * PApplet.cos(theta2);
+                    float y2 = diameter * PApplet.sin(phi1) * PApplet.sin(theta2);
+                    float z2 = diameter * PApplet.cos(phi1);
+                    float x3 = diameter * PApplet.sin(phi2) * PApplet.cos(theta2);
+                    float y3 = diameter * PApplet.sin(phi2) * PApplet.sin(theta2);
+                    float z3 = diameter * PApplet.cos(phi2);
+                    pApplet.vertex(x1, y1, z1);
+                    pApplet.vertex(x2, y2, z2);
+                    pApplet.vertex(x3, y3, z3);
+                    pApplet.vertex(x1, y1, z1);
+                    pApplet.vertex(x3, y3, z3);
+                    pApplet.vertex(x2, y2, z2);
+                }
+            }
+            pApplet.endShape();
+            if (amplitude > 20) {
+                particles.add(new Particle(new PVector(x + offsetX, y + offsetY), hue));
+                if (amplitude > 220) {
+                    createExplosion(x + offsetX, y + offsetY, hue, 100);
+                }
+            }
+            pApplet.popMatrix();
+            pApplet.popStyle();
+            rotationAngle += PConstants.PI / 2; // Divide the full circle into 4 equal parts for each circle
+        }
+        pApplet.noStroke();
+        // Increment time elapsed
+        timeElapsed += 1;
+    }
+    
+ ```
+
 # References
 * Item 1
 * Item 2
