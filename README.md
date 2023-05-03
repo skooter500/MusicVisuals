@@ -42,6 +42,11 @@ Include all team members names and student numbers if a team project
 ![](https://github.com/Entroshock/MusicVisuals/blob/master/Images/alexvisual1.png)
 ![](https://github.com/Entroshock/MusicVisuals/blob/master/Images/alexvisual2.png)
 
+## Ernest (C21394933) Screenshots:
+![](https://github.com/ErnestDecina/MusicVisuals/blob/master/Images/ErnestVisualOne.png)
+![](https://github.com/ErnestDecina/MusicVisuals/blob/master/Images/ErnestVisualTwo.png)
+![](https://github.com/ErnestDecina/MusicVisuals/blob/master/Images/ErnestVisualThree.png)
+
 
 # Instructions to work Visualizer
 
@@ -58,7 +63,7 @@ Include all team members names and student numbers if a team project
 	Enter an APPROPRIATE prompt. Then wait for the Application to process your AI Generated Image. (Any inappropriate prompts will be met with a error and user must reinput a prompt). If it still doesnt work make sure you are connected to the internet for visualizer to create a AI Image
 
 # How it works
-![](Images\HowItWorks.jpg)
+![](https://raw.githubusercontent.com/ErnestDecina/MusicVisuals/master/Images/HowItWork.jpg)
 
 ## Overall functionality
 We first run the program in main and it initializes the MusicVisual 
@@ -70,7 +75,7 @@ It uses a textbox and get a text user input and a button to submit.
 This will then send the prompt to a API server that processes the AI Image.
 
 
-#### Visual 3 (Daniel Wu: C21460524)
+### Visual 3 (Daniel Wu: C21460524)
 
 ##### drawExample
 This code draws a visual scene consisting of an earthquake effect, starfield, circle, particle system, and screen flash effect, while preserving the original transformation and style settings in Processing
@@ -107,6 +112,7 @@ This visual renders points and vertexs then applies bass to the bottom terrain a
 
 
 ### Visual 4 (Alex Tsang: )
+For my visualizer; what I did was use math to create a rose pattern. By using sin and cos functions I was able to create the petals of the flower and also I was able to use it to give my petal lines dynamic colour. The mathematic equations using trigonometry function and polar coordinates gave this project life.
 
 
 ### Visual 1 (Ron Pingol: )
@@ -123,16 +129,24 @@ And finally, we draw the sphere or box at the calculated position and size, you 
 
 # List of classes/assets
 
-| Class/asset | Source |
-|-----------|-----------|
-| MyClass.cs | Self written |
-| MyClass1.cs | Modified from [reference]() |
-| MyClass2.cs | From [reference]() |
-| Galaxy.cs | Self written |
-| Galaxy2.cs | Self written From [reference]() |
-| AudioHm.cs | Self written |
-| SquaresSpace.cs | Self written |
-| HanaSaku.cs | Modified from [Coding train](https://thecodingtrain.com/challenges/55-mathematical-rose-patterns) |
+| Class/asset | Source | Author |
+|-----------|-----------|--------------|
+| Galaxy.java | Self written | Daniel Wu: C21460524 |
+| Galaxy2.java | Self written From [reference]() | Daniel Wu: C21460524  |
+| AudioHm.java | Self written | Ron Pingol: C21782059 |
+| SquaresSpace.java | Self written | Ron Pingol: C21782059  |
+| HanaSaku.java | Modified from [Coding train](https://thecodingtrain.com/challenges/55-mathematical-rose-patterns) | Alex Tsang: C21751999|
+| AIGenerationMenu.java | Self written | Ernest John Decina: C21394933|
+| BigBangUniverse.java | Self written | Ernest John Decina: C21394933|
+| DisplayAIGeneratedImage.java | Self written | Ernest John Decina: C21394933|
+| FlyingThroughSound.java | Self written | Ernest John Decina: C21394933|
+| TEXTBOX.java | Modified from [mitkonikov](https://github.com/mitkonikov/Processing/tree/master/Text_Box) | Ernest John Decina: C21394933|
+| SubmitButton.java | Self written | Ernest John Decina: C21394933|
+| DownloadAIGeneratedImage.java | Self written | Ernest John Decina: C21394933|
+| PostOpenAPI.java | Self written | Ernest John Decina: C21394933|
+| background-image.jpg | Refrenced From [Your Name Movie](https://www.imdb.com/title/tt5311514/) | Film Director: Mokoto Shinkai|
+
+
 
 Each team member or individual needs to write a paragraph or two explaining what they contributed to the project
 
@@ -345,77 +359,48 @@ Each team member or individual needs to write a paragraph or two explaining what
     
  ```
 
+ ## Visual Dimension 2: Ernest John Decina (C21394933)
+
+### Part 1
+
+	Blackhole eating the universe and eating the stars around it.
+	
+### Part 2
+
+    An AI taking over from the enventual death of the universe and producing images from the past civilations of human kind.
+	
+### Part 3
+
+	The last visual shows the Terrain slowly forming again over time after the take over of the AI and represents the circle of life.
+
+### What im most proud of?
+	I am most proud of getting an AI Generated image to render to the users screen, this was alot of learning using Oracle's java http library and making sure that a error is prompt to the user if there was any problems.
+
+### What I learned
+    I learned how to create POST requests using java and getting information from an API server and then processing that data else where.
+
+```java
+ String link= "";
+ String payload = String.format("{\"prompt\": \"%s\"}", prompt);
+ try(CloseableHttpClient httpClient = HttpClientBuilder.create().build()) {
+	HttpPost request = new HttpPost("https://api.ernestjohndecina.com/api/dalle/image");
+	StringEntity params = new StringEntity(payload, ContentType.APPLICATION_JSON);
+	request.addHeader("content-type", "application/json");
+	
+	request.setEntity(params);
+	ClassicHttpResponse response = (ClassicHttpResponse) httpClient.execute(request);
+	System.out.println(response);
+	String json = EntityUtils.toString(response.getEntity());
+	JSONObject responseJson = new JSONObject(json);
+	String data = responseJson.getString("link");
+	link = data;
+ } catch(Exception e) {
+	return null;
+ }
+ return link;
+```
+
 # References
-* Item 1
-* Item 2
-
-# From here on, are examples of how to different things in Markdown. You can delete.  
-
-## This is how to markdown text:
-
-This is *emphasis*
-
-This is a bulleted list
-
-- Item
-- Item
-
-This is a numbered list
-
-1. Item
-1. Item
-
-This is a [hyperlink](http://bryanduggan.org)
-
-# Headings
-## Headings
-#### Headings
-##### Headings
-
-This is code:
-
-```Java
-public void render()
-{
-	ui.noFill();
-	ui.stroke(255);
-	ui.rect(x, y, width, height);
-	ui.textAlign(PApplet.CENTER, PApplet.CENTER);
-	ui.text(text, x + width * 0.5f, y + height * 0.5f);
-}
-```
-
-So is this without specifying the language:
-
-```
-public void render()
-{
-	ui.noFill();
-	ui.stroke(255);
-	ui.rect(x, y, width, height);
-	ui.textAlign(PApplet.CENTER, PApplet.CENTER);
-	ui.text(text, x + width * 0.5f, y + height * 0.5f);
-}
-```
-
-This is an image using a relative URL:
-
-![An image](images/p8.png)
-
-This is an image using an absolute URL:
-
-![A different image](https://bryanduggandotorg.files.wordpress.com/2019/02/infinite-forms-00045.png?w=595&h=&zoom=2)
-
-This is a youtube video:
-
-[![YouTube](http://img.youtube.com/vi/J2kHSSFA4NU/0.jpg)](https://www.youtube.com/watch?v=J2kHSSFA4NU)
-
-This is a table:
-
-| Heading 1 | Heading 2 |
-|-----------|-----------|
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
-
+* ["Something Comforting" - Porter Robinson](https://music.youtube.com/watch?v=9uT-dsBBZew&feature=share)
+* [TEXTBOX.java](https://github.com/mitkonikov/Processing/tree/master/Text_Box)
+* [Your Name Background Image](https://www.imdb.com/title/tt5311514/)
