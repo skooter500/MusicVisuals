@@ -42,6 +42,11 @@ Include all team members names and student numbers if a team project
 ![](https://github.com/Entroshock/MusicVisuals/blob/master/Images/alexvisual1.png)
 ![](https://github.com/Entroshock/MusicVisuals/blob/master/Images/alexvisual2.png)
 
+## Ernest (C21394933) Screenshots:
+![](https://github.com/ErnestDecina/MusicVisuals/blob/master/Images/ErnestVisualOne.png)
+![](https://github.com/ErnestDecina/MusicVisuals/blob/master/Images/ErnestVisualTwo.png)
+![](https://github.com/ErnestDecina/MusicVisuals/blob/master/Images/ErnestVisualThree.png)
+
 
 # Instructions to work Visualizer
 
@@ -139,7 +144,7 @@ And finally, we draw the sphere or box at the calculated position and size, you 
 | SubmitButton.java | Self written | Ernest John Decina: C21394933|
 | DownloadAIGeneratedImage.java | Self written | Ernest John Decina: C21394933|
 | PostOpenAPI.java | Self written | Ernest John Decina: C21394933|
-| background-image.jpg | Refrenced From [Your Name Movie](https://www.imdb.com/title/tt5311514/) | Ernest John Decina: C21394933|
+| background-image.jpg | Refrenced From [Your Name Movie](https://www.imdb.com/title/tt5311514/) | Film Director: Mokoto Shinkai|
 
 
 
