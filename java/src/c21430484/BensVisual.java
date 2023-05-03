@@ -40,7 +40,7 @@ public class BensVisual extends Visual
         // colorMode(HSB);
                 
         // Call loadAudio to load an audio file to process 
-        loadAudio("segments/Piano-buildup.mp3");   
+        loadAudio("Genesis.mp3");   
 
         
         // Call this instead to read audio from the microphone
@@ -114,7 +114,7 @@ public class BensVisual extends Visual
         else 
             renderPhase1();
         
-        renderPhase2();
+        // renderPhase2();
     }  
 
 
@@ -122,7 +122,13 @@ public class BensVisual extends Visual
     public void renderPhase1()
     {
         translate(-width/2, -height/2, 0);
-        tbv.render();
+        
+        
+        if(timeElapsed() < 187000)
+            tbv.render(1);
+        else 
+            tbv.render(2);
+
         wf.render();
         
         cv.render(1); 
@@ -134,11 +140,10 @@ public class BensVisual extends Visual
         cbv.render();
         popMatrix();
         
-        abv.render();
+        abv.render(1);
         
         
         cv.render(2);
-        
     }
 
     public long timeElapsed()

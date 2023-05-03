@@ -16,21 +16,44 @@ public class TrumpetBandVisual
         this.lastIncrement = 0;
     }
 
-    public void render()
+    public void render(int phase)
     {
 
         if(mv.timeElapsed() > 235000)
             return; 
 
         float gap = mv.width / (float) mv.getBands().length;
+
         mv.noStroke();
 
         
         // mv.fill(PApplet.map(6, 0, mv.getBands().length, 255, 0), 255, 255);
         mv.fill(208, 152, 3);
-        
-        mv.rect(0, mv.height, 75, -mv.getSmoothedBands()[6] * 0.75f); 
+
+        mv.rect(0, mv.height, 75, -mv.getSmoothedBands()[6] * 0.75f);  
         mv.rect(mv.width - 75, mv.height, 75,-mv.getSmoothedBands()[6] * 0.75f); 
+        
+        
+        if(phase == 2)
+        {
+            mv.translate(0, 0, -200f);
+            for(int i = 0 ; i < mv.getBands().length ; i ++)
+            {   
+                mv.translate(0, 0, -90f);
+                mv.fill(69, 50, 1);
+                mv.rect(i * gap, mv.height + 165, gap,-mv.getSmoothedBands()[i] * 0.4f); 
+                mv.translate(0, 0, 90f);
+
+                mv.translate(0, 0, -70f);
+                mv.fill(115, 84, 1);
+                mv.rect(i * gap, mv.height + 165, gap,-mv.getSmoothedBands()[i] * 0.3f); 
+                mv.translate(0, 0, 70f);
+                
+                mv.fill(163, 120, 3);
+                mv.rect(i * gap, mv.height + 125, gap,-mv.getSmoothedBands()[i] * 0.2f); 
+            }
+            mv.translate(0, 0, +200f);
+        }
 
         mv.noFill(); 
         mv.stroke(208, 152, 3);
