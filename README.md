@@ -111,8 +111,8 @@ This will import the
 | MyClass.cs | Self written |
 | MyClass1.cs | Modified from [reference]() |
 | MyClass2.cs | From [reference]() |
-| Galaxy.cs | Self written |
-| Galaxy2.cs | Self written |
+| MyClass.cs | Self written |
+| MyClass.cs | Self written |
 | MyClass.cs | Self written |
 | MyClass.cs | Self written |
 | HanaSaku.cs | Modified from [Coding train](https://thecodingtrain.com/challenges/55-mathematical-rose-patterns) |
@@ -178,6 +178,13 @@ Each team member or individual needs to write a paragraph or two explaining what
     }
     
 ```
+
+### What I am most proud of
+	I am most proud of being able to implement the dynamic colors on the petal lines, making the flower more attractive to look at. I think implementing the math functions was hard as well but I had guidance for that due to the tutorial.
+	
+### What I learned
+	I learned how OOP can be implemented for bigger projects with multiple people. Through the usage of different classes and objects I learned how polymorphism and things like abstract classes can work in projects with multiple people. I also learned how processing works and how you can draw beautiful things with code. In the future I would like to challenge myself and draw something from scratch, though I think it will be a huge challenge. Learning minim and its methods were also very cool.
+
 ## Visual Dimension 1: Ron Pingol (C21782059)
 
 ### Desc
