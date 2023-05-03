@@ -86,7 +86,7 @@ We chose to this implementation as it is more efficient than multiple if statmen
 
 Then the Visual that is returned we render that image
 
-#### Visual 3 (Daniel Wu: )
+#### Visual 3 (Daniel Wu: C21460524)
 
 ##### drawExample
 This code draws a visual scene consisting of an earthquake effect, starfield, circle, particle system, and screen flash effect, while preserving the original transformation and style settings in Processing
@@ -117,11 +117,11 @@ this will count cnad check if we need to change the visual similar to MusicVisua
 This will import the 
 
 #### Visual 4 (Alex Tsang: )
-For my visualizer; what I did was use math to create a rose pattern. By using sin and cos functions I was able to create the petals of the flower and also I was able to use it to give my petal lines dynamic colour. The mathematic equations using trigonometry function and polar coordinates gave this project life.
+
 
 #### Visual 1 (Ron Pingol: )
 
-This class, it got a constructor, you know, that takes in some parameters, like a PApplet object (the core thing in processing), an AudioBuffer object (the audio data), an FFT object (Fast Fourier Transform), and also the window size.
+This class, it got a constructor, you know, that takes in some parameters, like a PApplet object (the core thing in processing), an AudioBuffer object (the audio data), an FFT object (some analysis thingy called Fast Fourier Transform), and also the window size.
 So, like, the render() method is where the real action happens, you know. It sets the background color to black and turns on the lights. Then, it calls the drawShapeField() method five times, each with a different translation to create these cool fields of spheres in different spots on the screen.
 Now, the drawShapeField() method, that's the one responsible for drawing the spheres, man. First thing it does is it sets up this array of colors for the spheres. Then, it starts spinning the spheres around, you know, rotating them on the X, Y, and Z axes using the angle variable.
 The audio data, it gets processed using the FFT analysis, you know. That's where the magic happens. We figure out the size of each frequency band based on the audio data we got.
@@ -139,7 +139,7 @@ And finally, we draw the sphere or box at the calculated position and size, you 
 | MyClass1.cs | Modified from [reference]() |
 | MyClass2.cs | From [reference]() |
 | Galaxy.cs | Self written |
-| Galaxy2.cs | Self written |
+| Galaxy2.cs | Self written From [reference]() |
 | MyClass.cs | Self written |
 | MyClass.cs | Self written |
 | HanaSaku.cs | Modified from [Coding train](https://thecodingtrain.com/challenges/55-mathematical-rose-patterns) |
@@ -283,9 +283,13 @@ Each team member or individual needs to write a paragraph or two explaining what
 
 	The last part of my visual shows the screen shaking and explosions happening according to amplitude.
 	
-### What im Proud of
+### What i am Proud of
 
       There was lots of things that i was proud of in this assignment but the thing that i was most proud of was getting the sphere to split into four seperate sphere and adding the screen shake. I am also proud that i got the spheres to rotate around the center.
+      
+### What i learned
+      
+        I learned a lot of things while doing this assignement but the things i learned the most was using the sin and cos libraries to help put detail on the sphere. Most importantly i learned how to work with a group to get work completed on time and to a respectable standard.
 
 ```  private void drawCircle() {
         float x = windowWidth / 2;
