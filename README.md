@@ -139,7 +139,7 @@ Each team member or individual needs to write a paragraph or two explaining what
 	
 ```Java	
 		
-		        pApplet.rotate(PApplet.radians(rot));
+	pApplet.rotate(PApplet.radians(rot));
         for(float i = 0; i < PApplet.TWO_PI; i+= 0.0004f){
             float color = PApplet.map(i, 0, PApplet.TWO_PI, 0, 255);
             float colorTwo = PApplet.map(i, 0, PApplet.TWO_PI, 0, 255);
