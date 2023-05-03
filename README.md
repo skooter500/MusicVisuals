@@ -58,7 +58,7 @@ Include all team members names and student numbers if a team project
 	Enter an APPROPRIATE prompt. Then wait for the Application to process your AI Generated Image. (Any inappropriate prompts will be met with a error and user must reinput a prompt). If it still doesnt work make sure you are connected to the internet for visualizer to create a AI Image
 
 # How it works
-![](Images\HowItWork.jpg)
+![](https://github.com/Entroshock/MusicVisuals/blob/master/Images\HowItWorks.jpg)
 
 ## Overall functionality
 We first run the program in main and it initializes the MusicVisual 
