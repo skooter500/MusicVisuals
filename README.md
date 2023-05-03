@@ -88,6 +88,23 @@ Then the Visual that is returned we render that image
 
 #### Visual 3 (Daniel Wu: )
 
+##### drawExample
+This code draws a visual scene consisting of an earthquake effect, starfield, circle, particle system, and screen flash effect, while preserving the original transformation and style settings in Processing
+
+##### drawCircle
+This code draws a rotating, pulsating, and color-changing circle consisting of one large and four smaller circles, with the size and rotation speed influenced by audio input, while also adding particles and explosions based on the amplitude of the audio.#
+
+##### drawStarfield
+This code creates a starfield by drawing glowing stars of varying sizes that move to the right, with the stars wrapping around the screen width.
+
+##### drawEarthquakeEffect
+This code simulates an earthquake effect by translating the screen based on audio amplitude, creating a shaking movement when the amplitude exceeds a specified measurements.
+
+##### createExplosion
+This code uses the Particle class to use the particles to create an explosion effect
+
+##### Particle + Update Particle
+This code defines a particle system with each particle having a position, velocity, lifespan, and color, while the updateParticles function updates their positions, displays them, and removes the dead ones.
 
 #### Visual 2 (Ernest John Decina: C21394933)
 ##### render function
