@@ -58,33 +58,17 @@ Include all team members names and student numbers if a team project
 	Enter an APPROPRIATE prompt. Then wait for the Application to process your AI Generated Image. (Any inappropriate prompts will be met with a error and user must reinput a prompt). If it still doesnt work make sure you are connected to the internet for visualizer to create a AI Image
 
 # How it works
+![](Images\HowItWorks.jpg)
 
-## Setup in Main
+## Overall functionality
+We first run the program in main and it initializes the MusicVisual 
+and it then has a counter that determines which visual will render.
 
-In main we create a MusicVisual Instance inside the static function startMusicVisualizer.
+### StartMenuVisual (Ernest John Decina: C21394933)
+This is the menu where the user will choose their AI Generated image.
+It uses a textbox and get a text user input and a button to submit.
+This will then send the prompt to a API server that processes the AI Image.
 
-## Running the Music Visualizer instance
-### First running Constructor
-The constructor will first will create a ArrayList of type VisualAbstractClass called visualList
-### Secondly Setups works
-Colour mode is then set to RGB
-We then lock the FPS to 60
-Then we call the function loadSong to load the song into the MusicVisual
-and Finally we call loadVisuals this function creates instances and adds them into the visualList
-
-###  Thirdly settings
-Then this function is called and the window size is set.
-
-## Draw Function
-This function will be called every frame and it calls
-background(0) this is to reset the frame then
-### playVisuals runs
-Then running this function first gets the current time, and divides current time then compares it with an array of timings, if it is greater than then we increment timingsCounter.
-Timings counter determines the visual we are playing then.
-
-We chose to this implementation as it is more efficient than multiple if statments.
-
-Then the Visual that is returned we render that image
 
 #### Visual 3 (Daniel Wu: C21460524)
 
@@ -106,20 +90,26 @@ This code uses the Particle class to use the particles to create an explosion ef
 ##### Particle + Update Particle
 This code defines a particle system with each particle having a position, velocity, lifespan, and color, while the updateParticles function updates their positions, displays them, and removes the dead ones.
 
-#### Visual 2 (Ernest John Decina: C21394933)
-##### render function
-Like Music Visualizer there is a timing counter in this visual called drawObjectsIndex.
 
-###### changeDrawObject
-this will count cnad check if we need to change the visual similar to MusicVisualizer
+### Visual 2 (Ernest John Decina: C21394933)
+#### BigBangUniverse
+This shows a visual of a blackhole expanding and eating the universe, This first renders a 2d array with positions for the stars in the background
 
-###### drawObjects.get(drawObjectsIndex).render();
-This will import the 
+Then renders a circle that keeps increasing by a counter.
 
-#### Visual 4 (Alex Tsang: )
+The Rings around the blackhole was rendered with a circle in a for loop and translating it in the 3d space
+
+#### DisplayAIGenerateImage
+This visuals renders the AI generated image using the pixels of the images with circles and increasing in resolution over time.
+
+#### FlyingThroughSound
+This visual renders points and vertexs then applies bass to the bottom terrain and trebble to the top terrain so it moves up and down.
 
 
-#### Visual 1 (Ron Pingol: )
+### Visual 4 (Alex Tsang: )
+
+
+### Visual 1 (Ron Pingol: )
 
 This class, it got a constructor, you know, that takes in some parameters, like a PApplet object (the core thing in processing), an AudioBuffer object (the audio data), an FFT object (some analysis thingy called Fast Fourier Transform), and also the window size.
 So, like, the render() method is where the real action happens, you know. It sets the background color to black and turns on the lights. Then, it calls the drawShapeField() method five times, each with a different translation to create these cool fields of spheres in different spots on the screen.
