@@ -50,7 +50,7 @@ Dimensions will be listed by the order they are played out
 
 ### Desc
 	
-	My visual consists of multiple shapes that make up multiple rings then transitioning into a cube filled dimesnion, looking like the tesseract area in the movie Interstellar
+	My visual consists of multiple shapes that make up multiple rings then transitioning into a cube filled dimesnion, looking like the tesseract area in the movie 	Interstellar
 	
 ### Part 1
 
@@ -148,7 +148,9 @@ Dimensions will be listed by the order they are played out
  return link;
 ```
 
-## Daniel Wu ()
+## Daniel Wu (C21460524)
+
+             There was lots of things that i was proud of in this assignment but the thing that i was most proud of was getting the sphere to split into four seperate sphere and adding the screen shake. I am also proud that i got the spheres to rotate around the center.
 
 ## Alex Tsang ()
 		The thing I am most proud of in this assignment is learning how to use the Rose(mathematics) pattern and implementing it into code. Learning processing was hard and implementing this pattern took a lot guidance. I am also really happy on having the colors change on each petal.
