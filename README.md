@@ -104,6 +104,16 @@ This will import the
 
 #### Visual 1 (Ron Pingol: )
 
+This class, it got a constructor, you know, that takes in some parameters, like a PApplet object (the core thing in processing), an AudioBuffer object (the audio data), an FFT object (some analysis thingy called Fast Fourier Transform), and also the window size.
+So, like, the render() method is where the real action happens, you know. It sets the background color to black and turns on the lights. Then, it calls the drawShapeField() method five times, each with a different translation to create these cool fields of spheres in different spots on the screen.
+Now, the drawShapeField() method, that's the one responsible for drawing the spheres, man. First thing it does is it sets up this array of colors for the spheres. Then, it starts spinning the spheres around, you know, rotating them on the X, Y, and Z axes using the angle variable.
+The audio data, it gets processed using the FFT analysis, you know. That's where the magic happens. We figure out the size of each frequency band based on the audio data we got.
+Oh, and by the way, we update the angle and colorAngle variables based on the audio data, you know, using this thing called linear interpolation to make it look smoother and stuff.
+Alright, so we loop through some angles, like from 0 to 360, you know, in steps of 3. For each angle, we calculate the X and Y positions of the sphere, making it move in a circle with a radius of r. The Z position is always zero, man.
+We also figure out the size of the sphere based on the value of the corresponding frequency band. And we throw in some Y offset to make it bounce up and down, you know, based on the rotation angle.
+The color of the sphere, it changes depending on the angle. We set the fill color accordingly, man.
+And finally, we draw the sphere or box at the calculated position and size, you know. Oh, and we use this pushMatrix() and popMatrix() thing to make sure the transformations we do to one sphere don't mess up the others, man.
+
 # List of classes/assets
 
 | Class/asset | Source |
