@@ -137,7 +137,7 @@ Each team member or individual needs to write a paragraph or two explaining what
 ### What I did
 	For my visualizer; what I did was use math to create a rose pattern. By using sin and cos functions I was able to create the petals of the flower and also I was able to use it to give my petal lines dynamic colour. The mathematic equations using trigonometry function and polar coordinates gave this project life.
 	
-	```Java	
+```Java	
 		
 		        pApplet.rotate(PApplet.radians(rot));
         for(float i = 0; i < PApplet.TWO_PI; i+= 0.0004f){
