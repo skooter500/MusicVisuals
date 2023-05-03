@@ -2,6 +2,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CerensSongVisualizer",
+            "request": "launch",
+            "mainClass": "ie.tudublin.CerensSongVisualizer",
+            "projectName": "java"
+        },
+        {
+            "type": "java",
+            "name": "MainVisual",
+            "request": "launch",
+            "mainClass": "ie.tudublin.MainVisual",
+            "projectName": "java"
+        },
+        {
+            "type": "java",
+            "name": "IsaVisual",
+            "request": "launch",
+            "mainClass": "ie.tudublin.IsaVisual",
+            "projectName": "java"
+        },
+        {
+            "type": "java",
             "name": "EnhancedMountainLandscape",
             "request": "launch",
             "mainClass": "ie.tudublin.EnhancedMountainLandscape",
