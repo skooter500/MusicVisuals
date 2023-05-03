@@ -73,6 +73,15 @@ Each team member or individual needs to write a paragraph or two explaining what
 - What they are most proud of
 - What they learned
 
+## Visual Dimension 4: Alex Tsang (C21751999)
+
+## Desc
+	My visual consists of a rose shape pattern with added petals because of my own preference. 
+	
+## Part 1
+	
+	The rose shape petals will constantly change colour and size will change depending on the amplitude and frequency.
+
 ## Visual Dimension 1: Ron Pingol (C21782059)
 
 ### Desc
