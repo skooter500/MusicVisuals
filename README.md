@@ -37,6 +37,9 @@ Include all team members names and student numbers if a team project
 ![](https://github.com/Dan21460/MusicVisuals/blob/master/Images/2ndImage.png)
 ![](https://github.com/Dan21460/MusicVisuals/blob/master/Images/3rdImage.png)
 
+### Alex Screenshots: 
+
+![](https://github.com/Dan21460/MusicVisuals/blob/master/Images/alexvisual1.jpg)
 
 
 
