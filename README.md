@@ -33,9 +33,9 @@ Include all team members names and student numbers if a team project
 
 ### Daniel (C21460524) Screenshots:
 
-![](https://github.com/Dan21460/MusicVisuals/blob/master/Images/1stDan.png)
-![](https://github.com/Dan21460/MusicVisuals/blob/master/Images/2ndImage.png)
-![](https://github.com/Dan21460/MusicVisuals/blob/master/Images/3rdImage.png)
+![](https://github.com/Dan21460/MusicVisuals/blob/master/Images/dan1.png)
+![](https://github.com/Dan21460/MusicVisuals/blob/master/Images/dan2.png)
+![](https://github.com/Dan21460/MusicVisuals/blob/master/Images/dan3.png)
 
 ### Alex Screenshots: 
 
