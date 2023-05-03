@@ -354,9 +354,25 @@ Each team member or individual needs to write a paragraph or two explaining what
     
  ```
 
- ## Ernest John Decina (C21394933)
+ ## Visual Dimension 2: Ernest John Decina (C21394933)
 
+### Part 1
+
+	Blackhole eating the universe and eating the stars around it.
+	
+### Part 2
+
+    An AI taking over from the enventual death of the universe and producing images from the past civilations of human kind.
+	
+### Part 3
+
+	The last visual shows the Terrain slowly forming again over time after the take over of the AI and represents the circle of life.
+
+### What im most proud of?
 	I am most proud of getting an AI Generated image to render to the users screen, this was alot of learning using Oracle's java http library and making sure that a error is prompt to the user if there was any problems.
+
+### What I learned
+    I learned how to create POST requests using java and getting information from an API server and then processing that data else where.
 
 ```java
  String link= "";
