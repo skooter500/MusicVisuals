@@ -115,7 +115,7 @@ This will import the
 | MyClass.cs | Self written |
 | MyClass.cs | Self written |
 | MyClass.cs | Self written |
-| HanaSaku.cs | Modified from [https://thecodingtrain.com/challenges/55-mathematical-rose-patterns]() |
+| HanaSaku.cs | Modified from [Coding train](https://thecodingtrain.com/challenges/55-mathematical-rose-patterns) |
 
 Each team member or individual needs to write a paragraph or two explaining what they contributed to the project
 
