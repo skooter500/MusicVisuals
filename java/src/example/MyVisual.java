@@ -4,8 +4,8 @@ import ie.tudublin.*;
 
 public class MyVisual extends Visual
 {    
-    WaveForm wf;
-    AudioBandsVisual abv;
+    ExampleWaveForm wf;
+    ExampleAudioBandsVisual abv;
 
     public void settings()
     {
@@ -29,8 +29,8 @@ public class MyVisual extends Visual
         // Call this instead to read audio from the microphone
         startListening(); 
         
-        wf = new WaveForm(this);
-        abv = new AudioBandsVisual(this);
+        wf = new ExampleWaveForm(this);
+        abv = new ExampleAudioBandsVisual(this);
     }
 
     public void keyPressed()

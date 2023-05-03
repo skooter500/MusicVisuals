@@ -22,5 +22,6 @@
 	<classpathentry kind="lib" path="lib/jogl-all-natives-windows-i586.jar"/>
 	<classpathentry kind="lib" path="lib/gluegen-rt-natives-macosx-universal.jar"/>
 	<classpathentry kind="lib" path="lib/jogl-all-natives-macosx-universal.jar"/>
+	<!-- <classpathentry kind="lib" path="lib/objloader.jar"/> -->
 	<classpathentry kind="output" path="bin"/>
 </classpath>
