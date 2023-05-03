@@ -70,7 +70,7 @@ It uses a textbox and get a text user input and a button to submit.
 This will then send the prompt to a API server that processes the AI Image.
 
 
-#### Visual 3 (Daniel Wu: C21460524)
+### Visual 3 (Daniel Wu: C21460524)
 
 ##### drawExample
 This code draws a visual scene consisting of an earthquake effect, starfield, circle, particle system, and screen flash effect, while preserving the original transformation and style settings in Processing
@@ -107,6 +107,7 @@ This visual renders points and vertexs then applies bass to the bottom terrain a
 
 
 ### Visual 4 (Alex Tsang: )
+For my visualizer; what I did was use math to create a rose pattern. By using sin and cos functions I was able to create the petals of the flower and also I was able to use it to give my petal lines dynamic colour. The mathematic equations using trigonometry function and polar coordinates gave this project life.
 
 
 ### Visual 1 (Ron Pingol: )
