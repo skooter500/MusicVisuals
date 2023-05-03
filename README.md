@@ -111,8 +111,8 @@ This will import the
 | MyClass.cs | Self written |
 | MyClass1.cs | Modified from [reference]() |
 | MyClass2.cs | From [reference]() |
-| MyClass.cs | Self written |
-| MyClass.cs | Self written |
+| Galaxy.cs | Self written |
+| Galaxy2.cs | Self written |
 | MyClass.cs | Self written |
 | MyClass.cs | Self written |
 | HanaSaku.cs | Modified from [Coding train](https://thecodingtrain.com/challenges/55-mathematical-rose-patterns) |
