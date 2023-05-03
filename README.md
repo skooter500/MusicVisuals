@@ -121,7 +121,7 @@ This will import the
 
 #### Visual 1 (Ron Pingol: )
 
-This class, it got a constructor, you know, that takes in some parameters, like a PApplet object (the core thing in processing), an AudioBuffer object (the audio data), an FFT object (some analysis thingy called Fast Fourier Transform), and also the window size.
+This class, it got a constructor, you know, that takes in some parameters, like a PApplet object (the core thing in processing), an AudioBuffer object (the audio data), an FFT object (Fast Fourier Transform), and also the window size.
 So, like, the render() method is where the real action happens, you know. It sets the background color to black and turns on the lights. Then, it calls the drawShapeField() method five times, each with a different translation to create these cool fields of spheres in different spots on the screen.
 Now, the drawShapeField() method, that's the one responsible for drawing the spheres, man. First thing it does is it sets up this array of colors for the spheres. Then, it starts spinning the spheres around, you know, rotating them on the X, Y, and Z axes using the angle variable.
 The audio data, it gets processed using the FFT analysis, you know. That's where the magic happens. We figure out the size of each frequency band based on the audio data we got.
