@@ -25,6 +25,10 @@ Include all team members names and student numbers if a team project
 
 ## Screenshots
 
+### Ron Screenshots:
+	
+	![](Images/RonVisualOne.jpg)
+
 # Instructions to work Visualizer
 
 ## Step 1
