@@ -101,7 +101,7 @@ Each team member or individual needs to write a paragraph or two explaining what
 
 	My Second visual, will transition from the multicoloured shaped. Then lots and lots (like lots), of cubes will appear and when they rotate their colours will change.
 
-## Ron Pingol ()
+### Part 3
 
 	This was a difficult assignment as i have never done processing before and learning these things all in one semester was a very tough task. i am proud of drawing my shapes, it made me learn alot of new methods and has opened my eyes to the more art aspect of coding.
 	
