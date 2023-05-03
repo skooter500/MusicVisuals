@@ -75,12 +75,17 @@ Each team member or individual needs to write a paragraph or two explaining what
 
 ## Visual Dimension 4: Alex Tsang (C21751999)
 
-## Desc
+### Desc
 	My visual consists of a rose shape pattern with added petals because of my own preference. 
 	
-## Part 1
+### Part 1
 	
 	The rose shape petals will constantly change colour and size will change depending on the amplitude and frequency.
+	
+## Learning Outcomes
+	
+### What I did
+	For my visualizer; what I did was use math to create a rose pattern 
 
 ## Visual Dimension 1: Ron Pingol (C21782059)
 
@@ -96,6 +101,7 @@ Each team member or individual needs to write a paragraph or two explaining what
 
 	My Second visual, will transition from the multicoloured shaped. Then lots and lots (like lots), of cubes will appear and when they rotate their colours will change.
 
+## Ron Pingol ()
 
 	This was a difficult assignment as i have never done processing before and learning these things all in one semester was a very tough task. i am proud of drawing my shapes, it made me learn alot of new methods and has opened my eyes to the more art aspect of coding.
 	
