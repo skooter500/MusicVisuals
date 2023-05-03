@@ -31,12 +31,12 @@ public class CubeVisual extends Visual
     public void setup()
     {
         colorMode(HSB);
-        noCursor();
+        // noCursor();
         
         setFrameSize(256);
 
         startMinim();
-        loadAudio("heroplanet.mp3");
+        loadAudio("Genesis.mp3");
         //getAp().play();
         //startListening(); 
         
@@ -54,7 +54,7 @@ public class CubeVisual extends Visual
         camera(0, 0, 0, 0, 0, -1, 0, 1, 0);
         translate(0, 0, -250);
                
-        float boxSize = 50 + (getAmplitude() * 300);//map(average, 0, 1, 100, 400); 
+        float boxSize = 25 + (getAmplitude() * 300);//map(average, 0, 1, 100, 400); 
         smoothedBoxSize = lerp(smoothedBoxSize, boxSize, 0.2f);        
         if (twocubes)
         {
@@ -77,7 +77,7 @@ public class CubeVisual extends Visual
         else
         {
             rotateY(angle);
-            rotateX(angle);
+            rotateX(angle * 2);
             //strokeWeight(1);
             //sphere(smoothedBoxSize/ 2);            
             strokeWeight(5);

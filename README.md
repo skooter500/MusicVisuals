@@ -1,8 +1,10 @@
 # Music Visualiser Project
 
-Name:
+Names:
+Ben Corran
 
-Student Number: 
+Student Numbers: 
+C21430484
 
 ## Instructions
 - Fork this repository and use it a starter project for your assignment

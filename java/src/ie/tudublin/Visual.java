@@ -6,7 +6,7 @@ import ddf.minim.analysis.FFT;
 
 public abstract class Visual extends PApplet
 {
-	private int frameSize = 512;
+	private int frameSize = 1024;
 	private int sampleRate = 44100;
 
 	private float[] bands;
@@ -75,7 +75,7 @@ public abstract class Visual extends PApplet
 			}
 			average /= (float) w;
 			bands[i] = average * 5.0f;
-			smoothedBands[i] = lerp(smoothedBands[i], bands[i], 0.05f);
+			smoothedBands[i] = lerp(smoothedBands[i], bands[i], 0.03f);
 		}
 	}
 
