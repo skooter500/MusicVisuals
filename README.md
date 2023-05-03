@@ -140,8 +140,8 @@ And finally, we draw the sphere or box at the calculated position and size, you 
 | MyClass2.cs | From [reference]() |
 | Galaxy.cs | Self written |
 | Galaxy2.cs | Self written From [reference]() |
-| MyClass.cs | Self written |
-| MyClass.cs | Self written |
+| AudioHm.cs | Self written |
+| SquaresSpace.cs | Self written |
 | HanaSaku.cs | Modified from [Coding train](https://thecodingtrain.com/challenges/55-mathematical-rose-patterns) |
 
 Each team member or individual needs to write a paragraph or two explaining what they contributed to the project
