@@ -39,7 +39,7 @@ Include all team members names and student numbers if a team project
 
 ### Alex Screenshots: 
 
-![](https://github.com/Dan21460/MusicVisuals/blob/master/Images/alexvisual1.jpg)
+![](https://github.com/Entroshock/MusicVisuals/blob/master/Images/alexvisual1.jpg)
 
 
 
