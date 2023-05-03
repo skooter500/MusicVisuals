@@ -130,7 +130,7 @@ Each team member or individual needs to write a paragraph or two explaining what
 
       There was lots of things that i was proud of in this assignment but the thing that i was most proud of was getting the sphere to split into four seperate sphere and adding the screen shake. I am also proud that i got the spheres to rotate around the center.
 
- private void drawCircle() {
+``` private void drawCircle() {
         float x = windowWidth / 2;
         float y = windowHeight / 2;
         float amplitude = audioBuffer.level() * 1000;
