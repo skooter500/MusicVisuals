@@ -27,7 +27,7 @@ Include all team members names and student numbers if a team project
 
 ### Ron Screenshots:
 	
-	![](Images/RonVisualOne%20.jpg)
+![](https://github.com/ronpingol/MusicVisuals/blob/master/Images/RonVisualOne.jpg)
 
 # Instructions to work Visualizer
 
