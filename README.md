@@ -86,25 +86,8 @@ We chose to this implementation as it is more efficient than multiple if statmen
 
 Then the Visual that is returned we render that image
 
-#### Visual 3 (Daniel Wu: C21460524)
+#### Visual 3 (Daniel Wu: )
 
-##### drawExample
-This code draws a visual scene consisting of an earthquake effect, starfield, circle, particle system, and screen flash effect, while preserving the original transformation and style settings in Processing
-
-##### drawCircle
-This code draws a rotating, pulsating, and color-changing circle consisting of one large and four smaller circles, with the size and rotation speed influenced by audio input, while also adding particles and explosions based on the amplitude of the audio.#
-
-##### drawStarfield
-This code creates a starfield by drawing glowing stars of varying sizes that move to the right, with the stars wrapping around the screen width.
-
-##### drawEarthquakeEffect
-This code simulates an earthquake effect by translating the screen based on audio amplitude, creating a shaking movement when the amplitude exceeds a specified measurements.
-
-##### createExplosion
-This code uses the Particle class to use the particles to create an explosion effect
-
-##### Particle + Update Particle
-This code defines a particle system with each particle having a position, velocity, lifespan, and color, while the updateParticles function updates their positions, displays them, and removes the dead ones.
 
 #### Visual 2 (Ernest John Decina: C21394933)
 ##### render function
@@ -152,8 +135,49 @@ Each team member or individual needs to write a paragraph or two explaining what
 ## Learning Outcomes
 	
 ### What I did
-	For my visualizer; what I did was use math to create a rose pattern 
+	For my visualizer; what I did was use math to create a rose pattern. By using sin and cos functions I was able to create the petals of the flower and also I was able to use it to give my petal lines dynamic colour. The mathematic equations using trigonometry function and polar coordinates gave this project life.
+	
+	```Java	
+		
+		        pApplet.rotate(PApplet.radians(rot));
+        for(float i = 0; i < PApplet.TWO_PI; i+= 0.0004f){
+            float color = PApplet.map(i, 0, PApplet.TWO_PI, 0, 255);
+            float colorTwo = PApplet.map(i, 0, PApplet.TWO_PI, 0, 255);
+            float colorThree = PApplet.map(i, 0, PApplet.TWO_PI, 0, 255);
 
+            // Use sin() and cos() functions to smoothly interpolate between colors
+            float timeFactor = 0.00005f * pApplet.millis(); // Adjust this factor to control the speed of color change every miilisecond
+            color += 255 + 255 * PApplet.sin(timeFactor);
+            colorTwo += 255 + 255 * PApplet.cos(timeFactor);
+            colorThree += 255 + 255 * PApplet.sin(timeFactor + PApplet.radians(120));
+
+            // Keep the colors within the range of 0 to 255
+            color = color % 255;
+            colorTwo = colorTwo % 255;
+            colorThree = colorThree % 255;
+
+            pApplet.stroke(color, colorTwo, colorThree);
+            
+            //outer petals aka dots
+            float r = 100 * PApplet.cos(6*i);
+            float x = r * PApplet.cos(i);
+            float y = r * PApplet.sin(i);
+    
+            pApplet.point(50 * (x * lerpedAverage), 50 *(y * lerpedAverage)); //2nd petal formation
+            
+            
+            // first 4 petals
+            r = 100 * PApplet.cos(4 * i);
+            x = r * PApplet.cos(i);
+            y = r * PApplet.sin(i);
+            pApplet.point(50 * (x * lerpedAverage), 50 *(y * lerpedAverage)); 
+        }
+    
+        rot += 0.75;
+        pApplet.popMatrix();
+    }
+    
+```
 ## Visual Dimension 1: Ron Pingol (C21782059)
 
 ### Desc
@@ -210,7 +234,7 @@ Each team member or individual needs to write a paragraph or two explaining what
 
 ### Desc
 	
-	In my visual inspired by red giant phase of the sun it first shows a big Sun that is going through its giant phase, it then splits into 4 different Sun's and then it shows the universe collapsing
+	In my visual it first shows a big Sun that is going through its giant phase, it then splits into 4 different Sun's and then it shows the universe collapsing
         and shaking and showing lots of chaos.
 	
 ### Part 1
