@@ -40,7 +40,7 @@ Include all team members names and student numbers if a team project
 ### Alex Screenshots: 
 
 ![](https://github.com/Entroshock/MusicVisuals/blob/master/Images/alexvisual1.png)
-
+![](https://github.com/Entroshock/MusicVisuals/blob/master/Images/alexvisual2.png)
 
 
 # Instructions to work Visualizer
