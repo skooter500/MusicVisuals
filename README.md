@@ -111,6 +111,11 @@ This will import the
 | MyClass.cs | Self written |
 | MyClass1.cs | Modified from [reference]() |
 | MyClass2.cs | From [reference]() |
+| MyClass.cs | Self written |
+| MyClass.cs | Self written |
+| MyClass.cs | Self written |
+| MyClass.cs | Self written |
+| MyClass.cs | Self written |
 
 Each team member or individual needs to write a paragraph or two explaining what they contributed to the project
 
