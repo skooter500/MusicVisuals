@@ -8,10 +8,9 @@ import Global.*;
 
 import java.util.ArrayList;
 
-public class DemiAudioVisualiser extends Visual {
+public class Check extends Visual {
 
     ArrayList<Particle> particles = new ArrayList<Particle>();
-    ArrayList<MusicalNoteSprite> noteSprites = new ArrayList<MusicalNoteSprite>();
     int currentTime = 0;
     SubtitleHandler subtitleHandler;
     ArrayList<Subtitle> subtitles;
@@ -20,7 +19,8 @@ public class DemiAudioVisualiser extends Visual {
     PFont subtitleFont;
     float strobeTimer = 0;
     float strobeInterval = 0;
-    NoteManager noteManager;
+  
+
 
     public void settings() {
         size(1280, 720, P3D);
@@ -86,23 +86,12 @@ public class DemiAudioVisualiser extends Visual {
         }
     }
 
-    int getNoteTypeFromAmplitude(float amplitude) {
-        if (amplitude >= 0 && amplitude < 1.0 / 3.0) {
-            return 0;
-        } else if (amplitude >= 1.0 / 3.0 && amplitude < 2.0 / 3.0) {
-            return 1;
-        } else {
-            return 2;
-        }
-    }
-
     public void setup() {
         textSize(20);
         subtitleFont = createFont("Arial", 20);
         textFont(subtitleFont);
         colorMode(HSB);
         SubtitleHandler subtitleHandler = new SubtitleHandler(this);
-        NoteManager noteManager = new NoteManager(this);
         subtitles = subtitleHandler.parseSrt("InitialD-KillingMyLove.mp3.srt");
         startMinim();
         loadAudio("InitialD-KillingMyLove.mp3");
@@ -122,7 +111,7 @@ public class DemiAudioVisualiser extends Visual {
         }
         calculateFrequencyBands();
         // Strobe effect on background
-        // m
+        //  m
         if (getSmoothedAmplitude() > 0.1) {
             strobeTimer += getSmoothedAmplitude() * 0.1f;
             if (strobeTimer > strobeInterval) {
@@ -136,6 +125,9 @@ public class DemiAudioVisualiser extends Visual {
             background(0);
         }
 
+
+
+
         noFill();
         stroke(255);
         lights();
@@ -143,7 +135,7 @@ public class DemiAudioVisualiser extends Visual {
         updateCamera();
         camera(eyeX, eyeY, eyeZ, centerX, centerY, centerZ, upX, upY, upZ);
         rot += getAmplitude() / 8.0f;
-        textAlign(CENTER, CENTER);
+         textAlign(CENTER, CENTER);
         rotateY(rot);
 
         displayCurrentSubtitle();
@@ -152,6 +144,8 @@ public class DemiAudioVisualiser extends Visual {
         // pushMatrix();
         // drawBranch(200);
         // popMatrix();
+
+       
 
         float[] bands = getSmoothedBands();
         for (int i = 0; i < bands.length; i++) {
@@ -176,13 +170,6 @@ public class DemiAudioVisualiser extends Visual {
             float lifespan = random(20, 100);
             particles.add(new Particle(this, position, velocity, size, color, lifespan));
         }
-        if (getAmplitude() > 0.1) {
-            PVector position = new PVector(0, 0, 0);
-            float size = map(getAmplitude(), 0, 1, 5, 20);
-            int noteType = (int) random(0, 2); // Randomly choose between noteType 0 and 1
-            float lifetime = random(20, 100);
-            noteSprites.add(new MusicalNoteSprite(this, position, size, noteType, lifetime));
-        }
 
         for (int i = particles.size() - 1; i >= 0; i--) {
             Particle p = particles.get(i);
@@ -193,17 +180,9 @@ public class DemiAudioVisualiser extends Visual {
                 particles.remove(i);
             }
         }
-        for (int i = noteSprites.size() - 1; i >= 0; i--) {
-            MusicalNoteSprite noteSprite = noteSprites.get(i);
-            noteSprite.display(this);
-            boolean expired = noteSprite.update(1); // You can adjust the deltaTime value accordingly
-
-            if (expired) {
-                noteSprites.remove(i);
-            }
-        }
-
     }
+
+    
 
     void drawBranch(float len) {
         float amplitudeScaling = map(getSmoothedAmplitude(), 0, 1, 0.5f, 2);
@@ -224,11 +203,13 @@ public class DemiAudioVisualiser extends Visual {
         }
     }
 
+    
+
     public void displayCurrentSubtitle() {
         int playPosition = getAudioPlayer().position();
         int totalTimeInSeconds = playPosition / 1000;
         int subtitleIndex = -1;
-
+    
         for (int i = 0; i < subtitles.size(); i++) {
             Subtitle subtitle = subtitles.get(i);
             if (totalTimeInSeconds >= subtitle.getStart() / 1000.0f
@@ -237,19 +218,20 @@ public class DemiAudioVisualiser extends Visual {
                 break;
             }
         }
-
+    
         if (subtitleIndex != currentSubtitleIndex) {
             currentSubtitleIndex = subtitleIndex;
         }
-
+    
         if (currentSubtitleIndex >= 0 && currentSubtitleIndex < subtitles.size()) {
             // Display the subtitle text on the screen
             String currentSubtitle = subtitles.get(currentSubtitleIndex).getText();
-
+           
             textAlign(CENTER);
             fill(255);
             text(currentSubtitle, 0, -300); // Adjust the position to be centered and close to the top
-
+            
+            
         }
         noFill();
         pushMatrix();
@@ -261,5 +243,7 @@ public class DemiAudioVisualiser extends Visual {
         popMatrix();
         noFill();
     }
+    
+     
 
 }
