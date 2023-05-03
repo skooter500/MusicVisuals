@@ -117,7 +117,7 @@ this will count cnad check if we need to change the visual similar to MusicVisua
 This will import the 
 
 #### Visual 4 (Alex Tsang: )
-
+	For my visualizer; what I did was use math to create a rose pattern. By using sin and cos functions I was able to create the petals of the flower and also I was able to use it to give my petal lines dynamic colour. The mathematic equations using trigonometry function and polar coordinates gave this project life.
 
 #### Visual 1 (Ron Pingol: )
 
