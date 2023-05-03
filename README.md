@@ -86,7 +86,7 @@ We chose to this implementation as it is more efficient than multiple if statmen
 
 Then the Visual that is returned we render that image
 
-#### Visual 3 (Daniel Wu: )
+#### Visual 3 (Daniel Wu: C21460524)
 
 ##### drawExample
 This code draws a visual scene consisting of an earthquake effect, starfield, circle, particle system, and screen flash effect, while preserving the original transformation and style settings in Processing
@@ -210,7 +210,7 @@ Each team member or individual needs to write a paragraph or two explaining what
 
 ### Desc
 	
-	In my visual it first shows a big Sun that is going through its giant phase, it then splits into 4 different Sun's and then it shows the universe collapsing
+	In my visual inspired by red giant phase of the sun it first shows a big Sun that is going through its giant phase, it then splits into 4 different Sun's and then it shows the universe collapsing
         and shaking and showing lots of chaos.
 	
 ### Part 1
