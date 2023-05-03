@@ -12,7 +12,7 @@ public class Main {
 
 	public void startUI() {
 		String[] a = { "MAIN" };
-		processing.core.PApplet.runSketch(a, new DemiAudioVisualiser());
+		processing.core.PApplet.runSketch(a, new check());
 	}
 
 	public static void main(String[] args) {
