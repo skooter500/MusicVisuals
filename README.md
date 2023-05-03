@@ -21,7 +21,7 @@ Include all team members names and student numbers if a team project
 
 ## Video:
 
-[YouTube](https://www.youtube.com/watch?v=zinRCbnw260&ab_channel=ErnestJohnDecina)
+(https://www.youtube.com/watch?v=zinRCbnw260&ab_channel=ErnestJohnDecina)
 
 ## Screenshots
 
