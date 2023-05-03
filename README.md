@@ -144,7 +144,7 @@ Each team member or individual needs to write a paragraph or two explaining what
 
 	The last part of my visual shows the screen shaking and explosions happening according to amplitude.
 	
-## Daniel Wu (C21460524)
+
 
       There was lots of things that i was proud of in this assignment but the thing that i was most proud of was getting the sphere to split into four seperate sphere and adding the screen shake. I am also proud that i got the spheres to rotate around the center.
 
