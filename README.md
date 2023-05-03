@@ -1,10 +1,19 @@
 # Project Title
 
 Name:
+	Ron Syhmon Pingol
+	Ernest Decina
+	Alex Tsang
+	Daniel Wu
 
-Student Number: 
+Student Number:
+	C21782059
+	C21394933
+	C21751999
+	C21460524
+	
 
-Class Group:
+Class Group: TU858
 
 Include all team members names and student numbers if a team project
 
@@ -12,7 +21,7 @@ Include all team members names and student numbers if a team project
 
 ## Video:
 
-[![YouTube](http://img.youtube.com/vi/J2kHSSFA4NU/0.jpg)](https://www.youtube.com/watch?v=J2kHSSFA4NU)
+[![YouTube](https://www.youtube.com/watch?v=zinRCbnw260&ab_channel=ErnestJohnDecina)
 
 ## Screenshots
 
