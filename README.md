@@ -50,7 +50,7 @@ Dimensions will be listed by the order they are played out
 
 ### Desc
 	
-	My visual consists of multiple shapes that make up multiple rings then transitioning into a cube filled dimesnion, looking like the tesseract area in the movie 	Interstellar
+	My visual consists of multiple shapes that make up multiple rings then transitioning into a cube filled dimesnion, looking like the tesseract area in the movie Interstellar
 	
 ### Part 1
 
