@@ -1,16 +1,16 @@
 # Project Title
 
 Name:
-	Ron Syhmon Pingol
-	Ernest Decina
-	Alex Tsang
-	Daniel Wu
+	Ron Syhmon Pingol\n
+	Ernest Decina\n
+	Alex Tsang\n
+	Daniel Wu\n
 
 Student Number:
-	C21782059
-	C21394933
-	C21751999
-	C21460524
+	C21782059\n
+	C21394933\n
+	C21751999\n
+	C21460524\n
 	
 
 Class Group: TU858
