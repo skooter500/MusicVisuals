@@ -1,57 +1,29 @@
-# Music Visualiser Project
+# Project Title
 
-C21782059 Ron Syhmon Pingol,
-C21394933 Ernest Decina,
-C21751999 Alex Tsang,
-C21460524 Daniel Wu.
+Name:
+	Ron Syhmon Pingol,
+	Ernest Decina,
+	Alex Tsang,
+	Daniel Wu.
 
-# Youtube Video
-
-[Youtube Video of Music Visualizer Running](https://www.youtube.com/)
-
-# Description of the assignment
-
-This is a music visualizer that takes you the upper bounds of the universe, in the visual we explore multiple different variations of what we call "Visual Dimensions" Each Visual Dimentions shows you how it reacts to the sound in its enviroment.
-
-## Visual Dimensions
-
-Dimensions will be listed by the order they are played out
-
-### Visual Dimension 3: Daniel Wu ()
-
-### Visual Dimension 2: Ernest John Decina (C21394933)
-
-#### Desc
-
-	My visual shows the end of the universe then AI image symobilizes the take over and then through the AI image a new universe with land and terrain spawns.
-
-#### Part 1
-
-	The first part of my Dimension shows a black hole expanding and eating up the universe.
-
-#### Part 2
-
-	Then the second part of my visual shows the AI Generated image the user inputed at the start of the Application.
-
-#### Part 3
-
-	After the AI generated image a terrain the moves along with Bass and Trebble appears then finishing and leading into the next Dimension.
-
-### Visual Dimension 4: Alex Tsang ()
-
-### Visual Dimension 1: Ron Pingol (C21782059)
-
-### Desc
+Student Number:
+	C21782059,
+	C21394933,
+	C21751999,
+	C21460524.
 	
-	My visual consists of multiple shapes that make up multiple rings then transitioning into a cube filled dimesnion, looking like the tesseract area in the movie 	Interstellar
-	
-### Part 1
 
-	Multiple coloured shapes will be moving and they will be rotating on a ring.
-	
-### Part 2
+Class Group: TU858
 
-	My Second visual, will transition from the multicoloured shaped. Then lots and lots (like lots), of cubes will appear and when they rotate their colours will change.
+Include all team members names and student numbers if a team project
+
+# Description
+
+## Video:
+
+(https://www.youtube.com/watch?v=zinRCbnw260&ab_channel=ErnestJohnDecina)
+
+## Screenshots
 
 # Instructions to work Visualizer
 
@@ -69,9 +41,33 @@ Dimensions will be listed by the order they are played out
 
 # How it works
 
-	After the user finished Entring a prompt and the proccessing is successful, the music visualizer will automatically play. The music visualizer also works with timings and there are automatic transitions to the music visualizer so sit back and relax and enoy the music visualizer.
+# List of classes/assets
 
-# What I am most proud of in the assignment
+| Class/asset | Source |
+|-----------|-----------|
+| MyClass.cs | Self written |
+| MyClass1.cs | Modified from [reference]() |
+| MyClass2.cs | From [reference]() |
+
+Each team member or individual needs to write a paragraph or two explaining what they contributed to the project
+
+- What they did
+- What they are most proud of
+- What they learned
+
+## Visual Dimension 1: Ron Pingol (C21782059)
+
+### Desc
+	
+	My visual consists of multiple shapes that make up multiple rings then transitioning into a cube filled dimesnion, looking like the tesseract area in the movie 	Interstellar
+	
+### Part 1
+
+	Multiple coloured shapes will be moving and they will be rotating on a ring.
+	
+### Part 2
+
+	My Second visual, will transition from the multicoloured shaped. Then lots and lots (like lots), of cubes will appear and when they rotate their colours will change.
 
 ## Ron Pingol ()
 
@@ -111,41 +107,13 @@ Dimensions will be listed by the order they are played out
     }
 ```
 
-## Ernest John Decina (C21394933)
+# References
+* Item 1
+* Item 2
 
-	I am most proud of getting an AI Generated image to render to the users screen, this was alot of learning using Oracle's java http library and making sure that a error is prompt to the user if there was any problems.
+# From here on, are examples of how to different things in Markdown. You can delete.  
 
-```java
- String link= "";
-
- String payload = String.format("{\"prompt\": \"%s\"}", prompt);
-
- try(CloseableHttpClient httpClient = HttpClientBuilder.create().build()) {
-	HttpPost request = new HttpPost("https://api.ernestjohndecina.com/api/dalle/image");
-	StringEntity params = new StringEntity(payload, ContentType.APPLICATION_JSON);
-	request.addHeader("content-type", "application/json");
-	
-
-	request.setEntity(params);
-	ClassicHttpResponse response = (ClassicHttpResponse) httpClient.execute(request);
-	System.out.println(response);
-
-	String json = EntityUtils.toString(response.getEntity());
-	JSONObject responseJson = new JSONObject(json);
-	String data = responseJson.getString("link");
-	link = data;
- } catch(Exception e) {
-	return null;
- }
-
- return link;
-```
-
-## Daniel Wu ()
-
-## Alex Tsang ()
-
-# Markdown Tutorial
+## This is how to markdown text:
 
 This is *emphasis*
 
@@ -162,11 +130,8 @@ This is a numbered list
 This is a [hyperlink](http://bryanduggan.org)
 
 # Headings
-
 ## Headings
-
 #### Headings
-
 ##### Headings
 
 This is code:
@@ -174,11 +139,11 @@ This is code:
 ```Java
 public void render()
 {
- ui.noFill();
- ui.stroke(255);
- ui.rect(x, y, width, height);
- ui.textAlign(PApplet.CENTER, PApplet.CENTER);
- ui.text(text, x + width * 0.5f, y + height * 0.5f);
+	ui.noFill();
+	ui.stroke(255);
+	ui.rect(x, y, width, height);
+	ui.textAlign(PApplet.CENTER, PApplet.CENTER);
+	ui.text(text, x + width * 0.5f, y + height * 0.5f);
 }
 ```
 
@@ -187,11 +152,11 @@ So is this without specifying the language:
 ```
 public void render()
 {
- ui.noFill();
- ui.stroke(255);
- ui.rect(x, y, width, height);
- ui.textAlign(PApplet.CENTER, PApplet.CENTER);
- ui.text(text, x + width * 0.5f, y + height * 0.5f);
+	ui.noFill();
+	ui.stroke(255);
+	ui.rect(x, y, width, height);
+	ui.textAlign(PApplet.CENTER, PApplet.CENTER);
+	ui.text(text, x + width * 0.5f, y + height * 0.5f);
 }
 ```
 
@@ -215,3 +180,4 @@ This is a table:
 |Some stuff | Some more stuff in this column |
 |Some stuff | Some more stuff in this column |
 |Some stuff | Some more stuff in this column |
+
