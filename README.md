@@ -88,6 +88,23 @@ Then the Visual that is returned we render that image
 
 #### Visual 3 (Daniel Wu: )
 
+##### drawExample
+This code draws a visual scene consisting of an earthquake effect, starfield, circle, particle system, and screen flash effect, while preserving the original transformation and style settings in Processing
+
+##### drawCircle
+This code draws a rotating, pulsating, and color-changing circle consisting of one large and four smaller circles, with the size and rotation speed influenced by audio input, while also adding particles and explosions based on the amplitude of the audio.#
+
+##### drawStarfield
+This code creates a starfield by drawing glowing stars of varying sizes that move to the right, with the stars wrapping around the screen width.
+
+##### drawEarthquakeEffect
+This code simulates an earthquake effect by translating the screen based on audio amplitude, creating a shaking movement when the amplitude exceeds a specified measurements.
+
+##### createExplosion
+This code uses the Particle class to use the particles to create an explosion effect
+
+##### Particle + Update Particle
+This code defines a particle system with each particle having a position, velocity, lifespan, and color, while the updateParticles function updates their positions, displays them, and removes the dead ones.
 
 #### Visual 2 (Ernest John Decina: C21394933)
 ##### render function
@@ -121,8 +138,8 @@ And finally, we draw the sphere or box at the calculated position and size, you 
 | MyClass.cs | Self written |
 | MyClass1.cs | Modified from [reference]() |
 | MyClass2.cs | From [reference]() |
-| MyClass.cs | Self written |
-| MyClass.cs | Self written |
+| Galaxy.cs | Self written |
+| Galaxy2.cs | Self written |
 | MyClass.cs | Self written |
 | MyClass.cs | Self written |
 | HanaSaku.cs | Modified from [Coding train](https://thecodingtrain.com/challenges/55-mathematical-rose-patterns) |
@@ -251,7 +268,7 @@ Each team member or individual needs to write a paragraph or two explaining what
 
 ### Desc
 	
-	In my visual it first shows a big Sun that is going through its giant phase, it then splits into 4 different Sun's and then it shows the universe collapsing
+	In my visual inspired by red giant phase of the sun it first shows a big Sun that is going through its giant phase, it then splits into 4 different Sun's and then it shows the universe collapsing
         and shaking and showing lots of chaos.
 	
 ### Part 1
@@ -266,7 +283,7 @@ Each team member or individual needs to write a paragraph or two explaining what
 
 	The last part of my visual shows the screen shaking and explosions happening according to amplitude.
 	
-###
+### What im Proud of
 
       There was lots of things that i was proud of in this assignment but the thing that i was most proud of was getting the sphere to split into four seperate sphere and adding the screen shake. I am also proud that i got the spheres to rotate around the center.
 
