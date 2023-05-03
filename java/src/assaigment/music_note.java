@@ -1,9 +1,10 @@
-package ie.tudublin;
+package assaigment;
 
 import java.util.ArrayList;
 import processing.core.PApplet;
 import ddf.minim.*;
 import ddf.minim.analysis.FFT;
+import ie.tudublin.Experiance;
 
 public class music_note extends Visual
 {
@@ -17,6 +18,7 @@ public class music_note extends Visual
 
     Star[] stars;
     
+    Experiance pa;
 
     public void settings()
     {

@@ -1,7 +1,7 @@
 package example;
 
-import ie.tudublin.Visual;
-import ie.tudublin.VisualException;
+import assaigment.Visual;
+import assaigment.VisualException;
 
 public class RotatingAudioBands extends Visual {
 

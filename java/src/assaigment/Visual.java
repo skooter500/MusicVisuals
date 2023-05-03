@@ -1,4 +1,4 @@
-package ie.tudublin;
+package assaigment;
 
 import processing.core.PApplet;
 import ddf.minim.*;

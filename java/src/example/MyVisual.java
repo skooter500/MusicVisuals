@@ -1,5 +1,7 @@
 package example;
 
+import assaigment.Visual;
+import assaigment.VisualException;
 import ie.tudublin.*;
 
 public class MyVisual extends Visual

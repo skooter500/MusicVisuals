@@ -1,7 +1,7 @@
 
 
 
-package ie.tudublin;
+package assaigment;
 
 import ddf.minim.AudioBuffer;
 import ddf.minim.AudioInput;

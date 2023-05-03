@@ -1,15 +1,19 @@
-package ie.tudublin;
+package assaigment;
 
 import java.util.ArrayList;
 import ddf.minim.*;
 import ddf.minim.analysis.*;
+import ie.tudublin.Experiance;
 import processing.core.PApplet;
 
 public class stars extends PApplet {
 
+    Experiance pa;
+
     Minim minim;
     AudioPlayer player;
     FFT fft;
+    
 
     AudioInput ai;
     AudioBuffer ab;
@@ -30,12 +34,23 @@ public class stars extends PApplet {
         // fullScreen(P3D, SPAN);
     }
 
+    public stars(Experiance pa) {
+        this.pa= pa;
+    }
+
+    public void render(){
+        draw();
+    }
+
+    
+
     public void setup() {
-        start();
 
         minim = new Minim(this);
-        player = minim.loadFile("MusicVisuals/java/data/Victoria_Mon_t_ft_Khalid_-_Experience.mp3", 512);
+        player = minim.loadFile("Victoria_Mon_t_ft_Khalid_-_Experience.mp3", 1024);
         player.play();
+        player.loop();
+
         ab = player.mix;
 
         fft = new FFT(player.bufferSize(), player.sampleRate());
@@ -60,14 +75,11 @@ public class stars extends PApplet {
 
     void drawDaisy() {
 
-   
         // Set the center point of the daisy
         float centerX = width / 2;
         float centerY = height / 2;
         float average = 0;
         float sum = 0;
-
-        
 
         // Set the size of the daisy
         float daisySize = 200;
@@ -84,10 +96,10 @@ public class stars extends PApplet {
         float size = map(smoothedAmplitude, 0, 1, 130, 800);
 
         // Set the color of the daisy
-        fill(255, 255, 0); // yellow
+        pa.fill(255, 255, 0); // yellow
 
         // Draw the center of the daisy with the mapped size value
-        ellipse(centerX, centerY, size, size);
+        pa.ellipse(centerX, centerY, size, size);
 
         // Draw the petals of the daisy
         fill(255, 255, 255); // white
@@ -95,41 +107,41 @@ public class stars extends PApplet {
             float angle = i * TWO_PI / 6;
             float petalX = centerX + cos(angle) * (daisySize / 2);
             float petalY = centerY + sin(angle) * (daisySize / 2);
-            pushMatrix();
-            translate(petalX, petalY);
-            rotate(angle);
-            ellipse(0, 0, 110, 100);
-            popMatrix();
+            pa.pushMatrix();
+            pa.translate(petalX, petalY);
+            pa.rotate(angle);
+            pa.ellipse(0, 0, 110, 100);
+            pa.popMatrix();
         }
 
         // Set the color of the daisy
-        fill(255, 255, 0); // yellow
+        pa.fill(255, 255, 0); // yellow
 
         // Draw the center of the daisy with the mapped size value
-        ellipse(centerX, centerY, 130, 130);
+        pa.ellipse(centerX, centerY, 130, 130);
 
         // Set the color and stroke for the smile
         // Draw the smile
-        strokeWeight(5);
-        stroke(0);
-        noFill();
-        arc(centerX, centerY + 25, 60, 60, 0, PI);
+        pa.strokeWeight(5);
+        pa.stroke(0);
+        pa.noFill();
+        pa.arc(centerX, centerY + 25, 60, 60, 0, PI);
 
         // Draw the eyes
-        fill(0);
-        noStroke();
-        ellipse(centerX - 25, centerY - 10, 20, 20);
-        ellipse(centerX + 25, centerY - 10, 20, 20);
+        pa.fill(0);
+        pa.noStroke();
+        pa.ellipse(centerX - 25, centerY - 10, 20, 20);
+        pa.ellipse(centerX + 25, centerY - 10, 20, 20);
 
         // blush
-        fill(255, 192, 203);
-        noStroke();
-        ellipse(centerX - 35, centerY + 9, 15, 10);
-        ellipse(centerX + 35, centerY + 9, 15, 10);
+        pa.fill(255, 192, 203);
+        pa.noStroke();
+        pa.ellipse(centerX - 35, centerY + 9, 15, 10);
+        pa.ellipse(centerX + 35, centerY + 9, 15, 10);
     }
 
     void drawstem() {
-        pushMatrix(); // save the current coordinate system
+        pa.pushMatrix(); // save the current coordinate system
         float halfH = (height / 2) + 65;
         float halfW = (width / 2);
         float average = 0;
@@ -149,18 +161,16 @@ public class stars extends PApplet {
         for (int i = 0; i < ab.size(); i++) {
             float x = halfW - (lerpedBuffer[i] * halfH * 0.5f);
             float y = map(i, 0, ab.size(), halfH, height);
-            stroke(map(i, 0, ab.size(), 0, 255), 252, 0);
-            line(halfW, y, x, y);
+            pa.stroke(map(i, 0, ab.size(), 0, 255), 252, 0);
+            pa.line(halfW, y, x, y);
         }
-        popMatrix(); // restore the previous coordinate system
+        pa.popMatrix(); // restore the previous coordinate system
     }
 
     public void draw() {
-        background(0);
+        pa.background(0);
         drawDaisy();
-        drawstem();	
-        
-      
+        drawstem();
 
         fft.forward(player.mix);
 
@@ -184,14 +194,15 @@ public class stars extends PApplet {
             p.draw();
         }
 
-      // Update the left and right hearts based on the audio amplitude
-  leftHeart.update(smoothedAmplitude);
-  rightHeart.update(smoothedAmplitude);
+        // Update the left and right hearts based on the audio amplitude
+        leftHeart.update(smoothedAmplitude);
+        rightHeart.update(smoothedAmplitude);
 
-  // Draw the left and right hearts
-  leftHeart.draw();
-  rightHeart.draw();
+        // Draw the left and right hearts
+        leftHeart.draw();
+        rightHeart.draw();
     }
+
 
     class Particle {
         float x, y;
@@ -226,38 +237,40 @@ public class stars extends PApplet {
             if (size > 50) {
                 size = 50;
             }
-            fill(color);
-            noStroke();
-            ellipse(x, y, size, size);
+            pa.fill(color);
+            pa.noStroke();
+            pa.ellipse(x, y, size, size);
         }
     }
+
     class Heart {
         float x, y;
         float size;
         int color;
-        
+
         Heart(float x, float y, float size, int color) {
-          this.x = x;
-          this.y = y;
-          this.size = size;
-          this.color = color;
+            this.x = x;
+            this.y = y;
+            this.size = size;
+            this.color = color;
         }
-        
+
         void draw() {
-          // Draw the heart shape using bezier curves
-          smooth();
-          noStroke();
-          fill(color);
-          beginShape();
-          vertex(x, y);
-          bezierVertex(x - size * 1, y - size * 2, x - size * 3, y + size / 2, x, y + size * 2);
-          bezierVertex(x + size * 3, y + size / 2, x + size * 1, y - size * 2, x, y);
-          endShape();
+            // Draw the heart shape using bezier curves
+            pa.smooth();
+            pa.noStroke();
+            pa.fill(color);
+            pa.beginShape();
+            pa.vertex(x, y);
+            pa.bezierVertex(x - size * 1, y - size * 2, x - size * 3, y + size / 2, x, y + size * 2);
+            pa.bezierVertex(x + size * 3, y + size / 2, x + size * 1, y - size * 2, x, y);
+            pa.endShape();
         }
-        
+
         void update(float amplitude) {
-          // Map the amplitude value to a range of values that will control the size of the heart
-          size = map(amplitude, 0, 1, 25, 100);
+            // Map the amplitude value to a range of values that will control the size of
+            // the heart
+            size = map(amplitude, 0, 1, 25, 100);
         }
-      }
+    }
 }
