@@ -59,6 +59,51 @@ Include all team members names and student numbers if a team project
 
 # How it works
 
+## Setup in Main
+
+In main we create a MusicVisual Instance inside the static function startMusicVisualizer.
+
+## Running the Music Visualizer instance
+### First running Constructor
+The constructor will first will create a ArrayList of type VisualAbstractClass called visualList
+### Secondly Setups works
+Colour mode is then set to RGB
+We then lock the FPS to 60
+Then we call the function loadSong to load the song into the MusicVisual
+and Finally we call loadVisuals this function creates instances and adds them into the visualList
+
+###  Thirdly settings
+Then this function is called and the window size is set.
+
+## Draw Function
+This function will be called every frame and it calls
+background(0) this is to reset the frame then
+### playVisuals runs
+Then running this function first gets the current time, and divides current time then compares it with an array of timings, if it is greater than then we increment timingsCounter.
+Timings counter determines the visual we are playing then.
+
+We chose to this implementation as it is more efficient than multiple if statments.
+
+Then the Visual that is returned we render that image
+
+#### Visual 3 (Daniel Wu: )
+
+
+#### Visual 2 (Ernest John Decina: C21394933)
+##### render function
+Like Music Visualizer there is a timing counter in this visual called drawObjectsIndex.
+
+###### changeDrawObject
+this will count cnad check if we need to change the visual similar to MusicVisualizer
+
+###### drawObjects.get(drawObjectsIndex).render();
+This will import the 
+
+#### Visual 4 (Alex Tsang: )
+
+
+#### Visual 1 (Ron Pingol: )
+
 # List of classes/assets
 
 | Class/asset | Source |
