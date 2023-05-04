@@ -10,13 +10,15 @@ public class Particle {
     PVector vel;
     PVector acc;
     float lifespan;
+    float size;
 
-    public Particle(PApplet sketch, PVector pos) {
+    public Particle(PApplet sketch, PVector pos, float size) {
         this.sketch = sketch;
         this.pos = pos.copy();
         vel = new PVector(sketch.random(-1, 1), sketch.random(-2, 0), sketch.random(-1, 1));
         acc = new PVector(0, 0, 0);
         lifespan = 750;
+        this.size = size;
     }
 
     public void applyForce(PVector force) {
@@ -36,11 +38,14 @@ public class Particle {
         sketch.colorMode(PApplet.RGB);
         sketch.strokeWeight(2);
         sketch.stroke(sketch.random(255), sketch.random(255), sketch.random(255), lifespan);
-        sketch.point(0, 0);
+        sketch.ellipse(0, 0, size, size);
         sketch.popMatrix();
     }
 
     public boolean isDone() {
-        return lifespan < 0;
+        float boxSize = sketch.width;
+        return pos.x < -boxSize/2 || pos.x > boxSize/2 || 
+               pos.y < -boxSize/2 || pos.y > boxSize/2 || 
+               pos.z < -boxSize/2 || pos.z > boxSize/2;
     }
 }

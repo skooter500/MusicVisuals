@@ -14,6 +14,7 @@ public class CelebrationStation extends PApplet {
     float camAngle = 0;
     float orbitRadius = 1300;
     PVector camPos;
+    float prevX, prevY;
 
     public void settings() {
         size(800, 600, P3D);
@@ -23,6 +24,16 @@ public class CelebrationStation extends PApplet {
         smooth();
         camPos = new PVector(0, 0, orbitRadius);
     }
+
+    public int getGradientColor(float t) {
+        // Calculate red, green, and blue values as functions of time
+        int r = (int)(127 * (sin(0.1f*t + 0) + 1));
+        int g = (int)(127 * (sin(0.1f*t + 2) + 1));
+        int b = (int)(127 * (sin(0.1f*t + 4) + 1));
+      
+        // Combine red, green, and blue values into an RGB color
+        return color(r, g, b);
+      }
 
     public void draw() {
         background(20);
@@ -51,14 +62,27 @@ public class CelebrationStation extends PApplet {
         camera(camPos.x, camPos.y, camPos.z, 0, 0, 0, 0, 1, 0);
         camAngle += camSpeed;
 
+
         // Draw a rotating wireframe box
         noFill();
-        stroke(random(0, 255) % (t * 10), random(0, 255) % (t * 10), random(0, 255) % (t * 10));
+        stroke(getGradientColor(t * 0.05f));
         smooth();
         rotateY(t * 0.0005f);
         box(renderBox);
 
         t++;
+
+        if (keyCode == LEFT) {
+            // Change box to triangle
+            beginShape();
+            vertex(0, -renderBox/2, 0);
+            vertex(-renderBox/2, renderBox/2, 0);
+            vertex(renderBox/2, renderBox/2, 0);
+            endShape(CLOSE);
+        } else if (keyCode == RIGHT) {
+            // Change box to circle
+            ellipse(0, 0, renderBox, renderBox);
+        }
     }
 
     public void mouseWheel(MouseEvent event) {

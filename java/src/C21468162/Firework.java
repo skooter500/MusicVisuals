@@ -15,9 +15,10 @@ public class Firework {
         this.sketch = sketch;
         this.pos = pos.copy();
         particles = new ArrayList<>();
-        int numParticles = PApplet.floor(sketch.random(80, 120));
+        int numParticles = PApplet.floor(sketch.random(50, 80));
         for (int i = 0; i < numParticles; i++) {
-            particles.add(new Particle(sketch, pos));
+            float size = sketch.random(5, 10);
+            particles.add(new Particle(sketch, pos, size));
         }
     }
 
