@@ -10,6 +10,13 @@ import java.util.ArrayList;
 
 public class DemiAudioVisualiser extends Visual {
 
+    // Sphere variables
+    PVector[][] globe;
+    int r = 200;
+    int total = 25;
+    float angleX = 0;
+    float angleY = 0;
+
     ArrayList<Particle> particles = new ArrayList<Particle>();
     ArrayList<MusicalNoteSprite> noteSprites = new ArrayList<MusicalNoteSprite>();
     ArrayList<textSprites> notes = new ArrayList<textSprites>();
@@ -99,6 +106,20 @@ public class DemiAudioVisualiser extends Visual {
     }
 
     public void setup() {
+        // Sphere setup
+        globe = new PVector[total + 1][total + 1];
+
+        for (int i = 0; i < total + 1; i++) {
+            for (int j = 0; j < total + 1; j++) {
+                float lat = map(i, 0, total, 0, PI);
+                float lon = map(j, 0, total, 0, TWO_PI);
+                float x = r * sin(lat) * cos(lon);
+                float y = r * sin(lat) * sin(lon);
+                float z = r * cos(lat);
+                globe[i][j] = new PVector(x, y, z);
+            }
+        }
+
         textSize(20);
         subtitleFont = createFont("Arial", 20);
         textFont(subtitleFont);
@@ -124,7 +145,6 @@ public class DemiAudioVisualiser extends Visual {
         }
         calculateFrequencyBands();
         // Strobe effect on background
-        // m
         if (getSmoothedAmplitude() > 0.1) {
             strobeTimer += getSmoothedAmplitude() * 0.1f;
             if (strobeTimer > strobeInterval) {
@@ -155,19 +175,42 @@ public class DemiAudioVisualiser extends Visual {
         // drawBranch(200);
         // popMatrix();
 
-        float[] bands = getSmoothedBands();
-        for (int i = 0; i < bands.length; i++) {
-            float theta = map(i, 0, bands.length, 0, TWO_PI);
-            stroke(map(i, 0, bands.length, 0, 255), 255, 255);
-            float x = sin(theta) * radius;
-            float z = cos(theta) * radius;
-            float h = bands[i];
-            pushMatrix();
-            translate(x, -h / 2, z);
-            rotateY(theta);
-            box(50, h, 50);
-            popMatrix();
+        
+    // Sphere drawing code
+    pushMatrix();
+    translate(width / 2, height / 2, 10);
+    rotateX(angleX);
+    rotateY(angleY);
+
+    for (int i = 0; i < total; i++) {
+        beginShape(TRIANGLE_STRIP);
+        for (int j = 0; j < total + 1; j++) {
+            PVector v1 = globe[i][j];
+            vertex(v1.x, v1.y, v1.z);
+            PVector v2 = globe[i + 1][j];
+            vertex(v2.x, v2.y, v2.z);
         }
+        endShape();
+    }
+
+    angleX += 0.005;
+    angleY += 0.006;
+    popMatrix();
+
+    // Frequency bands drawing code (remains the same)
+    float bands[] = getSmoothedBands();
+    for (int i = 0; i < bands.length; i++) {
+        float theta = map(i, 0, bands.length, 0, TWO_PI);
+        stroke(map(i, 0, bands.length, 0, 255), 255, 255);
+        float x = sin(theta) * radius;
+        float z = cos(theta) * radius;
+        float h = bands[i];
+        pushMatrix();
+        translate(x, -h / 2, z);
+        rotateY(theta);
+        box(50, h, 50);
+        popMatrix();
+    }
 
         // Particle system
         if (getAmplitude() > 0.1) {
@@ -186,7 +229,7 @@ public class DemiAudioVisualiser extends Visual {
             float lifetime = random(20, 100);
             noteSprites.add(new MusicalNoteSprite(this, position, size, noteType, lifetime));
         }
-        
+
         for (int i = particles.size() - 1; i >= 0; i--) {
             Particle p = particles.get(i);
             p.update();
@@ -231,7 +274,7 @@ public class DemiAudioVisualiser extends Visual {
         int playPosition = getAudioPlayer().position();
         int totalTimeInSeconds = playPosition / 1000;
         int subtitleIndex = -1;
-    
+
         for (int i = 0; i < subtitles.size(); i++) {
             Subtitle subtitle = subtitles.get(i);
             if (totalTimeInSeconds >= subtitle.getStart() / 1000.0f
@@ -240,15 +283,15 @@ public class DemiAudioVisualiser extends Visual {
                 break;
             }
         }
-    
-        if (subtitleIndex != currentSubtitleIndex) {
+
+        if (subtitleIndex != -1 && subtitleIndex != currentSubtitleIndex) {
             currentSubtitleIndex = subtitleIndex;
-            
-            // Only create new text sprites when the subtitle index changes
+
+            // This is the code in the middle
             Subtitle currentSubtitle = subtitles.get(currentSubtitleIndex);
             words = currentSubtitle.getText().split("\\s+");
             notes.clear(); // Clear existing text sprites
-    
+
             for (String word : words) {
                 PVector position = new PVector(random(width), random(height));
                 PVector velocity = new PVector(random(-1, 1), random(-1, 1));
@@ -261,14 +304,13 @@ public class DemiAudioVisualiser extends Visual {
         if (currentSubtitleIndex >= 0 && currentSubtitleIndex < subtitles.size()) {
             // Display the subtitle text on the screen
             String currentSubtitle = subtitles.get(currentSubtitleIndex).getText();
-           
+
             textAlign(CENTER);
             fill(255);
             text(currentSubtitle, 0, -300); // Adjust the position to be centered and close to the top
-            
-            
+            noFill();
         }
-    
+
         // Update and display text sprites
         for (int i = notes.size() - 1; i >= 0; i--) {
             textSprites textSprite = notes.get(i);
@@ -276,6 +318,4 @@ public class DemiAudioVisualiser extends Visual {
             textSprite.update();
         }
     }
-    
-
 }

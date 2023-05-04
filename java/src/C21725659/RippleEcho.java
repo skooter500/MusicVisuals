@@ -42,7 +42,7 @@ public class RippleEcho extends Visual {
     }
 
     public void draw() {
-        background(255);
+        background(0);
         PVector m = new PVector(mouseX, mouseY);
 
         beat.detect(getAudioPlayer().mix);

@@ -135,7 +135,7 @@ public class Check extends Visual {
         updateCamera();
         camera(eyeX, eyeY, eyeZ, centerX, centerY, centerZ, upX, upY, upZ);
         rot += getAmplitude() / 8.0f;
-         textAlign(CENTER, CENTER);
+        textAlign(CENTER, CENTER);
         rotateY(rot);
 
         displayCurrentSubtitle();
