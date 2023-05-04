@@ -126,9 +126,6 @@ public class MusicVisualizer extends PApplet {
     angle += 0.05;
   }
   
-  public static void main(String[] args) {
-    PApplet.main("MusicVisualizer");
-  }
   
   class Particle {
     PVector position;
@@ -170,5 +167,9 @@ public class MusicVisualizer extends PApplet {
     minim.stop();
     super.stop();
   }
+  public static void main(String[] args) {
+    PApplet.main("ie.tudublin.MusicVisualizer");
+}
+
 }
 

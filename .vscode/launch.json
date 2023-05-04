@@ -9,6 +9,56 @@
         },
         {
             "type": "java",
+
+            "name": "MainVisual",
+            "request": "launch",
+            "mainClass": "ie.tudublin.MainVisual",
+            "projectName": "java"
+        },
+        {
+            "type": "java",
+            "name": "IsaVisual",
+            "request": "launch",
+            "mainClass": "ie.tudublin.IsaVisual",
+            "projectName": "java"
+        },
+        {
+            "type": "java",
+            "name": "EnhancedMountainLandscape",
+            "request": "launch",
+            "mainClass": "ie.tudublin.EnhancedMountainLandscape",
+            "projectName": "java"
+        },
+        {
+            "type": "java",
+            "name": "AudioLandscape",
+            "request": "launch",
+            "mainClass": "ie.tudublin.AudioLandscape",
+            "projectName": "java"
+        },
+        {
+            "type": "java",
+            "name": "MountainLandscape",
+            "request": "launch",
+            "mainClass": "ie.tudublin.MountainLandscape",
+            "projectName": "java"
+        },
+        {
+            "type": "java",
+            "name": "SpiralVisual",
+            "request": "launch",
+            "mainClass": "ie.tudublin.SpiralVisual",
+            "projectName": "java"
+        },
+        {
+            "type": "java",
+            "name": "AudioVisual",
+            "request": "launch",
+            "mainClass": "ie.tudublin.AudioVisual",
+            "projectName": "java"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - Main",
             "request": "launch",
             "mainClass": "ie.tudublin.Main",
