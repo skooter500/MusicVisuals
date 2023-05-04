@@ -170,5 +170,6 @@ public class MusicVisualizer extends PApplet {
   public static void main(String[] args) {
     PApplet.main("ie.tudublin.MusicVisualizer");
 }
+
 }
 
