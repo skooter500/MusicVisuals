@@ -134,10 +134,6 @@ I am most proud of the creativity and interactivity achieved in the assignment. 
 I am most proud of the realistic and dynamic nature of the mountain landscape visualization. The use of noise functions to generate the terrain creates an organic and natural appearance. The integration of audio input to control the flyover and amplitude adds an interactive element to the visualization. The implementation of lighting effects further enhances the realism of the landscape. Overall, the assignment demonstrates the ability to create visually appealing and interactive visualizations using code.
 I am also very proud of implementing the MainVisual (combined visual) as it required lots of re-works and changes to the visual)
 
-# Markdown Tutorial
-
-
-This is a youtube video:
 
 [![Watch the video](https://i3.ytimg.com/vi/6G2v33o0zi0/maxresdefault.jpg)](https://www.youtube.com/watch?v=6G2v33o0zi0)
 
