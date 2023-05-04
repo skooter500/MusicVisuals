@@ -1,17 +1,15 @@
 # Music Visualiser Project
 
-Name:Rana Hayes, Isadora Valentini, Ceren Ucan
+Name: Rana Hayes, Isadora Valentini, Ceren Ucan
 
-Student Number: C21920856, D21124013, D21125681
+Student Number: C21920856, D21125681, D21124013
 
-## Instructions
-- this repository and use it a starter project for your assignment
-- Create a new package named your student number and put all your code in this package.
-- You should start by creating a subclass of ie.tudublin.Visual
-- There is an example visualiser called MyVisual in the example package
-- Check out the WaveForm and AudioBandsVisual for examples of how to call the Processing functions from other classes that are not subclasses of PApplet
+# Youtube Video
+
+[<img src="https://user-images.githubusercontent.com/77468140/236207396-6baf50d4-c29d-472f-be27-a043bb7d41ee.jpg" width="80%">](https://youtu.be/6G2v33o0zi0)
 
 # Description of the assignment
+
 ## Ceren
 Java program called "CerensSongVisualizer" creates a song visualizer with particles that move and change size based on audio input. It uses the Minim library for audio processing and the Processing library for graphics rendering.
 
@@ -21,19 +19,13 @@ A Music Visualizer program developed in Java using the Processing library. It an
 ## Rana 
 "MountainLandscape" assignment creates an interactive visualization of a mountain terrain using noise generation and mapping techniques. It utilizes the Processing library and is structured as a subclass of the "Visual" class.
 
-
-
 ## Isadora 
-The "IsaVisual" assignment is a creative visualization project that combines audio processing and visual effects. It uses the Processing and Minim libraries to create an interactive visual display that responds to audio input.
-
+The "IsaVisual" assignment is a creative visualization project that combines audio processing and visual effects. It uses the Processing and Minim libraries to create a fractal tree that responds to audio input.
 
 ## Combined Visuals
-The assignment combines three visual effects: Mountain Landscape, Music Visualizer, and Isa Visual. It uses the Processing and Minim libraries and combines elements of the other assignments into a single program.
-
-
+The assignment combines four visual effects: Mountain Landscape, Particles, Cubes, and a Fractal Tree (Flower shape). It uses the Processing and Minim libraries and combines elements of the other assignments into a single program.
 
 # Instructions
-## Main Menu
 
 ## Ceren's Visual
 Import the Minim library.
@@ -86,11 +78,11 @@ Run the sketch.
 Once the sketch is running, you can switch between the visual effects by pressing the corresponding number keys:
 Press '1' to switch to the Mountain Landscape visual effect.
 Press '2' to switch to the Music Visualizer visual effect.
-Press '3' to switch to the Isa Visual visual effect.
-
-
+Press '3' to switch to the Isa Visual effect.
+Press '4' to switch to Ceren's Song Visualizer.
 
 # How it works
+
 ## Ceren
 Set up the display window, initialize the Minim library, and load the audio file.
 Create an array of particles with random properties.
@@ -106,7 +98,6 @@ The Music Visualizer program uses audio analysis to generate visual effects sync
 ## Isadora
 The program uses the Minim library for audio processing. It creates an instance of the IsaVisual class and sets the window size. An audio file is loaded and played. Visual effects are customized by modifying parameters such as branch lengths and colors. The program continuously updates the visual display based on the audio input.
 
-
 ## Rana 
 The program uses the noise function to generate a height map for the mountain landscape. It creates a 2D array called "terrain" to store the heights of each point on the landscape. The noise function is called for each point, and the resulting value is mapped to a suitable range to determine the height. The terrain is divided into triangles and rendered using triangle strips.
 In the "draw" method, the background is cleared, and the flyover parameter is updated based on the amplitude of the audio input. The camera and target vectors are adjusted according to the flyover and amplitude values. The landscape is then translated, rotated, and lit to achieve the desired perspective and lighting effects. Triangle strips are used to render the terrain, with each vertex having a corresponding color based on its position and height.
@@ -121,9 +112,8 @@ Set up the display window size and any other necessary settings for the Mountain
 In the draw() method, update and display the visual effects from all three classes.
 Run the CombinedVisuals program.
 
-
-
 # What I am most proud of in the assignment
+
 ## Ceren
 In this assignment, I'm actually most proud of how comfortable I have become with using git, branches, merging, committing and collaborating. I am most proud of successfully implementing the particle system and integrating it with audio visualization. The particles move and change size based on the audio input, creating an engaging and visually appealing effect. Additionally, the waveform and rotating star shape add an extra layer of visual interest to the overall visualization.
 
@@ -132,11 +122,6 @@ I am most proud of the creativity and interactivity achieved in the assignment. 
 
 ## Rana
 I am most proud of the realistic and dynamic nature of the mountain landscape visualization. The use of noise functions to generate the terrain creates an organic and natural appearance. The integration of audio input to control the flyover and amplitude adds an interactive element to the visualization. The implementation of lighting effects further enhances the realism of the landscape. Overall, the assignment demonstrates the ability to create visually appealing and interactive visualizations using code.
-I am also very proud of implementing the MainVisual (combined visual) as it required lots of re-works and changes to the visual)
+I am also very proud of implementing the MainVisual (combined visual) as it required lots of re-works and changes to the visual).
 
-
-[![Watch the video](https://i3.ytimg.com/vi/6G2v33o0zi0/maxresdefault.jpg)](https://www.youtube.com/watch?v=6G2v33o0zi0)
-
-
-
-
+# Markdown Tutorial
