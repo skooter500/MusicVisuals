@@ -139,7 +139,7 @@ I am also very proud of implementing the MainVisual (combined visual) as it requ
 
 This is a youtube video:
 
-[![YouTube(https://youtu.be/6G2v33o0zi0)
+[![Watch the video](https://i3.ytimg.com/vi/6G2v33o0zi0/maxresdefault.jpg)](https://www.youtube.com/watch?v=6G2v33o0zi0)
 
 
 
