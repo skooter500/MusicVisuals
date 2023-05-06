@@ -120,7 +120,7 @@ This class represents a single text sprite in the visualization.
 
 Visualizer one: 
 
-![Alt text](images/Screenshot%2023-05-06%235310.png)
+![Alt text](/images/Screenshot 2023-05-06 235310.png)
 
 Visualizer two: 
 
