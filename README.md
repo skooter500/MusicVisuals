@@ -120,7 +120,7 @@ This class represents a single text sprite in the visualization.
 
 Visualizer one: 
 
-![Alt text](/images/Screenshot 2023-05-06 235310.png)
+![Alt text](https://github.com/DemiAina/MusicVisuals/blob/fc8b011d33f15e75ed73db7e01f4e520dfc2f1ba/images/Screenshot%202023-05-06%20235310.png)
 
 Visualizer two: 
 
