@@ -120,11 +120,11 @@ This class represents a single text sprite in the visualization.
 
 Visualizer one: 
 
-[image](images/Screenshot 2023-05-06 235310.png)
+![Alt text](/images/Screenshot 2023-05-06 235310.png)
 
 Visualizer two: 
 
-[image](/images/Screenshot%202023-05-07%20000300.png)
+![Alt text](/images/Screenshot%202023-05-07%20000300.png)
 
 Proud of the assignment: 
 I was about to learn more about 3d space in games and how they are represented on the computer, It has made me want to pursue making 3d objects and present them in code. Creative coding as also thought the possibilities what I can make with simple shapes for loops, numbers, and math. 
