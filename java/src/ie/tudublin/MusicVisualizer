@@ -1,0 +1,21 @@
+// package ie.tudublin;
+
+// // Dependencies
+// import ddf.minim.AudioInput;
+// import ddf.minim.AudioBuffer;
+// import ddf.minim.Minim;
+// import ddf.minim.AudioPlayer;
+// import processing.core.PApplet;
+// import java.util.ArrayList;
+
+// //visuals
+
+// import C21468162.JaredVisual.JaredVisual;
+// //import C21725659.DemiAina.;
+
+// public class MusicVisualizer extends PApplet {
+//     //Begin rendering visuals
+//     JaredVisual jaredVisual;
+//     //DemiAina demiAina;
+//     // etc etc 
+// }
