@@ -2,6 +2,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Start",
+            "request": "launch",
+            "mainClass": "OOP2023.Start",
+            "projectName": "java"
+        },
+        {
+            "type": "java",
+            "name": "AudioVisualizer",
+            "request": "launch",
+            "mainClass": "OOP2023.AudioVisualizer",
+            "projectName": "java"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "OOP2023.Main",
+            "projectName": "java"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - Main",
             "request": "launch",
             "mainClass": "ie.tudublin.Main",
