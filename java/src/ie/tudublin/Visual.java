@@ -2,11 +2,11 @@ package ie.tudublin;
 
 import processing.core.PApplet;
 import ddf.minim.*;
-import ddf.minim.analysis.FFT;
+import ddf.minim.analysis.*;
 
 public abstract class Visual extends PApplet
 {
-	private int frameSize = 512;
+	private int frameSize = 1024;
 	private int sampleRate = 44100;
 
 	private float[] bands;
@@ -14,12 +14,14 @@ public abstract class Visual extends PApplet
 
 	private Minim minim;
 	private AudioInput ai;
-	private AudioPlayer ap;
+	public AudioSample as;
+	public AudioPlayer ap;
 	private AudioBuffer ab;
-	private FFT fft;
+	public BeatDetect beat;
+	public FFT fft;
 
 	private float amplitude  = 0;
-	private float smothedAmplitude = 0;
+	public float smothedAmplitude = 0;
 
 	
 	
@@ -87,8 +89,8 @@ public abstract class Visual extends PApplet
 
 	public void loadAudio(String filename)
 	{
-		ap = minim.loadFile(filename, frameSize);
-		ab = ap.mix;
+		as = minim.loadSample(filename, frameSize);
+		ab = as.left;
 	}
 
 	public int getFrameSize() {
@@ -123,7 +125,6 @@ public abstract class Visual extends PApplet
 		return ai;
 	}
 
-
 	public AudioBuffer getAudioBuffer() {
 		return ab;
 	}
@@ -132,7 +133,7 @@ public abstract class Visual extends PApplet
 		return amplitude;
 	}
 
-	public float getSmoothedAmplitude() {
+	public float getSmothedAmplitude() {
 		return smothedAmplitude;
 	}
 
@@ -143,4 +144,11 @@ public abstract class Visual extends PApplet
 	public FFT getFFT() {
 		return fft;
 	}
+
+	public BeatDetect BeatDetect()
+	{
+		beat = new BeatDetect();
+		return beat;
+	}
+
 }
