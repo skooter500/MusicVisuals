@@ -1,10 +1,8 @@
 # Music Visualiser Project
 
-Name:
-
-Student Number: Alex Mackey - C22739165	
-				Aaron Connolly - C22410766
-				Sergei Larionov - C22483302
+Student Number and Student Name: Alex Mackey - C22739165	
+								 Aaron Connolly - C22410766
+								 Sergei Larionov - C22483302
 
 ## Instructions
 - Fork this repository and use it a starter project for your assignment
