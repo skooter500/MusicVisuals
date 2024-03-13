@@ -4,6 +4,14 @@ Name: Patrick-Akinsowon
 
 Student Number: C22371846
 
+
+Name: Larina Yu
+Student Number: C22328351
+
+Name: Noel McCarthy
+Student Number: C22533826
+
+
 ## Instructions
 - Fork this repository and use it a starter project for your assignment
 - Create a new package named your student number and put all your code in this package.
