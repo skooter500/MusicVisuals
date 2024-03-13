@@ -1,4 +1,6 @@
 # Music Visualiser Project
+Name: Michael Ferents
+Student Number: C21325616
 
 Name: Patrick Akinsowon
 
