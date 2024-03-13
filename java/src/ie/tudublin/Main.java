@@ -4,6 +4,8 @@ import example.CubeVisual;
 import example.MyVisual;
 import example.RotatingAudioBands;
 
+// Test - Michael 
+
 public class Main {
 
     public void startUI() {
