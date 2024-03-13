@@ -1,6 +1,6 @@
 # Music Visualiser Project
 
-Name: Patrick-Akinsowon
+Name: Patrick Akinsowon
 
 Student Number: C22371846
 
