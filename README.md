@@ -1,8 +1,8 @@
 # Music Visualiser Project
 
-Name:
+Name: Patrick Akinsowon
 
-Student Number: 
+Student Number: C22371846
 
 ## Instructions
 - Fork this repository and use it a starter project for your assignment
