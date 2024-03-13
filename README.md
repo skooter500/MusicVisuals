@@ -1,8 +1,11 @@
 # Music Visualiser Project
 
-Name: Larina Yu
 
+Name: Larina Yu
 Student Number: C22328351
+
+Name: Noel McCarthy
+Student Number: C22533826
 
 ## Instructions
 - Fork this repository and use it a starter project for your assignment
