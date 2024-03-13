@@ -1,7 +1,10 @@
 # Music Visualiser Project
 
-Name: Noel McCarthy
 
+Name: Larina Yu
+Student Number: C22328351
+
+Name: Noel McCarthy
 Student Number: C22533826
 
 ## Instructions
