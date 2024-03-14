@@ -19,33 +19,47 @@ public class PatricksVisuals extends PApplet
     AudioPlayer ap;
     AudioInput ai;
     AudioBuffer ab;
+    CubeVisual CV;
 
     int mode = 0;
+    float separated = 12;
+    float lerpedAvg = 0;
+    float H = height / 2;
+    float W = width / 2;
 
     public void settings()
     {
-        size(1024, 1000);
+        size(500, 500);
     }
 
     public void setup()
     {
+        colorMode(HSB);
+        background(0);
         minim = new Minim(this);
-        // Uncomment this to use the microphone
+        // Microphone
         //ai = minim.getLineIn(Minim.MONO, width, 44100, 16);
         //ab = ai.mix; 
-        //ap = minim.loadFile("heroplanet.mp3", 1024);
-        //ap.play();
-        ab = ai.mix;
+
+        //Music
+        ap = minim.loadFile("heroplanet.mp3", 1024);
+        ap.play();
+        ab = ap.mix;
+
     }
 
     public void keyPressed() {
-		if (key >= '0' && key <= '9') {
+		if (key >= '0' && key <= '9') 
+        {
 			mode = key - '0';
 		}
 		if (keyCode == ' ') {
-            if (ap.isPlaying()) {
+            if (ap.isPlaying()) 
+            {
                 ap.pause();
-            } else {
+            } 
+            else 
+            {
                 ap.rewind();
                 ap.play();
             }
@@ -63,38 +77,68 @@ public class PatricksVisuals extends PApplet
 			case 0:
 			{
 				int ver_bar = height - 50;
-				float w = width / months.length;
-				background(225);
-				text("Rainfall Bar Chart", 200, 15);
+				float w = width / separated;
+                float h = height / separated;
+                float total = 0;
+                float ticks = 15;
+				background(0);
+
+                //graph bars
+				line(50, 50, 50, height);
+				line(50, ver_bar - 400, width, ver_bar - 400);
 
 				//bar ticks
-				for (int i = 0; i < months.length; i++) 
+				for (int i = 0; i < ticks; i++) 
 				{
 					line(50, height - (50 * i), 30, height - (50 * i));
 				}
+                text("Frequencies", 225, 25);
 
-				//bars
+                //Get the frequency values
+                for(int i = 0 ; i < ab.size() ; i ++)
+                {
+                    total += abs(ab.get(i));
+                }
+
+                float average = total / ab.size();
+                lerpedAvg = lerp(lerpedAvg, average, 0.1f);
+
+                //bar values
+                text('0', 25, 50);
 				for (int i = 1; i < ab.size(); i++) 
 				{
 					float num = 50;
 					float x = map(num * i, width - 450, width, num, width);
-					rect(x, height - 50, w, ab.size());
-					fill(map(i, 0, months.length, 0, 255), 255, 255);
-					textAlign(CENTER, CENTER);
-					/*Months text*/text(months[i], (i * 40) + 50, 475);
+                    float hue_color = map(i, 0, ab.size() , 0, 256);
+
+                    rect(x, (height - 450), w, lerpedAvg * h * 50);
+                    stroke(hue_color, 105, 255);
+                    fill(map(i, 0, ab.size(), 0, 255), 255, 255);
 				}
 
-				for (int i = 1; i < months.length; i++) 
-				{
-					text(i * 10, 30, height - (i*50));
-				}
-
-				//graph bars
-				line(50, 50, 50, ver_bar);
-				line(50, ver_bar, width, ver_bar);
+                for (int i = 0; i < separated; i++) 
+                {
+                    text(i * 50, 25, (i * 50) + 50);
+                }
 				break;
 			}
+            case 1:
+            {
+                background(0);
+
+                for(int i = 0 ; i < ab.size() ; i ++)
+                {
+                    float hue = map(i, 0, ab.size() , 0, 256);
+                    stroke(hue, 255, 255);
+                    noFill();
+                    rect(i, -H, i , H + ab.get(i) * H);
+                }
+                break;
+            }
+            case 2:
+            {
+                CV.draw();
+            }
         }
     }
 }
-
