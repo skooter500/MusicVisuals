@@ -32,6 +32,8 @@ public abstract class Visual extends PApplet
 		bands = new float[(int) log2(frameSize)];
   		smoothedBands = new float[bands.length];
 
+		
+
 	}
 
 	float log2(float f) {
@@ -87,7 +89,7 @@ public abstract class Visual extends PApplet
 
 	public void loadAudio(String filename)
 	{
-		ap = minim.loadFile(filename, frameSize);
+		ap = minim.loadFile("java/data/Queen  Bohemian Rhapsody (Official Video Remastered).mp3", frameSize);
 		ab = ap.mix;
 	}
 
