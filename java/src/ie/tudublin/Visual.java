@@ -3,6 +3,8 @@ package ie.tudublin;
 import processing.core.PApplet;
 import ddf.minim.*;
 import ddf.minim.analysis.FFT;
+import example.AudioBandsVisual;
+import example.WaveForm;
 
 public abstract class Visual extends PApplet
 {
@@ -22,7 +24,6 @@ public abstract class Visual extends PApplet
 	private float smothedAmplitude = 0;
 
 	
-	
 	public void startMinim() 
 	{
 		minim = new Minim(this);
@@ -34,6 +35,13 @@ public abstract class Visual extends PApplet
 
 	}
 
+	public void setup()
+	{
+		startMinim();
+
+        loadAudio("java/data/CrazyFrog.mp3");
+	}
+	
 	float log2(float f) {
 		return log(f) / log(2.0f);
 	}
