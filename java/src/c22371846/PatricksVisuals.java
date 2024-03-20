@@ -7,7 +7,6 @@ import ddf.minim.AudioBuffer;
 import ddf.minim.AudioInput;
 import ddf.minim.AudioPlayer;
 import ddf.minim.Minim;
-import ddf.minim.analysis.FFT;
 import processing.core.PApplet;
 
 
@@ -19,7 +18,8 @@ public class PatricksVisuals extends PApplet
     AudioPlayer ap;
     AudioInput ai;
     AudioBuffer ab;
-    CubeVisual CV;
+    RotatingAudioBands RAB;
+
 
     int mode = 0;
     float separated = 12;
@@ -45,7 +45,6 @@ public class PatricksVisuals extends PApplet
         ap = minim.loadFile("heroplanet.mp3", 1024);
         ap.play();
         ab = ap.mix;
-
     }
 
     public void keyPressed() {
@@ -109,11 +108,11 @@ public class PatricksVisuals extends PApplet
 				{
 					float num = 50;
 					float x = map(num * i, width - 450, width, num, width);
-                    float hue_color = map(i, 0, ab.size() , 0, 256);
+                    //float hue_color = map(i, 0, ab.size() , 0, 256);
 
                     rect(x, (height - 450), w, lerpedAvg * h * 50);
-                    stroke(hue_color, 105, 255);
-                    fill(map(i, 0, ab.size(), 0, 255), 255, 255);
+                    //stroke(hue_color, 105, 255);
+                    //fill(map(i, 0, ab.size(), 0, 255), 255, 255);
 				}
 
                 for (int i = 0; i < separated; i++) 
@@ -125,19 +124,25 @@ public class PatricksVisuals extends PApplet
             case 1:
             {
                 background(0);
+                float w = width / 15;
+                float bars = 20;
+                float total = 0;
 
+                for (int i = 0; i < bars; i++) 
+                {
+                    rect(0, i * w, width, 5);
+                    rect(0, i * w, height, 5);
+                }
+				
+                //Get the frequency values
                 for(int i = 0 ; i < ab.size() ; i ++)
                 {
-                    float hue = map(i, 0, ab.size() , 0, 256);
-                    stroke(hue, 255, 255);
-                    noFill();
-                    rect(i, -H, i , H + ab.get(i) * H);
+                    total += abs(ab.get(i));
                 }
-                break;
-            }
-            case 2:
-            {
-                CV.draw();
+
+                float average = total / ab.size();
+                lerpedAvg = lerp(lerpedAvg, average, 0.1f);
+				break;
             }
         }
     }

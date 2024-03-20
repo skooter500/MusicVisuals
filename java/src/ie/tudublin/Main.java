@@ -1,9 +1,7 @@
 package ie.tudublin;
 
 import c22371846.PatricksVisuals;
-import example.CubeVisual;
-import example.MyVisual;
-import example.RotatingAudioBands;
+import example.*;
 
 // Test - Michael 
 
