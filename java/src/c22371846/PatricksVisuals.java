@@ -8,34 +8,36 @@ import ddf.minim.AudioInput;
 import ddf.minim.AudioPlayer;
 import ddf.minim.Minim;
 import processing.core.PApplet;
+import ie.tudublin.Heartbeat;
 
 
 
 
-public class PatricksVisuals extends PApplet
+public class PatricksVisuals 
 {
     Minim minim;
     AudioPlayer ap;
     AudioInput ai;
     AudioBuffer ab;
     RotatingAudioBands RAB;
-
+    Heartbeat HB;
 
     int mode = 0;
     float separated = 12;
     float lerpedAvg = 0;
-    float H = height / 2;
-    float W = width / 2;
+    float H = HB.height / 2;
+    float W = HB.width / 2;
 
     public void settings()
     {
-        size(500, 500);
+        HB.size(500, 500, HB.P3D);
+        //fullScreen(P3D, SPAN);
     }
 
     public void setup()
     {
-        colorMode(HSB);
-        background(0);
+        HB.colorMode(HB.HSB);
+        HB.background(0);
         minim = new Minim(this);
         // Microphone
         //ai = minim.getLineIn(Minim.MONO, width, 44100, 16);
@@ -48,11 +50,11 @@ public class PatricksVisuals extends PApplet
     }
 
     public void keyPressed() {
-		if (key >= '0' && key <= '9') 
+		if (HB.key >= '0' && HB.key <= '9') 
         {
-			mode = key - '0';
+			mode = HB.key - '0';
 		}
-		if (keyCode == ' ') {
+		if (HB.keyCode == ' ') {
             if (ap.isPlaying()) 
             {
                 ap.pause();
@@ -69,79 +71,86 @@ public class PatricksVisuals extends PApplet
 
 
 
-    public void draw()
+    public void render(Heartbeat HB)
 	{
 		switch (mode)
 		{
 			case 0:
 			{
-				int ver_bar = height - 50;
-				float w = width / separated;
-                float h = height / separated;
+				int ver_bar = HB.height - 50;
+				float w = HB.width / separated;
+                float h = HB.height / separated;
                 float total = 0;
                 float ticks = 15;
-				background(0);
+				HB.background(0);
 
                 //graph bars
-				line(50, 50, 50, height);
-				line(50, ver_bar - 400, width, ver_bar - 400);
+				HB.line(50, 50, 50, HB.height);
+				HB.line(50, ver_bar - 400, HB.width, ver_bar - 400);
 
 				//bar ticks
 				for (int i = 0; i < ticks; i++) 
 				{
-					line(50, height - (50 * i), 30, height - (50 * i));
+					HB.line(50, HB.height - (50 * i), 30, HB.height - (50 * i));
 				}
-                text("Frequencies", 225, 25);
+                HB.text("Frequencies", 225, 25);
 
                 //Get the frequency values
                 for(int i = 0 ; i < ab.size() ; i ++)
                 {
-                    total += abs(ab.get(i));
+                    total += ab.get(i);
                 }
 
                 float average = total / ab.size();
-                lerpedAvg = lerp(lerpedAvg, average, 0.1f);
+                lerpedAvg = HB.lerp(lerpedAvg, average, 0.1f);
 
                 //bar values
-                text('0', 25, 50);
+                HB.text('0', 25, 50);
 				for (int i = 1; i < ab.size(); i++) 
 				{
 					float num = 50;
-					float x = map(num * i, width - 450, width, num, width);
+					float x = HB.map(num * i, HB.width - 450, HB.width, num, HB.width);
                     //float hue_color = map(i, 0, ab.size() , 0, 256);
 
-                    rect(x, (height - 450), w, lerpedAvg * h * 50);
+                    HB.rect(x, (HB.height - 450), w, lerpedAvg * h * 50);
                     //stroke(hue_color, 105, 255);
                     //fill(map(i, 0, ab.size(), 0, 255), 255, 255);
 				}
 
                 for (int i = 0; i < separated; i++) 
                 {
-                    text(i * 50, 25, (i * 50) + 50);
+                    HB.text(i * 50, 25, (i * 50) + 50);
                 }
 				break;
 			}
             case 1:
             {
-                background(0); 
-                float w = width / 15;
-                float bars = 20;
+                HB.background(0); 
                 float total = 0;
-
-                for (int i = 0; i < bars; i++) 
-                {
-                    rect(0, i * w, width, 5);
-                    rect(0, i * w, height, 5);
-                }
+                float bars = 22;
+                
 				
                 //Get the frequency values
                 for(int i = 0 ; i < ab.size() ; i ++)
                 {
-                    total += abs(ab.get(i));
+                    total += (ab.get(i));
                 }
 
                 float average = total / ab.size();
-                lerpedAvg = lerp(lerpedAvg, average, 0.1f);
+                lerpedAvg = HB.lerp(lerpedAvg, average, 0.1f);
+
+                for (int i = 0; i < bars; i++) 
+                {
+                    for (int j = 0; j < ab.size(); j++) 
+                    {
+                        float hue_color = HB.map(i, 0, ab.size() , 0, 256);
+                        HB.rect(j, i, 50, 20);
+                        HB.stroke(hue_color, 105, 255);
+                        HB.fill(hue_color, 255, 255);
+
+                        //rect();
+                    }
+                }
 				break;
             }
         }
