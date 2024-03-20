@@ -34,7 +34,7 @@ public abstract class Visual extends PApplet {
 		return log(f) / log(2.0f);
 	}
 
-	protected void calculateFFT() throws VisualException {
+	public void calculateFFT() throws VisualException {
 		fft.window(FFT.HAMMING);
 		if (ab != null) {
 			fft.forward(ab);
@@ -52,7 +52,7 @@ public abstract class Visual extends PApplet {
 		smothedAmplitude = PApplet.lerp(smothedAmplitude, amplitude, 0.1f);
 	}
 
-	protected void calculateFrequencyBands() {
+	public void calculateFrequencyBands() {
 		for (int i = 0; i < bands.length; i++) {
 			int start = (int) pow(2, i) - 1;
 			int w = (int) pow(2, i);
