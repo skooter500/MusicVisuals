@@ -20,10 +20,10 @@ public class MyVisual extends Visual {
         startMinim();
 
         // Call loadAudio to load an audio file to process
-        // loadAudio("heroplanet.mp3");
+        loadAudio("Bicep - Glue (Original Mix)_q5rliCxX8xc.mp3");
 
         // Call this instead to read audio from the microphone
-        startListening();
+        //startListening();
 
         wf = new WaveForm(this);
         abv = new AudioBandsVisual(this);
