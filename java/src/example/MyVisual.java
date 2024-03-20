@@ -2,6 +2,7 @@ package example;
 
 import C22398106.Eadaoinsvisual;
 import C22337521.FionansVisual;
+import C22339066.Alannahsvisual;
 import ie.tudublin.*;
 
 public class MyVisual extends Visual {
@@ -47,11 +48,11 @@ public class MyVisual extends Visual {
             String[] a = { "MAIN" };
             processing.core.PApplet.runSketch(a, new FionansVisual());
         }
-        /*if (key == '3')
+        if (key == '3')
         {
             String[] a = { "MAIN" };
             processing.core.PApplet.runSketch(a, new Alannahsvisual());
-        }*/
+        }
     }
 
     public void draw() {
