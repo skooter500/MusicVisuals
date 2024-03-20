@@ -123,7 +123,7 @@ public class PatricksVisuals extends PApplet
 			}
             case 1:
             {
-                background(0);
+                background(0); 
                 float w = width / 15;
                 float bars = 20;
                 float total = 0;
