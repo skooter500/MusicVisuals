@@ -21,7 +21,7 @@ public abstract class Visual extends PApplet
 	private FFT fft;
 
 	private float amplitude  = 0;
-	private float smothedAmplitude = 0;
+	private float smoothedAmplitude = 0;
 
 	
 	public void startMinim() 
@@ -68,7 +68,7 @@ public abstract class Visual extends PApplet
 			total += abs(ab.get(i));
 		}
 		amplitude = total / ab.size();
-		smothedAmplitude = PApplet.lerp(smothedAmplitude, amplitude, 0.1f);
+		smoothedAmplitude = PApplet.lerp(smoothedAmplitude, amplitude, 0.1f);
 	}
 
 
@@ -141,7 +141,7 @@ public abstract class Visual extends PApplet
 	}
 
 	public float getSmoothedAmplitude() {
-		return smothedAmplitude;
+		return smoothedAmplitude;
 	}
 
 	public AudioPlayer getAudioPlayer() {
