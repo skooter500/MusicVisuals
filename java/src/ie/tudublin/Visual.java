@@ -5,6 +5,7 @@ import ddf.minim.*;
 import ddf.minim.analysis.FFT;
 import example.AudioBandsVisual;
 import example.WaveForm;
+import C22308773.AmyVisual1;
 
 public abstract class Visual extends PApplet
 {
