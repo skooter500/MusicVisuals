@@ -11,14 +11,14 @@ Student Number:
 - There is an example visualiser called MyVisual in the example package
 - Check out the WaveForm and AudioBandsVisual for examples of how to call the Processing functions from other classes that are not subclasses of PApplet
 
-# Description of the assignment
-
+# Description of the assignment 
+- This assignment 
 # Instructions
 
 # How it works
 
 # What I am most proud of in the assignment
-
+- I chose the song for this and im half proud of myself and half hate myself for choosing such an upbeat, classic and fun yet such an annoying, 
 # Markdown Tutorial
 
 This is *emphasis*
