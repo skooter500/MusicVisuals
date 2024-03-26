@@ -1,6 +1,6 @@
 # Music Visualiser Project
 
-Name: aleena
+Name:
 
 Student Number: 
 
