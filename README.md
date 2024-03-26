@@ -19,6 +19,9 @@ Student Number:
 
 # What I am most proud of in the assignment
 - I chose the song for this and im half proud of myself and half hate myself for choosing such an upbeat, classic and fun yet such an annoying, 
+- Time stamps : 0-27s Amy, 28-42s Aleena, 43-1.10s Roxana, 1.11-1.24s Aleena, 1.24-1.50s Ciara
+# Rough draft 
+- Time stamps : 0-27s Amy, 28-42s Aleena, 43-1.10s Roxana, 1.11-1.24s Aleena, 1.24-1.50s Ciara
 # Markdown Tutorial
 
 This is *emphasis*
