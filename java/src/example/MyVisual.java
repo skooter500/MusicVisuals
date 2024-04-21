@@ -1,6 +1,8 @@
 package example;
 
 import ie.tudublin.*;
+import processing.core.PApplet;
+import processing.video.Capture;
 
 public class MyVisual extends Visual {
     WaveForm wf;
@@ -9,7 +11,14 @@ public class MyVisual extends Visual {
     public void settings() {
         size(1024, 500);
 
-        // Use this to make fullscreen
+        // if ( PApplet.platform == WINDOWS )
+        // System.setProperty("gstreamer.library.path",sketchPath() +  "/lib/windows-amd64");
+        // else if ( PApplet.platform == MACOS )
+        // System.setProperty("gstreamer.library.path", sketchPath() + "/lib/macos-x86_64");
+        // else if ( PApplet.platform == LINUX )
+        // System.setProperty("gstreamer.library.path", sketchPath() + "/lib/linux-amd64");
+        // System.setProperty("gstreamer.plugin.path", System.getProperty("gstreamer.library.path") + "/gstreamer-1.0");
+        // // Use this to make fullscreen
         // fullScreen();
 
         // Use this to make fullscreen and use P3D for 3D graphics
@@ -27,7 +36,14 @@ public class MyVisual extends Visual {
 
         wf = new WaveForm(this);
         abv = new AudioBandsVisual(this);
+
+        printArray(Capture.list());
+        capture = new Capture(this, 640, 480);
+        capture.start();
+        
     }
+
+    Capture capture;
 
     public void keyPressed() {
         if (key == ' ') {
@@ -51,5 +67,10 @@ public class MyVisual extends Visual {
         calculateAverageAmplitude();
         wf.render();
         abv.render();
+
+        if (capture.available()) {
+            capture.read();
+          }
+        image(capture, 500, 0, 640, 480);
     }
 }

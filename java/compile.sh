@@ -1,1 +1,1 @@
-javac -classpath "./;./lib/minim.jar;./lib/core.jar" -d bin src/ie/tudublin/*.java src/example/*.java
+javac -classpath "./;./lib/minim.jar;./lib/core.jar;./lib/gst1-java-core-1.4.0.jar;./lib/jna.jar;./lib/video.jar" -d bin src/ie/tudublin/*.java src/example/*.java
