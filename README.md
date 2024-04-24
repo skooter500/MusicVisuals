@@ -1,8 +1,13 @@
 # Music Visualiser Project
 
-Name:
+Student 1 Name: Joanne Umeh
 
-Student Number: 
+Student 1 Number: D22126855 
+
+Student 2 Name: Grace Ojo
+
+Student 2 Number: C21459946
+
 
 ## Instructions
 - Fork this repository and use it a starter project for your assignment
