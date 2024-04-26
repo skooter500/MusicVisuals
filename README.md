@@ -1,8 +1,17 @@
 # Music Visualiser Project
+Name: Michael Ferents
+Student Number: C21325616
 
-Name:
+Name: Patrick Akinsowon
+Student Number: C22371846
 
-Student Number: 
+
+Name: Larina Yu
+Student Number: C22328351
+
+Name: Noel McCarthy
+Student Number: C22533826
+
 
 ## Instructions
 - Fork this repository and use it a starter project for your assignment
@@ -14,6 +23,17 @@ Student Number:
 # Description of the assignment
 
 # Instructions
+Run Main.java inside ie\tudublin, this will run our Heartbeat.java file where we handle rendering each persons visual.
+
+To switch between each persons visuals select 1-X keys. Press R to restart the song and Spacebar to pause the song.
+
+- Noels Visuals: You can interact with the stars in the background by hovering the cursor over them. This creates a 'blackhole' effect where they group around the cursor in a circle.
+
+- atricks Visuals:
+
+- Larinas Visuals: 
+
+- Michaels Visuals: 
 
 # How it works
 

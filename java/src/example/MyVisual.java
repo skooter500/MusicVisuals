@@ -1,5 +1,6 @@
 package example;
 
+import C21325616.MichaelsVisuals;
 import ie.tudublin.*;
 
 public class MyVisual extends Visual {
@@ -7,7 +8,7 @@ public class MyVisual extends Visual {
     AudioBandsVisual abv;
 
     public void settings() {
-        size(1024, 500);
+        size(1024, 500, P3D);
 
         // Use this to make fullscreen
         // fullScreen();
@@ -49,7 +50,7 @@ public class MyVisual extends Visual {
 
         // Call this is you want to get the average amplitude
         calculateAverageAmplitude();
-        wf.render();
-        abv.render();
+        //wf.render();
+        //abv.render();
     }
 }
