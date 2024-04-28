@@ -1,31 +1,35 @@
 package example;
 
+import ie.tudublin.OurVisual;
 import processing.core.*;
 
 // This is an example of a visual that renders the waveform
 public class WaveForm
 {
-    MyVisual mv;
+    // MyVisual mv;
+    OurVisual ov;
+
     float cy = 0;
 
-    public WaveForm(MyVisual mv)
+    // public WaveForm(MyVisual mv)
+    public WaveForm(OurVisual ov)
     {
-        this.mv = mv;
-        cy = this.mv.height / 2;
+        this.ov = ov;
+        cy = this.ov.height / 2;
     }
 
     public void render()
     {
-        mv.colorMode(PApplet.HSB);
-        for(int i = 0 ; i < mv.getAudioBuffer().size() ; i ++)
+        ov.colorMode(PApplet.HSB);
+        for(int i = 0 ; i < ov.getAudioBuffer().size() ; i ++)
         {
-            mv.stroke(
-                PApplet.map(i, 0, mv.getAudioBuffer().size(), 0, 255)
+            ov.stroke(
+                PApplet.map(i, 0, ov.getAudioBuffer().size(), 0, 255)
                 , 255
                 , 255
             );
 
-            mv.line(i, cy, i, cy + cy * mv.getAudioBuffer().get(i));
+            ov.line(i, cy, i, cy + cy * ov.getAudioBuffer().get(i));
         }
     }
 }

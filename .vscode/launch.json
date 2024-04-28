@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CiaraVisual1",
+            "request": "launch",
+            "mainClass": "C22787471.CiaraVisual1",
+            "projectName": "java"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - Main",
             "request": "launch",
             "mainClass": "ie.tudublin.Main",
