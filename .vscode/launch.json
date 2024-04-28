@@ -2,6 +2,26 @@
     "configurations": [
         {
             "type": "java",
+<<<<<<< HEAD
+            "name": "ambersVisual",
+            "request": "launch",
+            "mainClass": "C22400154.ambersVisual",
+=======
+            "name": "MusicVisualizer",
+            "request": "launch",
+            "mainClass": "c22368271.MusicVisualizer",
+>>>>>>> 8b3be4fbce12a731e0d2402b35d1105a3f8b5226
+            "projectName": "java"
+        },
+        {
+            "type": "java",
+            "name": "IriaVisual2",
+            "request": "launch",
+            "mainClass": "c22305863.IriaVisual2",
+            "projectName": "java"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - Main",
             "request": "launch",
             "mainClass": "ie.tudublin.Main",
