@@ -1,8 +1,8 @@
 # Music Visualiser Project
 
-Name:
-
-Student Number: 
+Student Number and Student Name: Alex Mackey - C22739165	
+								 Aaron Connolly - C22410766
+								 Sergei Larionov - C22483302
 
 ## Instructions
 - Fork this repository and use it a starter project for your assignment
@@ -11,10 +11,19 @@ Student Number:
 - There is an example visualiser called MyVisual in the example package
 - Check out the WaveForm and AudioBandsVisual for examples of how to call the Processing functions from other classes that are not subclasses of PApplet
 
+# IDEAS
+0:00 - 0:16 
+0:16 - 1:57
+1:57 - 3:04
+3:04 - 4:09
+4:09 - 5:59
+
+
 # Description of the assignment
+visuals of Bohemian Rhapsody 
 
 # Instructions
-
+merge practice
 # How it works
 
 # What I am most proud of in the assignment
