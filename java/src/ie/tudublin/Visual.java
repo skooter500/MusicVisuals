@@ -1,12 +1,12 @@
 package ie.tudublin;
-
 import processing.core.PApplet;
 import ddf.minim.*;
+import ddf.minim.analysis.BeatDetect;
 import ddf.minim.analysis.FFT;
 
 public abstract class Visual extends PApplet
 {
-	private int frameSize = 512;
+	private int frameSize = 1024;
 	private int sampleRate = 44100;
 
 	private float[] bands;
@@ -14,12 +14,14 @@ public abstract class Visual extends PApplet
 
 	private Minim minim;
 	private AudioInput ai;
+	public AudioSample as;
 	private AudioPlayer ap;
 	private AudioBuffer ab;
+	public BeatDetect beat;
 	private FFT fft;
-
+	
 	private float amplitude  = 0;
-	private float smothedAmplitude = 0;
+	private float smoothedAmplitude = 0;
 
 	
 	
@@ -34,7 +36,8 @@ public abstract class Visual extends PApplet
 
 	}
 
-	float log2(float f) {
+	float log2(float f) 
+	{
 		return log(f) / log(2.0f);
 	}
 
@@ -60,17 +63,20 @@ public abstract class Visual extends PApplet
 			total += abs(ab.get(i));
 		}
 		amplitude = total / ab.size();
-		smothedAmplitude = PApplet.lerp(smothedAmplitude, amplitude, 0.1f);
+		smoothedAmplitude = PApplet.lerp(smoothedAmplitude, amplitude, 0.1f);
 	}
 
 
-	protected void calculateFrequencyBands() {
-		for (int i = 0; i < bands.length; i++) {
+	protected void calculateFrequencyBands() 
+	{
+		for (int i = 0; i < bands.length; i++) 
+		{
 			int start = (int) pow(2, i) - 1;
 			int w = (int) pow(2, i);
 			int end = start + w;
 			float average = 0;
-			for (int j = start; j < end; j++) {
+			for (int j = start; j < end; j++) 
+			{
 				average += fft.getBand(j) * (j + 1);
 			}
 			average /= (float) w;
@@ -87,60 +93,84 @@ public abstract class Visual extends PApplet
 
 	public void loadAudio(String filename)
 	{
-		ap = minim.loadFile(filename, frameSize);
-		ab = ap.mix;
+		as = minim.loadSample(filename, frameSize);
+		ab = as.left;
 	}
 
-	public int getFrameSize() {
+	public int getFrameSize() 
+	{
 		return frameSize;
 	}
 
-	public void setFrameSize(int frameSize) {
+	public void setFrameSize(int frameSize) 
+	{
 		this.frameSize = frameSize;
 	}
 
-	public int getSampleRate() {
+	public int getSampleRate() 
+	{
 		return sampleRate;
 	}
 
-	public void setSampleRate(int sampleRate) {
+	public void setSampleRate(int sampleRate) 
+	{
 		this.sampleRate = sampleRate;
 	}
 
-	public float[] getBands() {
+	public float[] getBands() 
+	{
 		return bands;
 	}
 
-	public float[] getSmoothedBands() {
+	public float[] getSmoothedBands() 
+	{
 		return smoothedBands;
 	}
 
-	public Minim getMinim() {
+	public Minim getMinim() 
+	{
 		return minim;
 	}
 
-	public AudioInput getAudioInput() {
+	public AudioInput getAudioInput() 
+	{
 		return ai;
 	}
 
 
-	public AudioBuffer getAudioBuffer() {
+	public AudioBuffer getAudioBuffer() 
+	{
 		return ab;
 	}
+	
+	public AudioSample getAudioSample() 
+	{
+		return as;
+	}
 
-	public float getAmplitude() {
+	public float getAmplitude() 
+	{
 		return amplitude;
 	}
 
-	public float getSmoothedAmplitude() {
-		return smothedAmplitude;
+	public float getSmoothedAmplitude() 
+	{
+		return smoothedAmplitude;
 	}
 
-	public AudioPlayer getAudioPlayer() {
+	public AudioPlayer getAudioPlayer() 
+	{
 		return ap;
 	}
 
-	public FFT getFFT() {
+	public FFT getFFT() 
+	{
 		return fft;
+	}
+
+	public BeatDetect BeatDetect()
+	{
+		beat = new BeatDetect();
+		return beat;
 	}
 }

@@ -1,8 +1,8 @@
 # Music Visualiser Project
 
-Name:
+Names: Aimee Mcgrane, Neil Fitzgerald, Jade Thornton, Jason O Sullivan, Chris Noblett 
 
-Student Number: 
+Student Numbers: C22393606, C22405604, C22394466, C22400796, C22454222
 
 ## Instructions
 - Fork this repository and use it a starter project for your assignment
@@ -13,11 +13,51 @@ Student Number:
 
 # Description of the assignment
 
+## Aimee
+
+## Neil
+
+## Jade
+
+## Jason
+
+## Chris
+
 # Instructions
+
+## Main Menu
+
+Once you have ran the program, a separate menu window opens with the following options:
+- Play Tune
+- Aimee
+- Neil
+- Jade
+- Jason
+- Chris
+
+## Chris's Visual Option
+Chris's visual has further visual change options based on keypress.
+Press a corresponding number on your keyboard to change the visual.
+
+| Keycode | Visual |
+|---------|-----------|
+| '1' | |
+| '2' | |
+| '3' | |
 
 # How it works
 
 # What I am most proud of in the assignment
+
+## Aimee
+
+## Neil
+
+## Jade
+
+## Jason
+
+## Chris
 
 # Markdown Tutorial
 
@@ -33,7 +73,7 @@ This is a numbered list
 1. Item
 1. Item
 
-This is a [hyperlink](http://bryanduggan.org)
+This is a [hyperlink]
 
 # Headings
 ## Headings
@@ -43,41 +83,19 @@ This is a [hyperlink](http://bryanduggan.org)
 This is code:
 
 ```Java
-public void render()
-{
-	ui.noFill();
-	ui.stroke(255);
-	ui.rect(x, y, width, height);
-	ui.textAlign(PApplet.CENTER, PApplet.CENTER);
-	ui.text(text, x + width * 0.5f, y + height * 0.5f);
-}
-```
-
-So is this without specifying the language:
-
-```
-public void render()
-{
-	ui.noFill();
-	ui.stroke(255);
-	ui.rect(x, y, width, height);
-	ui.textAlign(PApplet.CENTER, PApplet.CENTER);
-	ui.text(text, x + width * 0.5f, y + height * 0.5f);
-}
 ```
 
 This is an image using a relative URL:
 
-![An image](images/p8.png)
+![An image]
 
 This is an image using an absolute URL:
 
-![A different image](https://bryanduggandotorg.files.wordpress.com/2019/02/infinite-forms-00045.png?w=595&h=&zoom=2)
+![A different image]
 
 This is a youtube video:
 
-[![YouTube](http://img.youtube.com/vi/J2kHSSFA4NU/0.jpg)](https://www.youtube.com/watch?v=J2kHSSFA4NU)
-
+![YouTube]
 This is a table:
 
 | Heading 1 | Heading 2 |
