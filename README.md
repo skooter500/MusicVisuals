@@ -1,8 +1,8 @@
 # Music Visualiser Project
 
-Name:
+Name:Seán Flood & Ralph Cruz
 
-Student Number: 
+Student Number: C22421292 & C22427602
 
 ## Instructions
 - Fork this repository and use it a starter project for your assignment
@@ -14,10 +14,71 @@ Student Number:
 # Description of the assignment
 
 # Instructions
+Using keyboard keys ‘1’ and ‘2’ you can change scenes:
+!['1'](https://i.imgur.com/s2JUPJh.png)
+!['2'](https://i.imgur.com/7RC3WF0.png)
+!['2 again'](https://i.imgur.com/lPGM8d2.png)
+!['2 again again'](https://i.imgur.com/l2kReYW.png)
+
+‘ ‘ (spacebar) pauses and plays the song
+![' '](https://i.imgur.com/J8qGTCL.png)
+![' ' again](https://i.imgur.com/7RC3WF0.png)
+
+‘r’ clears the current scene just leaving the screen black with the lyrics still playing
+!['r'](https://i.imgur.com/YgO8pgW.png)
+!['r again'](https://i.imgur.com/dPyangf.png)
+
+‘s’ enters “spam mode” on when scene 2 is active. Spam mode just calls the “sceneChange” function in SeanVisuals.java very fast.
+Not actually screenshotable because it uses motion and screenshots are freezeframes.
 
 # How it works
+In the Main.java file we call our "Seno.java" file and create that sketch
+```Java
+package ie.tudublin;
+
+public class Main {
+
+    public void startUI() {
+        String[] a = { "MAIN" };
+        processing.core.PApplet.runSketch(a, new Seno()); // <-- Call Seno file here
+    }
+
+    public static void main(String[] args) {
+        Main main = new Main();
+        main.startUI();
+    }
+}
+```
+
+In the Seno.java file we then import our respective files
+```Java
+import c22427602.RalphVisuals;
+import c22421292.SeanVisuals;
+
+public class Seno extends Visual {
+    RalphVisuals Ralph;
+    private boolean drawSphere = false;
+    SeanVisuals Sean;
+    private boolean drawCube = false;
+
+    public void setup() {
+	Ralph = new RalphVisuals();  // Instantiate Ralph object
+        Ralph.setParent(this);
+
+        Sean = new SeanVisuals(); // Instantiate Sean object
+        Sean.setParent(this);
+
+    public void draw() {
+	if (drawSphere) {
+            Ralph.draw();
+        }
+        else if (drawCube) {
+            Sean.draw(); 
+        }
+```
 
 # What I am most proud of in the assignment
+I am most proud of making a scene that I beleive is fun to watch and interactable in many ways which can keep the user entertained and interested. There are many objects that move based on the music which makes it visually apealing and being able to change the appearance using keyboard keys makes it interesting.
 
 # Markdown Tutorial
 

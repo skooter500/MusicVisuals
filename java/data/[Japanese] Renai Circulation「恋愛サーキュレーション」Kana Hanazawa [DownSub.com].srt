@@ -1,0 +1,308 @@
+1
+00:00:00,700 --> 00:00:01,610
+(se~ no!)
+
+2
+00:00:01,610 --> 00:00:03,620
+demo sonnan ja dame
+
+3
+00:00:03,620 --> 00:00:05,610
+mou sonnan ja hora
+
+4
+00:00:05,610 --> 00:00:07,870
+kokoro wa shinka suru yo
+
+5
+00:00:07,870 --> 00:00:10,170
+motto motto
+
+6
+00:00:25,370 --> 00:00:27,860
+kotoba ni sureba kiechau kankei nara
+
+7
+00:00:27,860 --> 00:00:29,610
+kotoba o keseba ii ya tte
+
+8
+00:00:29,610 --> 00:00:31,370
+omotteta osoreteta
+
+9
+00:00:31,370 --> 00:00:33,359
+dakedo are? nanka chigau kamo…
+
+10
+00:00:33,359 --> 00:00:35,370
+senri no michi mo ippo kara!
+
+11
+00:00:35,370 --> 00:00:37,609
+ishi no you ni katai sonna ishi de
+
+12
+00:00:37,609 --> 00:00:39,870
+chiri mo tsumoreba Yamato Nadeshiko?
+
+13
+00:00:39,870 --> 00:00:41,859
+‘shi’ nuki de iya shinu ki de!
+
+14
+00:00:41,859 --> 00:00:44,859
+fuwafuwari fuwafuwaru
+
+15
+00:00:44,859 --> 00:00:46,870
+anata ga namae o yobu
+
+16
+00:00:46,870 --> 00:00:47,870
+sore dake de
+
+17
+00:00:47,870 --> 00:00:49,870
+chuu e ukabu
+
+18
+00:00:49,870 --> 00:00:52,870
+fuwafuwaru fuwafuwari
+
+19
+00:00:52,870 --> 00:00:54,870
+anata ga waratte iru
+
+20
+00:00:54,870 --> 00:00:55,870
+sore dake de
+
+21
+00:00:55,870 --> 00:00:57,860
+egao ni naru
+
+22
+00:00:57,860 --> 00:01:01,610
+kami-sama arigatou
+
+23
+00:01:01,610 --> 00:01:05,860
+unmei no itazura demo
+
+24
+00:01:05,860 --> 00:01:09,370
+meguriaeta koto ga
+
+25
+00:01:09,370 --> 00:01:13,620
+shiawase na no
+
+26
+00:01:13,620 --> 00:01:15,610
+demo sonnan ja dame
+
+27
+00:01:15,610 --> 00:01:17,620
+mou sonnan ja hora
+
+28
+00:01:17,620 --> 00:01:19,860
+kokoro wa shinka suru yo
+
+29
+00:01:19,860 --> 00:01:21,620
+motto motto
+
+30
+00:01:21,620 --> 00:01:23,370
+sou sonnan ja ya da
+
+31
+00:01:23,370 --> 00:01:25,620
+nee sonnan ja mada
+
+32
+00:01:25,620 --> 00:01:27,860
+watashi no koto mitete ne
+
+33
+00:01:27,860 --> 00:01:30,160
+zutto zutto
+
+34
+00:01:45,610 --> 00:01:47,370
+watashi no naka no anata hodo
+
+35
+00:01:47,370 --> 00:01:49,620
+anata no naka no watashi no sonzai wa
+
+36
+00:01:49,620 --> 00:01:52,110
+madamada ookikunai koto mo
+
+37
+00:01:52,110 --> 00:01:53,370
+wakatteru keredo
+
+38
+00:01:53,370 --> 00:01:55,610
+ima kono onaji shunkan
+
+39
+00:01:55,610 --> 00:01:57,620
+kyouyuu shiteru jikkan
+
+40
+00:01:57,620 --> 00:01:59,860
+chiri mo tsumoreba Yamato Nadeshiko!
+
+41
+00:01:59,860 --> 00:02:01,870
+ryakushite? chiri-tsumo Yamato Nadeko!
+
+42
+00:02:01,870 --> 00:02:04,620
+kurakurari kurakuraru
+
+43
+00:02:04,620 --> 00:02:06,860
+anata o miagetara
+
+44
+00:02:06,860 --> 00:02:07,860
+sore dake de
+
+45
+00:02:07,860 --> 00:02:09,869
+mabushisugite
+
+46
+00:02:09,869 --> 00:02:12,619
+kurakuraru kurakurari
+
+47
+00:02:12,619 --> 00:02:14,860
+anata o omotte iru
+
+48
+00:02:14,860 --> 00:02:15,869
+sore dake de
+
+49
+00:02:15,869 --> 00:02:17,870
+tokete shimau
+
+50
+00:02:17,870 --> 00:02:21,620
+kami-sama arigatou
+
+51
+00:02:21,620 --> 00:02:25,870
+unmei no itazura demo
+
+52
+00:02:25,870 --> 00:02:29,620
+meguriaeta koto ga
+
+53
+00:02:29,620 --> 00:02:33,870
+shiawase na no
+
+54
+00:02:33,870 --> 00:02:42,110
+KO I SU RU KI SE TSU WA YO KU BA RI Circulation
+
+55
+00:02:42,110 --> 00:02:49,870
+KO I SU RU KI MO CHI WA YO KU BA RI Circulation
+
+56
+00:02:49,870 --> 00:02:57,610
+KO I SU RU HI TO MI WA YO KU BA RI Circulation
+
+57
+00:02:57,610 --> 00:03:05,919
+KO I SU RU O TO ME WA YO KU BA RI Circulation
+
+58
+00:03:07,619 --> 00:03:10,869
+fuwafuwari fuwafuwaru
+
+59
+00:03:10,869 --> 00:03:12,869
+anata ga namae o yobu
+
+60
+00:03:12,869 --> 00:03:13,860
+sore dake de
+
+61
+00:03:13,860 --> 00:03:15,860
+chuu e ukabu
+
+62
+00:03:15,860 --> 00:03:18,870
+fuwafuwaru fuwafuwari
+
+63
+00:03:18,870 --> 00:03:20,870
+anata ga waratte iru
+
+64
+00:03:20,870 --> 00:03:21,860
+sore dake de
+
+65
+00:03:21,860 --> 00:03:23,870
+egao ni naru
+
+66
+00:03:23,870 --> 00:03:27,610
+kami-sama arigatou
+
+67
+00:03:27,610 --> 00:03:31,870
+unmei no itazura demo
+
+68
+00:03:31,870 --> 00:03:35,610
+meguriaeta koto ga
+
+69
+00:03:35,610 --> 00:03:39,620
+shiawase na no
+
+70
+00:03:55,500 --> 00:03:57,610
+demo sonnan ja dame
+
+71
+00:03:57,610 --> 00:03:59,620
+mou sonnan ja hora
+
+72
+00:03:59,620 --> 00:04:01,870
+kokoro wa shinka suru yo
+
+73
+00:04:01,870 --> 00:04:03,620
+motto motto
+
+74
+00:04:03,620 --> 00:04:05,610
+sou sonnan ja ya da
+
+75
+00:04:05,610 --> 00:04:07,630
+nee sonnan ja mada
+
+76
+00:04:07,630 --> 00:04:09,870
+watashi no koto mitete ne
+
+77
+00:04:09,870 --> 00:04:12,870
+zutto zutto
+
