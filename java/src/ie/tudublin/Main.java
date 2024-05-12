@@ -1,8 +1,8 @@
 package ie.tudublin;
 
-import example.CubeVisual;
-import example.MyVisual;
-import example.RotatingAudioBands;
+import c22485282.CubeVisual;
+import c22485282.MyVisual;
+import c22485282.RotatingAudioBands;
 
 public class Main {
 
